@@ -1,0 +1,32 @@
+{
+  "id": "8a76abc6-5fb0-4baf-84be-8a28a099b8d4",
+  "name": "KiaDynBC",
+  "publisher": "RSBTech",
+  "version": "1.0.0.2",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "https://rsbtech.com.br/",
+  "help": "https://rsbtech.com.br/",
+  "url": "https://rsbtech.com.br/",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "28.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 75149
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "17.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}
