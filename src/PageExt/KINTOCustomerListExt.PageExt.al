@@ -2,7 +2,7 @@ pageextension 50101 "KINTO Customer List Ext" extends "Customer List"
 {
     layout
     {
-        addafter(Control1)
+        addafter("Payments (LCY)")
         {
             field("KINTO Customer Type"; Rec."KINTO Customer Type")
             {

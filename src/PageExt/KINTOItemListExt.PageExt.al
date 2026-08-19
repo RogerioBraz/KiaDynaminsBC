@@ -2,7 +2,7 @@ pageextension 50105 "KINTO Item List Ext" extends "Item List"
 {
     layout
     {
-        addafter(Control1)
+        addafter("Default Deferral Template Code")
         {
             field("KINTO Category"; Rec."KINTO Category")
             {

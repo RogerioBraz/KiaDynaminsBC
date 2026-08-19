@@ -4,15 +4,16 @@ pageextension 50102 "KINTO Vendor Card Ext" extends "Vendor Card"
     {
         addafter(General)
         {
+
+            field("KINTO Dealer"; Rec."KINTO Dealer")
+            {
+                ApplicationArea = All;
+            }
             group(KINTODealer)
             {
                 Caption = 'KINTO Dealer';
                 Visible = Rec."KINTO Dealer";
 
-                field("KINTO Dealer"; Rec."KINTO Dealer")
-                {
-                    ApplicationArea = All;
-                }
                 field("KINTO Default DLR Sales Comm %"; Rec."KINTO Default DLR Sales Comm %")
                 {
                     ApplicationArea = All;

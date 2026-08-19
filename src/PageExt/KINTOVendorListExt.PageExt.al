@@ -2,7 +2,7 @@ pageextension 50107 "KINTO Vendor List Ext" extends "Vendor List"
 {
     layout
     {
-        addafter(Control1)
+        addafter("Payments (LCY)")
         {
             field("KINTO Dealer"; Rec."KINTO Dealer")
             {

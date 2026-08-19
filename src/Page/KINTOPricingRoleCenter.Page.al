@@ -185,7 +185,7 @@ page 50140 "KINTO Pricing Role Center"
                     Caption = 'Matriz de Valor Residual';
                     ApplicationArea = All;
                     RunObject = page "KINTO RV Matrix List";
-                    Image = Matrix;
+                    Image = MapSetup;
                 }
                 action(NewRVEntry)
                 {
@@ -282,48 +282,36 @@ page 50140 "KINTO Pricing Role Center"
                 Image = NewItem;
             }
         }
-
         // ============================================================
         // PROCESSAMENTO (Import/Export)
         // ============================================================
         area(Processing)
         {
-            // action(ImportRVMatrix)
-            // {
-            //     Caption = 'Importar Matriz RV (Excel)';
-            //     ApplicationArea = All;
-            //     Image = ImportExcel;
-            //     trigger OnAction()
-            //     var
-            //         RVImport: Codeunit "KINTO RV Matrix Excel Import";
-            //     begin
-            //         RVImport.ImportRVMatrixFromExcel();
-            //     end;
-            // }
-            // action(ImportMaintPlan)
-            // {
-            //     Caption = 'Importar Plano de Manutenção (Excel)';
-            //     ApplicationArea = All;
-            //     Image = Import;
-            //     trigger OnAction()
-            //     var
-            //         MaintImport: Codeunit "KINTO Maint. Plan Excel Import";
-            //     begin
-            //         MaintImport.ImportMaintenancePlanFromExcel('', '', 0);
-            //     end;
-            // }
-            // action(DownloadRVTemplate)
-            // {
-            //     Caption = 'Baixar Template RV Matrix';
-            //     ApplicationArea = All;
-            //     Image = ExportExcel;
-            //     trigger OnAction()
-            //     var
-            //         RVImport: Codeunit "KINTO RV Matrix Excel Import";
-            //     begin
-            //         RVImport.DownloadTemplate();
-            //     end;
-            // }
+            action(ImportRVMatrix)
+            {
+                Caption = 'Importar Matriz RV (Excel)';
+                ApplicationArea = All;
+                Image = Import;
+                ToolTip = 'Importa entradas da Matriz de Valor Residual via arquivo Excel.';
+                RunObject = codeunit "KINTO RV Matrix Excel Import";
+            }
+            action(ImportMaintPlan)
+            {
+                Caption = 'Importar Plano de Manutenção (Excel)';
+                ApplicationArea = All;
+                Image = Import;
+                ToolTip = 'Importa um plano de manutenção via arquivo Excel.';
+                // RunObject não pode passar parâmetros, então usamos uma codeunit wrapper
+                RunObject = codeunit "KINTO Maint. Plan Excel Import";
+            }
+            action(DownloadRVTemplate)
+            {
+                Caption = 'Baixar Template RV Matrix';
+                ApplicationArea = All;
+                Image = Export;
+                ToolTip = 'Baixa um arquivo Excel template para preenchimento da Matriz RV.';
+                RunObject = codeunit "KINTO RV Matrix Templ Download";
+            }
         }
 
         // ============================================================

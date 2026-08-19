@@ -19,12 +19,14 @@ page 50142 "KINTO Quote Activities"
                     {
                         Caption = 'Total de Cotações';
                         ApplicationArea = All;
+                        Image = TileViolet;
                         RunObject = page "KINTO Quote List";
                     }
                     action("Draft Quotes")
                     {
                         Caption = 'Rascunho';
                         ApplicationArea = All;
+                        Image = TileNew;
                         RunObject = page "KINTO Quote List";
 
                     }
@@ -32,12 +34,14 @@ page 50142 "KINTO Quote Activities"
                     {
                         Caption = 'Calculadas';
                         ApplicationArea = All;
+                        Image = TileSettings;
                         RunObject = page "KINTO Quote List";
                     }
                     action("Approved Quotes")
                     {
                         Caption = 'Aprovadas';
                         ApplicationArea = All;
+                        Image = TileHelp;
                         RunObject = page "KINTO Quote List";
                     }
                 }
