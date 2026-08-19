@@ -1,8 +1,10 @@
 page 50143 "KINTO Approval Activities"
 {
-    Caption = 'Aprovações';
+    Caption = 'Aprovações e Veículos';
     PageType = CardPart;
     ApplicationArea = All;
+    SourceTable = "KINTO Pricing Cue";
+    SourceTableView = sorting("Primary Key");
 
     layout
     {
@@ -11,33 +13,19 @@ page 50143 "KINTO Approval Activities"
             cuegroup(Approvals)
             {
                 Caption = 'Aprovações Pendentes';
-
                 actions
                 {
-                    action(PendingApprovals)
+                    action("Pending Approvals")
                     {
-                        Caption = 'Aprovações Pendentes';
+                        Caption = 'Pendentes';
                         ApplicationArea = All;
-                        trigger OnAction()
-                        var
-                            ApprovalReq: Record "KINTO Approval Request";
-                        begin
-                            ApprovalReq.SetRange(Status, ApprovalReq.Status::Pending);
-                            Page.Run(Page::"KINTO Approval Request List", ApprovalReq);
-                        end;
+                        RunObject = page "KINTO Approval Request List";
                     }
-                    action(NonStandardPending)
+                    action("Non-Standard Pending")
                     {
                         Caption = 'Non-Standard Pendentes';
                         ApplicationArea = All;
-                        trigger OnAction()
-                        var
-                            ApprovalReq: Record "KINTO Approval Request";
-                        begin
-                            ApprovalReq.SetRange(Status, ApprovalReq.Status::Pending);
-                            ApprovalReq.SetRange(Classification, ApprovalReq.Classification::"Non-Standard");
-                            Page.Run(Page::"KINTO Approval Request List", ApprovalReq);
-                        end;
+                        RunObject = page "KINTO Approval Request List";
                     }
                 }
             }
@@ -47,45 +35,63 @@ page 50143 "KINTO Approval Activities"
 
                 actions
                 {
-                    action(AvailableVehicles)
+                    action("Available Vehicles")
                     {
-                        Caption = 'Veículos Disponíveis';
+                        Caption = 'Disponíveis';
                         ApplicationArea = All;
-                        trigger OnAction()
-                        var
-                            InventoryVehicle: Record "KINTO Inventory Vehicle";
-                        begin
-                            InventoryVehicle.SetRange(Status, InventoryVehicle.Status::Available);
-                            Page.Run(Page::"KINTO Inventory Vehicle List", InventoryVehicle);
-                        end;
+                        RunObject = page "KINTO Inventory Vehicle List";
                     }
-                    action(SoftReservedVehicles)
+                    action("Soft Reserved Vehicles")
                     {
-                        Caption = 'Veículos Reservados';
+                        Caption = 'Reservados';
                         ApplicationArea = All;
-                        trigger OnAction()
-                        var
-                            InventoryVehicle: Record "KINTO Inventory Vehicle";
-                        begin
-                            InventoryVehicle.SetRange(Status, InventoryVehicle.Status::"Soft Reserved");
-                            Page.Run(Page::"KINTO Inventory Vehicle List", InventoryVehicle);
-                        end;
+                        RunObject = page "KINTO Inventory Vehicle List";
                     }
-                    action(ReturnedVehicles)
+                    action("In Contract Vehicles")
                     {
-                        Caption = 'Veículos Devolvidos';
+                        Caption = 'Em Contrato';
                         ApplicationArea = All;
-                        trigger OnAction()
-                        var
-                            InventoryVehicle: Record "KINTO Inventory Vehicle";
-                        begin
-                            InventoryVehicle.SetRange(Status, InventoryVehicle.Status::Returned);
-                            Page.Run(Page::"KINTO Inventory Vehicle List", InventoryVehicle);
-                        end;
+                        RunObject = page "KINTO Inventory Vehicle List";
+                    }
+                    action("Returned Vehicles")
+                    {
+                        Caption = 'Devolvidos';
+                        ApplicationArea = All;
+                        RunObject = page "KINTO Inventory Vehicle List";
                     }
                 }
             }
-
+            cuegroup(Config)
+            {
+                Caption = 'Configuração';
+                actions
+                {
+                    action("Active RV Entries")
+                    {
+                        Caption = 'Entradas RV Ativas';
+                        ApplicationArea = All;
+                        RunObject = page "KINTO RV Matrix List";
+                    }
+                    action("Active Maint. Plans")
+                    {
+                        Caption = 'Planos de Manutenção Ativos';
+                        ApplicationArea = All;
+                        RunObject = page "KINTO Maint. Plan List";
+                    }
+                    action("Total Snapshots")
+                    {
+                        Caption = 'Snapshots';
+                        ApplicationArea = All;
+                        RunObject = page "KINTO Snapshot Card";
+                    }
+                }
+            }
         }
     }
+
+    trigger OnOpenPage()
+    begin
+        Rec.GetSingleInstance();
+        Rec.UpdateCues();
+    end;
 }

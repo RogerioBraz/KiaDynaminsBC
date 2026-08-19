@@ -94,6 +94,94 @@ page 50131 "KINTO Inventory Vehicle Card"
                     BookingMgt.FreezeBookingValue(Rec);
                 end;
             }
+            action(ViewFixedAsset)
+            {
+                Caption = 'Ver Ativo Fixo';
+                ApplicationArea = All;
+                Image = FixedAssets;
+                Visible = Rec."Fixed Asset No." <> '';
+                trigger OnAction()
+                var
+                    FixedAsset: Record "Fixed Asset";
+                begin
+                    if FixedAsset.Get(Rec."Fixed Asset No.") then
+                        Page.Run(Page::"Fixed Asset Card", FixedAsset);
+                end;
+            }
+            action(ViewItem)
+            {
+                Caption = 'Ver Item (Veículo)';
+                ApplicationArea = All;
+                Image = Item;
+                Visible = Rec."Item No." <> '';
+                trigger OnAction()
+                var
+                    Item: Record Item;
+                begin
+                    if Item.Get(Rec."Item No.") then
+                        Page.Run(Page::"Item Card", Item);
+                end;
+            }
+            action(ViewVehicleModel)
+            {
+                Caption = 'Ver Modelo do Veículo';
+                ApplicationArea = All;
+                Image = ItemLedger;
+                Visible = Rec."Vehicle Model No." <> '';
+                trigger OnAction()
+                var
+                    VehicleModel: Record "KINTO Vehicle Model";
+                begin
+                    if VehicleModel.Get(Rec."Vehicle Model No.") then
+                        Page.Run(Page::"KINTO Vehicle Model Card", VehicleModel);
+                end;
+            }
+            action(ViewOdometerHistory)
+            {
+                Caption = 'Ver Histórico de Odômetro';
+                ApplicationArea = All;
+                Image = History;
+                trigger OnAction()
+                var
+                    OdometerHist: Record "KINTO Vehicle Odometer History";
+                begin
+                    OdometerHist.SetRange("Vehicle No.", Rec."Vehicle No.");
+                    Page.Run(Page::"KINTO Odometer History List", OdometerHist);
+                end;
+            }
+            action(ViewRVMatrix)
+            {
+                Caption = 'Ver Matriz RV deste Veículo';
+                ApplicationArea = All;
+                Image = Matrix;
+                Visible = Rec."Item No." <> '';
+                trigger OnAction()
+                var
+                    RVMatrix: Record "KINTO RV Matrix";
+                begin
+                    RVMatrix.SetRange("Item No.", Rec."Item No.");
+                    Page.Run(Page::"KINTO RV Matrix List", RVMatrix);
+                end;
+            }
+            action(ViewQuotesForVehicle)
+            {
+                Caption = 'Ver Cotações deste Veículo';
+                ApplicationArea = All;
+                Image = Document;
+                trigger OnAction()
+                var
+                    QuoteItem: Record "KINTO Quote Item";
+                    QuoteHeader: Record "KINTO Quote Header";
+                begin
+                    QuoteItem.SetRange("Inventory Vehicle No.", Rec."Vehicle No.");
+                    if QuoteItem.FindFirst() then begin
+                        QuoteHeader.SetRange("Quote No.", QuoteItem."Quote No.");
+                        Page.Run(Page::"KINTO Quote List", QuoteHeader);
+                    end else
+                        Message('No quotes found for this vehicle.');
+                end;
+            }
+
         }
     }
 }

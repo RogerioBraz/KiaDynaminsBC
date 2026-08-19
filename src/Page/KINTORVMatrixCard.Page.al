@@ -30,4 +30,51 @@ page 50102 "KINTO RV Matrix Card"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action(ViewItem)
+            {
+                Caption = 'Ver Item';
+                ApplicationArea = All;
+                Image = Item;
+                Visible = Rec."Item No." <> '';
+                trigger OnAction()
+                var
+                    Item: Record Item;
+                begin
+                    if Item.Get(Rec."Item No.") then
+                        Page.Run(Page::"Item Card", Item);
+                end;
+            }
+            action(ViewInventoryVehicles)
+            {
+                Caption = 'Ver Veículos em Estoque';
+                ApplicationArea = All;
+                Image = Item;
+                Visible = Rec."Item No." <> '';
+                trigger OnAction()
+                var
+                    InventoryVehicle: Record "KINTO Inventory Vehicle";
+                begin
+                    InventoryVehicle.SetRange("Item No.", Rec."Item No.");
+                    Page.Run(Page::"KINTO Inventory Vehicle List", InventoryVehicle);
+                end;
+            }
+            action(ViewAllRVEntries)
+            {
+                Caption = 'Ver Todas as Entradas RV';
+                ApplicationArea = All;
+                Image = Matrix;
+                trigger OnAction()
+                var
+                    RVMatrix: Record "KINTO RV Matrix";
+                begin
+                    RVMatrix.SetRange("Item No.", Rec."Item No.");
+                    Page.Run(Page::"KINTO RV Matrix List", RVMatrix);
+                end;
+            }
+        }
+    }
 }

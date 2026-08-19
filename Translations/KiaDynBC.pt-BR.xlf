@@ -10,6 +10,7 @@
         </trans-unit>
         <trans-unit id="Table 3227249739 - Field 2731032114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approval DateTime</source>
+          <target xml:lang="pt-BR">Data e Hora de Aprovação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Approval Request - Field Approval DateTime - Property Caption</note>
         </trans-unit>

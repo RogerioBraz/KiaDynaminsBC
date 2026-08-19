@@ -15,6 +15,12 @@ table 50117 "KINTO Approval Request"
         field(8; "Classification"; Enum "KINTO Approval Classification") { Caption = 'Classification'; }
         field(9; "Comments"; Text[500]) { Caption = 'Comments'; }
         field(10; "Rejection Reason"; Text[250]) { Caption = 'Rejection Reason'; }
+
+        field(11; "No. Series"; Code[20])
+        {
+            Caption = 'No. Series';
+            TableRelation = "No. Series";
+        }
     }
 
     keys
@@ -25,9 +31,17 @@ table 50117 "KINTO Approval Request"
     }
 
     trigger OnInsert()
+    var
+        NoSeries: Codeunit "No. Series";
     begin
         "Request DateTime" := CurrentDateTime;
         "Requester ID" := UserId;
         Status := Status::Pending;
+
+        if "Request ID" = '' then begin
+            if "No. Series" = '' then
+                "No. Series" := 'KINTO-APPR';
+            "Request ID" := NoSeries.GetNextNo("No. Series", WorkDate(), true);
+        end;
     end;
 }

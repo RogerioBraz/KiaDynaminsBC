@@ -64,4 +64,37 @@ page 50115 "KINTO Snapshot Card"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action(ViewQuote)
+            {
+                Caption = 'Ver Cotação';
+                ApplicationArea = All;
+                Image = Document;
+                trigger OnAction()
+                var
+                    QuoteHeader: Record "KINTO Quote Header";
+                begin
+                    if QuoteHeader.Get(Rec."Quote No.") then
+                        Page.Run(Page::"KINTO Quote Card", QuoteHeader);
+                end;
+            }
+            action(ViewCashFlow)
+            {
+                Caption = 'Ver Fluxo de Caixa';
+                ApplicationArea = All;
+                Image = CashFlow;
+                trigger OnAction()
+                var
+                    CFData: Record "KINTO Cash Flow Data";
+                begin
+                    CFData.SetRange("Quote No.", Rec."Quote No.");
+                    CFData.SetRange("Quote Line No.", Rec."Quote Line No.");
+                    Page.Run(Page::"KINTO Cash Flow Data List", CFData);
+                end;
+            }
+        }
+    }
 }

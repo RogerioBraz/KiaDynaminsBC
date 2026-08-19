@@ -3,6 +3,8 @@ page 50142 "KINTO Quote Activities"
     Caption = 'Cotações';
     PageType = CardPart;
     ApplicationArea = All;
+    SourceTable = "KINTO Pricing Cue";
+    SourceTableView = sorting("Primary Key");
 
     layout
     {
@@ -13,82 +15,49 @@ page 50142 "KINTO Quote Activities"
                 Caption = 'Cotações';
                 actions
                 {
-                    action(TotalQuotes)
+                    action("Total Quotes")
                     {
                         Caption = 'Total de Cotações';
                         ApplicationArea = All;
-                        trigger OnAction()
-                        begin
-                            Page.Run(Page::"KINTO Quote List");
-                        end;
+                        RunObject = page "KINTO Quote List";
                     }
+                    action("Draft Quotes")
+                    {
+                        Caption = 'Rascunho';
+                        ApplicationArea = All;
+                        RunObject = page "KINTO Quote List";
 
-                    action(DraftQuotes)
-                    {
-                        Caption = 'Cotações em Rascunho';
-                        ApplicationArea = All;
-                        trigger OnAction()
-                        var
-                            QuoteHeader: Record "KINTO Quote Header";
-                        begin
-                            QuoteHeader.SetRange("Pricing Status", QuoteHeader."Pricing Status"::Draft);
-                            Page.Run(Page::"KINTO Quote List", QuoteHeader);
-                        end;
                     }
-                    action(CalculatedQuotes)
+                    action("Calculated Quotes")
                     {
-                        Caption = 'Cotações Calculadas';
+                        Caption = 'Calculadas';
                         ApplicationArea = All;
-                        trigger OnAction()
-                        var
-                            QuoteHeader: Record "KINTO Quote Header";
-                        begin
-                            QuoteHeader.SetRange("Pricing Status", QuoteHeader."Pricing Status"::Calculated);
-                            Page.Run(Page::"KINTO Quote List", QuoteHeader);
-                        end;
+                        RunObject = page "KINTO Quote List";
                     }
-                    action(ApprovedQuotes)
+                    action("Approved Quotes")
                     {
-                        Caption = 'Cotações Aprovadas';
+                        Caption = 'Aprovadas';
                         ApplicationArea = All;
-                        trigger OnAction()
-                        var
-                            QuoteHeader: Record "KINTO Quote Header";
-                        begin
-                            QuoteHeader.SetRange("Pricing Status", QuoteHeader."Pricing Status"::Approved);
-                            Page.Run(Page::"KINTO Quote List", QuoteHeader);
-                        end;
+                        RunObject = page "KINTO Quote List";
                     }
                 }
             }
-            cuegroup(NonStandard)
+            cuegroup(Attention)
             {
                 Caption = 'Requerem Atenção';
                 actions
                 {
-                    action(NonStandardQuotes)
+                    action("Non-Standard Quotes")
                     {
                         Caption = 'Non-Standard';
                         ApplicationArea = All;
-                        trigger OnAction()
-                        var
-                            QuoteHeader: Record "KINTO Quote Header";
-                        begin
-                            QuoteHeader.SetRange("Approval Classification", QuoteHeader."Approval Classification"::"Non-Standard");
-                            Page.Run(Page::"KINTO Quote List", QuoteHeader);
-                        end;
+                        RunObject = page "KINTO Quote List";
                     }
-                    action(ErrorQuotes)
+                    action("Error Quotes")
                     {
-                        Caption = 'Cotações com Erro';
+                        Caption = 'Com Erro';
                         ApplicationArea = All;
-                        trigger OnAction()
-                        var
-                            QuoteHeader: Record "KINTO Quote Header";
-                        begin
-                            QuoteHeader.SetRange("Pricing Status", QuoteHeader."Pricing Status"::Error);
-                            Page.Run(Page::"KINTO Quote List", QuoteHeader);
-                        end;
+                        RunObject = page "KINTO Quote List";
                     }
                 }
             }
@@ -97,14 +66,7 @@ page 50142 "KINTO Quote Activities"
 
     trigger OnOpenPage()
     begin
-        // No code needed — cues are calculated automatically
+        Rec.GetSingleInstance();
+        Rec.UpdateCues();
     end;
-
-    var
-        TotalQuotes: Integer;
-        DraftQuotes: Integer;
-        CalculatedQuotes: Integer;
-        ApprovedQuotes: Integer;
-        NonStandardQuotes: Integer;
-        ErrorQuotes: Integer;
 }

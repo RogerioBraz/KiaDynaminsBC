@@ -23,6 +23,12 @@ table 50102 "KINTO Inventory Vehicle"
         field(16; "Color Code"; Code[10]) { Caption = 'Color Code'; }
         field(17; "Acquisition Date"; Date) { Caption = 'Acquisition Date'; }
         field(18; "Acquisition Cost"; Decimal) { Caption = 'Acquisition Cost'; }
+
+        field(19; "No. Series"; Code[20])
+        {
+            Caption = 'No. Series';
+            TableRelation = "No. Series";
+        }
     }
 
     keys
@@ -34,8 +40,42 @@ table 50102 "KINTO Inventory Vehicle"
     }
 
     trigger OnInsert()
+    var
+        NoSeries: Codeunit "No. Series";
     begin
         if "Vehicle Condition" = "Vehicle Condition"::New then
-            "Status" := "Status"::Available;
+            Status := Status::Available;
+
+        if "Vehicle No." = '' then begin
+            if "No. Series" = '' then
+                "No. Series" := 'KINTO-VEH';
+            "Vehicle No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
+        end;
+    end;
+
+    trigger OnModify()
+    var
+        FixedAsset: Record "Fixed Asset";
+    begin
+        if Rec."Fixed Asset No." <> '' then
+            if FixedAsset.Get(Rec."Fixed Asset No.") then begin
+                FixedAsset."KINTO Inventory Vehicle No." := Rec."Vehicle No.";
+                FixedAsset."KINTO Booking Value" := Rec."Booking Value";
+                FixedAsset."KINTO Frozen Booking Value" := Rec."Frozen Booking Value";
+                FixedAsset."KINTO Last Contract No." := Rec."Last Contract No.";
+
+                case Rec.Status of
+                    Rec.Status::Available:
+                        FixedAsset."KINTO Asset Status" := FixedAsset."KINTO Asset Status"::"Not Activated";
+                    Rec.Status::"In Contract":
+                        FixedAsset."KINTO Asset Status" := FixedAsset."KINTO Asset Status"::"In Contract";
+                    Rec.Status::Returned:
+                        FixedAsset."KINTO Asset Status" := FixedAsset."KINTO Asset Status"::Returned;
+                    Rec.Status::Remarketing:
+                        FixedAsset."KINTO Asset Status" := FixedAsset."KINTO Asset Status"::Remarketing;
+                end;
+
+                FixedAsset.Modify(true);
+            end;
     end;
 }

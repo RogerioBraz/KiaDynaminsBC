@@ -64,7 +64,56 @@ page 50137 "KINTO Approval Request Card"
                     Message('Approval request %1 rejected.', Rec."Request ID");
                 end;
             }
+
+            // ====================================================
+            // NOVA ACTION DE NAVEGABILIDADE
+            // ====================================================
+
+            action(ViewQuote)
+            {
+                Caption = 'Ver Cotação';
+                ApplicationArea = All;
+                Image = Document;
+                Visible = Rec."Quote No." <> '';
+                trigger OnAction()
+                var
+                    QuoteHeader: Record "KINTO Quote Header";
+                begin
+                    if QuoteHeader.Get(Rec."Quote No.") then
+                        Page.Run(Page::"KINTO Quote Card", QuoteHeader);
+                end;
+            }
+            action(ViewCashFlow)
+            {
+                Caption = 'Ver Fluxo de Caixa';
+                ApplicationArea = All;
+                Image = CashFlow;
+                Visible = Rec."Quote No." <> '';
+                trigger OnAction()
+                var
+                    CFData: Record "KINTO Cash Flow Data";
+                begin
+                    CFData.SetRange("Quote No.", Rec."Quote No.");
+                    Page.Run(Page::"KINTO Cash Flow Data List", CFData);
+                end;
+            }
+            action(ViewSnapshot)
+            {
+                Caption = 'Ver Snapshot';
+                ApplicationArea = All;
+                Image = Snapshot;
+                Visible = Rec."Quote No." <> '';
+                trigger OnAction()
+                var
+                    Snapshot: Record "KINTO Simulation Snapshot";
+                begin
+                    Snapshot.SetRange("Quote No.", Rec."Quote No.");
+                    if Snapshot.FindFirst() then
+                        Page.Run(Page::"KINTO Snapshot Card", Snapshot);
+                end;
+            }
         }
+
     }
 
     local procedure UpdateQuoteStatus(QuoteNo: Code[20]; Approved: Boolean)

@@ -29,4 +29,53 @@ page 50139 "KINTO Vehicle Model Card"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action(ViewRVMatrix)
+            {
+                Caption = 'Ver Matriz RV';
+                ApplicationArea = All;
+                Image = Matrix;
+                trigger OnAction()
+                var
+                    RVMatrix: Record "KINTO RV Matrix";
+                    Item: Record Item;
+                begin
+                    Item.SetRange("Vehicle Model No.", Rec."Model No.");
+                    if Item.FindFirst() then begin
+                        RVMatrix.SetRange("Item No.", Item."No.");
+                        Page.Run(Page::"KINTO RV Matrix List", RVMatrix);
+                    end;
+                end;
+            }
+            action(ViewInventoryVehicles)
+            {
+                Caption = 'Ver Veículos em Estoque';
+                ApplicationArea = All;
+                Image = Item;
+                trigger OnAction()
+                var
+                    InventoryVehicle: Record "KINTO Inventory Vehicle";
+                begin
+                    InventoryVehicle.SetRange("Vehicle Model No.", Rec."Model No.");
+                    Page.Run(Page::"KINTO Inventory Vehicle List", InventoryVehicle);
+                end;
+            }
+            action(ViewItems)
+            {
+                Caption = 'Ver Itens deste Modelo';
+                ApplicationArea = All;
+                Image = Item;
+                trigger OnAction()
+                var
+                    Item: Record Item;
+                begin
+                    Item.SetRange("Vehicle Model No.", Rec."Model No.");
+                    Page.Run(Page::"Item List", Item);
+                end;
+            }
+        }
+    }
 }

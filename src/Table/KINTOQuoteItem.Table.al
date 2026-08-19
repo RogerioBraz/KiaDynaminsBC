@@ -16,21 +16,75 @@ table 50111 "KINTO Quote Item"
         field(9; "Inventory Vehicle No."; Code[20]) { Caption = 'Inventory Vehicle No.'; TableRelation = "KINTO Inventory Vehicle"; }
         field(10; "Contract Term (Months)"; Integer) { Caption = 'Contract Term (months)'; }
         field(11; "Monthly Mileage (km)"; Decimal) { Caption = 'Monthly Mileage (km)'; }
-        field(12; "Payment Allowance (days)"; Integer) { Caption = 'Payment Allowance (days)'; }
+        field(12; "Payment Allowance (days)"; Integer)
+        {
+            Caption = 'Payment Allowance (days)';
+
+            trigger OnValidate()
+            var
+                QuoteHeader: Record "KINTO Quote Header";
+            begin
+                if QuoteHeader.Get(Rec."Quote No.") then
+                    Rec."Extended Analysis Months" := QuoteHeader.CalcExtendedAnalysisMonths(Rec."Payment Allowance (days)");
+            end;
+        }
         field(13; "Lead Time (days)"; Integer) { Caption = 'Lead Time for Delivery (days)'; }
         field(14; "Insurance Risk Level"; Code[10]) { Caption = 'Insurance Risk Level'; }
         field(15; "Target ROI %"; Decimal) { Caption = 'Target ROI %'; DecimalPlaces = 0 : 5; }
         field(16; "Standard Target ROI %"; Decimal) { Caption = 'Standard Target ROI %'; DecimalPlaces = 0 : 5; }
         // Pricing inputs
-        field(17; "MSRP"; Decimal) { Caption = 'MSRP'; }
-        field(18; "Discount Rate %"; Decimal) { Caption = 'Discount Rate %'; DecimalPlaces = 0 : 5; }
-        field(19; "Equipment Price"; Decimal) { Caption = 'Equipment Price'; }
+        field(17; "MSRP"; Decimal)
+        {
+            Caption = 'MSRP';
+            trigger OnValidate()
+            begin
+                Rec."Purchase Price" := Rec.CalculatePurchasePrice();
+            end;
+        }
+        field(18; "Discount Rate %"; Decimal)
+        {
+            Caption = 'Discount Rate %';
+            DecimalPlaces = 0 : 5;
+            trigger OnValidate()
+            begin
+                Rec."Purchase Price" := Rec.CalculatePurchasePrice();
+            end;
+        }
+        field(19; "Equipment Price"; Decimal)
+        {
+            Caption = 'Equipment Price';
+            trigger OnValidate()
+            begin
+                Rec."Purchase Price" := Rec.CalculatePurchasePrice();
+                Rec."Total Equipment Price" := Rec."Equipment Price";
+            end;
+        }
         field(20; "Purchase Price"; Decimal) { Caption = 'Purchase Price (incl. Equipment)'; }
         field(21; "Total Equipment Price"; Decimal) { Caption = 'Total Equipment Price'; }
         // Resale
-        field(22; "Depreciation Market %"; Decimal) { Caption = 'Depreciation (Market) %'; DecimalPlaces = 0 : 5; }
+        field(22; "Depreciation Market %"; Decimal)
+        {
+            Caption = 'Depreciation (Market) %';
+            DecimalPlaces = 0 : 5;
+
+            trigger OnValidate()
+            begin
+                if Rec."Purchase Price" > 0 then
+                    Rec."Final Resale Price" := Rec.CalculateFinalResalePrice();
+            end;
+        }
         field(23; "Resale Price to Customer"; Decimal) { Caption = 'Resale Price to Direct Customer'; }
-        field(24; "Discount to DLR %"; Decimal) { Caption = 'Discount to DLR or 3rd Party %'; DecimalPlaces = 0 : 5; }
+        field(24; "Discount to DLR %"; Decimal)
+        {
+            Caption = 'Discount to DLR or 3rd Party %';
+            DecimalPlaces = 0 : 5;
+
+            trigger OnValidate()
+            begin
+                if Rec."Purchase Price" > 0 then
+                    Rec."Final Resale Price" := Rec.CalculateFinalResalePrice();
+            end;
+        }
         field(25; "Final Resale Price"; Decimal) { Caption = 'Final Resale Price'; }
         field(26; "Resale Cost %"; Decimal) { Caption = 'Resale Cost %'; DecimalPlaces = 0 : 5; }
         field(27; "Depreciation Accounting %"; Decimal) { Caption = 'Depreciation (Accounting) %'; DecimalPlaces = 0 : 5; }
@@ -127,6 +181,28 @@ table 50111 "KINTO Quote Item"
     trigger OnInsert()
     begin
         "Pricing Status" := "Pricing Status"::Draft;
+    end;
+
+    trigger OnModify()
+    var
+        CFData: Record "KINTO Cash Flow Data";
+        CFHeader: Record "KINTO Cash Flow Header";
+    begin
+        // Se o item já foi calculado e está sendo modificado, invalida o cash flow
+        if Rec."Pricing Status" = Rec."Pricing Status"::Calculated then begin
+            CFData.SetRange("Quote No.", Rec."Quote No.");
+            CFData.SetRange("Quote Line No.", Rec."Line No.");
+            if CFData.FindSet() then
+                CFData.DeleteAll();
+
+            CFHeader.SetRange("Quote No.", Rec."Quote No.");
+            CFHeader.SetRange("Quote Line No.", Rec."Line No.");
+            if CFHeader.FindFirst() then
+                CFHeader.Delete();
+
+            Rec."Pricing Status" := Rec."Pricing Status"::Draft;
+            // Não chamar Modify(true) aqui para evitar recursão
+        end;
     end;
 
     procedure CalculatePurchasePrice(): Decimal

@@ -241,72 +241,17 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
     local procedure CreateSnapshot(var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item")
     var
         Snapshot: Record "KINTO Simulation Snapshot";
-        NextID: Integer;
+        NoSeries: Codeunit "No. Series";
     begin
-        NextID := GetNextSnapshotID();
         Snapshot.Init();
-        Snapshot."Snapshot ID" := NextID;
+        Snapshot."Snapshot ID" := NoSeries.GetNextNo('KINTO-SNAP', WorkDate(), true);
         Snapshot."Quote No." := QuoteHeader."Quote No.";
         Snapshot."Quote Line No." := QuoteItem."Line No.";
-        Snapshot."Vehicle Model No." := QuoteItem."Vehicle Model No.";
-        Snapshot."Vehicle Variant" := QuoteItem."Vehicle Variant";
-        Snapshot."Usage Type" := QuoteItem."Usage Type";
-        Snapshot."Lead Time" := QuoteItem."Lead Time (days)";
-        Snapshot."Contract Term" := QuoteItem."Contract Term (Months)";
-        Snapshot."Monthly Mileage" := QuoteItem."Monthly Mileage (km)";
-        Snapshot."Payment Allowance" := QuoteItem."Payment Allowance (days)";
-        Snapshot."Annual Inflation %" := QuoteItem."Annual Inflation %";
-        Snapshot.Spread := QuoteItem.Spread;
-        Snapshot."Idleness Rate" := QuoteItem."Idleness Rate %";
-        Snapshot."PIS COFINS Tariff %" := QuoteItem."PIS COFINS Tariff %";
-        Snapshot."PIS COFINS Credit %" := QuoteItem."PIS COFINS Credit %";
-        Snapshot."Tax Depreciation Period" := QuoteItem."Tax Depreciation Period";
-        Snapshot."Profit Tax Rate %" := QuoteItem."Profit Tax Rate %";
-        Snapshot."Credit Risk Factor" := QuoteItem."Credit Risk %";
-        Snapshot."Target ROI" := QuoteItem."Target ROI %";
-        Snapshot."Contract Start Month" := QuoteItem."Contract Start Month";
-        Snapshot.MSRP := QuoteItem.MSRP;
-        Snapshot."Total Equipment Price" := QuoteItem."Total Equipment Price";
-        Snapshot."Purchase Price" := QuoteItem."Purchase Price";
-        Snapshot."Depreciation Market %" := QuoteItem."Depreciation Market %";
-        Snapshot."Final Resale Price" := QuoteItem."Final Resale Price";
-        Snapshot.SGA := QuoteItem."SGA Amount";
-        Snapshot."Standard Target ROI" := QuoteItem."Standard Target ROI %";
-        Snapshot.EBT := QuoteItem.EBT;
-        Snapshot.PAT := QuoteItem.PAT;
-        Snapshot.IRR := QuoteItem."KINTO IRR";
-        Snapshot."Reference IRR" := QuoteItem."Reference IRR";
-        Snapshot."Calculated ROI" := QuoteItem."Calculated ROI";
         Snapshot."Monthly Fee" := QuoteItem."Monthly Tariff";
-        Snapshot."Negotiated Monthly Price" := QuoteItem."Negotiated Monthly Price";
-        Snapshot.Status := QuoteItem."Pricing Status";
-        Snapshot."Participates in Pool" := QuoteItem."Participates in Pool";
-        Snapshot."Incl. Preventive Maint." := QuoteItem."Incl. Preventive Maint.";
-        Snapshot."Incl. Corrective Maint." := QuoteItem."Incl. Corrective Maint.";
-        Snapshot."Number of Tires" := QuoteItem."Number of Tires";
-        Snapshot."Glass Coverage Type" := QuoteItem."Glass Coverage Type";
-        Snapshot.Armoring := QuoteItem."Inclusion of Armoring";
-        Snapshot."Adjustment Index" := QuoteItem."Adjustment Index";
-        Snapshot."Adjustment Period" := QuoteItem."Adjustment Period";
-        Snapshot."Admin Fee" := QuoteItem."Admin Fee";
-        Snapshot."Fine Admin Fee" := QuoteItem."Fine Admin Fee Per Event";
-        Snapshot."Non-Withdrawal Fee" := QuoteItem."Non-Withdrawal Fee Per Day";
-        Snapshot."Advanced Post" := QuoteItem."Advanced Post";
-        Snapshot."Deadline Police Rep." := QuoteItem."Deadline Submit Police Rep.";
-        Snapshot."Reimbursement Due Date" := QuoteItem."Reimbursement Due Date";
-        Snapshot."Delivery Spare Vehicle" := QuoteItem."Delivery Spare Vehicle";
+        Snapshot."IRR" := QuoteItem."KINTO IRR";
+        Snapshot."Calculated ROI" := QuoteItem."Calculated ROI";
         Snapshot.Insert(true);
-
         QuoteHeader."Snapshot ID" := Snapshot."Snapshot ID";
     end;
 
-    local procedure GetNextSnapshotID(): Integer
-    var
-        Snapshot: Record "KINTO Simulation Snapshot";
-    begin
-        if Snapshot.FindLast() then
-            exit(Snapshot."Snapshot ID" + 1)
-        else
-            exit(1);
-    end;
 }

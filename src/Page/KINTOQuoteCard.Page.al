@@ -113,10 +113,67 @@ page 50110 "KINTO Quote Card"
                 var
                     Snapshot: Record "KINTO Simulation Snapshot";
                 begin
-                    if Rec."Snapshot ID" <> 0 then begin
+                    if Rec."Snapshot ID" <> '' then begin
                         Snapshot.Get(Rec."Snapshot ID");
                         Page.Run(Page::"KINTO Snapshot Card", Snapshot);
                     end;
+                end;
+            }
+            action(ViewCustomer)
+            {
+                Caption = 'Ver Cliente';
+                ApplicationArea = All;
+                Image = Customer;
+                Visible = Rec."Customer No." <> '';
+                trigger OnAction()
+                var
+                    Customer: Record Customer;
+                begin
+                    if Customer.Get(Rec."Customer No.") then
+                        Page.Run(Page::"Customer Card", Customer);
+                end;
+            }
+            action(ViewDealer)
+            {
+                Caption = 'Ver Dealer';
+                ApplicationArea = All;
+                Image = Vendor;
+                Visible = Rec."Dealer No." <> '';
+                trigger OnAction()
+                var
+                    Vendor: Record Vendor;
+                begin
+                    if Vendor.Get(Rec."Dealer No.") then
+                        Page.Run(Page::"Vendor Card", Vendor);
+                end;
+            }
+            action(ViewCountrySetup)
+            {
+                Caption = 'Ver Configuração do País';
+                ApplicationArea = All;
+                Image = Setup;
+                Visible = Rec."Country Code" <> '';
+                trigger OnAction()
+                var
+                    CountrySetup: Record "KINTO Country Setup";
+                begin
+                    if CountrySetup.Get(Rec."Country Code") then
+                        Page.Run(Page::"KINTO Country Setup Card", CountrySetup);
+                end;
+            }
+            action(ViewApprovalRequest)
+            {
+                Caption = 'Ver Solicitação de Aprovação';
+                ApplicationArea = All;
+                Image = Approval;
+                Visible = Rec."Approval Request ID" <> '';
+                trigger OnAction()
+                var
+                    ApprovalReq: Record "KINTO Approval Request";
+                begin
+                    if Rec."Approval Request ID" <> '' then
+                        if ApprovalReq.Get(Rec."Approval Request ID") then
+                            Page.Run(Page::"KINTO Approval Request Card", ApprovalReq);
                 end;
             }
         }

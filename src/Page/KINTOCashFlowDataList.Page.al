@@ -26,4 +26,37 @@ page 50113 "KINTO Cash Flow Data List"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action(ViewQuote)
+            {
+                Caption = 'Ver Cotação';
+                ApplicationArea = All;
+                Image = Document;
+                trigger OnAction()
+                var
+                    QuoteHeader: Record "KINTO Quote Header";
+                begin
+                    if QuoteHeader.Get(Rec."Quote No.") then
+                        Page.Run(Page::"KINTO Quote Card", QuoteHeader);
+                end;
+            }
+            action(ViewSnapshot)
+            {
+                Caption = 'Ver Snapshot';
+                ApplicationArea = All;
+                Image = Snapshot;
+                trigger OnAction()
+                var
+                    Snapshot: Record "KINTO Simulation Snapshot";
+                begin
+                    Snapshot.SetRange("Quote No.", Rec."Quote No.");
+                    if Snapshot.FindFirst() then
+                        Page.Run(Page::"KINTO Snapshot Card", Snapshot);
+                end;
+            }
+        }
+    }
 }

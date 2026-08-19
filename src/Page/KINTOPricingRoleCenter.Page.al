@@ -8,18 +8,9 @@ page 50140 "KINTO Pricing Role Center"
     {
         area(RoleCenter)
         {
-            part(Headline; "KINTO Pricing Headline")
-            {
-                ApplicationArea = All;
-            }
-            part(QuoteActivities; "KINTO Quote Activities")
-            {
-                ApplicationArea = All;
-            }
-            part(ApprovalActivities; "KINTO Approval Activities")
-            {
-                ApplicationArea = All;
-            }
+            part(Headline; "KINTO Pricing Headline") { ApplicationArea = All; }
+            part(QuoteActivities; "KINTO Quote Activities") { ApplicationArea = All; }
+            part(ApprovalActivities; "KINTO Approval Activities") { ApplicationArea = All; }
         }
     }
 
@@ -27,6 +18,9 @@ page 50140 "KINTO Pricing Role Center"
     {
         area(Sections)
         {
+            // ============================================================
+            // COTAÇÕES
+            // ============================================================
             group(Cotacoes)
             {
                 Caption = 'Cotações';
@@ -62,6 +56,9 @@ page 50140 "KINTO Pricing Role Center"
                 }
             }
 
+            // ============================================================
+            // VEÍCULOS
+            // ============================================================
             group(Veiculos)
             {
                 Caption = 'Veículos';
@@ -72,6 +69,14 @@ page 50140 "KINTO Pricing Role Center"
                     ApplicationArea = All;
                     RunObject = page "KINTO Inventory Vehicle List";
                     Image = Item;
+                }
+                action(NewVehicle)
+                {
+                    Caption = 'Novo Veículo';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Inventory Vehicle Card";
+                    RunPageMode = Create;
+                    Image = NewItem;
                 }
                 action(VehicleModelList)
                 {
@@ -89,6 +94,81 @@ page 50140 "KINTO Pricing Role Center"
                 }
             }
 
+            // ============================================================
+            // CADASTROS (NOVO — Master Data nativo com extensões KINTO)
+            // ============================================================
+            group(Cadastros)
+            {
+                Caption = 'Cadastros';
+
+                action(ItemList)
+                {
+                    Caption = 'Itens (Veículos e Acessórios)';
+                    ApplicationArea = All;
+                    RunObject = page "Item List";
+                    Image = Item;
+                }
+                action(ItemCard)
+                {
+                    Caption = 'Ficha de Item';
+                    ApplicationArea = All;
+                    RunObject = page "Item Card";
+                    Image = Item;
+                }
+                action(CustomerList)
+                {
+                    Caption = 'Clientes';
+                    ApplicationArea = All;
+                    RunObject = page "Customer List";
+                    Image = Customer;
+                }
+                action(CustomerCard)
+                {
+                    Caption = 'Ficha de Cliente';
+                    ApplicationArea = All;
+                    RunObject = page "Customer Card";
+                    Image = Customer;
+                }
+                action(VendorList)
+                {
+                    Caption = 'Dealers (Fornecedores)';
+                    ApplicationArea = All;
+                    RunObject = page "Vendor List";
+                    Image = Vendor;
+                }
+                action(VendorCard)
+                {
+                    Caption = 'Ficha de Dealer';
+                    ApplicationArea = All;
+                    RunObject = page "Vendor Card";
+                    Image = Vendor;
+                }
+                action(FixedAssetList)
+                {
+                    Caption = 'Ativos Fixos (Booking Value)';
+                    ApplicationArea = All;
+                    RunObject = page "Fixed Asset List";
+                    Image = FixedAssets;
+                }
+                action(FixedAssetCard)
+                {
+                    Caption = 'Ficha de Ativo Fixo';
+                    ApplicationArea = All;
+                    RunObject = page "Fixed Asset Card";
+                    Image = FixedAssets;
+                }
+                action(ItemCategories)
+                {
+                    Caption = 'Categorias de Item';
+                    ApplicationArea = All;
+                    RunObject = page "Item Categories";
+                    Image = Category;
+                }
+            }
+
+            // ============================================================
+            // CONFIGURAÇÃO
+            // ============================================================
             group(Configuracao)
             {
                 Caption = 'Configuração';
@@ -107,6 +187,14 @@ page 50140 "KINTO Pricing Role Center"
                     RunObject = page "KINTO RV Matrix List";
                     Image = Matrix;
                 }
+                action(NewRVEntry)
+                {
+                    Caption = 'Nova Entrada RV';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO RV Matrix Card";
+                    RunPageMode = Create;
+                    Image = New;
+                }
                 action(CFComponents)
                 {
                     Caption = 'Componentes de Cash Flow';
@@ -121,8 +209,19 @@ page 50140 "KINTO Pricing Role Center"
                     RunObject = page "KINTO Maint. Plan List";
                     Image = TaskList;
                 }
+                action(NewMaintPlan)
+                {
+                    Caption = 'Novo Plano de Manutenção';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Maint. Plan Card";
+                    RunPageMode = Create;
+                    Image = New;
+                }
             }
 
+            // ============================================================
+            // APROVAÇÕES
+            // ============================================================
             group(Aprovacoes)
             {
                 Caption = 'Aprovações';
@@ -137,6 +236,9 @@ page 50140 "KINTO Pricing Role Center"
             }
         }
 
+        // ============================================================
+        // CRIAÇÃO RÁPIDA
+        // ============================================================
         area(Creation)
         {
             action(NewQuoteAction)
@@ -147,7 +249,7 @@ page 50140 "KINTO Pricing Role Center"
                 RunPageMode = Create;
                 Image = NewDocument;
             }
-            action(NewVehicle)
+            action(NewVehicleAction)
             {
                 Caption = 'Novo Veículo';
                 ApplicationArea = All;
@@ -155,7 +257,7 @@ page 50140 "KINTO Pricing Role Center"
                 RunPageMode = Create;
                 Image = NewItem;
             }
-            action(NewRVEntry)
+            action(NewRVEntryAction)
             {
                 Caption = 'Nova Entrada RV';
                 ApplicationArea = All;
@@ -163,7 +265,7 @@ page 50140 "KINTO Pricing Role Center"
                 RunPageMode = Create;
                 Image = New;
             }
-            action(NewMaintPlan)
+            action(NewMaintPlanAction)
             {
                 Caption = 'Novo Plano de Manutenção';
                 ApplicationArea = All;
@@ -171,65 +273,72 @@ page 50140 "KINTO Pricing Role Center"
                 RunPageMode = Create;
                 Image = New;
             }
+            action(NewVehicleModelAction)
+            {
+                Caption = 'Novo Modelo de Veículo';
+                ApplicationArea = All;
+                RunObject = page "KINTO Vehicle Model Card";
+                RunPageMode = Create;
+                Image = NewItem;
+            }
         }
 
+        // ============================================================
+        // PROCESSAMENTO (Import/Export)
+        // ============================================================
         area(Processing)
         {
-            action(ImportRVMatrix)
-            {
-                Caption = 'Importar Matriz RV (Excel)';
-                ApplicationArea = All;
-                Image = ImportExcel;
-                // trigger OnAction()
-                // var
-                //     RVImport: Codeunit "KINTO RV Matrix Excel Import";
-                // begin
-                //     RVImport.ImportRVMatrixFromExcel();
-                // end;
-            }
-            action(ImportMaintPlan)
-            {
-                Caption = 'Importar Plano de Manutenção (Excel)';
-                ApplicationArea = All;
-                Image = Import;
-                // trigger OnAction()
-                // var
-                //     MaintImport: Codeunit "KINTO Maint. Plan Excel Import";
-                //     PlanID: Code[20];
-                //     Description: Text[100];
-                //     DiscountPct: Decimal;
-                // begin
-                //     // In production, show a dialog page to capture PlanID, Description, Discount
-                //     PlanID := '';
-                //     Description := '';
-                //     DiscountPct := 0;
-                //     MaintImport.ImportMaintenancePlanFromExcel(PlanID, Description, DiscountPct);
-                // end;
-            }
-            action(DownloadRVTemplate)
-            {
-                Caption = 'Baixar Template RV Matrix';
-                ApplicationArea = All;
-                Image = ExportExcel;
-                // trigger OnAction()
-                // var
-                //     RVImport: Codeunit "KINTO RV Matrix Excel Import";
-                // begin
-                //     RVImport.DownloadTemplate();
-                // end;
-            }
+            // action(ImportRVMatrix)
+            // {
+            //     Caption = 'Importar Matriz RV (Excel)';
+            //     ApplicationArea = All;
+            //     Image = ImportExcel;
+            //     trigger OnAction()
+            //     var
+            //         RVImport: Codeunit "KINTO RV Matrix Excel Import";
+            //     begin
+            //         RVImport.ImportRVMatrixFromExcel();
+            //     end;
+            // }
+            // action(ImportMaintPlan)
+            // {
+            //     Caption = 'Importar Plano de Manutenção (Excel)';
+            //     ApplicationArea = All;
+            //     Image = Import;
+            //     trigger OnAction()
+            //     var
+            //         MaintImport: Codeunit "KINTO Maint. Plan Excel Import";
+            //     begin
+            //         MaintImport.ImportMaintenancePlanFromExcel('', '', 0);
+            //     end;
+            // }
+            // action(DownloadRVTemplate)
+            // {
+            //     Caption = 'Baixar Template RV Matrix';
+            //     ApplicationArea = All;
+            //     Image = ExportExcel;
+            //     trigger OnAction()
+            //     var
+            //         RVImport: Codeunit "KINTO RV Matrix Excel Import";
+            //     begin
+            //         RVImport.DownloadTemplate();
+            //     end;
+            // }
         }
 
+        // ============================================================
+        // RELATÓRIOS
+        // ============================================================
         area(Reporting)
         {
-            action(ViewCashFlow)
+            action(ViewCashFlowReport)
             {
                 Caption = 'Relatório de Fluxo de Caixa';
                 ApplicationArea = All;
                 RunObject = page "KINTO Cash Flow Data List";
                 Image = Report;
             }
-            action(ViewSnapshots)
+            action(ViewSnapshotsReport)
             {
                 Caption = 'Relatório de Snapshots';
                 ApplicationArea = All;

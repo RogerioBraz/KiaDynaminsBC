@@ -23,7 +23,7 @@ table 50110 "KINTO Quote Header"
         field(14; "Created DateTime"; DateTime) { Caption = 'Created DateTime'; }
         field(15; "Expiration Date"; Date) { Caption = 'Expiration Date'; }
         field(16; "Approval Request ID"; Code[20]) { Caption = 'Approval Request ID'; }
-        field(17; "Snapshot ID"; Integer) { Caption = 'Snapshot ID'; }
+        field(17; "Snapshot ID"; Code[20]) { Caption = 'Snapshot ID'; }
         field(18; "Error Message"; Text[250]) { Caption = 'Error Message'; }
         field(19; "Total MSRP"; Decimal) { Caption = 'Total MSRP'; }
         field(20; "Total Purchase Price"; Decimal) { Caption = 'Total Purchase Price'; }
@@ -48,6 +48,11 @@ table 50110 "KINTO Quote Header"
         field(31; "Contract Start Month"; Integer) { Caption = 'Contract Start Month'; }
         field(32; "Credit Score"; Code[5]) { Caption = 'Credit Score'; }
         field(33; "Credit Risk Factor %"; Decimal) { Caption = 'Credit Risk Factor %'; DecimalPlaces = 0 : 5; }
+        field(50; "No. Series"; Code[20])
+        {
+            Caption = 'No. Series';
+            TableRelation = "No. Series";
+        }
     }
 
     keys
@@ -56,11 +61,79 @@ table 50110 "KINTO Quote Header"
     }
 
     trigger OnInsert()
+    var
+        NoSeries: Codeunit "No. Series";
     begin
         "Created By" := UserId;
         "Created DateTime" := CurrentDateTime;
         "Pricing Status" := "Pricing Status"::Draft;
+
+        // Auto-gerar Quote No. se vazio
+        if "Quote No." = '' then begin
+            if "No. Series" = '' then
+                "No. Series" := 'KINTO-QUOTE';
+            "Quote No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
+        end;
+
         InitFromCountrySetup();
+
+        // Calcular data de expiração
+        if "Expiration Date" = 0D then
+            CalcExpirationDate();
+    end;
+
+    trigger OnModify()
+    var
+        QuoteItem: Record "KINTO Quote Item";
+        CFData: Record "KINTO Cash Flow Data";
+        CFHeader: Record "KINTO Cash Flow Header";
+    begin
+        // Se a cotação já foi calculada e está sendo modificada, invalidar resultados
+        if Rec."Pricing Status" in [
+            Rec."Pricing Status"::Calculated,
+            Rec."Pricing Status"::"Pre-Approved",
+            Rec."Pricing Status"::Approved] then begin
+            // Invalidar cash flow de todos os itens
+            CFData.SetRange("Quote No.", Rec."Quote No.");
+            if CFData.FindSet() then
+                CFData.DeleteAll();
+
+            CFHeader.SetRange("Quote No.", Rec."Quote No.");
+            if CFHeader.FindSet() then
+                CFHeader.DeleteAll();
+
+            // Resetar status dos itens
+            QuoteItem.SetRange("Quote No.", Rec."Quote No.");
+            if QuoteItem.FindSet() then
+                repeat
+                    QuoteItem."Pricing Status" := QuoteItem."Pricing Status"::Draft;
+                    QuoteItem.Modify(true);
+                until QuoteItem.Next() = 0;
+
+            // Resetar status do header
+            Rec."Pricing Status" := Rec."Pricing Status"::Draft;
+            Rec."Approval Classification" := Rec."Approval Classification"::Standard;
+            Rec."Calculated Monthly Fee" := 0;
+            Rec."Total MSRP" := 0;
+            Rec."Total Purchase Price" := 0;
+            Rec."Total Monthly Fee" := 0;
+            Rec."KINTO IRR" := 0;
+            Rec."Reference IRR" := 0;
+            Rec."Calculated ROI" := 0;
+            Rec.EBT := 0;
+            Rec.PAT := 0;
+            Rec."KINTO FCF" := 0;
+        end;
+    end;
+
+    local procedure CalcExpirationDate()
+    var
+        CountrySetup: Record "KINTO Country Setup";
+    begin
+        if CountrySetup.Get("Country Code") then
+            "Expiration Date" := CalcDate('+' + Format(CountrySetup."Validity Period") + 'D', Today)
+        else
+            "Expiration Date" := CalcDate('+30D', Today);
     end;
 
     procedure InitFromCountrySetup()
