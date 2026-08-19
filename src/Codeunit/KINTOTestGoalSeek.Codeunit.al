@@ -1,11 +1,10 @@
 codeunit 50154 "KINTO Test Goal Seek"
 {
-    Caption = 'KINTO Test: Goal Seek';
     Subtype = Test;
     TestPermissions = Disabled;
 
     var
-        Assert: Codeunit Assert;
+        Assert: Codeunit "Library Assert";
         TestSetup: Codeunit "KINTO Test Setup";
 
     [Test]

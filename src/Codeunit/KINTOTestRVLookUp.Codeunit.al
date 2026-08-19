@@ -1,11 +1,10 @@
 codeunit 50152 "KINTO Test RV Lookup"
 {
-    Caption = 'KINTO Test: RV Lookup';
     Subtype = Test;
     TestPermissions = Disabled;
 
     var
-        Assert: Codeunit Assert;
+        Assert: Codeunit "Library Assert";
         TestSetup: Codeunit "KINTO Test Setup";
 
     [Test]
