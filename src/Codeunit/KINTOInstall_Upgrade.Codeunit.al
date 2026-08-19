@@ -2,7 +2,8 @@ codeunit 50110 "KINTO Install/Upgrade"
 {
     Subtype = Install;
 
-    trigger OnInstallAppPerDatabase()
+    // trigger OnInstallAppPerDatabase()
+    trigger OnInstallAppPerCompany()
     begin
         CreateNumberSeries();
         CreateDefaultCountrySetup();
