@@ -1,3 +1,4 @@
+
 codeunit 50155 "KINTO Test Pricing Engine E2E"
 {
     Subtype = Test;
@@ -21,7 +22,6 @@ codeunit 50155 "KINTO Test Pricing Engine E2E"
         Snapshot: Record "KINTO Simulation Snapshot";
         PricingEngine: Codeunit "KINTO Pricing Engine Mgt.";
     begin
-        // [Scenario] Full pricing run for BR with Corolla Cross XRE
         TestSetup.CleanupTestData();
         TestSetup.SetupCountrySetupBR(CountrySetup);
         TestSetup.SetupVehicleModel(VehicleModel);
@@ -30,17 +30,17 @@ codeunit 50155 "KINTO Test Pricing Engine E2E"
         TestSetup.SetupQuoteHeader(QuoteHeader, 'BR');
         TestSetup.SetupQuoteItem(QuoteItem, QuoteHeader."Quote No.");
 
-        // [When] Run pricing engine
+        // Quote No. deve ser auto-gerado pelo Number Series
+        Assert.IsTrue(QuoteHeader."Quote No." <> '', 'Quote No. should be auto-generated');
+
         PricingEngine.RunPricing(QuoteHeader);
 
-        // [Then] Verify status is Calculated
         QuoteHeader.Get(QuoteHeader."Quote No.");
         Assert.AreEqual(
             QuoteHeader."Pricing Status"::Calculated,
             QuoteHeader."Pricing Status",
             'Pricing status should be Calculated');
 
-        // Verify quote item has results
         QuoteItem.Get(QuoteHeader."Quote No.", 10000);
         Assert.IsTrue(QuoteItem."Monthly Tariff" > 0, 'Monthly tariff should be calculated');
         Assert.IsTrue(QuoteItem."Purchase Price" > 0, 'Purchase price should be calculated');
@@ -48,16 +48,14 @@ codeunit 50155 "KINTO Test Pricing Engine E2E"
         Assert.IsTrue(QuoteItem."KINTO IRR" > 0, 'KINTO IRR should be calculated');
         Assert.IsTrue(QuoteItem."Calculated ROI" > 0, 'ROI should be calculated');
 
-        // Verify cash flow data exists
         CFData.SetRange("Quote No.", QuoteHeader."Quote No.");
         Assert.IsTrue(CFData.Count > 0, 'Cash flow data should exist');
 
-        // Verify snapshot exists
-        Assert.IsTrue(QuoteHeader."Snapshot ID" <> 0, 'Snapshot ID should be set');
-        Snapshot.Get(QuoteHeader."Snapshot ID");
+        // Snapshot ID deve ser auto-gerado via Number Series
+        Assert.IsTrue(QuoteHeader."Snapshot ID" <> '', 'Snapshot ID should be auto-generated');
+        Assert.IsTrue(Snapshot.Get(QuoteHeader."Snapshot ID"), 'Snapshot should be retrievable');
         Assert.AreEqual(QuoteHeader."Quote No.", Snapshot."Quote No.", 'Snapshot should reference quote');
 
-        // Verify approval classification
         Assert.IsTrue(
             QuoteHeader."Approval Classification" in [
                 QuoteHeader."Approval Classification"::Standard,
@@ -77,7 +75,6 @@ codeunit 50155 "KINTO Test Pricing Engine E2E"
         QuoteItem: Record "KINTO Quote Item";
         PricingEngine: Codeunit "KINTO Pricing Engine Mgt.";
     begin
-        // [Scenario] Full pricing run for AR with KINTO Fee methodology
         TestSetup.CleanupTestData();
         TestSetup.SetupCountrySetupAR(CountrySetup);
         TestSetup.SetupVehicleModel(VehicleModel);
@@ -85,7 +82,6 @@ codeunit 50155 "KINTO Test Pricing Engine E2E"
         TestSetup.SetupMaintenancePlan(MaintHeader, MaintLine);
 
         QuoteHeader.Init();
-        QuoteHeader."Quote No." := 'TEST-AR-001';
         QuoteHeader."Country Code" := 'AR';
         QuoteHeader."Payment Allowance Days" := 30;
         QuoteHeader."Credit Score" := 'B';
@@ -98,10 +94,8 @@ codeunit 50155 "KINTO Test Pricing Engine E2E"
         QuoteItem."Lead Time (days)" := 3;
         QuoteItem.Modify(true);
 
-        // [When] Run pricing engine
         PricingEngine.RunPricing(QuoteHeader);
 
-        // [Then] Verify status and methodology
         QuoteHeader.Get(QuoteHeader."Quote No.");
         Assert.AreEqual(
             QuoteHeader."Pricing Status"::Calculated,
@@ -129,7 +123,6 @@ codeunit 50155 "KINTO Test Pricing Engine E2E"
         QuoteItem: Record "KINTO Quote Item";
         PricingEngine: Codeunit "KINTO Pricing Engine Mgt.";
     begin
-        // [Scenario] Emergency stop blocks pricing execution
         TestSetup.CleanupTestData();
         TestSetup.SetupCountrySetupBR(CountrySetup);
         TestSetup.SetupVehicleModel(VehicleModel);
@@ -138,15 +131,58 @@ codeunit 50155 "KINTO Test Pricing Engine E2E"
         TestSetup.SetupQuoteHeader(QuoteHeader, 'BR');
         TestSetup.SetupQuoteItem(QuoteItem, QuoteHeader."Quote No.");
 
-        // Enable emergency stop
         CountrySetup.Get('BR');
         CountrySetup."Emergency Stop" := true;
         CountrySetup.Modify(true);
 
-        // [When] Run pricing — should error
         asserterror PricingEngine.RunPricing(QuoteHeader);
 
-        // [Then] Error expected
         Assert.ExpectedError('Pricing Engine is stopped');
+    end;
+
+    [Test]
+    procedure TestQuoteHeaderOnModifyInvalidatesResults()
+    var
+        CountrySetup: Record "KINTO Country Setup";
+        VehicleModel: Record "KINTO Vehicle Model";
+        RVMatrix: Record "KINTO RV Matrix";
+        MaintHeader: Record "KINTO Maintenance Plan Header";
+        MaintLine: Record "KINTO Maintenance Plan Line";
+        QuoteHeader: Record "KINTO Quote Header";
+        QuoteItem: Record "KINTO Quote Item";
+        CFData: Record "KINTO Cash Flow Data";
+        PricingEngine: Codeunit "KINTO Pricing Engine Mgt.";
+    begin
+        // [Scenario] Modifying Quote Header after calculation invalidates all results
+        TestSetup.CleanupTestData();
+        TestSetup.SetupCountrySetupBR(CountrySetup);
+        TestSetup.SetupVehicleModel(VehicleModel);
+        TestSetup.SetupRVMatrix(RVMatrix, 'CC-XRE');
+        TestSetup.SetupMaintenancePlan(MaintHeader, MaintLine);
+        TestSetup.SetupQuoteHeader(QuoteHeader, 'BR');
+        TestSetup.SetupQuoteItem(QuoteItem, QuoteHeader."Quote No.");
+
+        PricingEngine.RunPricing(QuoteHeader);
+
+        // Verify results exist
+        QuoteHeader.Get(QuoteHeader."Quote No.");
+        Assert.IsTrue(QuoteHeader."Calculated Monthly Fee" > 0, 'Monthly fee should be calculated');
+
+        // Modify the Quote Header
+        QuoteHeader."Target ROI %" := 3.0;
+        QuoteHeader.Modify(true);
+
+        // Verify results were invalidated
+        QuoteHeader.Get(QuoteHeader."Quote No.");
+        Assert.AreEqual(0, QuoteHeader."Calculated Monthly Fee", 'Monthly fee should be reset');
+        Assert.AreEqual(0, QuoteHeader."KINTO IRR", 'IRR should be reset');
+        Assert.AreEqual(
+            QuoteHeader."Pricing Status"::Draft,
+            QuoteHeader."Pricing Status",
+            'Status should revert to Draft');
+
+        // Verify cash flow was deleted
+        CFData.SetRange("Quote No.", QuoteHeader."Quote No.");
+        Assert.AreEqual(0, CFData.Count, 'Cash flow should be deleted');
     end;
 }

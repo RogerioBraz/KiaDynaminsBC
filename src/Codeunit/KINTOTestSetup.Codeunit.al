@@ -112,13 +112,16 @@ codeunit 50150 "KINTO Test Setup"
 
     procedure SetupQuoteHeader(var QuoteHeader: Record "KINTO Quote Header"; CountryCode: Code[10])
     begin
+        EnsureNumberSeriesExist();
+
         QuoteHeader.Init();
-        QuoteHeader."Quote No." := 'TEST-001';
+        // Não setar Quote No. — deixar o OnInsert auto-gerar via Number Series
         QuoteHeader."Country Code" := CountryCode;
         QuoteHeader."Target ROI %" := 2.0;
         QuoteHeader."Payment Allowance Days" := 30;
         QuoteHeader."Credit Score" := 'A';
         QuoteHeader.Insert(true);
+        // Após Insert, Quote No. é auto-gerado e disponível
     end;
 
     procedure SetupQuoteItem(var QuoteItem: Record "KINTO Quote Item"; QuoteNo: Code[20])
@@ -136,10 +139,17 @@ codeunit 50150 "KINTO Test Setup"
         QuoteItem."Payment Allowance (days)" := 30;
         QuoteItem."Lead Time (days)" := 1;
         QuoteItem."Target ROI %" := 2.0;
+
+        // Setar MSRP e Discount ANTES de Insert para que OnValidate calcule Purchase Price
         QuoteItem.MSRP := 191190;
         QuoteItem."Discount Rate %" := 15;
-        QuoteItem."Equipment Price" := 0;
+        // Purchase Price será auto-calculado pelo OnValidate de MSRP/Discount
+        // Equipment Price = 0, então Purchase Price = 191190 * 0.85 = 162511.5
+
         QuoteItem."Depreciation Market %" := 12.19;
+        // Final Resale Price será auto-calculado pelo OnValidate de Depreciation Market %
+        // se Purchase Price já estiver setado
+
         QuoteItem."Discount to DLR %" := 9;
         QuoteItem."Resale Cost %" := 0;
         QuoteItem."DLR Sales Commission %" := 2;
@@ -159,6 +169,49 @@ codeunit 50150 "KINTO Test Setup"
         QuoteItem.Insert(true);
     end;
 
+    procedure SetupInventoryVehicle(var InventoryVehicle: Record "KINTO Inventory Vehicle"; VehicleNo: Code[20])
+    begin
+        EnsureNumberSeriesExist();
+
+        InventoryVehicle.Init();
+        // Não setar Vehicle No. — deixar OnInsert auto-gerar
+        // Mas para testes determinísticos, podemos setar manualmente
+        InventoryVehicle."Vehicle No." := VehicleNo;
+        InventoryVehicle."Vehicle Condition" := InventoryVehicle."Vehicle Condition"::Used;
+        InventoryVehicle."Status" := InventoryVehicle."Status"::Available;
+        InventoryVehicle."Booking Value" := 100000;
+        InventoryVehicle.Insert(true);
+    end;
+
+    local procedure EnsureNumberSeriesExist()
+    var
+        NoSeries: Record "No. Series";
+        NoSeriesLine: Record "No. Series Line";
+    begin
+        EnsureSingleNoSeries(NoSeries, NoSeriesLine, 'KINTO-QUOTE', 'Q-00001', 'Q-99999');
+        EnsureSingleNoSeries(NoSeries, NoSeriesLine, 'KINTO-APPR', 'APR-00001', 'APR-99999');
+        EnsureSingleNoSeries(NoSeries, NoSeriesLine, 'KINTO-SNAP', 'SNP-00001', 'SNP-99999');
+        EnsureSingleNoSeries(NoSeries, NoSeriesLine, 'KINTO-VEH', 'VH-00001', 'VH-99999');
+    end;
+
+    local procedure EnsureSingleNoSeries(var NoSeries: Record "No. Series"; var NoSeriesLine: Record "No. Series Line"; SeriesCode: Code[20]; StartNo: Code[20]; EndNo: Code[20])
+    begin
+        if not NoSeries.Get(SeriesCode) then begin
+            NoSeries.Init();
+            NoSeries.Code := SeriesCode;
+            NoSeries.Description := 'KINTO Test ' + SeriesCode;
+            NoSeries.Insert(true);
+
+            NoSeriesLine.Init();
+            NoSeriesLine."Series Code" := SeriesCode;
+            NoSeriesLine."Line No." := 10000;
+            NoSeriesLine."Starting No." := StartNo;
+            NoSeriesLine."Ending No." := EndNo;
+            NoSeriesLine."Increment-by No." := 1;
+            NoSeriesLine.Insert(true);
+        end;
+    end;
+
     procedure CleanupTestData()
     var
         CountrySetup: Record "KINTO Country Setup";
@@ -172,6 +225,9 @@ codeunit 50150 "KINTO Test Setup"
         CFData: Record "KINTO Cash Flow Data";
         Snapshot: Record "KINTO Simulation Snapshot";
         ApprovalReq: Record "KINTO Approval Request";
+        InventoryVehicle: Record "KINTO Inventory Vehicle";
+        OdometerHist: Record "KINTO Vehicle Odometer History";
+        PricingCue: Record "KINTO Pricing Cue";
     begin
         CFData.DeleteAll();
         CFHeader.DeleteAll();
@@ -184,5 +240,9 @@ codeunit 50150 "KINTO Test Setup"
         RVMatrix.DeleteAll();
         VehicleModel.DeleteAll();
         CountrySetup.DeleteAll();
+        InventoryVehicle.DeleteAll();
+        OdometerHist.DeleteAll();
+        PricingCue.DeleteAll();
+        // NÃO deletar No. Series — podem ser usados por outros processos
     end;
 }
