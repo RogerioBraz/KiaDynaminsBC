@@ -53,7 +53,7 @@ codeunit 50155 "KINTO Test Pricing Engine E2E"
         Assert.IsTrue(CFData.Count > 0, 'Cash flow data should exist');
 
         // Verify snapshot exists
-        Assert.IsTrue(QuoteHeader."Snapshot ID" <> 0, 'Snapshot ID should be set');
+        Assert.IsTrue(QuoteHeader."Snapshot ID" <> '', 'Snapshot ID should be set');
         Snapshot.Get(QuoteHeader."Snapshot ID");
         Assert.AreEqual(QuoteHeader."Quote No.", Snapshot."Quote No.", 'Snapshot should reference quote');
 
