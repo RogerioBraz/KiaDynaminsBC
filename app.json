@@ -27,6 +27,7 @@
   },
   "runtime": "17.0",
   "features": [
-    "NoImplicitWith"
-  ]
+    "NoImplicitWith","TranslationFile", "GenerateCaptions"
+  ],
+  "suppressWarnings": ["AL0432", "AL0468", "AL0523", "AL0600", "AL0603", "AL0604", "AL0606"]
 }
