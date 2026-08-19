@@ -1,21 +1,23 @@
 codeunit 50157 "KINTO Test Extended Analysis"
 {
-    Caption = 'KINTO Test: Extended Analysis Period';
     Subtype = Test;
     TestPermissions = Disabled;
 
     var
-        Assert: Codeunit Assert;
+        Assert: Codeunit "Library Assert";
         TestSetup: Codeunit "KINTO Test Setup";
 
     [Test]
     procedure TestExtendedAnalysis30Days()
     var
         QuoteHeader: Record "KINTO Quote Header";
+        CountrySetup: Record "KINTO Country Setup";
     begin
         // [Scenario] 30 days payment allowance = 1 extended month
         TestSetup.CleanupTestData();
-        TestSetup.SetupCountrySetupBR(QuoteHeader);
+        TestSetup.SetupCountrySetupBR(CountrySetup);
+        TestSetup.SetupQuoteHeader(QuoteHeader, 'BR');
+
 
         // [When] Calculate extended analysis for 30 days
         // [Then] Should be 1 month

@@ -1,11 +1,10 @@
 codeunit 50156 "KINTO Test Booking Value"
 {
-    Caption = 'KINTO Test: Booking Value';
     Subtype = Test;
     TestPermissions = Disabled;
 
     var
-        Assert: Codeunit Assert;
+        Assert: Codeunit "Library Assert";
         TestSetup: Codeunit "KINTO Test Setup";
 
     [Test]

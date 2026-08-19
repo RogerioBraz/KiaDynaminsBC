@@ -1,11 +1,10 @@
 codeunit 50153 "KINTO Test Cash Flow"
 {
-    Caption = 'KINTO Test: Cash Flow Calculator';
     Subtype = Test;
     TestPermissions = Disabled;
 
     var
-        Assert: Codeunit Assert;
+        Assert: Codeunit "Library Assert";
         TestSetup: Codeunit "KINTO Test Setup";
 
     [Test]

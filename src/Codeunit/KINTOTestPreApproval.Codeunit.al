@@ -1,11 +1,10 @@
 codeunit 50158 "KINTO Test Pre-Approval"
 {
-    Caption = 'KINTO Test: Pre-Approval Classification';
     Subtype = Test;
     TestPermissions = Disabled;
 
     var
-        Assert: Codeunit Assert;
+        Assert: Codeunit "Library Assert";
         TestSetup: Codeunit "KINTO Test Setup";
 
     [Test]

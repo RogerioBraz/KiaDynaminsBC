@@ -1,6 +1,5 @@
 codeunit 50150 "KINTO Test Setup"
 {
-    Caption = 'KINTO Test Setup Helper';
     Subtype = Normal;
 
     procedure SetupCountrySetupBR(var CountrySetup: Record "KINTO Country Setup")

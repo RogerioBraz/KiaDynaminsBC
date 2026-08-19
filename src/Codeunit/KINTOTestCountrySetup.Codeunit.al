@@ -1,11 +1,10 @@
 codeunit 50151 "KINTO Test Country Setup"
 {
-    Caption = 'KINTO Test: Country Setup';
     Subtype = Test;
     TestPermissions = Disabled;
 
     var
-        Assert: Codeunit Assert;
+        Assert: Codeunit "Library Assert";
         TestSetup: Codeunit "KINTO Test Setup";
         Any: Codeunit Any;
 
