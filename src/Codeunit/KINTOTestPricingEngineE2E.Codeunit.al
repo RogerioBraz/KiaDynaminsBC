@@ -51,9 +51,15 @@ codeunit 50155 "KINTO Test Pricing Engine E2E"
         CFData.SetRange("Quote No.", QuoteHeader."Quote No.");
         Assert.IsTrue(CFData.Count > 0, 'Cash flow data should exist');
 
+<<<<<<< HEAD
         // Snapshot ID deve ser auto-gerado via Number Series
         Assert.IsTrue(QuoteHeader."Snapshot ID" <> '', 'Snapshot ID should be auto-generated');
         Assert.IsTrue(Snapshot.Get(QuoteHeader."Snapshot ID"), 'Snapshot should be retrievable');
+=======
+        // Verify snapshot exists
+        Assert.IsTrue(QuoteHeader."Snapshot ID" <> '', 'Snapshot ID should be set');
+        Snapshot.Get(QuoteHeader."Snapshot ID");
+>>>>>>> ca8b58c48f66f7af5ac5e37f077b7348ddf9dad1
         Assert.AreEqual(QuoteHeader."Quote No.", Snapshot."Quote No.", 'Snapshot should reference quote');
 
         Assert.IsTrue(
