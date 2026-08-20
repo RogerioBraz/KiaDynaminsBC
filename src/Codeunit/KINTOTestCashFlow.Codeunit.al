@@ -155,8 +155,16 @@ codeunit 50153 "KINTO Test Cash Flow"
         Assert.IsTrue(CFData.Count > 0, 'Cash flow should exist after generation');
 
         // Modify the Quote Item — should invalidate cash flow
+        /*QuoteItem."Monthly Tariff" := 6000;
+        QuoteItem.Modify(true);*/
+        QuoteItem.Get(QuoteHeader."Quote No.", 10000);
+        Error(
+             'Status antes do segundo Modify = %1',
+                Format(QuoteItem."Pricing Status"));
+
         QuoteItem."Monthly Tariff" := 6000;
         QuoteItem.Modify(true);
+
 
         // Verify cash flow was deleted
         CFData.SetRange("Quote No.", QuoteHeader."Quote No.");
@@ -169,6 +177,7 @@ codeunit 50153 "KINTO Test Cash Flow"
             QuoteItem."Pricing Status",
             'Status should revert to Draft after modify');
     end;
+
 
     [Test]
     procedure TestOnValidateAutoCalculatesPurchasePrice()
@@ -194,13 +203,19 @@ codeunit 50153 "KINTO Test Cash Flow"
         QuoteItem."Quote No." := QuoteHeader."Quote No.";
         QuoteItem."Line No." := 10000;
         QuoteItem."Item No." := 'CC-XRE';
-        QuoteItem.MSRP := 100000;
-        QuoteItem."Discount Rate %" := 10;
-        QuoteItem."Equipment Price" := 5000;
+
+        QuoteItem.Validate(MSRP, 100000);
+        QuoteItem.Validate("Discount Rate %", 10);
+        QuoteItem.Validate("Equipment Price", 5000);
+
         QuoteItem.Insert(true);
 
-        // Purchase Price should be auto-calculated: 100000 * 0.9 + 5000 = 95000
+        // Recarrega o registro salvo
+        QuoteItem.Get(QuoteHeader."Quote No.", 10000);
+
+        // Purchase Price = 100000 * 0.90 + 5000 = 95000
         ExpectedPurchasePrice := 95000;
+
         Assert.AreEqual(
             ExpectedPurchasePrice,
             QuoteItem."Purchase Price",
