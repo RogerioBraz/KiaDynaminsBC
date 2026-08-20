@@ -105,6 +105,7 @@ codeunit 50102 "KINTO Cash Flow Calculator"
             'PIS/COFINS on Tariff', "KINTO CF Component Type"::Tax,
             -(MonthlyTariff * QuoteItem."PIS COFINS Tariff %" / 100), AccumulatedMileage, InflationFactor);
 
+
         // PIS/COFINS Credit on Depreciation (Revenue)
         InsertCFEntry(CFData, QuoteHeader, QuoteItem, MonthNo, MonthDate, 'PIS_COFINS_CREDIT',
             'PIS/COFINS Credit on Depreciation', "KINTO CF Component Type"::Tax,

@@ -141,8 +141,10 @@ codeunit 50150 "KINTO Test Setup"
         QuoteItem."Target ROI %" := 2.0;
 
         // Setar MSRP e Discount ANTES de Insert para que OnValidate calcule Purchase Price
-        QuoteItem.MSRP := 191190;
-        QuoteItem."Discount Rate %" := 15;
+        //QuoteItem.MSRP := 191190;
+        //QuoteItem."Discount Rate %" := 15;
+        QuoteItem.Validate(MSRP, 191190);
+        QuoteItem.Validate("Discount Rate %", 15);
         // Purchase Price será auto-calculado pelo OnValidate de MSRP/Discount
         // Equipment Price = 0, então Purchase Price = 191190 * 0.85 = 162511.5
 
@@ -166,6 +168,11 @@ codeunit 50150 "KINTO Test Setup"
         QuoteItem."Maintenance Plan ID" := 'COROLLA-MAIN';
         QuoteItem."Incl. Preventive Maint." := true;
         QuoteItem."Contract Start Month" := 9;
+        QuoteItem."Tax Depreciation Period" := 60;
+        /*if CountrySetup.Get('BR') then begin
+        QuoteItem."Tax Depreciation Period" :=
+        CountrySetup."Tax Depreciation Period";
+        end;*/
         QuoteItem.Insert(true);
     end;
 

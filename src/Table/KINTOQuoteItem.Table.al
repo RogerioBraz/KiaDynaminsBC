@@ -205,9 +205,17 @@ table 50111 "KINTO Quote Item"
         end;
     end;
 
+    /* procedure CalculatePurchasePrice(): Decimal
+     begin
+         exit(Round("MSRP" * (1 - "Discount Rate %") + "Equipment Price", 0.01));
+     end;*/
     procedure CalculatePurchasePrice(): Decimal
     begin
-        exit(Round("MSRP" * (1 - "Discount Rate %") + "Equipment Price", 0.01));
+        exit(
+        Round(
+            "MSRP" * (1 - ("Discount Rate %" / 100))
+            + "Equipment Price",
+            0.01));
     end;
 
     procedure CalculateFinalResalePrice(): Decimal
