@@ -138,4 +138,57 @@ codeunit 50111 "KINTO Event Subscribers"
         OdometerHistory.Source := 'Manual Update';
         OdometerHistory.Insert(true);
     end;
+
+    // Auto-popular dados do veículo na Cotação de Seguro ao selecionar Item No.
+    [EventSubscriber(ObjectType::Table, Database::"KINTO Insurance Quote", 'OnAfterValidateEvent', 'Item No.', false, false)]
+    local procedure OnAfterValidateInsQuoteItemNo(
+    var Rec: Record "KINTO Insurance Quote";
+    var xRec: Record "KINTO Insurance Quote")
+    var
+        Item: Record Item;
+        VehicleModel: Record "KINTO Vehicle Model";
+        QuoteItem: Record "KINTO Quote Item";
+    begin
+        if Rec."Item No." = '' then
+            exit;
+
+        if not Item.Get(Rec."Item No.") then
+            exit;
+
+        Rec."Vehicle Name" := Item.Description;
+        Rec."Vehicle Model No." := Item."Vehicle Model No.";
+
+        if Rec."Vehicle Model No." <> '' then
+            if VehicleModel.Get(Rec."Vehicle Model No.") then begin
+                Rec."FIPE Code" := VehicleModel."FIPE Code";
+                Rec."Manufacturer Code" := VehicleModel."Manufacturer Code";
+                Rec."Manufacturer Name" := VehicleModel."Manufacturer Name";
+                Rec."Manufacturer Part Code" := VehicleModel."Manufacturer Part Code";
+            end;
+
+        if (Rec."KINTO Quote No." <> '') and
+           (Rec."KINTO Quote Line No." <> 0) then begin
+
+            if QuoteItem.Get(
+                Rec."KINTO Quote No.",
+                Rec."KINTO Quote Line No.") then
+                Rec.Armoring := QuoteItem."Inclusion of Armoring";
+        end;
+    end;
+
+    // Auto-calcular Valor do Seguro ao mudar Insurance %
+    [EventSubscriber(ObjectType::Table, Database::"KINTO Insurance Quote", 'OnAfterValidateEvent', 'Insurance %', false, false)]
+    local procedure OnAfterValidateInsurancePct(var Rec: Record "KINTO Insurance Quote"; var xRec: Record "KINTO Insurance Quote")
+    begin
+        if Rec."Hull Value" > 0 then
+            Rec."Insurance Value" := Rec.CalculateInsuranceValue();
+    end;
+
+    // Auto-calcular Valor do Seguro ao mudar Hull Value
+    [EventSubscriber(ObjectType::Table, Database::"KINTO Insurance Quote", 'OnAfterValidateEvent', 'Hull Value', false, false)]
+    local procedure OnAfterValidateHullValue(var Rec: Record "KINTO Insurance Quote"; var xRec: Record "KINTO Insurance Quote")
+    begin
+        if Rec."Insurance %" > 0 then
+            Rec."Insurance Value" := Rec.CalculateInsuranceValue();
+    end;
 }

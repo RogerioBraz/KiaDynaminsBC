@@ -234,6 +234,43 @@ page 50140 "KINTO Pricing Role Center"
                     Image = Approval;
                 }
             }
+            // ============================================================
+            // SEGUROS (NOVO)
+            // ============================================================
+            group(Seguros)
+            {
+                Caption = 'Seguros';
+
+                action(InsurerList)
+                {
+                    Caption = 'Seguradoras';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Insurer List";
+                    Image = Vendor;
+                }
+                action(InsQuoteGroupList)
+                {
+                    Caption = 'Grupos de Cotação';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Ins. Quote Group List";
+                    Image = ItemGroups;
+                }
+                action(InsuranceQuoteList)
+                {
+                    Caption = 'Cotações de Seguro';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Insurance Quote List";
+                    Image = Insurance;
+                }
+                action(NewInsuranceQuote)
+                {
+                    Caption = 'Nova Cotação de Seguro';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Insurance Quote Card";
+                    RunPageMode = Create;
+                    Image = New;
+                }
+            }
         }
 
         // ============================================================

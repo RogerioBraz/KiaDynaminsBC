@@ -176,6 +176,22 @@ page 50110 "KINTO Quote Card"
                             Page.Run(Page::"KINTO Approval Request Card", ApprovalReq);
                 end;
             }
+            action(ViewInsuranceQuote)
+            {
+                Caption = 'Ver Cotação de Seguro';
+                ApplicationArea = All;
+                Image = Insurance;
+                trigger OnAction()
+                var
+                    InsQuote: Record "KINTO Insurance Quote";
+                begin
+                    InsQuote.SetRange("KINTO Quote No.", Rec."Quote No.");
+                    if InsQuote.FindFirst() then
+                        Page.Run(Page::"KINTO Insurance Quote Card", InsQuote)
+                    else
+                        Message('Nenhuma cotação de seguro vinculada a esta cotação.');
+                end;
+            }
         }
     }
 

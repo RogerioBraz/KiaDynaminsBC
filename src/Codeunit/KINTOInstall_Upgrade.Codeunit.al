@@ -8,6 +8,7 @@ codeunit 50110 "KINTO Install/Upgrade"
         CreateNumberSeries();
         CreateDefaultCountrySetup();
         CreateDefaultCFComponents();
+        CreateInsuranceNumberSeries();
     end;
 
     local procedure CreateNumberSeries()
@@ -301,5 +302,26 @@ codeunit 50110 "KINTO Install/Upgrade"
         CFComponent."Sort Order" := SortOrderVal;
         CFComponent."Country Code" := CountryCode;
         CFComponent.Insert(true);
+    end;
+
+    local procedure CreateInsuranceNumberSeries()
+    var
+        NoSeries: Record "No. Series";
+        NoSeriesLine: Record "No. Series Line";
+    begin
+        if not NoSeries.Get('KINTO-INS') then begin
+            NoSeries.Init();
+            NoSeries.Code := 'KINTO-INS';
+            NoSeries.Description := 'KINTO Insurance Quote Numbers';
+            NoSeries.Insert(true);
+
+            NoSeriesLine.Init();
+            NoSeriesLine."Series Code" := 'KINTO-INS';
+            NoSeriesLine."Line No." := 10000;
+            NoSeriesLine."Starting No." := 'INS-00001';
+            NoSeriesLine."Ending No." := 'INS-99999';
+            NoSeriesLine."Increment-by No." := 1;
+            NoSeriesLine.Insert(true);
+        end;
     end;
 }

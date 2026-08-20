@@ -222,7 +222,19 @@ table 50111 "KINTO Quote Item"
     var
         ResaleToCustomer: Decimal;
     begin
+        ResaleToCustomer :=
+    "Purchase Price" * (1 - ("Depreciation Market %" / 100));
+
+        exit(
+    Round(
+       ResaleToCustomer * (1 - ("Discount to DLR %" / 100)),
+       0.01));
+    end;
+    /*procedure CalculateFinalResalePrice(): Decimal
+    var
+        ResaleToCustomer: Decimal;
+    begin
         ResaleToCustomer := "Purchase Price" * (1 - "Depreciation Market %");
         exit(Round(ResaleToCustomer * (1 - "Discount to DLR %"), 0.01));
-    end;
+    end;*/
 }

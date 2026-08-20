@@ -76,6 +76,7 @@ codeunit 50102 "KINTO Cash Flow Calculator"
                 'Body Insurance', "KINTO CF Component Type"::Cost,
                 -QuoteItem."Body Insurance", 0, InflationFactor);
 
+
         // DLR Commission (One-Shot for BR)
         if QuoteItem."DLR Commission Amount" > 0 then
             InsertCFEntry(CFData, QuoteHeader, QuoteItem, 0, Today, 'DLR_COMMISSION',
@@ -455,6 +456,22 @@ codeunit 50102 "KINTO Cash Flow Calculator"
         CFData.SetFilter("Component Type", '<>%1', CFData."Component Type"::Revenue);
         CFData.CalcSums("Signed Amount");
         exit(Abs(CFData."Signed Amount"));
+    end;
+
+    local procedure GetBodyInsuranceAmount(QuoteItem: Record "KINTO Quote Item"): Decimal
+    var
+        InsQuote: Record "KINTO Insurance Quote";
+    begin
+        // Se há cotação de seguro vinculada, usa o valor dela
+        if QuoteItem."Insurance Quote No." <> '' then begin
+            if InsQuote.Get(QuoteItem."Insurance Quote No.") then begin
+                if InsQuote."Insurance Value" > 0 then
+                    exit(InsQuote."Insurance Value");
+            end;
+        end;
+
+        // Fallback: usa o valor manual do Quote Item
+        exit(QuoteItem."Body Insurance");
     end;
 
     local procedure Ceil(Value: Decimal): Integer
