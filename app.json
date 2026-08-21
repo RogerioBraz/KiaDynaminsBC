@@ -1,46 +1,56 @@
 {
-  "id": "8a76abc6-5fb0-4baf-84be-8a28a099b8d4",
-  "name": "KiaDynBC",
-  "publisher": "RSBTech",
-  "version": "1.0.0.5",
-  "brief": "",
-  "description": "",
-  "privacyStatement": "",
-  "EULA": "https://rsbtech.com.br/",
-  "help": "https://rsbtech.com.br/",
-  "url": "https://rsbtech.com.br/",
-  "logo": "",
-  "dependencies": [
-  {
-    "id": "dd0be2ea-f733-4d65-bb34-a28f4624fb14",
-    "name": "Library Assert",
-    "publisher": "Microsoft",
-    "version": "28.3.52162.52273"
-  },
-  {
-    "id": "e7320ebb-08b3-4406-b1ec-b4927d3e280b",
-    "name": "Any",
-    "publisher": "Microsoft",
-    "version": "28.3.52162.52273"
-  }
-],
-  "screenshots": [],
-  "platform": "1.0.0.0",
-  "application": "28.0.0.0",
-  "idRanges": [
-    {
-      "from": 50000,
-      "to": 75149
-    }
-  ],
-  "resourceExposurePolicy": {
-    "allowDebugging": true,
-    "allowDownloadingSource": true,
-    "includeSourceInSymbolFile": true
-  },
-  "runtime": "17.0",
-  "features": [
-    "NoImplicitWith","TranslationFile", "GenerateCaptions"
-  ],
-  "suppressWarnings": ["AL0432", "AL0468", "AL0523", "AL0600", "AL0603", "AL0604", "AL0606"]
+    "id": "8a76abc6-5fb0-4baf-84be-8a28a099b8d4",
+    "name": "KiaDynBC",
+    "publisher": "RSBTech",
+    "version": "1.0.0.5",
+    "brief": "",
+    "description": "",
+    "privacyStatement": "",
+    "EULA": "https://rsbtech.com.br/",
+    "help": "https://rsbtech.com.br/",
+    "url": "https://rsbtech.com.br/",
+    "logo": "",
+    "dependencies": [
+        {
+            "id": "dd0be2ea-f733-4d65-bb34-a28f4624fb14",
+            "name": "Library Assert",
+            "publisher": "Microsoft",
+            "version": "28.3.52162.52273"
+        },
+        {
+            "id": "e7320ebb-08b3-4406-b1ec-b4927d3e280b",
+            "name": "Any",
+            "publisher": "Microsoft",
+            "version": "28.3.52162.52273"
+        }
+    ],
+    "screenshots": [],
+    "platform": "1.0.0.0",
+    "application": "28.3.52162.52273",
+    "idRanges": [
+        {
+            "from": 50000,
+            "to": 75149
+        }
+    ],
+    "resourceExposurePolicy": {
+        "allowDebugging": true,
+        "allowDownloadingSource": true,
+        "includeSourceInSymbolFile": true
+    },
+    "runtime": "17.0",
+    "features": [
+        "NoImplicitWith",
+        "TranslationFile",
+        "GenerateCaptions"
+    ],
+    "suppressWarnings": [
+        "AL0432",
+        "AL0468",
+        "AL0523",
+        "AL0600",
+        "AL0603",
+        "AL0604",
+        "AL0606"
+    ]
 }

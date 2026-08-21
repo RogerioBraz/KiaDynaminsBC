@@ -57,7 +57,7 @@ table 50121 "KINTO Insurance Quote"
         field(15; "Manufacturer Part Code"; Code[20]) { Caption = 'Código Fabricante'; }
         field(16; "Vehicle Model No."; Code[20])
         {
-            Caption = 'Vehicle Model';
+            Caption = 'Modelo do Veículo';
             TableRelation = "KINTO Vehicle Model";
         }
         field(17; "FIPE Code"; Code[20]) { Caption = 'Identificação FIPE'; }
@@ -94,19 +94,19 @@ table 50121 "KINTO Insurance Quote"
         }
         field(31; "KINTO Quote No."; Code[20])
         {
-            Caption = 'KINTO Quote No.';
+            Caption = 'KINTO Número da Cotação';
             TableRelation = "KINTO Quote Header";
         }
         field(32; "KINTO Quote Line No."; Integer)
         {
-            Caption = 'KINTO Quote Line No.';
+            Caption = 'KINTO Número da Linha da Cotação';
             TableRelation = "KINTO Quote Item"."Line No." where("Quote No." = field("KINTO Quote No."));
         }
         // Audit
-        field(40; "Created By"; Code[50]) { Caption = 'Created By'; }
-        field(41; "Created DateTime"; DateTime) { Caption = 'Created DateTime'; }
-        field(42; "Modified By"; Code[50]) { Caption = 'Modified By'; }
-        field(43; "Modified DateTime"; DateTime) { Caption = 'Modified DateTime'; }
+        field(40; "Created By"; Code[50]) { Caption = 'Criado Por'; }
+        field(41; "Created DateTime"; DateTime) { Caption = 'Data/Hora de Criação'; }
+        field(42; "Modified By"; Code[50]) { Caption = 'Modificado Por'; }
+        field(43; "Modified DateTime"; DateTime) { Caption = 'Data/Hora de Modificação'; }
     }
 
     keys
