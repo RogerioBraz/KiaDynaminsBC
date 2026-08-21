@@ -50,7 +50,7 @@ page 50148 "KINTO Insurance Quote Card"
             {
                 Caption = 'Integração KINTO';
 
-                field("KINTO Quote No."; Rec."KINTO Quote No.") { ApplicationArea = All; Editable = false; }
+                field("KINTO Quote No."; Rec."KINTO Quote No.") { ApplicationArea = All; Editable = false; Caption = 'MODELO TESTE'; }
                 field("KINTO Quote Line No."; Rec."KINTO Quote Line No.") { ApplicationArea = All; Editable = false; }
             }
             group(Coverages)
