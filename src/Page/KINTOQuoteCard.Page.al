@@ -21,6 +21,7 @@ page 50110 "KINTO Quote Card"
                 field("Pricing Status"; Rec."Pricing Status") { ApplicationArea = All; }
                 field("Pricing Methodology"; Rec."Pricing Methodology") { ApplicationArea = All; }
                 field("Approval Classification"; Rec."Approval Classification") { ApplicationArea = All; }
+                field("Product Type"; Rec."Product Type") { ApplicationArea = All; }
             }
             group(Parameters)
             {
@@ -47,6 +48,17 @@ page 50110 "KINTO Quote Card"
                 field("EBT"; Rec."EBT") { ApplicationArea = All; }
                 field("PAT"; Rec."PAT") { ApplicationArea = All; }
                 field("KINTO FCF"; Rec."KINTO FCF") { ApplicationArea = All; }
+            }
+            group(Packages)
+            {
+                Caption = 'Pacotes de Serviços (Nível Cotação)';
+
+                field("Glass Coverage Package ID"; Rec."Glass Coverage Package ID") { ApplicationArea = All; }
+                field("24h Assistance Package ID"; Rec."24h Assistance Package ID") { ApplicationArea = All; }
+                field("Pickup Delivery Package ID"; Rec."Pickup Delivery Package ID") { ApplicationArea = All; }
+                field("Replacement Vehicle Pkg ID"; Rec."Replacement Vehicle Pkg ID") { ApplicationArea = All; }
+                field("Replacement Vehicle Uses"; Rec."Replacement Vehicle Uses") { ApplicationArea = All; Visible = Rec."Replacement Vehicle Pkg ID" <> ''; }
+                field("Service Package ID"; Rec."Service Package ID") { ApplicationArea = All; }
             }
             part(QuoteItems; "KINTO Quote Item Subform")
             {

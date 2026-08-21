@@ -9,6 +9,9 @@ codeunit 50110 "KINTO Install/Upgrade"
         CreateDefaultCountrySetup();
         CreateDefaultCFComponents();
         CreateInsuranceNumberSeries();
+        CreateDefaultVendorCategories();
+        CreateDefaultSupplierGroups();
+        CreateDefaultItemCategories();
     end;
 
     local procedure CreateNumberSeries()
@@ -322,6 +325,87 @@ codeunit 50110 "KINTO Install/Upgrade"
             NoSeriesLine."Ending No." := 'INS-99999';
             NoSeriesLine."Increment-by No." := 1;
             NoSeriesLine.Insert(true);
+        end;
+    end;
+
+    local procedure CreateDefaultVendorCategories()
+    var
+        VendorCat: Record "KINTO Vendor Category";
+    begin
+        InsertVendorCategory(VendorCat, 'DEALER', 'Dealer / Concessionária', VendorCat."Category Type"::Dealer);
+        InsertVendorCategory(VendorCat, 'MAINT', 'Maintenance Provider', VendorCat."Category Type"::Maintenance);
+        InsertVendorCategory(VendorCat, 'DELIVERY', 'Delivery Location', VendorCat."Category Type"::"Delivery Location");
+        InsertVendorCategory(VendorCat, 'PREP', 'Preparation Yard', VendorCat."Category Type"::"Preparation Yard");
+        InsertVendorCategory(VendorCat, 'ARMOR', 'Armoring Provider', VendorCat."Category Type"::Armoring);
+        InsertVendorCategory(VendorCat, 'TIRE', 'Tire Supplier', VendorCat."Category Type"::"Tire Supplier");
+        InsertVendorCategory(VendorCat, 'INSUR', 'Insurance Provider', VendorCat."Category Type"::"Insurance Provider");
+    end;
+
+    local procedure InsertVendorCategory(var VendorCat: Record "KINTO Vendor Category"; Code: Code[20]; Desc: Text[100]; CatType: Enum "KINTO Vendor Category Type")
+    begin
+        if not VendorCat.Get(Code) then begin
+            VendorCat.Init();
+            VendorCat."Category Code" := Code;
+            VendorCat.Description := Desc;
+            VendorCat."Category Type" := CatType;
+            VendorCat.Active := true;
+            VendorCat.Insert(true);
+        end;
+    end;
+
+    local procedure CreateDefaultSupplierGroups()
+    var
+        SupGroup: Record "KINTO Supplier Group";
+    begin
+        InsertSupplierGroup(SupGroup, 'TOYOTA-MAINT', 'Toyota Maintenance Network', "KINTO Vendor Category Type"::Maintenance, 'BR');
+        InsertSupplierGroup(SupGroup, 'EXT-MAINT', 'External Maintenance Network', "KINTO Vendor Category Type"::Maintenance, 'BR');
+        InsertSupplierGroup(SupGroup, 'AERIAL-MAINT', 'Aerial Platform Maintenance', "KINTO Vendor Category Type"::Maintenance, 'BR');
+        InsertSupplierGroup(SupGroup, 'DELIVERY-BR', 'Delivery Network BR', "KINTO Vendor Category Type"::"Delivery Location", 'BR');
+        InsertSupplierGroup(SupGroup, 'ARMOR-BR', 'Armoring Network BR', "KINTO Vendor Category Type"::Armoring, 'BR');
+        InsertSupplierGroup(SupGroup, 'TIRE-BR', 'Tire Network BR', "KINTO Vendor Category Type"::"Tire Supplier", 'BR');
+    end;
+
+    local procedure InsertSupplierGroup(var SupGroup: Record "KINTO Supplier Group"; Code: Code[20]; Desc: Text[100]; CatType: Enum "KINTO Vendor Category Type"; Country: Code[10])
+    begin
+        if not SupGroup.Get(Code) then begin
+            SupGroup.Init();
+            SupGroup."Group Code" := Code;
+            SupGroup.Description := Desc;
+            SupGroup."Category Type" := CatType;
+            SupGroup."Country Code" := Country;
+            SupGroup.Active := true;
+            SupGroup.Insert(true);
+        end;
+    end;
+
+    local procedure CreateDefaultItemCategories()
+    var
+        ItemCategory: Record "Item Category";
+    begin
+        // Cria categorias nativas do BC alinhadas com o Enum KINTO
+        InsertItemCategory('VEHICLE', 'Vehicle Base');
+        InsertItemCategory('ACCESS', 'Accessory');
+        InsertItemCategory('OPTIONAL', 'Optional');
+        InsertItemCategory('IMPLEMENT', 'Implement');
+        InsertItemCategory('MAINT-PKG', 'Maintenance Package');
+        InsertItemCategory('INS-PKG', 'Insurance Package');
+        InsertItemCategory('GLASS', 'Glass Coverage');
+        InsertItemCategory('24H-ASST', '24h Assistance');
+        InsertItemCategory('PICKUP', 'Pick-up and Delivery');
+        InsertItemCategory('REPL-Veh', 'Replacement Vehicle');
+        InsertItemCategory('TIRES', 'Tires');
+        InsertItemCategory('SERVICE', 'Services (Telematics)');
+    end;
+
+    local procedure InsertItemCategory(Code: Code[20]; Desc: Text[100])
+    var
+        ItemCategory: Record "Item Category";
+    begin
+        if not ItemCategory.Get(Code) then begin
+            ItemCategory.Init();
+            ItemCategory.Code := Code;
+            ItemCategory.Description := Desc;
+            ItemCategory.Insert(true);
         end;
     end;
 }

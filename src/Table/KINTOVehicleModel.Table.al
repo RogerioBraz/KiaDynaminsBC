@@ -19,6 +19,27 @@ table 50101 "KINTO Vehicle Model"
         field(9; "Default Monthly Mileage"; Decimal) { Caption = 'Default Monthly Mileage'; }
         field(10; "Default Contract Term"; Integer) { Caption = 'Default Contract Term (months)'; }
         field(11; "Status"; Option) { Caption = 'Status'; OptionMembers = Active,Inactive; }
+        field(12; "VD Sales Commission %"; Decimal) { Caption = 'VD Sales Commission %'; DecimalPlaces = 0 : 5; }
+        field(13; "VD Delivery Commission %"; Decimal) { Caption = 'VD Delivery Commission %'; DecimalPlaces = 0 : 5; }
+        field(14; "VD Commission Model"; Enum "KINTO Commission Model") { Caption = 'VD Commission Model'; }
+        field(15; "FIPE Code"; Code[20])
+        {
+            Caption = 'FIPE Code';
+            DataClassification = CustomerContent;
+        }
+
+        field(16; "Manufacturer Name"; Text[50])
+        {
+            Caption = 'Manufacturer Name';
+            DataClassification = CustomerContent;
+        }
+
+        field(17; "Manufacturer Part Code"; Code[20])
+        {
+            Caption = 'Manufacturer Part Code';
+            DataClassification = CustomerContent;
+        }
+
     }
 
     keys

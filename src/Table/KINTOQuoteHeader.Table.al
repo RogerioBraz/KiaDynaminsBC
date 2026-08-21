@@ -35,30 +35,24 @@ table 50110 "KINTO Quote Header"
         field(26; "PAT"; Decimal) { Caption = 'PAT'; }
         field(27; "KINTO FCF"; Decimal) { Caption = 'KINTO Free Cash Flow'; }
         field(28; "Negotiation Buffer %"; Decimal) { Caption = 'Negotiation Buffer %'; DecimalPlaces = 0 : 5; }
-        field(29; "Payment Allowance Days"; Integer)
-        {
-            Caption = 'Payment Allowance (days)';
-            trigger OnValidate()
-            begin
-                if "Payment Allowance Days" <> 0 then
-                    "Extended Analysis Months" := CalcExtendedAnalysisMonths("Payment Allowance Days");
-            end;
-        }
+        field(29; "Payment Allowance Days"; Integer) { Caption = 'Payment Allowance (days)'; }
         field(30; "Extended Analysis Months"; Integer) { Caption = 'Extended Analysis Months'; }
         field(31; "Contract Start Month"; Integer) { Caption = 'Contract Start Month'; }
         field(32; "Credit Score"; Code[5]) { Caption = 'Credit Score'; }
         field(33; "Credit Risk Factor %"; Decimal) { Caption = 'Credit Risk Factor %'; DecimalPlaces = 0 : 5; }
-        field(50; "No. Series"; Code[20])
-        {
-            Caption = 'No. Series';
-            TableRelation = "No. Series";
-        }
+        field(50; "No. Series"; Code[20]) { Caption = 'No. Series'; TableRelation = "No. Series"; }
+
+        // CAMPOS DE PRODUTO E PACOTES (integrados diretamente — não usar TableExtension)
+        field(60; "Product Type"; Enum "KINTO Product Type") { Caption = 'Product Type'; DataClassification = CustomerContent; }
+        field(61; "Glass Coverage Package ID"; Code[20]) { Caption = 'Glass Coverage'; TableRelation = "KINTO Glass Coverage Package"; DataClassification = CustomerContent; }
+        field(62; "24h Assistance Package ID"; Code[20]) { Caption = '24h Assistance'; TableRelation = "KINTO 24h Assistance Package"; DataClassification = CustomerContent; }
+        field(63; "Pickup Delivery Package ID"; Code[20]) { Caption = 'Pick-up & Delivery'; TableRelation = "KINTO Pickup Delivery Package"; DataClassification = CustomerContent; }
+        field(64; "Replacement Vehicle Pkg ID"; Code[20]) { Caption = 'Replacement Vehicle'; TableRelation = "KINTO Replacement Vehicle Pkg"; DataClassification = CustomerContent; }
+        field(65; "Service Package ID"; Code[20]) { Caption = 'Service (Telematics)'; TableRelation = "KINTO Service Package"; DataClassification = CustomerContent; }
+        field(66; "Replacement Vehicle Uses"; Integer) { Caption = 'Replacement Vehicle Uses'; DataClassification = CustomerContent; }
     }
 
-    keys
-    {
-        key(PK; "Quote No.") { Clustered = true; }
-    }
+    keys { key(PK; "Quote No.") { Clustered = true; } }
 
     trigger OnInsert()
     var
@@ -68,41 +62,57 @@ table 50110 "KINTO Quote Header"
         "Created DateTime" := CurrentDateTime;
         "Pricing Status" := "Pricing Status"::Draft;
 
-        // Auto-gerar Quote No. se vazio
-        if "Quote No." = '' then begin
-            if "No. Series" = '' then
-                "No. Series" := 'KINTO-QUOTE';
-            "Quote No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
-        end;
+        if "Quote No." = '' then
+            if "No. Series" <> '' then
+                "Quote No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
 
         InitFromCountrySetup();
 
-        // Calcular data de expiração
         if "Expiration Date" = 0D then
             CalcExpirationDate();
     end;
 
+    local procedure CalcExpirationDate()
+    var
+        CountrySetup: Record "KINTO Country Setup";
+    begin
+        if CountrySetup.Get("Country Code") then
+            "Expiration Date" := CalcDate('+' + Format(CountrySetup."Validity Period") + 'D', Today)
+        else
+            "Expiration Date" := CalcDate('+30D', Today);
+    end;
+
+    // CORREÇÃO: procedure (não local) — precisa ser acessível pela API page
+    procedure InitFromCountrySetup()
+    var
+        CountrySetup: Record "KINTO Country Setup";
+    begin
+        if "Country Code" = '' then exit;
+        if not CountrySetup.Get("Country Code") then exit;
+        "Pricing Methodology" := CountrySetup."Pricing Methodology";
+        "Currency Code" := CountrySetup."Currency Code";
+        "Negotiation Buffer %" := CountrySetup."Suggested Negot. Buffer %";
+    end;
+
+    // CORREÇÃO CRÍTICA: OnModify compara xRec com Rec
+    // Só invalida se o status NÃO mudou (campo de dados alterado enquanto calculado)
     trigger OnModify()
     var
         QuoteItem: Record "KINTO Quote Item";
         CFData: Record "KINTO Cash Flow Data";
         CFHeader: Record "KINTO Cash Flow Header";
     begin
-        // Se a cotação já foi calculada e está sendo modificada, invalidar resultados
-        if Rec."Pricing Status" in [
-            Rec."Pricing Status"::Calculated,
-            Rec."Pricing Status"::"Pre-Approved",
-            Rec."Pricing Status"::Approved] then begin
-            // Invalidar cash flow de todos os itens
+        if (xRec."Pricing Status" in [
+            xRec."Pricing Status"::Calculated,
+            xRec."Pricing Status"::"Pre-Approved",
+            xRec."Pricing Status"::Approved]) and
+           (Rec."Pricing Status" = xRec."Pricing Status") then begin
             CFData.SetRange("Quote No.", Rec."Quote No.");
-            if CFData.FindSet() then
-                CFData.DeleteAll();
+            if CFData.FindSet() then CFData.DeleteAll();
 
             CFHeader.SetRange("Quote No.", Rec."Quote No.");
-            if CFHeader.FindSet() then
-                CFHeader.DeleteAll();
+            if CFHeader.FindSet() then CFHeader.DeleteAll();
 
-            // Resetar status dos itens
             QuoteItem.SetRange("Quote No.", Rec."Quote No.");
             if QuoteItem.FindSet() then
                 repeat
@@ -110,7 +120,6 @@ table 50110 "KINTO Quote Header"
                     QuoteItem.Modify(true);
                 until QuoteItem.Next() = 0;
 
-            // Resetar status do header
             Rec."Pricing Status" := Rec."Pricing Status"::Draft;
             Rec."Approval Classification" := Rec."Approval Classification"::Standard;
             Rec."Calculated Monthly Fee" := 0;
@@ -124,29 +133,6 @@ table 50110 "KINTO Quote Header"
             Rec.PAT := 0;
             Rec."KINTO FCF" := 0;
         end;
-    end;
-
-    local procedure CalcExpirationDate()
-    var
-        CountrySetup: Record "KINTO Country Setup";
-    begin
-        if CountrySetup.Get("Country Code") then
-            "Expiration Date" := CalcDate('+' + Format(CountrySetup."Validity Period") + 'D', Today)
-        else
-            "Expiration Date" := CalcDate('+30D', Today);
-    end;
-
-    procedure InitFromCountrySetup()
-    var
-        CountrySetup: Record "KINTO Country Setup";
-    begin
-        if "Country Code" = '' then exit;
-        if not CountrySetup.Get("Country Code") then exit;
-
-        "Pricing Methodology" := CountrySetup."Pricing Methodology";
-        "Currency Code" := CountrySetup."Currency Code";
-        "Negotiation Buffer %" := CountrySetup."Suggested Negot. Buffer %";
-        Validate("Payment Allowance Days", 30);
     end;
 
     procedure CalcExtendedAnalysisMonths(Days: Integer): Integer

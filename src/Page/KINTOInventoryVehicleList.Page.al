@@ -52,7 +52,7 @@ page 50130 "KINTO Inventory Vehicle List"
             {
                 Caption = 'Release Reservation';
                 ApplicationArea = All;
-                Image = Release;
+                Image = Check;
                 trigger OnAction()
                 var
                     BookingMgt: Codeunit "KINTO Booking Value Mgt.";

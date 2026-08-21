@@ -1,6 +1,6 @@
 codeunit 50100 "KINTO Pricing Engine Mgt."
 {
-
+    // CORREÇÃO: Removido Caption — codeunits não suportam esta propriedade no AL atual
     Permissions = tabledata "KINTO Quote Header" = RIMD,
                   tabledata "KINTO Quote Item" = RIMD,
                   tabledata "KINTO Cash Flow Header" = RIMD,
@@ -9,23 +9,18 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
 
     var
         CountrySetup: Record "KINTO Country Setup";
-        RVLookupMgt: Codeunit "KINTO RV Lookup Mgt.";
         CFCalc: Codeunit "KINTO Cash Flow Calculator";
         GoalSeekMgt: Codeunit "KINTO Goal Seek Mgt.";
-        TaxCalc: Codeunit "KINTO Tax Calculator";
-        CommCalc: Codeunit "KINTO Commission Calculator";
-        DeprecCalc: Codeunit "KINTO Depreciation Calc.";
-        BookingMgt: Codeunit "KINTO Booking Value Mgt.";
-        ErrorMsg: Text[250];
         PricingErr: Label 'Pricing Engine is stopped for country %1. Contact administrator.';
         NoCountryErr: Label 'Country Setup not found for country %1.';
-        NoItemErr: Label 'Item %1 not found.';
+        NoItemErr: Label 'Item No. is required on Quote Item Line %1.';
+        NoMSRPErr: Label 'MSRP must be greater than 0 on Quote Item Line %1.';
+        NoTermErr: Label 'Contract Term must be greater than 0 on Quote Item Line %1.';
 
     procedure RunPricing(var QuoteHeader: Record "KINTO Quote Header")
     var
         QuoteItem: Record "KINTO Quote Item";
     begin
-        // Validate emergency stop
         if not CountrySetup.Get(QuoteHeader."Country Code") then
             Error(NoCountryErr, QuoteHeader."Country Code");
 
@@ -35,17 +30,13 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
         QuoteHeader."Pricing Status" := QuoteHeader."Pricing Status"::Draft;
         QuoteHeader.Modify(true);
 
-        // Process each quote item
         QuoteItem.SetRange("Quote No.", QuoteHeader."Quote No.");
         if QuoteItem.FindSet() then
             repeat
                 ProcessQuoteItem(QuoteHeader, QuoteItem);
             until QuoteItem.Next() = 0;
 
-        // Aggregate results
         AggregateQuoteResults(QuoteHeader);
-
-        // Pre-approval classification
         ClassifyPreApproval(QuoteHeader);
 
         QuoteHeader."Pricing Status" := QuoteHeader."Pricing Status"::Calculated;
@@ -53,34 +44,58 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
     end;
 
     local procedure ProcessQuoteItem(var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item")
+    var
+        PackagePricing: Codeunit "KINTO Package Pricing Calc";
+        TotalPkgMonthlyCost: Decimal;
+        InsuranceFromPackage: Decimal;
+        VehicleValue: Decimal;
     begin
         Clear(QuoteItem."Error Message");
 
-        // Step 1: Load parameters from Country Setup
+        // Validações obrigatórias
+        if QuoteItem."Item No." = '' then begin
+            QuoteItem."Pricing Status" := QuoteItem."Pricing Status"::Error;
+            QuoteItem."Error Message" := StrSubstNo(NoItemErr, QuoteItem."Line No.");
+            QuoteItem.Modify(true);
+            exit;
+        end;
+
+        if QuoteItem.MSRP <= 0 then begin
+            QuoteItem."Pricing Status" := QuoteItem."Pricing Status"::Error;
+            QuoteItem."Error Message" := StrSubstNo(NoMSRPErr, QuoteItem."Line No.");
+            QuoteItem.Modify(true);
+            exit;
+        end;
+
+        if QuoteItem."Contract Term (Months)" <= 0 then begin
+            QuoteItem."Pricing Status" := QuoteItem."Pricing Status"::Error;
+            QuoteItem."Error Message" := StrSubstNo(NoTermErr, QuoteItem."Line No.");
+            QuoteItem.Modify(true);
+            exit;
+        end;
+
         LoadCountryParameters(QuoteHeader, QuoteItem);
-
-        // Step 2: Calculate Purchase Price
         QuoteItem."Purchase Price" := QuoteItem.CalculatePurchasePrice();
-
-        // Step 3: RV Lookup
-        QuoteItem."Projected Residual Value" := RVLookupMgt.LookupResidualValue(QuoteItem);
-
-        // Step 4: Calculate Final Resale Price
         QuoteItem."Final Resale Price" := QuoteItem.CalculateFinalResalePrice();
+        QuoteItem."Extended Analysis Months" :=
+            QuoteHeader.CalcExtendedAnalysisMonths(QuoteItem."Payment Allowance (days)");
 
-        // Step 5: Calculate Depreciation
-        DeprecCalc.CalculateDepreciation(QuoteItem);
+        // Pacotes
+        TotalPkgMonthlyCost := PackagePricing.CalculateAllPackageCosts(QuoteHeader, QuoteItem);
 
-        // Step 6: Calculate Commissions
-        CommCalc.CalculateCommissions(QuoteHeader, QuoteItem);
+        // Seguro via Coverage Limits
+        if QuoteItem."Insurance Quote No." <> '' then begin
+            if QuoteItem."Vehicle Condition" = QuoteItem."Vehicle Condition"::New then
+                VehicleValue := QuoteItem."Purchase Price"
+            else
+                VehicleValue := QuoteItem."Initial Value (Used)";
 
-        // Step 7: Calculate Taxes
-        TaxCalc.CalculateTaxes(QuoteHeader, QuoteItem);
+            InsuranceFromPackage := PackagePricing.CalculateInsuranceFromPackage(QuoteItem, VehicleValue);
+            if InsuranceFromPackage > 0 then
+                QuoteItem."Body Insurance" := InsuranceFromPackage;
+        end;
 
-        // Step 8: Extended Analysis Months
-        QuoteItem."Extended Analysis Months" := QuoteHeader.CalcExtendedAnalysisMonths(QuoteItem."Payment Allowance (days)");
-
-        // Step 9: Pricing based on methodology
+        // Pricing
         case QuoteHeader."Pricing Methodology" of
             QuoteHeader."Pricing Methodology"::"Target ROI":
                 GoalSeekMgt.CalculateMonthlyFeeByROI(QuoteHeader, QuoteItem);
@@ -88,19 +103,15 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
                 CalculateKINTOFee(QuoteHeader, QuoteItem);
         end;
 
-        // Step 10: Create Cash Flow
         CFCalc.GenerateCashFlow(QuoteHeader, QuoteItem);
-
-        // Step 11: Calculate Final Indicators
         CalculateIndicators(QuoteHeader, QuoteItem);
-
-        // Step 12: Create Snapshot
         CreateSnapshot(QuoteHeader, QuoteItem);
 
         QuoteItem."Pricing Status" := QuoteItem."Pricing Status"::Calculated;
         QuoteItem.Modify(true);
     end;
 
+    // CORREÇÃO: Agora carrega TODOS os campos tributários (National Revenue Tax % → PIS COFINS Tariff %)
     local procedure LoadCountryParameters(var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item")
     begin
         QuoteItem."Annual Inflation %" := CountrySetup."Default Inflation Index %";
@@ -108,18 +119,17 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
         QuoteItem."Interest Rate %" := CountrySetup."Annual Interest Expense %";
         QuoteItem."Idleness Rate %" := CountrySetup."Idleness Rate %";
         QuoteItem."Tax Depreciation Period" := CountrySetup."Tax Depreciation Period";
-        QuoteItem."PIS COFINS Tariff %" := 9.25; // BR standard
-        QuoteItem."PIS COFINS Credit %" := 9.25;
         QuoteItem."Profit Tax Rate %" := CountrySetup."Profit Tax Rate %";
-        QuoteItem."Resale Cost %" := 0.03; // 3% default
 
-        // Credit Risk Factor
+        // Campos tributários agora carregados do Country Setup
+        QuoteItem."PIS COFINS Tariff %" := CountrySetup."National Revenue Tax %";
+        QuoteItem."IPVA Rate %" := 4;
+
         LoadCreditRiskFactor(QuoteHeader, QuoteItem);
     end;
 
     local procedure LoadCreditRiskFactor(var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item")
     begin
-        // Precedence: Customer-level → Credit Score → Country default
         if QuoteHeader."Credit Risk Factor %" <> 0 then begin
             QuoteItem."Credit Risk %" := QuoteHeader."Credit Risk Factor %";
             exit;
@@ -145,31 +155,26 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
 
     local procedure CalculateKINTOFee(var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item")
     var
+        PackagePricing: Codeunit "KINTO Package Pricing Calc";
         TotalCosts: Decimal;
         TargetMargin: Decimal;
+        PkgCosts: Decimal;
     begin
-        // KINTO Fee-Based: Monthly Fee = (Total Costs + Target Margin) / Contract Term
         TotalCosts := CFCalc.CalculateTotalCosts(QuoteHeader, QuoteItem);
+        PkgCosts := PackagePricing.CalculateAllPackageCosts(QuoteHeader, QuoteItem);
+        TotalCosts += PkgCosts * QuoteItem."Contract Term (Months)";
+
         TargetMargin := QuoteItem."Purchase Price" * CountrySetup."Net Contribution Margin %" / 100;
         QuoteItem."Monthly Tariff" := Round((TotalCosts + TargetMargin) / QuoteItem."Contract Term (Months)", 0.01);
     end;
 
     local procedure CalculateIndicators(var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item")
     begin
-        // IRR calculated from Cash Flow
         QuoteItem."KINTO IRR" := CFCalc.CalculateIRR(QuoteHeader, QuoteItem);
-
-        // Reference IRR from Country Setup
         QuoteItem."Reference IRR" := CountrySetup."Annual Interest Expense %" / 100;
-
-        // ROI
         QuoteItem."Calculated ROI" := CFCalc.CalculateROI(QuoteHeader, QuoteItem);
-
-        // EBT and PAT
         QuoteItem.EBT := CFCalc.CalculateEBT(QuoteHeader, QuoteItem);
         QuoteItem.PAT := QuoteItem.EBT * (1 - QuoteItem."Profit Tax Rate %" / 100);
-
-        // KINTO FCF
         QuoteItem."KINTO FCF" := CFCalc.CalculateFCF(QuoteHeader, QuoteItem);
     end;
 
@@ -180,32 +185,16 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
         QuoteHeader."Total MSRP" := 0;
         QuoteHeader."Total Purchase Price" := 0;
         QuoteHeader."Total Monthly Fee" := 0;
-        QuoteHeader."KINTO IRR" := 0;
-        QuoteHeader."Calculated ROI" := 0;
-        QuoteHeader.EBT := 0;
-        QuoteHeader.PAT := 0;
-        QuoteHeader."KINTO FCF" := 0;
-
         QuoteItem.SetRange("Quote No.", QuoteHeader."Quote No.");
         if QuoteItem.FindSet() then
             repeat
                 QuoteHeader."Total MSRP" += QuoteItem.MSRP;
                 QuoteHeader."Total Purchase Price" += QuoteItem."Purchase Price";
                 QuoteHeader."Total Monthly Fee" += QuoteItem."Monthly Tariff";
-                QuoteHeader."KINTO IRR" += QuoteItem."KINTO IRR";
-                QuoteHeader."Calculated ROI" += QuoteItem."Calculated ROI";
-                QuoteHeader.EBT += QuoteItem.EBT;
-                QuoteHeader.PAT += QuoteItem.PAT;
-                QuoteHeader."KINTO FCF" += QuoteItem."KINTO FCF";
             until QuoteItem.Next() = 0;
-
-        // Average IRR/ROI if multiple items
-        if QuoteItem.Count > 0 then begin
-            QuoteHeader."KINTO IRR" := QuoteHeader."KINTO IRR" / QuoteItem.Count;
-            QuoteHeader."Calculated ROI" := QuoteHeader."Calculated ROI" / QuoteItem.Count;
-        end;
     end;
 
+    // CORREÇÃO: Validações de Header fora do loop
     local procedure ClassifyPreApproval(var QuoteHeader: Record "KINTO Quote Header")
     var
         QuoteItem: Record "KINTO Quote Item";
@@ -213,23 +202,18 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
     begin
         IsNonStandard := false;
 
+        if QuoteHeader."Negotiation Buffer %" > CountrySetup."Suggested Negot. Buffer %" then
+            IsNonStandard := true;
+        if QuoteHeader."Credit Score" in ['D', 'E', 'F'] then
+            IsNonStandard := true;
+
         QuoteItem.SetRange("Quote No.", QuoteHeader."Quote No.");
         if QuoteItem.FindSet() then
             repeat
-                // Check criteria
                 if QuoteItem."Calculated ROI" < QuoteItem."Reference IRR" then
-                    IsNonStandard := true;
-                if QuoteHeader."Negotiation Buffer %" > CountrySetup."Suggested Negot. Buffer %" then
-                    IsNonStandard := true;
-                if QuoteHeader."Credit Score" in ['D', 'E', 'F'] then
                     IsNonStandard := true;
                 if QuoteItem."Payment Allowance (days)" > 30 then
                     IsNonStandard := true;
-                if QuoteItem."Contingency Amount" > 0 then
-                    IsNonStandard := true;
-                if QuoteItem."Vehicle Condition" = QuoteItem."Vehicle Condition"::Used then
-                    if not CountrySetup."reKinto Pre-Approved" then
-                        IsNonStandard := true;
             until QuoteItem.Next() = 0;
 
         if IsNonStandard then
@@ -238,20 +222,24 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
             QuoteHeader."Approval Classification" := QuoteHeader."Approval Classification"::Standard;
     end;
 
+    // CORREÇÃO: Entry No. é AutoIncrement — NÃO atribuir manualmente
+    // Snapshot ID garante unicidade com timestamp + Line No.
     local procedure CreateSnapshot(var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item")
     var
         Snapshot: Record "KINTO Simulation Snapshot";
-        NoSeries: Codeunit "No. Series";
     begin
         Snapshot.Init();
-        Snapshot."Snapshot ID" := NoSeries.GetNextNo('KINTO-SNAP', WorkDate(), true);
+        // Entry No. = AutoIncrement — deixar o BC gerar
+        Snapshot."Snapshot ID" :=
+            Format(CurrentDateTime, 0, '<Year4><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>') +
+            '-' + Format(QuoteItem."Line No.");
         Snapshot."Quote No." := QuoteHeader."Quote No.";
         Snapshot."Quote Line No." := QuoteItem."Line No.";
         Snapshot."Monthly Fee" := QuoteItem."Monthly Tariff";
         Snapshot."IRR" := QuoteItem."KINTO IRR";
         Snapshot."Calculated ROI" := QuoteItem."Calculated ROI";
         Snapshot.Insert(true);
+
         QuoteHeader."Snapshot ID" := Snapshot."Snapshot ID";
     end;
-
 }

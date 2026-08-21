@@ -20,6 +20,14 @@ page 50139 "KINTO Vehicle Model Card"
                 field("Transmission Type"; Rec."Transmission Type") { ApplicationArea = All; }
                 field("Status"; Rec."Status") { ApplicationArea = All; }
             }
+            group(VDCommission)
+            {
+                Caption = 'Comissão VD (por Modelo)';
+
+                field("VD Sales Commission %"; Rec."VD Sales Commission %") { ApplicationArea = All; }
+                field("VD Delivery Commission %"; Rec."VD Delivery Commission %") { ApplicationArea = All; }
+                field("VD Commission Model"; Rec."VD Commission Model") { ApplicationArea = All; }
+            }
             group(Defaults)
             {
                 Caption = 'Default Parameters';

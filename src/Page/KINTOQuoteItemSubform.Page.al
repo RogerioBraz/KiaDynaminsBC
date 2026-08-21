@@ -27,6 +27,15 @@ page 50111 "KINTO Quote Item Subform"
                 field("KINTO IRR"; Rec."KINTO IRR") { ApplicationArea = All; }
                 field("Calculated ROI"; Rec."Calculated ROI") { ApplicationArea = All; }
                 field("Pricing Status"; Rec."Pricing Status") { ApplicationArea = All; }
+                field("Glass Coverage Package ID"; Rec."Glass Coverage Package ID") { ApplicationArea = All; }
+                field("24h Assistance Package ID"; Rec."24h Assistance Package ID") { ApplicationArea = All; }
+                field("Pickup Delivery Package ID"; Rec."Pickup Delivery Package ID") { ApplicationArea = All; }
+                field("Replacement Vehicle Pkg ID"; Rec."Replacement Vehicle Pkg ID") { ApplicationArea = All; }
+                field("Replacement Vehicle Uses"; Rec."Replacement Vehicle Uses") { ApplicationArea = All; Visible = Rec."Replacement Vehicle Pkg ID" <> ''; }
+                field("Tire Package ID"; Rec."Tire Package ID") { ApplicationArea = All; }
+                field("Tire Quantity"; Rec."Tire Quantity") { ApplicationArea = All; Visible = Rec."Tire Package ID" <> ''; }
+                field("Service Package ID"; Rec."Service Package ID") { ApplicationArea = All; }
+                field("Insurance Quote No."; Rec."Insurance Quote No.") { ApplicationArea = All; }
             }
         }
     }

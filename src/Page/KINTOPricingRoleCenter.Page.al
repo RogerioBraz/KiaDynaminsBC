@@ -52,7 +52,7 @@ page 50140 "KINTO Pricing Role Center"
                     Caption = 'Snapshots de Simulação';
                     ApplicationArea = All;
                     RunObject = page "KINTO Snapshot Card";
-                    Image = Snapshot;
+                    Image = CopyBudget;
                 }
             }
 
@@ -218,6 +218,87 @@ page 50140 "KINTO Pricing Role Center"
                     Image = New;
                 }
             }
+            group(Pacotes)
+            {
+                Caption = 'Pacotes de Serviços';
+
+                action(GlassCoverageList)
+                {
+                    Caption = 'Cobertura de Vidros';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Glass Coverage List";
+                    Image = Insurance;
+                }
+                action(Assistance24hList)
+                {
+                    Caption = 'Assistência 24h';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO 24h Assistance List";
+                    Image = Assistance;
+                }
+                action(PickupDeliveryList)
+                {
+                    Caption = 'Pick-up & Delivery';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Pickup Delivery List";
+                    Image = Delivery;
+                }
+                action(ReplacementVehicleList)
+                {
+                    Caption = 'Veículo Substituto';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Repl Vehicle List";
+                    Image = Car;
+                }
+                action(TirePackageList)
+                {
+                    Caption = 'Pneus';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Tire Package List";
+                    Image = Item;
+                }
+                action(ServicePackageList)
+                {
+                    Caption = 'Serviços (Telemática)';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Service Package List";
+                    Image = Service;
+                }
+            }
+            group(Fornecedores)
+            {
+                Caption = 'Fornecedores';
+
+                action(VendorCategoryList)
+                {
+                    Caption = 'Categorias de Fornecedor';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Vendor Category List";
+                    Image = Category;
+                }
+                action(VendorContactList)
+                {
+                    Caption = 'Contatos (Portal Dealer)';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Vendor Contact List";
+                    Image = ContactPerson;
+                }
+                action(SupplierGroupList)
+                {
+                    Caption = 'Grupos de Fornecedores';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Supplier Group List";
+                    Image = Group;
+                }
+                action(ItemVersionHistory)
+                {
+                    Caption = 'Histórico de Versões de Itens';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Item Version History";
+                    Image = History;
+                }
+            }
+
 
             // ============================================================
             // APROVAÇÕES

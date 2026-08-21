@@ -1,6 +1,6 @@
 page 50134 "KINTO Maint. Plan Card"
 {
-    Caption = 'KINTO Maintenance Plan';
+    Caption = 'KINTO Maintenance Plan Card';
     PageType = Card;
     SourceTable = "KINTO Maintenance Plan Header";
     ApplicationArea = All;
@@ -11,55 +11,76 @@ page 50134 "KINTO Maint. Plan Card"
         {
             group(General)
             {
-                Caption = 'General';
+                Caption = 'Informações Gerais';
                 field("Plan ID"; Rec."Plan ID") { ApplicationArea = All; }
                 field(Description; Rec.Description) { ApplicationArea = All; }
                 field("Vehicle Model No."; Rec."Vehicle Model No.") { ApplicationArea = All; }
                 field("Item No."; Rec."Item No.") { ApplicationArea = All; }
                 field("Discount %"; Rec."Discount %") { ApplicationArea = All; }
-                field("Status"; Rec."Status") { ApplicationArea = All; }
+                field(Status; Rec.Status) { ApplicationArea = All; }
+                field("Country Code"; Rec."Country Code") { ApplicationArea = All; }
             }
-            part(Lines; "KINTO Maint. Plan Subform")
+            group(PoolAndArmoring)
             {
-                ApplicationArea = All;
-                SubPageLink = "Plan ID" = field("Plan ID");
+                Caption = 'Pool e Blindagem';
+                field(Armoring; Rec.Armoring) { ApplicationArea = All; }
+                field("Enable Pool"; Rec."Enable Pool") { ApplicationArea = All; }
+                field("Usage Type Filter"; Rec."Usage Type Filter") { ApplicationArea = All; }
+            }
+            group(MonetaryBalance)
+            {
+                Caption = 'Monetary Balance (Corrective)';
+                field("Monetary Balance Amount"; Rec."Monetary Balance Amount") { ApplicationArea = All; }
+                field("Monetary Balance Markup %"; Rec."Monetary Balance Markup %") { ApplicationArea = All; }
+            }
+            group(Validity)
+            {
+                Caption = 'Validade';
+                field("Active Start Date"; Rec."Active Start Date") { ApplicationArea = All; }
+                field("Active End Date"; Rec."Active End Date") { ApplicationArea = All; }
+                field("Show on Dealer Portal"; Rec."Show on Dealer Portal") { ApplicationArea = All; }
+                field("Block Pre-Approved Pricing"; Rec."Block Pre-Approved Pricing") { ApplicationArea = All; }
+            }
+            group(Ranges)
+            {
+                Caption = 'Faixas de Manutenção Preventiva';
+                part(RangeSubform; "KINTO Maint Range Subform")
+                {
+                    ApplicationArea = All;
+                    SubPageLink = "Plan ID" = field("Plan ID");
+                }
+            }
+            group(GenericRange)
+            {
+                Caption = 'Faixa Genérica (Corretiva)';
+                part(GenericSubform; "KINTO Maint Generic Range Sub")
+                {
+                    ApplicationArea = All;
+                    SubPageLink = "Plan ID" = field("Plan ID");
+                }
             }
         }
     }
+
     actions
     {
         area(Processing)
         {
-            action(ViewInventoryForModel)
+            action(CalculateForContract)
             {
-                Caption = 'Ver Veículos deste Modelo';
+                Caption = 'Calcular Custo para Contrato';
                 ApplicationArea = All;
-                Image = Item;
-                Visible = Rec."Vehicle Model No." <> '';
+                Image = Calculate;
                 trigger OnAction()
                 var
-                    InventoryVehicle: Record "KINTO Inventory Vehicle";
+                    ContractTerm: Integer;
+                    EstMileage: Decimal;
+                    TotalCost: Decimal;
                 begin
-                    InventoryVehicle.SetRange("Vehicle Model No.", Rec."Vehicle Model No.");
-                    Page.Run(Page::"KINTO Inventory Vehicle List", InventoryVehicle);
-                end;
-            }
-            action(ViewQuotesUsingPlan)
-            {
-                Caption = 'Ver Cotações com este Plano';
-                ApplicationArea = All;
-                Image = Document;
-                trigger OnAction()
-                var
-                    QuoteItem: Record "KINTO Quote Item";
-                    QuoteHeader: Record "KINTO Quote Header";
-                begin
-                    QuoteItem.SetRange("Maintenance Plan ID", Rec."Plan ID");
-                    if QuoteItem.FindFirst() then begin
-                        QuoteHeader.SetRange("Quote No.", QuoteItem."Quote No.");
-                        Page.Run(Page::"KINTO Quote List", QuoteHeader);
-                    end else
-                        Message('No quotes found using this maintenance plan.');
+                    ContractTerm := 36;
+                    EstMileage := 30000;
+                    TotalCost := Rec.GetTotalCostForContract(ContractTerm, EstMileage, 0, 0);
+                    Message('Custo total para contrato %1 meses / %2 km: %3', ContractTerm, EstMileage, TotalCost);
                 end;
             }
         }

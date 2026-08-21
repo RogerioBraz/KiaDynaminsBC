@@ -81,6 +81,11 @@ table 50120 "KINTO Insurance Quote Group"
         field(15; "Created By"; Code[50]) { Caption = 'Created By'; }
         field(16; "Created Date"; Date) { Caption = 'Created Date'; }
         field(17; "Modified Date"; Date) { Caption = 'Modified Date'; }
+        field(50100; "Deductible Type"; Enum "KINTO Deductible Type") { Caption = 'Deductible Type'; }
+        field(50101; "Deductible Value"; Decimal) { Caption = 'Deductible Value'; DecimalPlaces = 0 : 5; }
+        field(50102; "Insurance Loading %"; Decimal) { Caption = 'Insurance Loading (Surcharge) %'; DecimalPlaces = 0 : 5; }
+        field(50103; "Vehicle Value Basis"; Option) { Caption = 'Vehicle Value Basis'; OptionMembers = "MSRP Only","MSRP + Implements - Dealer Discount","FIPE/Market Value"; }
+
     }
 
     keys

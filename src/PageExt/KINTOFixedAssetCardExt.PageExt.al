@@ -59,7 +59,7 @@ pageextension 50103 "KINTO Fixed Asset Card Ext" extends "Fixed Asset Card"
             {
                 Caption = 'Freeze Booking Value';
                 ApplicationArea = All;
-                Image = Freeze;
+                Image = Forecast;
                 Visible = Rec."KINTO Inventory Vehicle No." <> '';
 
                 trigger OnAction()
