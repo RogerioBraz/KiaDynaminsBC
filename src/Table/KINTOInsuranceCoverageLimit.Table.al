@@ -5,7 +5,12 @@ table 50133 "KINTO Insurance Coverage Limit"
 
     fields
     {
-        field(1; "Insurance Package ID"; Code[20]) { Caption = 'Insurance Package ID'; TableRelation = "KINTO Insurance Quote Group"; NotBlank = true; }
+        field(1; "Insurance Package ID"; Integer)
+        {
+            Caption = 'Insurance Package ID';
+            TableRelation = "KINTO Insurance Quote Group"."Group ID";
+            NotBlank = true;
+        }
         field(2; "Line No."; Integer) { Caption = 'Line No.'; }
         field(3; "Coverage Category"; Enum "KINTO Coverage Category") { Caption = 'Coverage Category'; NotBlank = true; }
         field(4; "Coverage Limit"; Decimal) { Caption = 'Coverage Limit'; AutoFormatType = 1; }

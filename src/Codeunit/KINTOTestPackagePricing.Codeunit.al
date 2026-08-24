@@ -108,7 +108,7 @@ codeunit 50161 "KINTO Test Package Pricing"
     begin
         // Coverage % = 5% of vehicle value, markup = 10%
         CoverageLimit.Init();
-        CoverageLimit."Insurance Package ID" := 'TEST-INS';
+        CoverageLimit."Insurance Package ID" := 1;
         CoverageLimit."Coverage Category" := CoverageLimit."Coverage Category"::"Property Damage";
         CoverageLimit."Coverage %" := 5;
         CoverageLimit."Markup %" := 10;

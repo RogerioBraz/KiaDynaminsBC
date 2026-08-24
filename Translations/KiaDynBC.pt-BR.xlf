@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
   <file datatype="xml" source-language="en-US" target-language="pt-BR" original="KiaDynBC.g.xlf">
     <body>
@@ -566,6 +566,13 @@
           <target>Frequência do Ajuste da Inflação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Inflation Adj. Frequency - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 392246691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IPVA Rate %</source>
+          <target>Taxa de IPVA %</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field IPVA Rate % - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1652137844 - Field 4157438706 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Maximum Projected Accumulated Mileage</source>
@@ -2769,6 +2776,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Field Monthly Tariff - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3176424292 - Field 3377120672 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>preço de compra do veículo</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Field MSRP - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Table 3176424292 - Field 3377120672 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>MSRP</source>
           <target>MSRP</target>
@@ -4527,11 +4541,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Ins. Quote Group Card - Control Audit - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2908407624 - Control 3070570244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Limites de Cobertura (Pricing)</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Ins. Quote Group Card - Control CoverageLimits - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2908407624 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Informações Gerais</source>
           <target>Informações Gerais</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Ins. Quote Group Card - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2908407624 - Control 3788476442 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Parâmetros de Seguro</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Ins. Quote Group Card - Control InsuranceParams - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2908407624 - Action 1549032309 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cotações deste Grupo</source>
@@ -4913,363 +4941,428 @@
         </trans-unit>
         <trans-unit id="Page 2565773788 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Pricing</source>
-          <target state="translated">KINTO Pricing</target>
+          <target>KINTO Pricificação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3913809234 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Novo Plano de Manutenção</source>
-          <target state="translated">New Maintenance Plan</target>
+          <source>New Maintenance Plan</source>
+          <target>[NAB: REVIEW]New Maintenance Plan</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewMaintPlanAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2179368204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Nova Cotação</source>
-          <target state="translated">New Quote</target>
+          <source>New Quote</source>
+          <target>[NAB: REVIEW]New Quote</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewQuoteAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3698358830 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Nova Entrada RV</source>
-          <target state="translated">New RV Entry</target>
+          <source>New RV Entry</source>
+          <target>[NAB: REVIEW]New RV Entry</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewRVEntryAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 448813062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Novo Veículo</source>
-          <target state="translated">New Vehicle</target>
+          <source>New Vehicle</source>
+          <target>[NAB: REVIEW]New Vehicle</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewVehicleAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2228238311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Novo Modelo de Veículo</source>
-          <target state="translated">New Vehicle Model</target>
+          <source>New Vehicle Model</source>
+          <target>[NAB: REVIEW]New Vehicle Model</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewVehicleModelAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 637803340 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Baixa um arquivo Excel template para preenchimento da Matriz RV.</source>
-          <target state="translated">Downloads an Excel template for entering the Residual Value Matrix.</target>
+          <source>Downloads an Excel template for entering the Residual Value Matrix.</source>
+          <target>[NAB: REVIEW]Downloads an Excel template for entering the Residual Value Matrix.</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action DownloadRVTemplate - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 637803340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Baixar Template RV Matrix</source>
-          <target state="translated">Download RV Matrix Template</target>
+          <source>Download RV Matrix Template</source>
+          <target>[NAB: REVIEW]Download RV Matrix Template</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action DownloadRVTemplate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2810716275 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Importa um plano de manutenção via arquivo Excel.</source>
-          <target state="translated">Imports a maintenance plan from an Excel file.</target>
+          <source>Imports a maintenance plan from an Excel file.</source>
+          <target>[NAB: REVIEW]Imports a maintenance plan from an Excel file.</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ImportMaintPlan - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2810716275 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Importar Plano de Manutenção (Excel)</source>
-          <target state="translated">Import Maintenance Plan (Excel)</target>
+          <source>Import Maintenance Plan (Excel)</source>
+          <target>[NAB: REVIEW]Import Maintenance Plan (Excel)</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ImportMaintPlan - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1257017550 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Importa entradas da Matriz de Valor Residual via arquivo Excel.</source>
-          <target state="translated">Imports Residual Value Matrix entries from an Excel file.</target>
+          <source>Imports Residual Value Matrix entries from an Excel file.</source>
+          <target>[NAB: REVIEW]Imports Residual Value Matrix entries from an Excel file.</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ImportRVMatrix - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1257017550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Importar Matriz RV (Excel)</source>
-          <target state="translated">Import RV Matrix (Excel)</target>
+          <source>Import RV Matrix (Excel)</source>
+          <target>[NAB: REVIEW]Import RV Matrix (Excel)</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ImportRVMatrix - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2930236268 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Relatório de Fluxo de Caixa</source>
-          <target state="translated">Cash Flow Report</target>
+          <source>Cash Flow Report</source>
+          <target>[NAB: REVIEW]Cash Flow Report</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ViewCashFlowReport - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2078252032 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Relatório de Snapshots</source>
-          <target state="translated">Snapshots Report</target>
+          <source>Snapshots Report</source>
+          <target>[NAB: REVIEW]Snapshots Report</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ViewSnapshotsReport - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 4241267875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Aprovações</source>
-          <target state="translated">Approvals</target>
+        <trans-unit id="Page 2565773788 - Action 3860314472 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approvals</source>
+          <target>[NAB: NOT TRANSLATED]</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Aprovacoes - Property Caption</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Approvals - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 557708079 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Solicitações de Aprovação</source>
-          <target state="translated">Approval Requests</target>
+          <source>Approval Requests</source>
+          <target>[NAB: REVIEW]Approval Requests</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ApprovalRequests - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 3594702826 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cadastros</source>
-          <target state="translated">Master Data</target>
+        <trans-unit id="Page 2565773788 - Action 1538464910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Insurance</source>
+          <target>[NAB: NOT TRANSLATED]</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Cadastros - Property Caption</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Insurance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 2224658365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Ins Coverage Limit Sub</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action InsCoverageLimitSub - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 786036573 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quote Groups</source>
+          <target>[NAB: REVIEW]Quote Groups</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action InsQuoteGroupList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 2129586718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Insurance Quotes</source>
+          <target>[NAB: REVIEW]Insurance Quotes</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action InsuranceQuoteList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 3584277202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Insurers</source>
+          <target>[NAB: REVIEW]Insurers</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action InsurerList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 4277305976 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New Insurance Quote</source>
+          <target>[NAB: REVIEW]New Insurance Quote</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewInsuranceQuote - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 1572708512 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Master Data</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action MasterData - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1994005900 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Ficha de Cliente</source>
-          <target state="translated">Customer Card</target>
+          <source>Customer Card</source>
+          <target>Ficha de Cliente</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CustomerCard - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 363045002 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Clientes</source>
-          <target state="translated">Customers</target>
+          <source>Customers</source>
+          <target>Clientes</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CustomerList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3709824974 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Ficha de Ativo Fixo</source>
-          <target state="translated">Fixed Asset Card</target>
+          <source>Fixed Asset Card</source>
+          <target>Ficha de Ativo Fixo</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action FixedAssetCard - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2593810088 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Ativos Fixos (Booking Value)</source>
-          <target state="translated">Fixed Assets (Booking Value)</target>
+          <source>Fixed Assets (Booking Value)</source>
+          <target>Ativos Fixos (Booking Value)</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action FixedAssetList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2876958691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Ficha de Item</source>
-          <target state="translated">Item Card</target>
+          <source>Item Card</source>
+          <target>Ficha de Item</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ItemCard - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1020778533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Categorias de Item</source>
-          <target state="translated">Item Categories</target>
+          <source>Item Categories</source>
+          <target>Categorias de Item</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ItemCategories - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2768240657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Itens (Veículos e Acessórios)</source>
-          <target state="translated">Items (Vehicles and Accessories)</target>
+          <source>Items (Vehicles and Accessories)</source>
+          <target>Itens (Veículos e Acessórios)</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ItemList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1574261460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Ficha de Dealer</source>
-          <target state="translated">Dealer Card</target>
+          <source>Dealer Card</source>
+          <target>Ficha de Dealer/target</source>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action VendorCard - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 400138034 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Dealers (Fornecedores)</source>
-          <target state="translated">Dealers (Vendors)</target>
+          <source>Dealers (Vendors)</source>
+          <target>Dealers (Fornecedores)</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action VendorList - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 109404883 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Configuração</source>
-          <target state="translated">Setup</target>
+        <trans-unit id="Page 2565773788 - Action 762499963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Service Packages</source>
+          <target>[NAB: NOT TRANSLATED]</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Configuracao - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 2571089339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Componentes de Cash Flow</source>
-          <target state="translated">Cash Flow Components</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CFComponents - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 3596930665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Configuração por País</source>
-          <target state="translated">Country Setup</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CountrySetup - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 2279610327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Planos de Manutenção</source>
-          <target state="translated">Maintenance Plans</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action MaintenancePlans - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 889408828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Novo Plano de Manutenção</source>
-          <target state="translated">New Maintenance Plan</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewMaintPlan - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 3691601952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Nova Entrada RV</source>
-          <target state="translated">New RV Entry</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewRVEntry - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 3704295809 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Matriz de Valor Residual</source>
-          <target state="translated">Residual Value Matrix</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action RVMatrix - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 2779515365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cotações</source>
-          <target state="translated">Quotes</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Cotacoes - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 3838802397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fluxo de Caixa</source>
-          <target state="translated">Cash Flow</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CashFlowData - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 3244524450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Nova Cotação</source>
-          <target state="translated">New Quote</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewQuote - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 2775441684 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cotações</source>
-          <target state="translated">Quotes</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action QuoteList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 2342602361 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Snapshots de Simulação</source>
-          <target state="translated">Simulation Snapshots</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Snapshots - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 3948095379 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fornecedores</source>
-          <target state="translated">Vendors</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Fornecedores - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 1602948287 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Histórico de Versões de Itens</source>
-          <target state="translated">Item Version History</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ItemVersionHistory - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 1461380427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Grupos de Fornecedores</source>
-          <target state="translated">Vendor Groups</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action SupplierGroupList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 2997759794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Categorias de Fornecedor</source>
-          <target state="translated">Vendor Categories</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action VendorCategoryList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 471044106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contatos (Portal Dealer)</source>
-          <target state="translated">Contacts (Dealer Portal)</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action VendorContactList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 1532150161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pacotes de Serviços</source>
-          <target state="translated">Service Packages</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Pacotes - Property Caption</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Packages - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1483320198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Assistência 24h</source>
-          <target state="translated">24h Assistance</target>
+          <source>24h Assistance</source>
+          <target>[NAB: REVIEW]24h Assistance</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Assistance24hList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2471256554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cobertura de Vidros</source>
-          <target state="translated">Glass Coverage</target>
+          <source>Glass Coverage</source>
+          <target>[NAB: REVIEW]Glass Coverage</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action GlassCoverageList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2248666022 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pick-up & Delivery</source>
-          <target state="translated">Pick-up & Delivery</target>
+          <source>Pick-up &amp; Delivery</source>
+          <target>Pick-up &amp; Delivery</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action PickupDeliveryList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2492537712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Veículo Substituto</source>
-          <target state="translated">Replacement Vehicle</target>
+          <source>Replacement Vehicle</source>
+          <target>[NAB: REVIEW]Replacement Vehicle</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ReplacementVehicleList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 4221244079 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Serviços (Telemetria)</source>
-          <target state="translated">Services (Telemetry)</target>
+          <source>Services (Telemetry)</source>
+          <target>[NAB: REVIEW]Services (Telemetry)</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ServicePackageList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1747354622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pneus</source>
-          <target state="translated">Tires</target>
+          <source>Tires</source>
+          <target>[NAB: REVIEW]Tires</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action TirePackageList - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 2256062718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Seguros</source>
-          <target state="translated">Insurance</target>
+        <trans-unit id="Page 2565773788 - Action 2593441947 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quotes</source>
+          <target>[NAB: NOT TRANSLATED]</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Seguros - Property Caption</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Quotes - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 786036573 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Grupos de Cotação</source>
-          <target state="translated">Quote Groups</target>
+        <trans-unit id="Page 2565773788 - Action 3838802397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cash Flow</source>
+          <target>[NAB: REVIEW]Cash Flow</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action InsQuoteGroupList - Property Caption</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CashFlowData - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 2129586718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cotações de Seguro</source>
-          <target state="translated">Insurance Quotes</target>
+        <trans-unit id="Page 2565773788 - Action 3244524450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New Quote</source>
+          <target>[NAB: REVIEW]New Quote</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action InsuranceQuoteList - Property Caption</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewQuote - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 3584277202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Seguradoras</source>
-          <target state="translated">Insurers</target>
+        <trans-unit id="Page 2565773788 - Action 2775441684 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quotes</source>
+          <target>[NAB: REVIEW]Quotes</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action InsurerList - Property Caption</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action QuoteList - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 4277305976 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Nova Cotação de Seguro</source>
-          <target state="translated">New Insurance Quote</target>
+        <trans-unit id="Page 2565773788 - Action 2342602361 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Simulation Snapshots</source>
+          <target>[NAB: REVIEW]Simulation Snapshots</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewInsuranceQuote - Property Caption</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Snapshots - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 1679747808 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Veículos</source>
-          <target state="translated">Vehicles</target>
+        <trans-unit id="Page 2565773788 - Action 1514883969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Setup</source>
+          <target>[NAB: NOT TRANSLATED]</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Veiculos - Property Caption</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 2571089339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cash Flow Components</source>
+          <target>[NAB: REVIEW]Cash Flow Components</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CFComponents - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 3596930665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Country Setup</source>
+          <target>[NAB: REVIEW]Country Setup</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CountrySetup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 2279610327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Maintenance Plans</source>
+          <target>[NAB: REVIEW]Maintenance Plans</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action MaintenancePlans - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 889408828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New Maintenance Plan</source>
+          <target>[NAB: REVIEW]New Maintenance Plan</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewMaintPlan - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 3691601952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New RV Entry</source>
+          <target>[NAB: REVIEW]New RV Entry</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewRVEntry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 3704295809 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Residual Value Matrix</source>
+          <target>[NAB: REVIEW]Residual Value Matrix</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action RVMatrix - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 3511817141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vehicles</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Vehicles - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1320741956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Veículos em Estoque</source>
-          <target state="translated">Vehicles in Stock</target>
+          <source>Vehicles in Stock</source>
+          <target>[NAB: REVIEW]Vehicles in Stock</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action InventoryVehicleList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3320336840 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Novo Veículo</source>
-          <target state="translated">New Vehicle</target>
+          <source>New Vehicle</source>
+          <target>[NAB: REVIEW]New Vehicle</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewVehicle - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3965960935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Histórico de Odômetro</source>
-          <target state="translated">Odometer History</target>
+          <source>Odometer History</source>
+          <target>[NAB: REVIEW]Odometer History</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action OdometerHistory - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3325950671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Modelos de Veículos</source>
-          <target state="translated">Vehicle Models</target>
+          <source>Vehicle Models</source>
+          <target>[NAB: REVIEW]Vehicle Models</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action VehicleModelList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 713531721 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendors</source>
+          <target>[NAB: NOT TRANSLATED]</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Vendors - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 1602948287 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Version History</source>
+          <target>[NAB: REVIEW]Item Version History</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ItemVersionHistory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 1461380427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Groups</source>
+          <target>[NAB: REVIEW]Vendor Groups</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action SupplierGroupList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 2997759794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Categories</source>
+          <target>[NAB: REVIEW]Vendor Categories</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action VendorCategoryList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2565773788 - Action 471044106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contacts (Dealer Portal)</source>
+          <target>[NAB: REVIEW]Contacts (Dealer Portal)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action VendorContactList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 939516712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Pricing Validation API</source>
@@ -5342,12 +5435,6 @@
           <target>Cabeçalho do Orçamento</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Quote Card - Control Header - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3263702195 - Control 762499963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pacotes de Serviços (Nível Cotação)</source>
-          <target>Pacotes de Serviços (Nível Cotação)</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Quote Card - Control Packages - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3263702195 - Control 684242166 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pricing Parameters</source>

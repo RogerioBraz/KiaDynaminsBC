@@ -117,32 +117,40 @@ codeunit 50114 "KINTO Package Pricing Calc"
 
     procedure CalculateInsuranceFromPackage(QuoteItem: Record "KINTO Quote Item"; VehicleValue: Decimal): Decimal
     var
-        InsCoverageLimit: Record "KINTO Insurance Coverage Limit";
+        InsQuote: Record "KINTO Insurance Quote";
         InsQuoteGroup: Record "KINTO Insurance Quote Group";
+        InsCoverageLimit: Record "KINTO Insurance Coverage Limit";
         TotalPremium: Decimal;
         LoadingFactor: Decimal;
+        CategoryPremium: Decimal;
     begin
         TotalPremium := 0;
 
-        // Busca o Insurance Quote Group vinculado ao Quote Item via Insurance Quote No.
+        // 1. Busca a Insurance Quote vinculada ao Quote Item
         if QuoteItem."Insurance Quote No." = '' then exit(0);
+        if not InsQuote.Get(QuoteItem."Insurance Quote No.") then exit(0);
 
-        // Calcula prêmio para cada categoria de cobertura
-        InsCoverageLimit.SetRange("Insurance Package ID", QuoteItem."Insurance Quote No.");
+        // 2. Busca o Insurance Quote Group vinculado à cotação
+        if InsQuote."Quote Group ID" = 0 then exit(0);
+        if not InsQuoteGroup.Get(InsQuote."Quote Group ID") then exit(0);
+
+        // 3. CORREÇÃO: Filtra Coverage Limits pelo GROUP ID (não pelo Quote No.)
+        InsCoverageLimit.SetRange("Insurance Package ID", InsQuoteGroup."Group ID");
         InsCoverageLimit.SetRange(Active, true);
         if InsCoverageLimit.FindSet() then
             repeat
-                TotalPremium += InsCoverageLimit.CalculatePremium(VehicleValue);
+                CategoryPremium := InsCoverageLimit.CalculatePremium(VehicleValue);
+                TotalPremium += CategoryPremium;
             until InsCoverageLimit.Next() = 0;
 
-        // Aplica Insurance Loading (Surcharge)
-        // Busca do Insurance Quote Group vinculado
-        if InsQuoteGroup.Get(QuoteItem."Insurance Quote No.") then
-            if InsQuoteGroup."Insurance Loading %" > 0 then begin
-                LoadingFactor := 1 + InsQuoteGroup."Insurance Loading %" / 100;
-                TotalPremium := TotalPremium * LoadingFactor;
-            end;
+        // 4. Aplica Insurance Loading (Surcharge) do GROUP
+        if InsQuoteGroup."Insurance Loading %" > 0 then begin
+            LoadingFactor := 1 + InsQuoteGroup."Insurance Loading %" / 100;
+            TotalPremium := TotalPremium * LoadingFactor;
+        end;
 
         exit(Round(TotalPremium, 0.01));
     end;
+
+
 }
