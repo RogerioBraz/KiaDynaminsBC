@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
   <file datatype="xml" source-language="en-US" target-language="pt-BR" original="KiaDynBC.g.xlf">
     <body>
@@ -59,7 +59,7 @@
         </trans-unit>
         <trans-unit id="Table 1023991719 - Field 719039598 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Number of Uses</source>
-          <target>Número de Usos</target>
+          <target>Nº de Usos</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO 24h Assistance Package - Field Number of Uses - Property Caption</note>
         </trans-unit>
@@ -743,7 +743,7 @@
         </trans-unit>
         <trans-unit id="Table 1358084963 - Field 3485681546 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Balance (Number of Uses)</source>
-          <target>Saldo (Número de Usos)</target>
+          <target>Saldo (Nº de Usos)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Glass Coverage Package - Field Balance Uses - Property Caption</note>
         </trans-unit>
@@ -1067,19 +1067,19 @@
         </trans-unit>
         <trans-unit id="Table 591092297 - Field 1893411800 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Número da Linha da Cotação</source>
-          <target>KINTO Número da Linha da Cotação</target>
+          <target>KINTO Nº da Linha da Cotação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurance Quote - Field KINTO Quote Line No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 591092297 - Field 4190563094 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Número da Cotação</source>
-          <target>KINTO Número da Cotação</target>
+          <target>KINTO Nº da Cotação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurance Quote - Field KINTO Quote No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 591092297 - Field 2585418950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Código da Montadora</source>
-          <target>Código da Montadora</target>
+          <target>Cód. da Montadora</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurance Quote - Field Manufacturer Code - Property Caption</note>
         </trans-unit>
@@ -1091,7 +1091,7 @@
         </trans-unit>
         <trans-unit id="Table 591092297 - Field 1535977919 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Código Fabricante</source>
-          <target>Código Fabricante</target>
+          <target>Cód. Fabricante</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurance Quote - Field Manufacturer Part Code - Property Caption</note>
         </trans-unit>
@@ -1343,7 +1343,7 @@
         </trans-unit>
         <trans-unit id="Table 1324213693 - Field 3233755515 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Insurer Code</source>
-          <target>Código da Seguradora</target>
+          <target>Cód. da Seguradora</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurer - Field Insurer Code - Property Caption</note>
         </trans-unit>
@@ -1625,7 +1625,7 @@
         </trans-unit>
         <trans-unit id="Table 3143029943 - Field 3074992944 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Part Number</source>
-          <target>Número da Peça</target>
+          <target>Nº da Peça</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Mainten Generic Range - Field Part Number - Property Caption</note>
         </trans-unit>
@@ -1649,7 +1649,7 @@
         </trans-unit>
         <trans-unit id="Table 2227284955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Maintenance Number</source>
-          <target>Número de Manutenção KINTO</target>
+          <target>Nº de Manutenção KINTO</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Maintenance Number - Property Caption</note>
         </trans-unit>
@@ -1679,7 +1679,7 @@
         </trans-unit>
         <trans-unit id="Table 2227284955 - Field 3074992944 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Part Number</source>
-          <target>Número da Peça</target>
+          <target>Nº da Peça</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Maintenance Number - Field Part Number - Property Caption</note>
         </trans-unit>
@@ -2003,7 +2003,7 @@
         </trans-unit>
         <trans-unit id="Table 3296548031 - Field 719039598 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Number of Uses</source>
-          <target>Número de Usos</target>
+          <target>Nº de Usos</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Pickup Delivery Package - Field Number of Uses - Property Caption</note>
         </trans-unit>
@@ -3119,7 +3119,7 @@
         </trans-unit>
         <trans-unit id="Table 63014751 - Field 3473619229 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Default Number of Uses</source>
-          <target>Número Padrão de Usos</target>
+          <target>Nº Padrão de Usos</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Replacement Vehicle Pkg - Field Default Uses - Property Caption</note>
         </trans-unit>
@@ -3833,7 +3833,7 @@
         </trans-unit>
         <trans-unit id="Table 2564358849 - Field 822670428 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Default Number of Tires</source>
-          <target>Número Padrão de Pneus</target>
+          <target>Nº Padrão de Pneus</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Tire Package - Field Default Quantity - Property Caption</note>
         </trans-unit>
@@ -3857,7 +3857,7 @@
         </trans-unit>
         <trans-unit id="Table 2564358849 - Field 3074992944 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Part Number</source>
-          <target>Número da Peça</target>
+          <target>Nº da Peça</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Tire Package - Field Part Number - Property Caption</note>
         </trans-unit>
@@ -5958,7 +5958,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 993525101 - Field 3074992944 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Part Number</source>
-          <target>Número da Peça</target>
+          <target>Nº da Peça</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Item Extension - Field Part Number - Property Caption</note>
         </trans-unit>
@@ -6030,7 +6030,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 993525101 - Field 3420865979 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Vehicle Market Code</source>
-          <target>Código de Mercado do Veículo</target>
+          <target>Cód. de Mercado do Veículo</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Item Extension - Field Vehicle Market Code - Property Caption</note>
         </trans-unit>
