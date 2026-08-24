@@ -8,7 +8,7 @@ codeunit 50153 "KINTO Test Cash Flow"
         TestSetup: Codeunit "KINTO Test Setup";
 
     [Test]
-    procedure TestGenerateCashFlowMonthZero()
+    procedure TestGenerateCashFlowEndOfContract()
     var
         CountrySetup: Record "KINTO Country Setup";
         VehicleModel: Record "KINTO Vehicle Model";
@@ -19,6 +19,7 @@ codeunit 50153 "KINTO Test Cash Flow"
         QuoteItem: Record "KINTO Quote Item";
         CFData: Record "KINTO Cash Flow Data";
         CFCalc: Codeunit "KINTO Cash Flow Calculator";
+        TotalMonths: Integer;
     begin
         TestSetup.CleanupTestData();
         TestSetup.SetupCountrySetupBR(CountrySetup);
@@ -28,22 +29,18 @@ codeunit 50153 "KINTO Test Cash Flow"
         TestSetup.SetupQuoteHeader(QuoteHeader, 'BR');
         TestSetup.SetupQuoteItem(QuoteItem, QuoteHeader."Quote No.");
 
-        // Purchase Price já foi auto-calculado pelo OnValidate
         QuoteItem.Get(QuoteHeader."Quote No.", 10000);
-        Assert.IsTrue(QuoteItem."Purchase Price" > 0, 'Purchase Price should be auto-calculated');
+        QuoteItem."Monthly Tariff" := 5269.22;
+        QuoteItem.Modify(true);
 
-        // [When] Generate cash flow
         CFCalc.GenerateCashFlow(QuoteHeader, QuoteItem);
 
-        // [Then] Verify month zero entries exist
+        TotalMonths := QuoteItem."Contract Term (Months)" + QuoteItem."Extended Analysis Months";
         CFData.SetRange("Quote No.", QuoteHeader."Quote No.");
         CFData.SetRange("Quote Line No.", QuoteItem."Line No.");
-        CFData.SetRange("Month No.", 0);
-        Assert.IsTrue(CFData.FindSet(), 'Month zero entries should exist');
-
-        CFData.SetRange("Component ID", 'PURCHASE_PRICE');
-        Assert.IsTrue(CFData.FindFirst(), 'Purchase price entry should exist in month zero');
-        Assert.AreEqual(-QuoteItem."Purchase Price", CFData."Signed Amount", 'Purchase price should be negative');
+        CFData.SetRange("Month No.", TotalMonths);
+        CFData.SetRange("Component ID", 'RESALE_PRICE');
+        Assert.IsTrue(CFData.FindFirst(), 'Resale price should exist in last month');
     end;
 
     [Test]
@@ -86,7 +83,7 @@ codeunit 50153 "KINTO Test Cash Flow"
     end;
 
     [Test]
-    procedure TestGenerateCashFlowEndOfContract()
+    procedure TestGenerateCashFlowMonthZero()
     var
         CountrySetup: Record "KINTO Country Setup";
         VehicleModel: Record "KINTO Vehicle Model";
@@ -97,7 +94,6 @@ codeunit 50153 "KINTO Test Cash Flow"
         QuoteItem: Record "KINTO Quote Item";
         CFData: Record "KINTO Cash Flow Data";
         CFCalc: Codeunit "KINTO Cash Flow Calculator";
-        TotalMonths: Integer;
     begin
         TestSetup.CleanupTestData();
         TestSetup.SetupCountrySetupBR(CountrySetup);
@@ -107,18 +103,22 @@ codeunit 50153 "KINTO Test Cash Flow"
         TestSetup.SetupQuoteHeader(QuoteHeader, 'BR');
         TestSetup.SetupQuoteItem(QuoteItem, QuoteHeader."Quote No.");
 
+        // Purchase Price já foi auto-calculado pelo OnValidate
         QuoteItem.Get(QuoteHeader."Quote No.", 10000);
-        QuoteItem."Monthly Tariff" := 5269.22;
-        QuoteItem.Modify(true);
+        Assert.IsTrue(QuoteItem."Purchase Price" > 0, 'Purchase Price should be auto-calculated');
 
+        // [When] Generate cash flow
         CFCalc.GenerateCashFlow(QuoteHeader, QuoteItem);
 
-        TotalMonths := QuoteItem."Contract Term (Months)" + QuoteItem."Extended Analysis Months";
+        // [Then] Verify month zero entries exist
         CFData.SetRange("Quote No.", QuoteHeader."Quote No.");
         CFData.SetRange("Quote Line No.", QuoteItem."Line No.");
-        CFData.SetRange("Month No.", TotalMonths);
-        CFData.SetRange("Component ID", 'RESALE_PRICE');
-        Assert.IsTrue(CFData.FindFirst(), 'Resale price should exist in last month');
+        CFData.SetRange("Month No.", 0);
+        Assert.IsTrue(CFData.FindSet(), 'Month zero entries should exist');
+
+        CFData.SetRange("Component ID", 'PURCHASE_PRICE');
+        Assert.IsTrue(CFData.FindFirst(), 'Purchase price entry should exist in month zero');
+        Assert.AreEqual(-QuoteItem."Purchase Price", CFData."Signed Amount", 'Purchase price should be negative');
     end;
 
     [Test]
