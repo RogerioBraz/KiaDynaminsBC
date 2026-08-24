@@ -2569,7 +2569,7 @@
         </trans-unit>
         <trans-unit id="Table 3176424292 - Field 1361548158 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>No,Monthly,Annually</source>
-          <target state="translated">Nº,Mensal,Anual</target>
+          <target state="translated">Não,Mensal,Anual</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Field Adjustment Period - Property OptionCaption</note>
         </trans-unit>
