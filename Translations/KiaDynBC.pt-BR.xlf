@@ -2508,7 +2508,7 @@
         </trans-unit>
         <trans-unit id="Table 4223300238 - Field 2867819270 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Service (Telematics)</source>
-          <target state="translated">Serviço Telemetriaa</target>
+          <target state="translated">Serviço Telemetria</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Header - Field Service Package ID - Property Caption</note>
@@ -3855,7 +3855,7 @@
         </trans-unit>
         <trans-unit id="Table 1170792268 - Field 2176268379 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Spread</source>
-          <target state="translated">Spread</target>
+          <target state="translated">Margem</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Simulation Snapshot - Field Spread - Property Caption</note>
         </trans-unit>
