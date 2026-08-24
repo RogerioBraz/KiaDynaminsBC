@@ -259,10 +259,10 @@ page 50140 "KINTO Pricing Role Center"
                 }
                 action(ServicePackageList)
                 {
-                    Caption = 'Serviços (Telemática)';
+                    Caption = 'Serviços (Telemetria)';
                     ApplicationArea = All;
                     RunObject = page "KINTO Service Package List";
-                    Image = Service;
+                    Image = ServiceCode;
                 }
             }
             group(Fornecedores)
