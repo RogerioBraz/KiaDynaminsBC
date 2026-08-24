@@ -4913,362 +4913,361 @@
         </trans-unit>
         <trans-unit id="Page 2565773788 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Pricing</source>
-          <target>Precificação KINTO</target>
+          <target state="translated">KINTO Pricing</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3913809234 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Novo Plano de Manutenção</source>
-          <target>Novo Plano de Manutenção</target>
+          <target state="translated">New Maintenance Plan</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewMaintPlanAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2179368204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nova Cotação</source>
-          <target>Nova Cotação</target>
+          <target state="translated">New Quote</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewQuoteAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3698358830 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nova Entrada RV</source>
-          <target>Nova Entrada RV</target>
+          <target state="translated">New RV Entry</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewRVEntryAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 448813062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Novo Veículo</source>
-          <target>Novo Veículo</target>
+          <target state="translated">New Vehicle</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewVehicleAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2228238311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Novo Modelo de Veículo</source>
-          <target>Novo Modelo de Veículo</target>
+          <target state="translated">New Vehicle Model</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewVehicleModelAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 637803340 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Baixa um arquivo Excel template para preenchimento da Matriz RV.</source>
-          <target>Baixa um arquivo Excel template para preenchimento da Matriz RV.</target>
+          <target state="translated">Downloads an Excel template for entering the Residual Value Matrix.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action DownloadRVTemplate - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 637803340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Baixar Template RV Matrix</source>
-          <target>Baixar Template RV Matrix</target>
+          <target state="translated">Download RV Matrix Template</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action DownloadRVTemplate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2810716275 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Importa um plano de manutenção via arquivo Excel.</source>
-          <target>Importa um plano de manutenção via arquivo Excel.</target>
+          <target state="translated">Imports a maintenance plan from an Excel file.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ImportMaintPlan - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2810716275 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Importar Plano de Manutenção (Excel)</source>
-          <target>Importar Plano de Manutenção (Excel)</target>
+          <target state="translated">Import Maintenance Plan (Excel)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ImportMaintPlan - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1257017550 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Importa entradas da Matriz de Valor Residual via arquivo Excel.</source>
-          <target>Importa entradas da Matriz de Valor Residual via arquivo Excel.</target>
+          <target state="translated">Imports Residual Value Matrix entries from an Excel file.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ImportRVMatrix - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1257017550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Importar Matriz RV (Excel)</source>
-          <target>Importar Matriz RV (Excel)</target>
+          <target state="translated">Import RV Matrix (Excel)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ImportRVMatrix - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2930236268 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Relatório de Fluxo de Caixa</source>
-          <target>Relatório de Fluxo de Caixa</target>
+          <target state="translated">Cash Flow Report</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ViewCashFlowReport - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2078252032 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Relatório de Snapshots</source>
-          <target>Relatório de Instantâneos</target>
+          <target state="translated">Snapshots Report</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ViewSnapshotsReport - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 4241267875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Aprovações</source>
-          <target>Aprovações</target>
+          <target state="translated">Approvals</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Aprovacoes - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 557708079 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Solicitações de Aprovação</source>
-          <target>Solicitações de Aprovação</target>
+          <target state="translated">Approval Requests</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ApprovalRequests - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3594702826 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cadastros</source>
-          <target>Cadastros</target>
+          <target state="translated">Master Data</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Cadastros - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1994005900 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ficha de Cliente</source>
-          <target>Ficha de Cliente</target>
+          <target state="translated">Customer Card</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CustomerCard - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 363045002 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Clientes</source>
-          <target>Clientes</target>
+          <target state="translated">Customers</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CustomerList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3709824974 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ficha de Ativo Fixo</source>
-          <target>Ficha de Ativo Fixo</target>
+          <target state="translated">Fixed Asset Card</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action FixedAssetCard - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2593810088 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ativos Fixos (Booking Value)</source>
-          <target>Ativos Fixos (Valor de Registro)</target>
+          <target state="translated">Fixed Assets (Booking Value)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action FixedAssetList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2876958691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ficha de Item</source>
-          <target>Ficha de Item</target>
+          <target state="translated">Item Card</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ItemCard - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1020778533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Categorias de Item</source>
-          <target>Categorias de Item</target>
+          <target state="translated">Item Categories</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ItemCategories - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2768240657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Itens (Veículos e Acessórios)</source>
-          <target>Itens (Veículos e Acessórios)</target>
+          <target state="translated">Items (Vehicles and Accessories)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ItemList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1574261460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ficha de Dealer</source>
-          <target>Ficha de Revendedor</target>
+          <target state="translated">Dealer Card</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action VendorCard - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 400138034 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Dealers (Fornecedores)</source>
-          <target>Revendedores (Fornecedores)</target>
+          <target state="translated">Dealers (Vendors)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action VendorList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 109404883 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Configuração</source>
-          <target>Configuração</target>
+          <target state="translated">Setup</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Configuracao - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2571089339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Componentes de Cash Flow</source>
-          <target>Componentes de Fluxo de Caixa</target>
+          <target state="translated">Cash Flow Components</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CFComponents - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3596930665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Configuração por País</source>
-          <target>Configuração por País</target>
+          <target state="translated">Country Setup</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CountrySetup - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2279610327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Planos de Manutenção</source>
-          <target>Planos de Manutenção</target>
+          <target state="translated">Maintenance Plans</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action MaintenancePlans - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 889408828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Novo Plano de Manutenção</source>
-          <target>Novo Plano de Manutenção</target>
+          <target state="translated">New Maintenance Plan</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewMaintPlan - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3691601952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nova Entrada RV</source>
-          <target>Nova Entrada RV</target>
+          <target state="translated">New RV Entry</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewRVEntry - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3704295809 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Matriz de Valor Residual</source>
-          <target>Matriz de Valor Residual</target>
+          <target state="translated">Residual Value Matrix</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action RVMatrix - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2779515365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cotações</source>
-          <target>Cotações</target>
+          <target state="translated">Quotes</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Cotacoes - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3838802397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fluxo de Caixa</source>
-          <target>Fluxo de Caixa</target>
+          <target state="translated">Cash Flow</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CashFlowData - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3244524450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nova Cotação</source>
-          <target>Nova Cotação</target>
+          <target state="translated">New Quote</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewQuote - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2775441684 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cotações</source>
-          <target>Cotações</target>
+          <target state="translated">Quotes</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action QuoteList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2342602361 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Snapshots de Simulação</source>
-          <target>Instantâneos de Simulação</target>
+          <target state="translated">Simulation Snapshots</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Snapshots - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3948095379 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fornecedores</source>
-          <target>Fornecedores</target>
+          <target state="translated">Vendors</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Fornecedores - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1602948287 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Histórico de Versões de Itens</source>
-          <target>Histórico de Versões de Itens</target>
+          <target state="translated">Item Version History</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ItemVersionHistory - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1461380427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Grupos de Fornecedores</source>
-          <target>Grupos de Fornecedores</target>
+          <target state="translated">Vendor Groups</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action SupplierGroupList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2997759794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Categorias de Fornecedor</source>
-          <target>Categorias de Fornecedor</target>
+          <target state="translated">Vendor Categories</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action VendorCategoryList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 471044106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contatos (Portal Dealer)</source>
-          <target>Contatos (Portal Dealer)</target>
+          <target state="translated">Contacts (Dealer Portal)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action VendorContactList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1532150161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pacotes de Serviços</source>
-          <target>Pacotes de Serviços</target>
+          <target state="translated">Service Packages</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Pacotes - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1483320198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Assistência 24h</source>
-          <target>Assistência 24h</target>
+          <target state="translated">24h Assistance</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Assistance24hList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2471256554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cobertura de Vidros</source>
-          <target>Cobertura de Vidros</target>
+          <target state="translated">Glass Coverage</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action GlassCoverageList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2248666022 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pick-up &amp; Delivery</source>
-          <target>Retirada e Entrega</target>
+          <source>Pick-up & Delivery</source>
+          <target state="translated">Pick-up & Delivery</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action PickupDeliveryList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2492537712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Veículo Substituto</source>
-          <target>Veículo de Substituição</target>
+          <target state="translated">Replacement Vehicle</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ReplacementVehicleList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 4221244079 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Serviços (Telemetria)</source>
-          <target>Serviços (Telemetria)</target>
+          <target state="translated">Services (Telemetry)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ServicePackageList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1747354622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pneus</source>
-          <target>Pneus</target>
+          <target state="translated">Tires</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action TirePackageList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2256062718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Seguros</source>
-          <target>Seguros</target>
+          <target state="translated">Insurance</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Seguros - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 786036573 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Grupos de Cotação</source>
-          <target>Grupos de Cotação</target>
+          <target state="translated">Quote Groups</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action InsQuoteGroupList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2129586718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cotações de Seguro</source>
-          <target>Cotações de Seguro</target>
+          <target state="translated">Insurance Quotes</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action InsuranceQuoteList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3584277202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Seguradoras</source>
-          <target>Seguradoras</target>
+          <target state="translated">Insurers</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action InsurerList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 4277305976 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nova Cotação de Seguro</source>
-          <target>Nova Cotação de Seguro</target>
+          <target state="translated">New Insurance Quote</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewInsuranceQuote - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1679747808 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Veículos</source>
-          <target>Veículos</target>
+          <target state="translated">Vehicles</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Veiculos - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1320741956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Veículos em Estoque</source>
-          <target>Veículos em Estoque</target>
+          <target state="translated">Vehicles in Stock</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action InventoryVehicleList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3320336840 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Novo Veículo</source>
-          <target>Novo Veículo</target>
+          <target state="translated">New Vehicle</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewVehicle - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3965960935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Histórico de Odômetro</source>
-          <target>Histórico do Hodômetro</target>
+          <target state="translated">Odometer History</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action OdometerHistory - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3325950671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Modelos de Veículos</source>
-          <target>Modelos de Veículos</target>
+          <target state="translated">Vehicle Models</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action VehicleModelList - Property Caption</note>
         </trans-unit>
