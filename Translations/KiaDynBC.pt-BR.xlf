@@ -2508,7 +2508,7 @@
         </trans-unit>
         <trans-unit id="Table 4223300238 - Field 2867819270 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Service (Telematics)</source>
-          <target state="translated">Serviço (Telemática)</target>
+          <target state="translated">Serviço Telemetriaa</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Header - Field Service Package ID - Property Caption</note>
@@ -3460,7 +3460,7 @@
         </trans-unit>
         <trans-unit id="Table 1102927356 - Field 2542713143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Country Code</source>
-          <target state="translated">Cód. do País</target>
+          <target state="translated">Código do País</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Service Package - Field Country Code - Property Caption</note>
         </trans-unit>
@@ -3472,7 +3472,7 @@
         </trans-unit>
         <trans-unit id="Table 1102927356 - Field 3261267911 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Markup %</source>
-          <target state="translated">Margem %</target>
+          <target state="translated">Markup %</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Service Package - Field Markup % - Property Caption</note>
@@ -3719,7 +3719,7 @@
         </trans-unit>
         <trans-unit id="Table 1170792268 - Field 4226028443 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>IRR</source>
-          <target state="translated">TIR</target>
+          <target state="translated">IRR</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Simulation Snapshot - Field IRR - Property Caption</note>
         </trans-unit>
