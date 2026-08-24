@@ -5800,7 +5800,7 @@
         </trans-unit>
         <trans-unit id="Page 1135982553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Simulation Snapshot</source>
-          <target state="translated">Instantâneo de Simulação</target>
+          <target state="translated">Snapshot de Simulação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Snapshot Card - Property Caption</note>
         </trans-unit>
@@ -5812,7 +5812,7 @@
         </trans-unit>
         <trans-unit id="Page 1135982553 - Action 3155367993 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ver Cotação</source>
-          <target state="translated">Ver Orçamento</target>
+          <target state="translated">Ver Cotação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Snapshot Card - Action ViewQuote - Property Caption</note>
         </trans-unit>
@@ -6024,7 +6024,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 1087532286 - Action 1873073142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
           <source>Marcar como Dealer</source>
-          <target state="translated">Marcar como Dealer</target>
+          <target state="translated">Marcar como Revendedor</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Vendor Card Pkg Ext - Action AddDealerCategory - Property Caption</note>
