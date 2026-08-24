@@ -2,6 +2,7 @@ table 50138 "KINTO Replacement Vehicle Pkg"
 {
     Caption = 'KINTO Replacement Vehicle Package';
     DataClassification = CustomerContent;
+    LookupPageId = "KINTO Repl Vehicle List";
 
     fields
     {

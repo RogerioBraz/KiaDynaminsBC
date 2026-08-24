@@ -2,7 +2,7 @@ table 50137 "KINTO Pickup Delivery Package"
 {
     Caption = 'KINTO Pick-up and Delivery Package';
     DataClassification = CustomerContent;
-
+    LookupPageId = "KINTO Pickup Delivery List";
     fields
     {
         field(1; "Package ID"; Code[20]) { Caption = 'Package ID'; NotBlank = true; }

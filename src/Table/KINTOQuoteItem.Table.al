@@ -24,6 +24,7 @@ table 50111 "KINTO Quote Item"
         field(17; "MSRP"; Decimal)
         {
             Caption = 'MSRP';
+            ToolTip = 'preço de compra do veículo';
             trigger OnValidate()
             begin
                 Rec."Purchase Price" := Rec.CalculatePurchasePrice();

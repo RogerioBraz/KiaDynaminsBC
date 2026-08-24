@@ -2,6 +2,8 @@ table 50136 "KINTO 24h Assistance Package"
 {
     Caption = 'KINTO 24h Assistance Package';
     DataClassification = CustomerContent;
+    LookupPageId = "KINTO 24h Assistance List";
+
 
     fields
     {

@@ -44,8 +44,16 @@ table 50110 "KINTO Quote Header"
 
         // CAMPOS DE PRODUTO E PACOTES (integrados diretamente — não usar TableExtension)
         field(60; "Product Type"; Enum "KINTO Product Type") { Caption = 'Product Type'; DataClassification = CustomerContent; }
-        field(61; "Glass Coverage Package ID"; Code[20]) { Caption = 'Glass Coverage'; TableRelation = "KINTO Glass Coverage Package"; DataClassification = CustomerContent; }
-        field(62; "24h Assistance Package ID"; Code[20]) { Caption = '24h Assistance'; TableRelation = "KINTO 24h Assistance Package"; DataClassification = CustomerContent; }
+        field(61; "Glass Coverage Package ID"; Code[20])
+        { Caption = 'Glass Coverage'; TableRelation = "KINTO Glass Coverage Package"; DataClassification = CustomerContent; }
+
+        field(62; "24h Assistance Package ID"; Code[20])
+        {
+            Caption = '24h Assistance';
+            TableRelation = "KINTO 24h Assistance Package";
+            DataClassification = CustomerContent;
+        }
+
         field(63; "Pickup Delivery Package ID"; Code[20]) { Caption = 'Pick-up & Delivery'; TableRelation = "KINTO Pickup Delivery Package"; DataClassification = CustomerContent; }
         field(64; "Replacement Vehicle Pkg ID"; Code[20]) { Caption = 'Replacement Vehicle'; TableRelation = "KINTO Replacement Vehicle Pkg"; DataClassification = CustomerContent; }
         field(65; "Service Package ID"; Code[20]) { Caption = 'Service (Telematics)'; TableRelation = "KINTO Service Package"; DataClassification = CustomerContent; }

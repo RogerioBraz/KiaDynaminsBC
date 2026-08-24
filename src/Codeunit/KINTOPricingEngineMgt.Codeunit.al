@@ -123,7 +123,7 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
 
         // Campos tributários agora carregados do Country Setup
         QuoteItem."PIS COFINS Tariff %" := CountrySetup."National Revenue Tax %";
-        QuoteItem."IPVA Rate %" := 4;
+        QuoteItem."IPVA Rate %" := CountrySetup."IPVA Rate %";
 
         LoadCreditRiskFactor(QuoteHeader, QuoteItem);
     end;

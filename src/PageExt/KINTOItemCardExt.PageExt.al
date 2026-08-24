@@ -118,8 +118,9 @@ pageextension 50104 "KINTO Item Card Ext" extends "Item Card"
             group(KINTOInsurance)
             {
                 Caption = 'KINTO Insurance Coverage';
-                Visible = (Rec."KINTO Category" = Rec."KINTO Category"::"Insurance Package") or
-                          (Rec."KINTO Category" = Rec."KINTO Category"::"Vehicle Base");
+                // Visible = (Rec."KINTO Category" = Rec."KINTO Category"::"Insurance Package") or
+                //           (Rec."KINTO Category" = Rec."KINTO Category"::"Vehicle Base");
+                Visible = false;
 
                 field("Property Damage %"; Rec."Property Damage %")
                 {

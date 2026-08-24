@@ -2,6 +2,7 @@ table 50140 "KINTO Service Package"
 {
     Caption = 'KINTO Service Package';
     DataClassification = CustomerContent;
+    LookupPageId = "KINTO Service Package List";
 
     fields
     {

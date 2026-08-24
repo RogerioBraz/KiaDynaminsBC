@@ -351,6 +351,15 @@ page 50140 "KINTO Pricing Role Center"
                     RunPageMode = Create;
                     Image = New;
                 }
+                action(InsCoverageLimitSub)
+                {
+                    Caption = 'KINTO Ins Coverage Limit Sub';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Ins Coverage Limit Sub";
+                    RunPageMode = Create;
+                    Image = New;
+                }
+
             }
         }
 

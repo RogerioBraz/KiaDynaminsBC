@@ -34,11 +34,11 @@ codeunit 50103 "KINTO Goal Seek Mgt."
             // Set the fee and recalculate
             QuoteItem."Monthly Tariff" := CurrentFee;
 
-            // Regenerate cash flow with this fee
-            Message(
-            'Dep=%1',
-             QuoteItem."Tax Depreciation Period");
-            CFCalc.GenerateCashFlow(QuoteHeader, QuoteItem);
+            // // Regenerate cash flow with this fee
+            // Message(
+            // 'Dep=%1',
+            //  QuoteItem."Tax Depreciation Period");
+            // CFCalc.GenerateCashFlow(QuoteHeader, QuoteItem);
 
             // Calculate ROI
             CalculatedROI := CFCalc.CalculateROI(QuoteHeader, QuoteItem);

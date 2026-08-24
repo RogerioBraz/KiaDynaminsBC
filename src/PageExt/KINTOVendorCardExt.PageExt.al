@@ -4,16 +4,7 @@ pageextension 50109 "KINTO Vendor Card Pkg Ext" extends "Vendor Card"
     {
         addafter(General)
         {
-            field("KINTO VD Sales Comm %"; Rec."KINTO VD Sales Commission %") { ApplicationArea = All; Visible = IsDealer; }
-            field("KINTO VD Delivery Comm %"; Rec."KINTO VD Delivery Commission %") { ApplicationArea = All; Visible = IsDealer; }
-            field("KINTO Default DLR Sales Comm %"; Rec."KINTO Default DLR Sales Comm %") { ApplicationArea = All; Visible = IsDealer; }
-            field("KINTO Default DLR Delivery Comm %"; Rec."KINTO Default DLR Delivery Comm %") { ApplicationArea = All; Visible = IsDealer; }
-            field("KINTO Max Sales Commission %"; Rec."KINTO Max Sales Commission %") { ApplicationArea = All; Visible = IsDealer; }
-            field("KINTO Max Delivery Commission %"; Rec."KINTO Max Delivery Commission %") { ApplicationArea = All; Visible = IsDealer; }
-        }
 
-        addlast(General)
-        {
             group(KINTOCategories)
             {
                 Caption = 'KINTO Categorias';
@@ -35,8 +26,18 @@ pageextension 50109 "KINTO Vendor Card Pkg Ext" extends "Vendor Card"
                 }
             }
         }
-    }
+        addafter(KINTOContacts)
+        {
+            field("KINTO VD Sales Comm %"; Rec."KINTO VD Sales Commission %") { ApplicationArea = All; Visible = IsDealer; }
+            field("KINTO VD Delivery Comm %"; Rec."KINTO VD Delivery Commission %") { ApplicationArea = All; Visible = IsDealer; }
+            field("KINTO Default DLR Sales Comm %"; Rec."KINTO Default DLR Sales Comm %") { ApplicationArea = All; Visible = IsDealer; }
+            field("KINTO Default DLR Delivery Comm %"; Rec."KINTO Default DLR Delivery Comm %") { ApplicationArea = All; Visible = IsDealer; }
+            field("KINTO Max Sales Commission %"; Rec."KINTO Max Sales Commission %") { ApplicationArea = All; Visible = IsDealer; }
+            field("KINTO Max Delivery Commission %"; Rec."KINTO Max Delivery Commission %") { ApplicationArea = All; Visible = IsDealer; }
 
+
+        }
+    }
     actions
     {
         addfirst(processing)
@@ -67,6 +68,13 @@ pageextension 50109 "KINTO Vendor Card Pkg Ext" extends "Vendor Card"
         IsDealer: Boolean;
 
     trigger OnAfterGetRecord()
+    var
+        VendorCatAssign: Record "KINTO Vendor Category Assign";
+    begin
+        IsDealer := VendorCatAssign.Get(Rec."No.", 'DEALER');
+    end;
+
+    trigger OnOpenPage()
     var
         VendorCatAssign: Record "KINTO Vendor Category Assign";
     begin

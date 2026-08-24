@@ -168,6 +168,8 @@ table 50100 "KINTO Country Setup"
         field(50; "SGA Inflation Adj. Freq."; Enum "KINTO Inflation Frequency") { Caption = 'SG&A Inflation Adjustment Frequency'; }
         field(51; "Min. Extended Analysis Months"; Integer) { Caption = 'Minimum Extended Analysis Months'; }
         field(52; "Extended Analysis Months"; Integer) { Caption = 'Extended Analysis Period (Months)'; }
+
+        field(149; "IPVA Rate %"; Decimal) { Caption = 'IPVA Rate %'; DecimalPlaces = 0 : 5; }
     }
 
     keys

@@ -28,6 +28,7 @@ page 50100 "KINTO Country Setup Card"
             {
                 Caption = 'Taxes';
                 field("National Revenue Tax %"; Rec."National Revenue Tax %") { ApplicationArea = All; }
+                field("IPVA Rate %"; Rec."IPVA Rate %") { ApplicationArea = All; }
                 field("State Revenue Tax %"; Rec."State Revenue Tax %") { ApplicationArea = All; }
                 field("Municipal Tax %"; Rec."Municipal Tax %") { ApplicationArea = All; }
                 field("Financial Trans. Tax %"; Rec."Financial Trans. Tax %") { ApplicationArea = All; }

@@ -3,6 +3,9 @@ page 50111 "KINTO Quote Item Subform"
     Caption = 'Quote Items';
     PageType = ListPart;
     SourceTable = "KINTO Quote Item";
+    DelayedInsert = true;
+    LinksAllowed = false;
+    MultipleNewLines = true;
     ApplicationArea = All;
 
     layout
@@ -36,6 +39,7 @@ page 50111 "KINTO Quote Item Subform"
                 field("Tire Quantity"; Rec."Tire Quantity") { ApplicationArea = All; Visible = Rec."Tire Package ID" <> ''; }
                 field("Service Package ID"; Rec."Service Package ID") { ApplicationArea = All; }
                 field("Insurance Quote No."; Rec."Insurance Quote No.") { ApplicationArea = All; }
+                field("Error Message"; Rec."Error Message") { ApplicationArea = All; }
             }
         }
     }

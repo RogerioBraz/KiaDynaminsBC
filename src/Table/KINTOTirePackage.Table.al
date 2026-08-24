@@ -2,6 +2,7 @@ table 50139 "KINTO Tire Package"
 {
     Caption = 'KINTO Tire Package';
     DataClassification = CustomerContent;
+    LookupPageId = "KINTO Tire Package List";
 
     fields
     {
