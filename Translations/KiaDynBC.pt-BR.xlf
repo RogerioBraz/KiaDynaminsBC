@@ -3299,7 +3299,7 @@
         </trans-unit>
         <trans-unit id="Table 63014751 - Field 3261267911 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Markup %</source>
-          <target state="translated">Margem %</target>
+          <target state="translated">Markup %</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Replacement Vehicle Pkg - Field Markup % - Property Caption</note>
@@ -3460,7 +3460,7 @@
         </trans-unit>
         <trans-unit id="Table 1102927356 - Field 2542713143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Country Code</source>
-          <target state="translated">Código do País</target>
+          <target state="translated">Cód. do País</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Service Package - Field Country Code - Property Caption</note>
         </trans-unit>
@@ -3957,7 +3957,7 @@
         </trans-unit>
         <trans-unit id="Table 2513131328 - Field 1663794414 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Group Code</source>
-          <target state="translated">Código do Grupo</target>
+          <target state="translated">Cód. do Grupo</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Supplier Group - Field Group Code - Property Caption</note>
@@ -3971,7 +3971,7 @@
         </trans-unit>
         <trans-unit id="Table 3621332359 - Field 1663794414 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Group Code</source>
-          <target state="translated">Código do Grupo</target>
+          <target state="translated">Cód. do Grupo</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Supplier Group Assign - Field Group Code - Property Caption</note>
@@ -4146,7 +4146,7 @@
         </trans-unit>
         <trans-unit id="Table 3466642036 - Field 1170834137 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>FIPE Code</source>
-          <target state="translated">Código FIPE</target>
+          <target state="translated">Cód. FIPE</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Vehicle Model - Field FIPE Code - Property Caption</note>
@@ -4178,7 +4178,7 @@
         </trans-unit>
         <trans-unit id="Table 3466642036 - Field 1535977919 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manufacturer Part Code</source>
-          <target state="translated">Código da Peça do Fabricante</target>
+          <target state="translated">Cód. da Peça do Fabricante</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Vehicle Model - Field Manufacturer Part Code - Property Caption</note>
@@ -4298,7 +4298,7 @@
         </trans-unit>
         <trans-unit id="Table 2748267909 - Field 3877927551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Category Code</source>
-          <target state="translated">Código da Categoria</target>
+          <target state="translated">Cód. da Categoria</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Vendor Category - Field Category Code - Property Caption</note>
@@ -4325,7 +4325,7 @@
         </trans-unit>
         <trans-unit id="Table 503909766 - Field 3877927551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Category Code</source>
-          <target state="translated">Código da Categoria</target>
+          <target state="translated">Cód. da Categoria</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Vendor Category Assign - Field Category Code - Property Caption</note>
