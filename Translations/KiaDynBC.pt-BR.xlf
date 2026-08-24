@@ -2508,14 +2508,14 @@
         </trans-unit>
         <trans-unit id="Table 4223300238 - Field 2867819270 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Service (Telematics)</source>
-          <target state="translated">Serviço Telemetria</target>
+          <target state="translated">Serviços (Telemetria)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Header - Field Service Package ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4223300238 - Field 606241291 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Snapshot ID</source>
-          <target state="translated">ID do Instantâneo</target>
+          <target state="translated">ID do Snapshot</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Header - Field Snapshot ID - Property Caption</note>
         </trans-unit>
@@ -2569,7 +2569,7 @@
         </trans-unit>
         <trans-unit id="Table 3176424292 - Field 1361548158 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>No,Monthly,Annually</source>
-          <target state="translated">Não,Mensal,Anual</target>
+          <target state="translated">Nº,Mensal,Anual</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Field Adjustment Period - Property OptionCaption</note>
         </trans-unit>
@@ -3139,7 +3139,7 @@
         </trans-unit>
         <trans-unit id="Table 3176424292 - Field 1274816752 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Telematics (unit/month)</source>
-          <target state="translated">Telemática (unidade/mês)</target>
+          <target state="translated">Telemetria (unidade/mês)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Field Telematics Monthly - Property Caption</note>
         </trans-unit>
@@ -5500,8 +5500,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ReplacementVehicleList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 4221244079 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Serviços (Telemática)</source>
-          <target state="translated">Serviços (Telemática)</target>
+          <source>Serviços (Telemetria)</source>
+          <target state="translated">Serviços (Telemetria)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ServicePackageList - Property Caption</note>
