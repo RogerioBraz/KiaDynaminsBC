@@ -1079,7 +1079,7 @@
         </trans-unit>
         <trans-unit id="Table 591092297 - Field 2585418950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Código da Montadora</source>
-          <target>Código da Montadora</target>
+          <target>Cód. da Montadora</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurance Quote - Field Manufacturer Code - Property Caption</note>
         </trans-unit>
@@ -1091,7 +1091,7 @@
         </trans-unit>
         <trans-unit id="Table 591092297 - Field 1535977919 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Código Fabricante</source>
-          <target>Código Fabricante</target>
+          <target>Cód. Fabricante</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurance Quote - Field Manufacturer Part Code - Property Caption</note>
         </trans-unit>
@@ -1343,7 +1343,7 @@
         </trans-unit>
         <trans-unit id="Table 1324213693 - Field 3233755515 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Insurer Code</source>
-          <target>Código da Seguradora</target>
+          <target>Cód. da Seguradora</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurer - Field Insurer Code - Property Caption</note>
         </trans-unit>
@@ -6030,7 +6030,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 993525101 - Field 3420865979 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Vehicle Market Code</source>
-          <target>Código de Mercado do Veículo</target>
+          <target>Cód. de Mercado do Veículo</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Item Extension - Field Vehicle Market Code - Property Caption</note>
         </trans-unit>
