@@ -443,7 +443,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Apply Monthly Fee Inflation - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1652137844 - Field 4187298967 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Apply SG&amp;A During Cash Flow Analysis</source>
+          <source>Apply SG&A During Cash Flow Analysis</source>
           <target state="translated">Aplicar Despesas Administrativas e Gerais Durante a Análise do Fluxo de Caixa</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Apply SGA in Cash Flow - Property Caption</note>
@@ -665,7 +665,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Security Fee Desc. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1652137844 - Field 694732310 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>SG&amp;A Inflation Adjustment Frequency</source>
+          <source>SG&A Inflation Adjustment Frequency</source>
           <target state="translated">Frequência do Ajuste da Inflação de Despesas Administrativas e Gerais</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field SGA Inflation Adj. Freq. - Property Caption</note>
@@ -2457,7 +2457,7 @@
         </trans-unit>
         <trans-unit id="Table 4223300238 - Field 2438964577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pick-up & Delivery</source>
-          <target state="translated">Retirada & Entrega</target>
+          <target state="translated">Retirada e Entrega</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Header - Field Pickup Delivery Package ID - Property Caption</note>
@@ -2967,8 +2967,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Field Payment Allowance (days) - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3176424292 - Field 2438964577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pick-up &amp; Delivery</source>
-          <target state="translated">Retirada &amp; Entrega</target>
+          <source>Pick-up & Delivery</source>
+          <target state="translated">Retirada e Entrega</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Field Pickup Delivery Package ID - Property Caption</note>
@@ -2995,7 +2995,7 @@
           <source>Price per excess kilometer above 10%</source>
           <target state="translated">Preço por Quilômetro Excedente acima de 10%</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Field Price per Excess km &gt;10% - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Field Price per Excess km & 10% - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3176424292 - Field 3373535832 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pricing Status</source>
@@ -3102,7 +3102,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Field Service Package ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3176424292 - Field 20416083 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>SG&amp;A</source>
+          <source>SG&A</source>
           <target state="translated">Despesas Administrativas e Gerais</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Field SGA Amount - Property Caption</note>
@@ -3803,7 +3803,7 @@
           <source>Price per excess km above 10%</source>
           <target state="translated">Preço por KM Excedente acima de 10%</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Simulation Snapshot - Field Price Excess km &gt;10% - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Simulation Snapshot - Field Price Excess km & 10% - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1170792268 - Field 3105979010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase Price</source>
@@ -3842,7 +3842,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Simulation Snapshot - Field Reimbursement Due Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1170792268 - Field 2155719079 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>SG&amp;A</source>
+          <source>SG&A</source>
           <target state="translated">Despesas Administrativas e Gerais</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Simulation Snapshot - Field SGA - Property Caption</note>
@@ -4698,7 +4698,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup Card - Control CreditRisk - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 821288576 - Control 1826403361 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Dates &amp; Periods</source>
+          <source>Dates & Periods</source>
           <target state="translated">Datas e Períodos</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup Card - Control Dates - Property Caption</note>
@@ -4967,7 +4967,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Inventory Vehicle Card - Control General - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 393212459 - Control 736648186 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Mileage &amp; Age</source>
+          <source>Mileage & Age</source>
           <target state="translated">Quilometragem e Idade</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Inventory Vehicle Card - Control Mileage - Property Caption</note>
@@ -5486,7 +5486,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action GlassCoverageList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2248666022 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pick-up &amp; Delivery</source>
+          <source>Pick-up & Delivery</source>
           <target state="translated">Retirada e Entrega</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
@@ -5981,7 +5981,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Item Card Ext - Control KINTOInsurance - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1273389553 - Control 3925755397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>KINTO Portal &amp; Approval</source>
+          <source>KINTO Portal & Approval</source>
           <target state="translated">Portal e Aprovação KINTO</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Item Card Ext - Control KINTOPortal - Property Caption</note>
