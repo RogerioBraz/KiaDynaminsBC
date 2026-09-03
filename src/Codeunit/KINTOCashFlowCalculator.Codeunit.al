@@ -39,8 +39,6 @@ codeunit 50102 "KINTO Cash Flow Calculator"
     end;
 
     local procedure GenerateMonthZero(var CFData: Record "KINTO Cash Flow Data"; var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item")
-    var
-        BodyInsAmount: Decimal;
     begin
         if QuoteItem."Purchase Price" > 0 then
             InsertCFEntry(CFData, QuoteHeader, QuoteItem, 0, Today, 'PURCHASE_PRICE',
@@ -53,11 +51,6 @@ codeunit 50102 "KINTO Cash Flow Calculator"
         if QuoteItem."DLR Commission Amount" > 0 then
             InsertCFEntry(CFData, QuoteHeader, QuoteItem, 0, Today, 'DLR_COMMISSION_ONESHOT',
                 'DLR Commission (One-Shot)', "KINTO CF Component Type"::Commission, -QuoteItem."DLR Commission Amount", 0, 1);
-
-        BodyInsAmount := GetBodyInsuranceAmount(QuoteItem);
-        if BodyInsAmount > 0 then
-            InsertCFEntry(CFData, QuoteHeader, QuoteItem, 0, Today, 'BODY_INSURANCE',
-                'Body Insurance', "KINTO CF Component Type"::Cost, -BodyInsAmount, 0, 1);
     end;
 
     local procedure GenerateMonthlyEntries(var CFData: Record "KINTO Cash Flow Data"; var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item"; MonthNo: Integer; MonthDate: Date; InflationFactor: Decimal)
@@ -142,7 +135,7 @@ codeunit 50102 "KINTO Cash Flow Calculator"
         PkgMonthly := PackagePricing.GetPickupDeliveryMonthly(QuoteItem);
         if PkgMonthly > 0 then
             InsertCFEntry(CFData, QuoteHeader, QuoteItem, MonthNo, MonthDate, 'PICKUP_DELIVERY',
-                'Pick-up & Delivery', "KINTO CF Component Type"::Cost, -PkgMonthly * InflationFactor, 0, InflationFactor);
+                'Pick-up and Delivery', "KINTO CF Component Type"::Cost, -PkgMonthly * InflationFactor, 0, InflationFactor);
 
         PkgMonthly := PackagePricing.GetReplacementVehicleMonthly(QuoteItem);
         if PkgMonthly > 0 then
@@ -195,6 +188,7 @@ codeunit 50102 "KINTO Cash Flow Calculator"
         CFData."Signed Amount" := Amount;
         CFData."Accumulated Mileage" := AccumMileage + (QuoteItem."Monthly Mileage (km)" * MonthNo);
         CFData."Inflation Factor" := InflationFactor;
+        CFData."Indexation Applied" := InflationFactor <> 1;
         CFData.Insert(true);
     end;
 
@@ -209,6 +203,7 @@ codeunit 50102 "KINTO Cash Flow Calculator"
 
     procedure CalculateTotalCosts(var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item"): Decimal
     var
+        PackagePricing: Codeunit "KINTO Package Pricing Calc";
         TotalCosts: Decimal;
         MonthlyTariff: Decimal;
     begin
@@ -233,6 +228,7 @@ codeunit 50102 "KINTO Cash Flow Calculator"
         TotalCosts += MonthlyTariff * QuoteItem."Credit Risk %" / 100;
         TotalCosts += MonthlyTariff * QuoteItem."DLR Sales Commission %" / 100;
         TotalCosts += MonthlyTariff * QuoteItem."DLR Delivery Commission %" / 100;
+        TotalCosts += PackagePricing.CalculateAllPackageCosts(QuoteHeader, QuoteItem);
 
         TotalCosts := TotalCosts * QuoteItem."Contract Term (Months)";
         TotalCosts += QuoteItem."Vehicle Registration Cost";

@@ -170,6 +170,7 @@ table 50100 "KINTO Country Setup"
         field(52; "Extended Analysis Months"; Integer) { Caption = 'Extended Analysis Period (Months)'; }
 
         field(149; "IPVA Rate %"; Decimal) { Caption = 'IPVA Rate %'; DecimalPlaces = 0 : 5; }
+        field(150; "PIS COFINS Credit %"; Decimal) { Caption = 'PIS/COFINS Credit on Depreciation %'; DecimalPlaces = 0 : 5; }
     }
 
     keys

@@ -8,8 +8,9 @@ codeunit 50150 "KINTO Test Setup"
         CountrySetup."Country Code" := 'BR';
         CountrySetup."Pricing Methodology" := CountrySetup."Pricing Methodology"::"Target ROI";
         CountrySetup."Currency Code" := 'BRL';
-        CountrySetup."National Revenue Tax %" := 0.0925;
-        CountrySetup."Profit Tax Rate %" := 0.34;
+        CountrySetup."National Revenue Tax %" := 9.25;
+        CountrySetup."PIS COFINS Credit %" := 9.25;
+        CountrySetup."Profit Tax Rate %" := 34;
         CountrySetup."Tax Depreciation Period" := 60;
         CountrySetup."Annual Interest Expense %" := 9.5;
         CountrySetup."Spread" := 4.75;

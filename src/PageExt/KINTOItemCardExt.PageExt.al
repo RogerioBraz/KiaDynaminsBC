@@ -167,7 +167,7 @@ pageextension 50104 "KINTO Item Card Ext" extends "Item Card"
             }
             group(KINTOPortal)
             {
-                Caption = 'KINTO Portal & Approval';
+                Caption = 'KINTO Portal and Approval';
                 field("Show on Dealer Portal"; Rec."Show on Dealer Portal")
                 {
                     ApplicationArea = All;
@@ -204,7 +204,7 @@ pageextension 50104 "KINTO Item Card Ext" extends "Item Card"
             {
                 Caption = 'View RV Matrix Entries';
                 ApplicationArea = All;
-                Image = Matrix;
+                Image = View;
                 Visible = Rec."KINTO Category" = Rec."KINTO Category"::"Vehicle Base";
 
                 trigger OnAction()

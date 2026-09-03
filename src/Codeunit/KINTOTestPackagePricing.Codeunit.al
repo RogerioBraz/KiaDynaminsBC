@@ -5,6 +5,28 @@ codeunit 50161 "KINTO Test Package Pricing"
 
     var
         Assert: Codeunit "Library Assert";
+        TestSetup: Codeunit "KINTO Test Setup";
+
+    [Test]
+    procedure TestUsedVehicleMaintenanceRequiresInventoryVehicle()
+    var
+        CountrySetup: Record "KINTO Country Setup";
+        QuoteHeader: Record "KINTO Quote Header";
+        QuoteItem: Record "KINTO Quote Item";
+        PackagePricing: Codeunit "KINTO Package Pricing Calc";
+        MonthlyCost: Decimal;
+    begin
+        TestSetup.CleanupTestData();
+        TestSetup.SetupCountrySetupBR(CountrySetup);
+        TestSetup.SetupQuoteHeader(QuoteHeader, 'BR');
+        TestSetup.SetupQuoteItem(QuoteItem, QuoteHeader."Quote No.");
+
+        QuoteItem."Vehicle Condition" := QuoteItem."Vehicle Condition"::Used;
+        QuoteItem.Modify(true);
+
+        asserterror MonthlyCost := PackagePricing.GetMaintenanceMonthly(QuoteItem);
+        Assert.ExpectedError('An inventory vehicle is required');
+    end;
 
     [Test]
     procedure TestGlassCoverageMonthlyCost()

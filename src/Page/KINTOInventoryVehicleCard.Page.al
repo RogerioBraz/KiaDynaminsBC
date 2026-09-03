@@ -22,7 +22,7 @@ page 50131 "KINTO Inventory Vehicle Card"
             }
             group(Mileage)
             {
-                Caption = 'Mileage & Age';
+                Caption = 'Mileage and Age';
                 field("Current Odometer"; Rec."Current Odometer") { ApplicationArea = All; }
                 field("Age in Months"; Rec."Age in Months") { ApplicationArea = All; }
             }
@@ -74,7 +74,7 @@ page 50131 "KINTO Inventory Vehicle Card"
             {
                 Caption = 'Release Reservation';
                 ApplicationArea = All;
-                Image = Release;
+                Image = Check;
                 trigger OnAction()
                 var
                     BookingMgt: Codeunit "KINTO Booking Value Mgt.";
@@ -86,7 +86,7 @@ page 50131 "KINTO Inventory Vehicle Card"
             {
                 Caption = 'Freeze Booking Value';
                 ApplicationArea = All;
-                Image = Freeze;
+                Image = Lock;
                 trigger OnAction()
                 var
                     BookingMgt: Codeunit "KINTO Booking Value Mgt.";
@@ -153,7 +153,7 @@ page 50131 "KINTO Inventory Vehicle Card"
             {
                 Caption = 'Ver Matriz RV deste Veículo';
                 ApplicationArea = All;
-                Image = Matrix;
+                Image = View;
                 Visible = Rec."Item No." <> '';
                 trigger OnAction()
                 var

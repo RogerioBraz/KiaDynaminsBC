@@ -32,7 +32,7 @@ page 50144 "KINTO Insurer List"
             {
                 Caption = 'Grupos de Cotação';
                 ApplicationArea = All;
-                Image = ItemGroups;
+                Image = Group;
                 trigger OnAction()
                 var
                     InsGroup: Record "KINTO Insurance Quote Group";
@@ -107,7 +107,7 @@ page 50145 "KINTO Insurer Card"
             {
                 Caption = 'Grupos de Cotação';
                 ApplicationArea = All;
-                Image = ItemGroups;
+                Image = Group;
                 trigger OnAction()
                 var
                     InsGroup: Record "KINTO Insurance Quote Group";

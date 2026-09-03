@@ -1,5 +1,7 @@
 codeunit 50107 "KINTO Booking Value Mgt."
 {
+    var
+        VehicleNotAvailableErr: Label 'Vehicle %1 cannot be reserved because its current status is %2. Release the vehicle or select an available vehicle before continuing.';
 
     procedure InitializeBookingValue(var InventoryVehicle: Record "KINTO Inventory Vehicle"; InitialValue: Decimal)
     begin
@@ -30,7 +32,7 @@ codeunit 50107 "KINTO Booking Value Mgt."
     procedure SoftReserveVehicle(var InventoryVehicle: Record "KINTO Inventory Vehicle"; QuoteNo: Code[20])
     begin
         if InventoryVehicle.Status <> InventoryVehicle.Status::Available then
-            Error('Vehicle %1 is not available for reservation. Current status: %2',
+            Error(VehicleNotAvailableErr,
                   InventoryVehicle."Vehicle No.", InventoryVehicle.Status);
 
         InventoryVehicle.Status := InventoryVehicle.Status::"Soft Reserved";

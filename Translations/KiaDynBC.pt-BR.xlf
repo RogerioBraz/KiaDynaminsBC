@@ -5,7 +5,7 @@
       <group id="body">
         <trans-unit id="Table 1023991719 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO 24h Assistance Package</source>
-          <target>Pacote de Assistência KINTO 24h</target>
+          <target>Pacote de Assistência 24h</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO 24h Assistance Package - Property Caption</note>
         </trans-unit>
@@ -89,7 +89,7 @@
         </trans-unit>
         <trans-unit id="Table 3227249739 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Approval Request</source>
-          <target>Solicitação de Aprovação KINTO</target>
+          <target>Solicitação de Aprovação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Approval Request - Property Caption</note>
         </trans-unit>
@@ -167,7 +167,7 @@
         </trans-unit>
         <trans-unit id="Table 3493943856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Cash Flow Data</source>
-          <target>Dados do Fluxo de Caixa KINTO</target>
+          <target>Dados do Fluxo de Caixa</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Cash Flow Data - Property Caption</note>
         </trans-unit>
@@ -245,7 +245,7 @@
         </trans-unit>
         <trans-unit id="Table 2563450677 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Cash Flow Header</source>
-          <target>Cabeçalho do Fluxo de Caixa KINTO</target>
+          <target>Cabeçalho do Fluxo de Caixa</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Cash Flow Header - Property Caption</note>
         </trans-unit>
@@ -269,7 +269,7 @@
         </trans-unit>
         <trans-unit id="Table 2563450677 - Field 2491528410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO FCF Total</source>
-          <target>Total do FCF KINTO</target>
+          <target>Total do FCF</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Cash Flow Header - Field KINTO FCF Total - Property Caption</note>
         </trans-unit>
@@ -305,7 +305,7 @@
         </trans-unit>
         <trans-unit id="Table 4166169087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Cash Flow Component</source>
-          <target>Componente de Fluxo de Caixa KINTO</target>
+          <target>Componente de Fluxo de Caixa</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CF Component - Property Caption</note>
         </trans-unit>
@@ -401,7 +401,7 @@
         </trans-unit>
         <trans-unit id="Table 1652137844 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Country Setup</source>
-          <target>Configuração de País KINTO</target>
+          <target>Configuração de País</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Property Caption</note>
         </trans-unit>
@@ -571,7 +571,6 @@
           <source>IPVA Rate %</source>
           <target>Taxa de IPVA %</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field IPVA Rate % - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1652137844 - Field 4157438706 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -621,6 +620,12 @@
           <target>Margem de Contribuição Líquida %</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Net Contribution Margin % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 2281390184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PIS/COFINS Credit on Depreciation %</source>
+          <target>Crédito de PIS/COFINS sobre depreciação %</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field PIS COFINS Credit % - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1652137844 - Field 3334847031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pricing Methodology</source>
@@ -726,7 +731,7 @@
         </trans-unit>
         <trans-unit id="Table 1358084963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Glass Coverage Package</source>
-          <target>Pacote de Cobertura de Vidros KINTO</target>
+          <target>Pacote de Cobertura de Vidros</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Glass Coverage Package - Property Caption</note>
         </trans-unit>
@@ -834,7 +839,7 @@
         </trans-unit>
         <trans-unit id="Table 879368677 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Insurance Coverage</source>
-          <target>Cobertura de Seguro KINTO</target>
+          <target>Cobertura de Seguro</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurance Coverage - Property Caption</note>
         </trans-unit>
@@ -900,7 +905,7 @@
         </trans-unit>
         <trans-unit id="Table 3032022666 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Insurance Coverage Limit</source>
-          <target>Limite de Cobertura de Seguro KINTO</target>
+          <target>Limite de Cobertura de Seguro</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurance Coverage Limit - Property Caption</note>
         </trans-unit>
@@ -966,9 +971,15 @@
         </trans-unit>
         <trans-unit id="Table 591092297 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Insurance Quote</source>
-          <target>Cotação de Seguro KINTO</target>
+          <target>Cotação de Seguro</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurance Quote - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 591092297 - NamedType 4281468759" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The insurance quote cannot use group %1 because the vehicle is armored and the group does not support armored vehicles. Select a compatible group or clear the armoring option.</source>
+          <target>A cotação de seguro não pode usar o grupo %1 porque o veículo é blindado e o grupo não oferece suporte a veículos blindados. Selecione um grupo compatível ou desmarque a opção de blindagem.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurance Quote - NamedType ArmoringNotSupportedErr</note>
         </trans-unit>
         <trans-unit id="Table 591092297 - Field 1090351696 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ativo</source>
@@ -1074,13 +1085,13 @@
         </trans-unit>
         <trans-unit id="Table 591092297 - Field 1893411800 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Número da Linha da Cotação</source>
-          <target>KINTO Nº da Linha da Cotação</target>
+          <target>Nº da Linha da Cotação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurance Quote - Field KINTO Quote Line No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 591092297 - Field 4190563094 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Número da Cotação</source>
-          <target>KINTO Nº da Cotação</target>
+          <target>Nº da Cotação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurance Quote - Field KINTO Quote No. - Property Caption</note>
         </trans-unit>
@@ -1152,7 +1163,7 @@
         </trans-unit>
         <trans-unit id="Table 667957364 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Insurance Quote Group</source>
-          <target>Grupo de Cotação de Seguro KINTO</target>
+          <target>Grupo de Cotação de Seguro</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurance Quote Group - Property Caption</note>
         </trans-unit>
@@ -1302,7 +1313,7 @@
         </trans-unit>
         <trans-unit id="Table 1324213693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Insurer</source>
-          <target>Seguradora KINTO</target>
+          <target>Seguradora</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurer - Property Caption</note>
         </trans-unit>
@@ -1386,7 +1397,7 @@
         </trans-unit>
         <trans-unit id="Table 1721918671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Inventory Vehicle</source>
-          <target>Veículo em Estoque KINTO</target>
+          <target>Veículo em Estoque</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Inventory Vehicle - Property Caption</note>
         </trans-unit>
@@ -1506,7 +1517,7 @@
         </trans-unit>
         <trans-unit id="Table 288318675 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Item Supplier Group</source>
-          <target>Grupo de Fornecedores de Itens KINTO</target>
+          <target>Grupo de Fornecedores de Itens</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Item Supplier Group - Property Caption</note>
         </trans-unit>
@@ -1530,7 +1541,7 @@
         </trans-unit>
         <trans-unit id="Table 3240880478 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Item Version History</source>
-          <target>Histórico de Versões de Itens KINTO</target>
+          <target>Histórico de Versões de Itens</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Item Version History - Property Caption</note>
         </trans-unit>
@@ -1596,7 +1607,7 @@
         </trans-unit>
         <trans-unit id="Table 3143029943 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Maintenance Generic Range</source>
-          <target>Faixa Genérica de Manutenção KINTO</target>
+          <target>Faixa Genérica de Manutenção</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Mainten Generic Range - Property Caption</note>
         </trans-unit>
@@ -1656,7 +1667,7 @@
         </trans-unit>
         <trans-unit id="Table 2227284955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Maintenance Number</source>
-          <target>Nº de Manutenção KINTO</target>
+          <target>Nº de Manutenção</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Maintenance Number - Property Caption</note>
         </trans-unit>
@@ -1716,7 +1727,7 @@
         </trans-unit>
         <trans-unit id="Table 1536153490 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Maintenance Plan Header</source>
-          <target>Cabeçalho do Plano de Manutenção KINTO</target>
+          <target>Cabeçalho do Plano de Manutenção</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Maintenance Plan Header - Property Caption</note>
         </trans-unit>
@@ -1848,7 +1859,7 @@
         </trans-unit>
         <trans-unit id="Table 369532985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Maintenance Plan Line</source>
-          <target>Linha do Plano de Manutenção KINTO</target>
+          <target>Linha do Plano de Manutenção</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Maintenance Plan Line - Property Caption</note>
         </trans-unit>
@@ -1890,7 +1901,7 @@
         </trans-unit>
         <trans-unit id="Table 1651242679 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Maintenance Range</source>
-          <target>Faixa de Manutenção KINTO</target>
+          <target>Faixa de Manutenção</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Maintenance Range - Property Caption</note>
         </trans-unit>
@@ -1944,7 +1955,7 @@
         </trans-unit>
         <trans-unit id="Table 3296548031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Pick-up and Delivery Package</source>
-          <target>Pacote de Retirada e Entrega KINTO</target>
+          <target>Pacote de Retirada e Entrega</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Pickup Delivery Package - Property Caption</note>
         </trans-unit>
@@ -2040,7 +2051,7 @@
         </trans-unit>
         <trans-unit id="Table 3061031256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Pricing Cue</source>
-          <target>Indicador de Precificação KINTO</target>
+          <target>Indicador de Precificação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Pricing Cue - Property Caption</note>
         </trans-unit>
@@ -2154,7 +2165,7 @@
         </trans-unit>
         <trans-unit id="Table 4223300238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Quote Header</source>
-          <target>Cabeçalho do Orçamento KINTO</target>
+          <target>Cabeçalho do Orçamento</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Header - Property Caption</note>
         </trans-unit>
@@ -2280,13 +2291,13 @@
         </trans-unit>
         <trans-unit id="Table 4223300238 - Field 65473960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Free Cash Flow</source>
-          <target>Fluxo de Caixa Livre KINTO</target>
+          <target>Fluxo de Caixa Livre</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Header - Field KINTO FCF - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4223300238 - Field 1238341946 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO IRR</source>
-          <target>TIR KINTO</target>
+          <target>TIR</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Header - Field KINTO IRR - Property Caption</note>
         </trans-unit>
@@ -2321,7 +2332,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Header - Field Payment Allowance Days - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4223300238 - Field 2438964577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pick-up &amp; Delivery</source>
+          <source>Pick-up and Delivery</source>
           <target>Retirada e Entrega</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Header - Field Pickup Delivery Package ID - Property Caption</note>
@@ -2406,9 +2417,21 @@
         </trans-unit>
         <trans-unit id="Table 3176424292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Quote Item</source>
-          <target>Item do Orçamento KINTO</target>
+          <target>Item do Orçamento</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3176424292 - NamedType 3777674734" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Insurance quote %1 is already linked to KINTO quote %2. Unlink it from the current quote or select another insurance quote.</source>
+          <target>A cotação de seguro %1 já está vinculada à cotação KINTO %2. Desvincule-a da cotação atual ou selecione outra cotação de seguro.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - NamedType InsuranceQuoteAlreadyLinkedErr</note>
+        </trans-unit>
+        <trans-unit id="Table 3176424292 - NamedType 2179521306" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Insurance quote %1 was not found. Select an existing insurance quote before continuing.</source>
+          <target>A cotação de seguro %1 não foi encontrada. Selecione uma cotação de seguro existente antes de continuar.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - NamedType InsuranceQuoteNotFoundErr</note>
         </trans-unit>
         <trans-unit id="Table 3176424292 - Field 3655155553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>24h Assistance</source>
@@ -2694,13 +2717,13 @@
         </trans-unit>
         <trans-unit id="Table 3176424292 - Field 65473960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO FCF</source>
-          <target>FCF KINTO</target>
+          <target>FCF</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Field KINTO FCF - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3176424292 - Field 1238341946 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO IRR</source>
-          <target>TIR KINTO</target>
+          <target>IRR</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Field KINTO IRR - Property Caption</note>
         </trans-unit>
@@ -2712,7 +2735,7 @@
         </trans-unit>
         <trans-unit id="Table 3176424292 - Field 252159702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Share Coupon</source>
-          <target>Cupom de Participação KINTO</target>
+          <target>Cupom de Participação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Field KINTO Share Coupon - Property Caption</note>
         </trans-unit>
@@ -2778,9 +2801,8 @@
         </trans-unit>
         <trans-unit id="Table 3176424292 - Field 3377120672 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>preço de compra do veículo</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>preço de compra do veículo</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Field MSRP - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Table 3176424292 - Field 3377120672 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -2832,7 +2854,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Field Payment Allowance (days) - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3176424292 - Field 2438964577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pick-up &amp; Delivery</source>
+          <source>Pick-up and Delivery</source>
           <target>Retirada e Entrega</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Quote Item - Field Pickup Delivery Package ID - Property Caption</note>
@@ -3085,7 +3107,7 @@
         </trans-unit>
         <trans-unit id="Table 63014751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Replacement Vehicle Package</source>
-          <target>Pacote de Veículo de Substituição KINTO</target>
+          <target>Pacote de Veículo de Substituição</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Replacement Vehicle Pkg - Property Caption</note>
         </trans-unit>
@@ -3181,7 +3203,7 @@
         </trans-unit>
         <trans-unit id="Table 2004732620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Residual Value Matrix</source>
-          <target>Matriz de Valor Residual KINTO</target>
+          <target>Matriz de Valor Residual</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO RV Matrix - Property Caption</note>
         </trans-unit>
@@ -3271,7 +3293,7 @@
         </trans-unit>
         <trans-unit id="Table 1102927356 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Service Package</source>
-          <target>Pacote de Serviços KINTO</target>
+          <target>Pacote de Serviços</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Service Package - Property Caption</note>
         </trans-unit>
@@ -3355,7 +3377,7 @@
         </trans-unit>
         <trans-unit id="Table 1170792268 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Simulation Snapshot</source>
-          <target>Instantâneo de Simulação KINTO</target>
+          <target>Instantâneo de Simulação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Simulation Snapshot - Property Caption</note>
         </trans-unit>
@@ -3745,7 +3767,7 @@
         </trans-unit>
         <trans-unit id="Table 2513131328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Supplier Group</source>
-          <target>Grupo de Fornecedores KINTO</target>
+          <target>Grupo de Fornecedores</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Supplier Group - Property Caption</note>
         </trans-unit>
@@ -3781,7 +3803,7 @@
         </trans-unit>
         <trans-unit id="Table 3621332359 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Supplier Group Assignment</source>
-          <target>Atribuição de Grupo de Fornecedores KINTO</target>
+          <target>Atribuição de Grupo de Fornecedores</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Supplier Group Assign - Property Caption</note>
         </trans-unit>
@@ -3805,7 +3827,7 @@
         </trans-unit>
         <trans-unit id="Table 2564358849 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Tire Package</source>
-          <target>Pacote de Pneus KINTO</target>
+          <target>Pacote de Pneus</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Tire Package - Property Caption</note>
         </trans-unit>
@@ -3913,7 +3935,7 @@
         </trans-unit>
         <trans-unit id="Table 3466642036 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Vehicle Model</source>
-          <target>Modelo de Veículo KINTO</target>
+          <target>Modelo de Veículo</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Vehicle Model - Property Caption</note>
         </trans-unit>
@@ -4039,7 +4061,7 @@
         </trans-unit>
         <trans-unit id="Table 1930137678 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Vehicle Odometer History</source>
-          <target>Histórico do Hodômetro do Veículo KINTO</target>
+          <target>Histórico do Hodômetro do Veículo</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Vehicle Odometer History - Property Caption</note>
         </trans-unit>
@@ -4081,7 +4103,7 @@
         </trans-unit>
         <trans-unit id="Table 2748267909 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Vendor Category</source>
-          <target>Categoria de Fornecedor KINTO</target>
+          <target>Categoria de Fornecedor</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Vendor Category - Property Caption</note>
         </trans-unit>
@@ -4111,7 +4133,7 @@
         </trans-unit>
         <trans-unit id="Table 503909766 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Vendor Category Assignment</source>
-          <target>Atribuição de Categoria de Fornecedor KINTO</target>
+          <target>Atribuição de Categoria de Fornecedor</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Vendor Category Assign - Property Caption</note>
         </trans-unit>
@@ -4193,6 +4215,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Vendor Contact - Field Vendor No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2209941439 - NamedType 2799415179" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vehicle %1 cannot be reserved because its current status is %2. Release the vehicle or select an available vehicle before continuing.</source>
+          <target>O veículo %1 não pode ser reservado porque seu status atual é %2. Libere o veículo ou selecione um veículo disponível antes de continuar.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Booking Value Mgt. - NamedType VehicleNotAvailableErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3032064418 - NamedType 1522167451" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Commissions were not calculated because country setup %1 does not exist. Configure the country in KINTO Country Setup and try again.</source>
+          <target>As comissões não foram calculadas porque a configuração do país %1 não existe. Configure o país em Configuração de País KINTO e tente novamente.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Commission Calculator - NamedType CountrySetupNotFoundErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2415133657 - NamedType 2456773564" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select Maintenance Plan Excel File</source>
           <target>Selecionar Arquivo Excel do Plano de Manutenção</target>
@@ -4211,35 +4245,65 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Maint. Plan Excel Import - NamedType ImportSuccessMsg</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2415133657 - NamedType 3824352088" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The maintenance plan was not imported because row %1, column %2 contains the invalid value %3. Enter a valid number in the Excel file and try again.</source>
+          <target>O plano de manutenção não foi importado porque a linha %1, coluna %2, contém o valor inválido %3. Informe um número válido no arquivo Excel e tente novamente.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Maint. Plan Excel Import - NamedType InvalidDecimalValueErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2415133657 - NamedType 1188393933" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The maintenance plan was not imported because the Excel file has no data rows after the header. Select a file with maintenance data and try again.</source>
+          <target>O plano de manutenção não foi importado porque o arquivo Excel não tem linhas de dados após o cabeçalho. Selecione um arquivo com dados de manutenção e tente novamente.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Maint. Plan Excel Import - NamedType NoExcelDataErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2398785172 - Method 1301351786 - NamedType 2737970570" size-unit="char" translate="yes" xml:space="preserve">
+          <source>An inventory vehicle is required to calculate maintenance for used vehicle quote item %1.</source>
+          <target>Um veículo de estoque é obrigatório para calcular a manutenção do item de cotação de veículo usado %1.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Package Pricing Calc - Method GetMaintenanceMonthly - NamedType NoInventoryVehicleErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 539409003 - NamedType 3450027040" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Country Setup not found for country %1.</source>
-          <target>Configuração de país não encontrada para o país %1.</target>
+          <source>Pricing cannot start because country setup %1 does not exist. Configure the country in KINTO Country Setup and try again.</source>
+          <target>A precificação não pode ser iniciada porque a configuração do país %1 não existe. Configure o país em Configuração de País KINTO e tente novamente.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Pricing Engine Mgt. - NamedType NoCountryErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 539409003 - NamedType 559118403" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item No. is required on Quote Item Line %1.</source>
-          <target>O Número do Item é obrigatório na Linha de Item da Cotação %1.</target>
+          <source>Quote item line %1 cannot be priced because no item is selected. Select an item on the line and try again.</source>
+          <target>A linha %1 do item da cotação não pode ser precificada porque nenhum item foi selecionado. Selecione um item na linha e tente novamente.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Pricing Engine Mgt. - NamedType NoItemErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 539409003 - NamedType 2123150804" size-unit="char" translate="yes" xml:space="preserve">
-          <source>MSRP must be greater than 0 on Quote Item Line %1.</source>
-          <target>O MSRP deve ser maior que 0 na Linha de Item da Cotação %1.</target>
+          <source>Quote item line %1 cannot be priced because MSRP is zero or negative. Enter an MSRP greater than zero and try again.</source>
+          <target>A linha %1 do item da cotação não pode ser precificada porque o MSRP é zero ou negativo. Informe um MSRP maior que zero e tente novamente.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Pricing Engine Mgt. - NamedType NoMSRPErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 539409003 - NamedType 2803318414" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contract Term must be greater than 0 on Quote Item Line %1.</source>
-          <target>O Prazo do Contrato deve ser maior que 0 na Linha de Item da Cotação %1.</target>
+          <source>Quote item line %1 cannot be priced because the contract term is zero or negative. Enter a contract term greater than zero and try again.</source>
+          <target>A linha %1 do item da cotação não pode ser precificada porque o prazo contratual é zero ou negativo. Informe um prazo contratual maior que zero e tente novamente.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Pricing Engine Mgt. - NamedType NoTermErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 539409003 - NamedType 984788999" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pricing Engine is stopped for country %1. Contact administrator.</source>
-          <target>O Mecanismo de Precificação está parado para o país %1. Entre em contato com o administrador.</target>
+          <source>Pricing Engine is stopped for country %1 because the emergency stop is enabled. Contact the administrator to review the country setup before continuing.</source>
+          <target>O Mecanismo de Precificação está interrompido para o país %1 porque a parada de emergência está ativada. Contate o administrador para revisar a configuração do país antes de continuar.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Pricing Engine Mgt. - NamedType PricingErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2753477091 - NamedType 1789052226" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No residual value was found for item %1 and usage type %2. Create an active entry in the KINTO Residual Value Matrix and try again.</source>
+          <target>Não foi encontrado valor residual para o item %1 e tipo de uso %2. Crie uma entrada ativa na Matriz de Valor Residual KINTO e tente novamente.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO RV Lookup Mgt. - NamedType NoResidualValueErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2753477091 - NamedType 3745917883" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No residual value range matches item %3, projected mileage %1 km, and contract term %2 months. Review the mileage and age ranges in the KINTO Residual Value Matrix.</source>
+          <target>Nenhuma faixa de valor residual corresponde ao item %3, à quilometragem projetada de %1 km e ao prazo contratual de %2 meses. Revise as faixas de quilometragem e idade na Matriz de Valor Residual KINTO.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO RV Lookup Mgt. - NamedType NoResidualValueRangeErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 4142052566 - NamedType 2456773564" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select Excel File to Import</source>
@@ -4277,9 +4341,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO RV Matrix Excel Import - NamedType MissingItemErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2815956546 - NamedType 1522167451" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Taxes were not calculated because country setup %1 does not exist. Configure the country in KINTO Country Setup and try again.</source>
+          <target>Os impostos não foram calculados porque a configuração do país %1 não existe. Configure o país em Configuração de País KINTO e tente novamente.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Tax Calculator - NamedType CountrySetupNotFoundErr</note>
+        </trans-unit>
         <trans-unit id="Page 1711122143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO 24h Assistance Packages</source>
-          <target>Pacotes de Assistência 24h KINTO</target>
+          <target>Pacotes de Assistência 24h</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO 24h Assistance List - Property Caption</note>
         </trans-unit>
@@ -4363,7 +4433,7 @@
         </trans-unit>
         <trans-unit id="Page 3477515263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Approval Request</source>
-          <target>Solicitação de Aprovação KINTO</target>
+          <target>Solicitação de Aprovação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Approval Request Card - Property Caption</note>
         </trans-unit>
@@ -4411,13 +4481,13 @@
         </trans-unit>
         <trans-unit id="Page 338274741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Approval Requests</source>
-          <target>Solicitações de Aprovação KINTO</target>
+          <target>Solicitações de Aprovação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Approval Request List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 58670512 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Cash Flow API</source>
-          <target>API de Fluxo de Caixa KINTO</target>
+          <target>API de Fluxo de Caixa</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Cash Flow API - Property Caption</note>
         </trans-unit>
@@ -4453,7 +4523,7 @@
         </trans-unit>
         <trans-unit id="Page 821288576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Country Setup</source>
-          <target>Configuração de País KINTO</target>
+          <target>Configuração de País</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup Card - Property Caption</note>
         </trans-unit>
@@ -4470,7 +4540,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup Card - Control CreditRisk - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 821288576 - Control 1826403361 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Dates &amp; Periods</source>
+          <source>Dates and Periods</source>
           <target>Datas e Períodos</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup Card - Control Dates - Property Caption</note>
@@ -4519,7 +4589,7 @@
         </trans-unit>
         <trans-unit id="Page 2709650475 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Glass Coverage Packages</source>
-          <target>Pacotes de Cobertura de Vidros KINTO</target>
+          <target>Pacotes de Cobertura de Vidros</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Glass Coverage List - Property Caption</note>
         </trans-unit>
@@ -4531,7 +4601,7 @@
         </trans-unit>
         <trans-unit id="Page 2908407624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Grupo de Cotação de Seguro</source>
-          <target>KINTO Grupo de Cotação de Seguro</target>
+          <target>Grupo de Cotação de Seguro</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Ins. Quote Group Card - Property Caption</note>
         </trans-unit>
@@ -4543,9 +4613,8 @@
         </trans-unit>
         <trans-unit id="Page 2908407624 - Control 3070570244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Limites de Cobertura (Pricing)</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Limites de Cobertura (Pricing)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Ins. Quote Group Card - Control CoverageLimits - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2908407624 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -4556,20 +4625,19 @@
         </trans-unit>
         <trans-unit id="Page 2908407624 - Control 3788476442 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Parâmetros de Seguro</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Parâmetros de Seguro</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Ins. Quote Group Card - Control InsuranceParams - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2908407624 - Action 1549032309 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cotações deste Grupo</source>
-          <target>Cotações deste Grupo</target>
+          <target>Precificação deste Grupo</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Ins. Quote Group Card - Action InsuranceQuotes - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2500314830 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Grupos de Cotação de Seguro</source>
-          <target>KINTO Grupos de Cotação de Seguro</target>
+          <target>Grupos de Cotação de Seguro</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Ins. Quote Group List - Property Caption</note>
         </trans-unit>
@@ -4581,7 +4649,7 @@
         </trans-unit>
         <trans-unit id="Page 1055302677 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Cotação de Seguro</source>
-          <target>KINTO Cotação de Seguro</target>
+          <target>Cotação de Seguro</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Insurance Quote Card - Property Caption</note>
         </trans-unit>
@@ -4605,7 +4673,7 @@
         </trans-unit>
         <trans-unit id="Page 1055302677 - Control 2782249122 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Integração KINTO</source>
-          <target>Integração KINTO</target>
+          <target>Integração</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Insurance Quote Card - Control Integration - Property Caption</note>
         </trans-unit>
@@ -4629,7 +4697,7 @@
         </trans-unit>
         <trans-unit id="Page 1055302677 - Action 4081464772 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ver Cotação KINTO</source>
-          <target>Ver Cotação KINTO</target>
+          <target>Ver Cotação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Insurance Quote Card - Action ViewKINTOQuote - Property Caption</note>
         </trans-unit>
@@ -4641,13 +4709,13 @@
         </trans-unit>
         <trans-unit id="Page 1802554175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Cotações de Seguro</source>
-          <target>KINTO Cotações de Seguro</target>
+          <target>Precificação de Seguro</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Insurance Quote List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 942649281 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Seguradora</source>
-          <target>KINTO Seguradora</target>
+          <target>Seguradora</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Insurer Card - Property Caption</note>
         </trans-unit>
@@ -4683,7 +4751,7 @@
         </trans-unit>
         <trans-unit id="Page 428676947 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Seguradoras</source>
-          <target>KINTO Seguradoras</target>
+          <target>Seguradoras</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Insurer List - Property Caption</note>
         </trans-unit>
@@ -4701,7 +4769,7 @@
         </trans-unit>
         <trans-unit id="Page 393212459 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Inventory Vehicle</source>
-          <target>Veículo em Estoque KINTO</target>
+          <target>Veículo em Estoque</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Inventory Vehicle Card - Property Caption</note>
         </trans-unit>
@@ -4724,7 +4792,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Inventory Vehicle Card - Control General - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 393212459 - Control 736648186 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Mileage &amp; Age</source>
+          <source>Mileage and Age</source>
           <target>Quilometragem e Idade</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Inventory Vehicle Card - Control Mileage - Property Caption</note>
@@ -4779,7 +4847,7 @@
         </trans-unit>
         <trans-unit id="Page 393212459 - Action 857400681 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ver Cotações deste Veículo</source>
-          <target>Ver Orçamentos deste Veículo</target>
+          <target>Ver Cotações deste Veículo</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Inventory Vehicle Card - Action ViewQuotesForVehicle - Property Caption</note>
         </trans-unit>
@@ -4797,7 +4865,7 @@
         </trans-unit>
         <trans-unit id="Page 4117523417 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Inventory Vehicles</source>
-          <target>Veículos em Estoque KINTO</target>
+          <target>Veículos em Estoque</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Inventory Vehicle List - Property Caption</note>
         </trans-unit>
@@ -4827,7 +4895,7 @@
         </trans-unit>
         <trans-unit id="Page 3240880478 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Item Version History</source>
-          <target>Histórico de Versões de Itens KINTO</target>
+          <target>Histórico de Versões de Itens</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Item Version History - Property Caption</note>
         </trans-unit>
@@ -4851,7 +4919,7 @@
         </trans-unit>
         <trans-unit id="Page 3350824451 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Maintenance Plan Card</source>
-          <target>Plano de Manutenção KINTO</target>
+          <target>Plano de Manutenção</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Maint. Plan Card - Property Caption</note>
         </trans-unit>
@@ -4899,7 +4967,7 @@
         </trans-unit>
         <trans-unit id="Page 1799791921 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Maintenance Plans</source>
-          <target>Planos de Manutenção KINTO</target>
+          <target>Planos de Manutenção</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Maint. Plan List - Property Caption</note>
         </trans-unit>
@@ -4911,19 +4979,19 @@
         </trans-unit>
         <trans-unit id="Page 3056318516 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Vehicle Odometer History</source>
-          <target>Histórico do Hodômetro do Veículo KINTO</target>
+          <target>Histórico do Hodômetro do Veículo</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Odometer History List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3845373351 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Pick-up and Delivery Packages</source>
-          <target>Pacotes de Retirada e Entrega KINTO</target>
+          <target>Pacotes de Retirada e Entrega</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pickup Delivery List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2082972254 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Pricing Calculation API</source>
-          <target>API de Cálculo de Precificação KINTO</target>
+          <target>API de Cálculo de Precificação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Calc API - Property Caption</note>
         </trans-unit>
@@ -4935,444 +5003,379 @@
         </trans-unit>
         <trans-unit id="Page 570805491 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Pricing Headline</source>
-          <target>Destaque de Precificação KINTO</target>
+          <target>Destaque de Precificação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Headline - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Pricing</source>
-          <target>KINTO Pricificação</target>
+          <target>Pricificação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3913809234 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>New Maintenance Plan</source>
-          <target>[NAB: REVIEW]New Maintenance Plan</target>
+          <target>Novo Plano de Manutenção</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewMaintPlanAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2179368204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>New Quote</source>
-          <target>[NAB: REVIEW]New Quote</target>
+          <target>Nova Precificação</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewQuoteAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3698358830 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>New RV Entry</source>
-          <target>[NAB: REVIEW]New RV Entry</target>
+          <target>Nova Entrada RV</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewRVEntryAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 448813062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>New Vehicle</source>
-          <target>[NAB: REVIEW]New Vehicle</target>
+          <target>Novo Veículo</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewVehicleAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2228238311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>New Vehicle Model</source>
-          <target>[NAB: REVIEW]New Vehicle Model</target>
+          <target>Novo Modelo de Veículo</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewVehicleModelAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 637803340 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Downloads an Excel template for entering the Residual Value Matrix.</source>
-          <target>[NAB: REVIEW]Downloads an Excel template for entering the Residual Value Matrix.</target>
+          <target>Baixa um modelo Excel para preenchimento da Matriz de Valor Residual.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action DownloadRVTemplate - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 637803340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Download RV Matrix Template</source>
-          <target>[NAB: REVIEW]Download RV Matrix Template</target>
+          <target>Baixar Template da Matriz RV</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action DownloadRVTemplate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2810716275 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Imports a maintenance plan from an Excel file.</source>
-          <target>[NAB: REVIEW]Imports a maintenance plan from an Excel file.</target>
+          <target>Importa um plano de manutenção a partir de um arquivo Excel.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ImportMaintPlan - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2810716275 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Import Maintenance Plan (Excel)</source>
-          <target>[NAB: REVIEW]Import Maintenance Plan (Excel)</target>
+          <target>Importar Plano de Manutenção (Excel)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ImportMaintPlan - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1257017550 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Imports Residual Value Matrix entries from an Excel file.</source>
-          <target>[NAB: REVIEW]Imports Residual Value Matrix entries from an Excel file.</target>
+          <target>Importa entradas da Matriz de Valor Residual a partir de um arquivo Excel.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ImportRVMatrix - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1257017550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Import RV Matrix (Excel)</source>
-          <target>[NAB: REVIEW]Import RV Matrix (Excel)</target>
+          <target>Importar Matriz RV (Excel)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ImportRVMatrix - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2930236268 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cash Flow Report</source>
-          <target>[NAB: REVIEW]Cash Flow Report</target>
+          <target>Relatório de Fluxo de Caixa</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ViewCashFlowReport - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2078252032 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Snapshots Report</source>
-          <target>[NAB: REVIEW]Snapshots Report</target>
+          <target>Relatório de Snapshots</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ViewSnapshotsReport - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3860314472 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approvals</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Aprovações</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Approvals - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 557708079 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approval Requests</source>
-          <target>[NAB: REVIEW]Approval Requests</target>
+          <target>Solicitações de Aprovação</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ApprovalRequests - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1538464910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Insurance</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Seguros</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Insurance - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2565773788 - Action 2224658365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>KINTO Ins Coverage Limit Sub</source>
-          <target>[NAB: NOT TRANSLATED]</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action InsCoverageLimitSub - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 786036573 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quote Groups</source>
-          <target>[NAB: REVIEW]Quote Groups</target>
+          <target>Grupos de Cotação</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action InsQuoteGroupList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2129586718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Insurance Quotes</source>
-          <target>[NAB: REVIEW]Insurance Quotes</target>
+          <target>Cotações de Seguro</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action InsuranceQuoteList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3584277202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Insurers</source>
-          <target>[NAB: REVIEW]Insurers</target>
+          <target>Seguradoras</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action InsurerList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 4277305976 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>New Insurance Quote</source>
-          <target>[NAB: REVIEW]New Insurance Quote</target>
+          <target>Nova Cotação de Seguro</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewInsuranceQuote - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1572708512 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Master Data</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Dados Cadastrais</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action MasterData - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1994005900 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer Card</source>
           <target>Ficha de Cliente</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CustomerCard - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 363045002 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customers</source>
           <target>Clientes</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CustomerList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3709824974 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fixed Asset Card</source>
           <target>Ficha de Ativo Fixo</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action FixedAssetCard - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2593810088 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fixed Assets (Booking Value)</source>
           <target>Ativos Fixos (Booking Value)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action FixedAssetList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2876958691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Card</source>
           <target>Ficha de Item</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ItemCard - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1020778533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Categories</source>
           <target>Categorias de Item</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ItemCategories - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2768240657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Items (Vehicles and Accessories)</source>
           <target>Itens (Veículos e Acessórios)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ItemList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1574261460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Dealer Card</source>
-          <target>Ficha de Dealer/target</source>
+          <target>Ficha de Dealer</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action VendorCard - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 400138034 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Dealers (Vendors)</source>
           <target>Dealers (Fornecedores)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action VendorList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 762499963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Service Packages</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Pacotes de Serviços</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Packages - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1483320198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>24h Assistance</source>
-          <target>[NAB: REVIEW]24h Assistance</target>
+          <target>Assistência 24h</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Assistance24hList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2471256554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Glass Coverage</source>
-          <target>[NAB: REVIEW]Glass Coverage</target>
+          <target>Cobertura de Vidros</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action GlassCoverageList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2248666022 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pick-up &amp; Delivery</source>
-          <target>Pick-up &amp; Delivery</target>
+          <source>Pick-up Delivery</source>
+          <target>Retirada e Entrega</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action PickupDeliveryList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2492537712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Replacement Vehicle</source>
-          <target>[NAB: REVIEW]Replacement Vehicle</target>
+          <target>Veículo de Substituição</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ReplacementVehicleList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 4221244079 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Services (Telemetry)</source>
-          <target>[NAB: REVIEW]Services (Telemetry)</target>
+          <target>Serviços (Telemetria)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ServicePackageList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1747354622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tires</source>
-          <target>[NAB: REVIEW]Tires</target>
+          <target>Pneus</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action TirePackageList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2593441947 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quotes</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Precificação</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Quotes - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3838802397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cash Flow</source>
-          <target>[NAB: REVIEW]Cash Flow</target>
+          <target>Fluxo de Caixa</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CashFlowData - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3244524450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>New Quote</source>
-          <target>[NAB: REVIEW]New Quote</target>
+          <target>Nova Precificação</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewQuote - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2775441684 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quotes</source>
-          <target>[NAB: REVIEW]Quotes</target>
+          <target>Precificação</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action QuoteList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2342602361 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Simulation Snapshots</source>
-          <target>[NAB: REVIEW]Simulation Snapshots</target>
+          <target>Snapshots de Simulação</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Snapshots - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1514883969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Setup</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Configuração</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Setup - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2571089339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cash Flow Components</source>
-          <target>[NAB: REVIEW]Cash Flow Components</target>
+          <target>Componentes de Fluxo de Caixa</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CFComponents - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3596930665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Country Setup</source>
-          <target>[NAB: REVIEW]Country Setup</target>
+          <target>Configuração por País</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action CountrySetup - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2279610327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Maintenance Plans</source>
-          <target>[NAB: REVIEW]Maintenance Plans</target>
+          <target>Planos de Manutenção</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action MaintenancePlans - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 889408828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>New Maintenance Plan</source>
-          <target>[NAB: REVIEW]New Maintenance Plan</target>
+          <target>Novo Plano de Manutenção</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewMaintPlan - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3691601952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>New RV Entry</source>
-          <target>[NAB: REVIEW]New RV Entry</target>
+          <target>Nova Entrada RV</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewRVEntry - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3704295809 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Residual Value Matrix</source>
-          <target>[NAB: REVIEW]Residual Value Matrix</target>
+          <target>Matriz de Valor Residual</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action RVMatrix - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3511817141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vehicles</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Veículos</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Vehicles - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1320741956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vehicles in Stock</source>
-          <target>[NAB: REVIEW]Vehicles in Stock</target>
+          <target>Veículos em Estoque</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action InventoryVehicleList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3320336840 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>New Vehicle</source>
-          <target>[NAB: REVIEW]New Vehicle</target>
+          <target>Novo Veículo</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action NewVehicle - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3965960935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Odometer History</source>
-          <target>[NAB: REVIEW]Odometer History</target>
+          <target>Histórico de Hodômetro</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action OdometerHistory - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 3325950671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vehicle Models</source>
-          <target>[NAB: REVIEW]Vehicle Models</target>
+          <target>Modelos de Veículos</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action VehicleModelList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 713531721 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendors</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Fornecedores</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action Vendors - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1602948287 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Version History</source>
-          <target>[NAB: REVIEW]Item Version History</target>
+          <target>Histórico de Versões de Item</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action ItemVersionHistory - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 1461380427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Groups</source>
-          <target>[NAB: REVIEW]Vendor Groups</target>
+          <target>Grupos de Fornecedores</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action SupplierGroupList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 2997759794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor Categories</source>
-          <target>[NAB: REVIEW]Vendor Categories</target>
+          <target>Categorias de Fornecedor</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action VendorCategoryList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2565773788 - Action 471044106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contacts (Dealer Portal)</source>
-          <target>[NAB: REVIEW]Contacts (Dealer Portal)</target>
+          <target>Contatos (Portal do Dealer)</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Role Center - Action VendorContactList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 939516712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Pricing Validation API</source>
-          <target>API de Validação de Precificação KINTO</target>
+          <target>API de Validação de Precificação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Validation API - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1773596298 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cotações</source>
-          <target>Cotações</target>
+          <target>Precificação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Quote Activities - Property Caption</note>
         </trans-unit>
@@ -5396,7 +5399,7 @@
         </trans-unit>
         <trans-unit id="Page 1773596298 - Control 2593441947 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cotações</source>
-          <target>Cotações</target>
+          <target>Precificação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Quote Activities - Control Quotes - Property Caption</note>
         </trans-unit>
@@ -5420,13 +5423,13 @@
         </trans-unit>
         <trans-unit id="Page 1773596298 - Action 191529533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total de Cotações</source>
-          <target>Total de Cotações</target>
+          <target>Total da Precificação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Quote Activities - Action Total Quotes - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3263702195 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Quote</source>
-          <target>Cotação KINTO</target>
+          <target>Cotação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Quote Card - Property Caption</note>
         </trans-unit>
@@ -5510,31 +5513,31 @@
         </trans-unit>
         <trans-unit id="Page 449895821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Quote Items API</source>
-          <target>API de Itens da Cotação KINTO</target>
+          <target>API de Itens da Cotação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Quote Items API - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2080460481 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Quotes</source>
-          <target>Cotações KINTO</target>
+          <target>Precificação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Quote List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4070586242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Replacement Vehicle Packages</source>
-          <target>Pacotes de Veículos de Substituição KINTO</target>
+          <target>Pacotes de Veículos de Substituição</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Repl Vehicle List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 155035764 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO RV Matrix API</source>
-          <target>API da Matriz RV KINTO</target>
+          <target>API da Matriz RV</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO RV Matrix API - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1511947896 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO RV Matrix Entry</source>
-          <target>Entrada da Matriz RV KINTO</target>
+          <target>Entrada da Matriz RV</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO RV Matrix Card - Property Caption</note>
         </trans-unit>
@@ -5558,7 +5561,7 @@
         </trans-unit>
         <trans-unit id="Page 62077662 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Residual Value Matrix</source>
-          <target>Matriz de Valor Residual KINTO</target>
+          <target>Matriz de Valor Residual</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO RV Matrix List - Property Caption</note>
         </trans-unit>
@@ -5570,7 +5573,7 @@
         </trans-unit>
         <trans-unit id="Page 1932981390 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Service Packages</source>
-          <target>Pacotes de Serviços KINTO</target>
+          <target>Pacotes de Serviços</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Service Package List - Property Caption</note>
         </trans-unit>
@@ -5600,19 +5603,19 @@
         </trans-unit>
         <trans-unit id="Page 2145093170 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Supplier Groups</source>
-          <target>Grupos de Fornecedores KINTO</target>
+          <target>Grupos de Fornecedores</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Supplier Group List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2480874487 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Tire Packages</source>
-          <target>Pacotes de Pneus KINTO</target>
+          <target>Pacotes de Pneus</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Tire Package List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2464127360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Vehicle Model</source>
-          <target>Modelo de Veículo KINTO</target>
+          <target>Modelo de Veículo</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Vehicle Model Card - Property Caption</note>
         </trans-unit>
@@ -5648,7 +5651,7 @@
         </trans-unit>
         <trans-unit id="Page 3591618438 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Vehicle Models</source>
-          <target>Modelos de Veículos KINTO</target>
+          <target>Modelos de Veículos</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Vehicle Model List - Property Caption</note>
         </trans-unit>
@@ -5666,13 +5669,13 @@
         </trans-unit>
         <trans-unit id="Page 2664979675 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Vendor Categories</source>
-          <target>Categorias de Fornecedor KINTO</target>
+          <target>Categorias de Fornecedor</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Vendor Category List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2595552923 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Vendor Contacts (Portal)</source>
-          <target>Contatos de Fornecedor KINTO (Portal)</target>
+          <target>Contatos de Fornecedor (Portal)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Vendor Contact List - Property Caption</note>
         </trans-unit>
@@ -5696,13 +5699,13 @@
         </trans-unit>
         <trans-unit id="PageExtension 3911697488 - Control 3503861514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3133908286">
           <source>KINTO Booking Value</source>
-          <target>Valor de Registro KINTO</target>
+          <target>Valor de Registro</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Fixed Asset Card Ext - Control KINTOBooking - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 766396582 - Action 3288437138 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 949348664">
           <source>Clear KINTO Filter</source>
-          <target>Limpar Filtro KINTO</target>
+          <target>Limpar Filtro</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Fixed Asset List Ext - Action KINTOClearAssetFilter - Property Caption</note>
         </trans-unit>
@@ -5714,7 +5717,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 766396582 - Action 3984051229 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 949348664">
           <source>Filter KINTO Assets</source>
-          <target>Filtrar Ativos KINTO</target>
+          <target>Filtrar Ativos</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Fixed Asset List Ext - Action KINTOFilterKINTOAssets - Property Caption</note>
         </trans-unit>
@@ -5738,55 +5741,55 @@
         </trans-unit>
         <trans-unit id="PageExtension 1273389553 - Control 4131545811 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>KINTO Classification</source>
-          <target>Classificação KINTO</target>
+          <target>Classificação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Item Card Ext - Control KINTOClassification - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1273389553 - Control 2859698519 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>KINTO Insurance Coverage</source>
-          <target>Cobertura de Seguro KINTO</target>
+          <target>Cobertura de Seguro</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Item Card Ext - Control KINTOInsurance - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1273389553 - Control 3925755397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>KINTO Portal &amp; Approval</source>
-          <target>Portal e Aprovação KINTO</target>
+          <source>KINTO Portal and Approval</source>
+          <target>Portal e Aprovação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Item Card Ext - Control KINTOPortal - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1273389553 - Control 2659742585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>KINTO Pricing</source>
-          <target>Precificação KINTO</target>
+          <target>Precificação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Item Card Ext - Control KINTOPricing - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1273389553 - Control 3239883217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>KINTO Vehicle Data</source>
-          <target>Dados do Veículo KINTO</target>
+          <target>Dados do Veículo</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Item Card Ext - Control KINTOVehicleData - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 274348543 - Action 476434418 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3657300613">
           <source>Create KINTO Default Categories</source>
-          <target>Criar Categorias Padrão KINTO</target>
+          <target>Criar Categorias Padrão</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Item Categories Ext - Action KINTOCreateDefaultCategories - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3468343315 - Action 2334754250 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Clear KINTO Filter</source>
-          <target>Limpar Filtro KINTO</target>
+          <target>Limpar Filtro</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Item List Ext - Action KINTOClearFilter - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3468343315 - Action 690833235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Filter KINTO Accessories</source>
-          <target>Filtrar Acessórios KINTO</target>
+          <target>Filtrar Acessórios</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Item List Ext - Action KINTOFilterAccessories - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3468343315 - Action 1820364496 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Filter KINTO Vehicles</source>
-          <target>Filtrar Veículos KINTO</target>
+          <target>Filtrar Veículos</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Item List Ext - Action KINTOFilterVehicles - Property Caption</note>
         </trans-unit>
@@ -5798,25 +5801,25 @@
         </trans-unit>
         <trans-unit id="PageExtension 1087532286 - Control 1241519155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
           <source>KINTO Categorias</source>
-          <target>KINTO Categorias</target>
+          <target>Categorias</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Vendor Card Pkg Ext - Control KINTOCategories - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1087532286 - Control 2453695408 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
           <source>KINTO Contatos (Portal)</source>
-          <target>KINTO Contatos (Portal)</target>
+          <target>Contatos (Portal)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Vendor Card Pkg Ext - Control KINTOContacts - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3049927980 - Action 1402261143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4194195770">
           <source>Clear KINTO Filter</source>
-          <target>Limpar Filtro KINTO</target>
+          <target>Limpar Filtro</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Vendor List Ext - Action KINTOClearDealerFilter - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3049927980 - Action 1789711329 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4194195770">
           <source>Filter KINTO Dealers</source>
-          <target>Filtrar Revendedores KINTO</target>
+          <target>Filtrar Revendedores</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Vendor List Ext - Action KINTOFilterDealers - Property Caption</note>
         </trans-unit>
@@ -5846,7 +5849,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 3049927980 - Control 283544618 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4194195770">
           <source>KINTO Dealer</source>
-          <target>Revendedor KINTO</target>
+          <target>Revendedor</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Vendor List Ext - Control KINTO Is Dealer - Property Caption</note>
         </trans-unit>
@@ -5858,13 +5861,13 @@
         </trans-unit>
         <trans-unit id="TableExtension 2075339590 - Field 2602234166 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>KINTO Credit Score</source>
-          <target>Pontuação de Crédito KINTO</target>
+          <target>Pontuação de Crédito</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Customer Extension - Field KINTO Credit Score - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2075339590 - Field 112962149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>KINTO Customer Type</source>
-          <target>Tipo de Cliente KINTO</target>
+          <target>Tipo de Cliente</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Customer Extension - Field KINTO Customer Type - Property Caption</note>
         </trans-unit>
@@ -5876,7 +5879,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 1011789908 - Field 941719477 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
           <source>KINTO Asset Status</source>
-          <target>Status do Ativo KINTO</target>
+          <target>Status do Ativo</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Fixed Asset Extension - Field KINTO Asset Status - Property Caption</note>
         </trans-unit>
@@ -5906,19 +5909,19 @@
         </trans-unit>
         <trans-unit id="TableExtension 1011789908 - Field 1969129502 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
           <source>KINTO Inventory Vehicle No.</source>
-          <target>Nº do Veículo em Estoque KINTO</target>
+          <target>Nº do Veículo em Estoque</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Fixed Asset Extension - Field KINTO Inventory Vehicle No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1011789908 - Field 3258202548 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
           <source>KINTO Last Contract No.</source>
-          <target>Nº do Último Contrato KINTO</target>
+          <target>Nº do Último Contrato</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Fixed Asset Extension - Field KINTO Last Contract No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1011789908 - Field 2951132236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
           <source>KINTO Monthly Booking Value</source>
-          <target>Valor Mensal de Registro KINTO</target>
+          <target>Valor Mensal de Registro</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Fixed Asset Extension - Field KINTO Monthly Booking Value - Property Caption</note>
         </trans-unit>
@@ -6008,13 +6011,13 @@
         </trans-unit>
         <trans-unit id="TableExtension 993525101 - Field 3768006569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>KINTO Category</source>
-          <target>Categoria KINTO</target>
+          <target>Categoria</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Item Extension - Field KINTO Category - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 993525101 - Field 2045489317 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>KINTO Subcategory</source>
-          <target>Subcategoria KINTO</target>
+          <target>Subcategoria</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Item Extension - Field KINTO Subcategory - Property Caption</note>
         </trans-unit>
@@ -6164,13 +6167,13 @@
         </trans-unit>
         <trans-unit id="TableExtension 3026443886 - Field 3942450423 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>KINTO Dealer Portal Access</source>
-          <target>Acesso ao Portal do Revendedor KINTO</target>
+          <target>Acesso ao Portal do Revendedor</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Vendor Extension - Field KINTO Has Portal Access - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3026443886 - Field 283544618 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>KINTO Dealer</source>
-          <target>Revendedor KINTO</target>
+          <target>Revendedor</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Vendor Extension - Field KINTO Is Dealer - Property Caption</note>
         </trans-unit>
@@ -6200,7 +6203,7 @@
         </trans-unit>
         <trans-unit id="Profile 429107080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Pricing</source>
-          <target>Precificação KINTO</target>
+          <target>Precificação</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Profile KINTO Pricing Profile - Property Caption</note>
         </trans-unit>
@@ -6597,45 +6600,45 @@
         </trans-unit>
         <trans-unit id="Enum 1730041520 - EnumValue 48338503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO ONE Fleet</source>
-          <target>KINTO ONE Frota</target>
+          <target>ONE Frota</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Product Type - EnumValue KINTO ONE Fleet - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1730041520 - EnumValue 2893571861 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO ONE Personal</source>
-          <target>KINTO ONE Personal</target>
+          <target>ONE Personal</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Product Type - EnumValue KINTO ONE Personal - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1730041520 - EnumValue 4203798080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO ONE Used (Re-KINTO)</source>
-          <target>KINTO ONE Seminovo</target>
+          <target>ONE Seminovo</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Product Type - EnumValue KINTO ONE Used - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 2036000988 - EnumValue 3371220206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Enum 3304120109 - EnumValue 3371220206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>None</source>
           <target>Nenhuma</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Restricted Customer Level - EnumValue None - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Restricted Cust. Level - EnumValue None - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 2036000988 - EnumValue 3159275723 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Enum 3304120109 - EnumValue 3159275723 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>NV1</source>
           <target>NV1</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Restricted Customer Level - EnumValue NV1 - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Restricted Cust. Level - EnumValue NV1 - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 2036000988 - EnumValue 777398278 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Enum 3304120109 - EnumValue 777398278 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>NV2</source>
           <target>NV2</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Restricted Customer Level - EnumValue NV2 - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Restricted Cust. Level - EnumValue NV2 - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 2036000988 - EnumValue 139701661 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Enum 3304120109 - EnumValue 139701661 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>NV3</source>
           <target>NV3</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Restricted Customer Level - EnumValue NV3 - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Restricted Cust. Level - EnumValue NV3 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1268118974 - EnumValue 1926340267 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Agravado</source>

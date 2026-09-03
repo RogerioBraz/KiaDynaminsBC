@@ -54,7 +54,7 @@ table 50110 "KINTO Quote Header"
             DataClassification = CustomerContent;
         }
 
-        field(63; "Pickup Delivery Package ID"; Code[20]) { Caption = 'Pick-up & Delivery'; TableRelation = "KINTO Pickup Delivery Package"; DataClassification = CustomerContent; }
+        field(63; "Pickup Delivery Package ID"; Code[20]) { Caption = 'Pick-up and Delivery'; TableRelation = "KINTO Pickup Delivery Package"; DataClassification = CustomerContent; }
         field(64; "Replacement Vehicle Pkg ID"; Code[20]) { Caption = 'Replacement Vehicle'; TableRelation = "KINTO Replacement Vehicle Pkg"; DataClassification = CustomerContent; }
         field(65; "Service Package ID"; Code[20]) { Caption = 'Service (Telematics)'; TableRelation = "KINTO Service Package"; DataClassification = CustomerContent; }
         field(66; "Replacement Vehicle Uses"; Integer) { Caption = 'Replacement Vehicle Uses'; DataClassification = CustomerContent; }

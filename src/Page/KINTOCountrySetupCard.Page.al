@@ -28,6 +28,7 @@ page 50100 "KINTO Country Setup Card"
             {
                 Caption = 'Taxes';
                 field("National Revenue Tax %"; Rec."National Revenue Tax %") { ApplicationArea = All; }
+                field("PIS COFINS Credit %"; Rec."PIS COFINS Credit %") { ApplicationArea = All; }
                 field("IPVA Rate %"; Rec."IPVA Rate %") { ApplicationArea = All; }
                 field("State Revenue Tax %"; Rec."State Revenue Tax %") { ApplicationArea = All; }
                 field("Municipal Tax %"; Rec."Municipal Tax %") { ApplicationArea = All; }
@@ -84,7 +85,7 @@ page 50100 "KINTO Country Setup Card"
             }
             group(Dates)
             {
-                Caption = 'Dates & Periods';
+                Caption = 'Dates and Periods';
                 field("Standard Grace Period"; Rec."Standard Grace Period") { ApplicationArea = All; }
                 field("Validity Period"; Rec."Validity Period") { ApplicationArea = All; }
                 field("Min. Extended Analysis Months"; Rec."Min. Extended Analysis Months") { ApplicationArea = All; }

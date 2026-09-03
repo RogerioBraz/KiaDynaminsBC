@@ -101,7 +101,7 @@ page 50137 "KINTO Approval Request Card"
             {
                 Caption = 'Ver Snapshot';
                 ApplicationArea = All;
-                Image = Snapshot;
+                Image = View;
                 Visible = Rec."Quote No." <> '';
                 trigger OnAction()
                 var

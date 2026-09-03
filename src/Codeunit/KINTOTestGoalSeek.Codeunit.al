@@ -40,12 +40,8 @@ codeunit 50154 "KINTO Test Goal Seek"
         Assert.IsTrue(QuoteItem."Monthly Tariff" > 0, 'Monthly tariff should be positive');
         Assert.IsTrue(QuoteItem."Calculated ROI" > 0, 'Calculated ROI should be positive');
 
-        // Verify fee is within reasonable range (between 0.5% and 10% of purchase price)
         Assert.IsTrue(
-            QuoteItem."Monthly Tariff" > QuoteItem."Purchase Price" * 0.005,
-            'Monthly fee should be at least 0.5% of purchase price');
-        Assert.IsTrue(
-            QuoteItem."Monthly Tariff" < QuoteItem."Purchase Price" * 0.10,
-            'Monthly fee should be at most 10% of purchase price');
+            Abs(QuoteItem."Calculated ROI" - QuoteItem."Target ROI %") < 0.01,
+            'Calculated ROI should match the target ROI in percentage points');
     end;
 }

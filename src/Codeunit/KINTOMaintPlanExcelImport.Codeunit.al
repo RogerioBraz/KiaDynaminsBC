@@ -9,6 +9,8 @@ codeunit 50109 "KINTO Maint. Plan Excel Import"
         ImportSuccessMsg: Label 'Successfully imported Maintenance Plan %1 with %2 lines.';
         FileFilterTxt: Label 'Excel Files (*.xlsx)|*.xlsx';
         DialogTitleTxt: Label 'Select Maintenance Plan Excel File';
+        NoExcelDataErr: Label 'The maintenance plan was not imported because the Excel file has no data rows after the header. Select a file with maintenance data and try again.';
+        InvalidDecimalValueErr: Label 'The maintenance plan was not imported because row %1, column %2 contains the invalid value %3. Enter a valid number in the Excel file and try again.';
 
     procedure ImportMaintenancePlanFromExcel(PlanID: Code[20]; Description: Text[100]; DiscountPct: Decimal)
     var
@@ -53,7 +55,7 @@ codeunit 50109 "KINTO Maint. Plan Excel Import"
 
         MaxRow := GetLastRow();
         if MaxRow <= 1 then
-            Error('No data found in the Excel file.');
+            Error(NoExcelDataErr);
 
         // Create or update header
         if not MaintHeader.Get(PlanID) then begin
@@ -75,26 +77,26 @@ codeunit 50109 "KINTO Maint. Plan Excel Import"
             // KM Interval
             CellValue := GetCellValue(RowNo, 1);
             if CellValue = '' then continue;
-            Evaluate(KMInterval, CellValue);
+            EvaluateDecimal(KMInterval, CellValue, RowNo, 'KM Interval');
 
             // Labor Cost
             CellValue := GetCellValue(RowNo, 2);
             if CellValue <> '' then
-                Evaluate(LaborCost, CellValue)
+                EvaluateDecimal(LaborCost, CellValue, RowNo, 'Labor Cost')
             else
                 LaborCost := 0;
 
             // Parts Cost
             CellValue := GetCellValue(RowNo, 3);
             if CellValue <> '' then
-                Evaluate(PartsCost, CellValue)
+                EvaluateDecimal(PartsCost, CellValue, RowNo, 'Parts Cost')
             else
                 PartsCost := 0;
 
             // Total Cost
             CellValue := GetCellValue(RowNo, 4);
             if CellValue <> '' then
-                Evaluate(TotalCost, CellValue)
+                EvaluateDecimal(TotalCost, CellValue, RowNo, 'Total Cost')
             else
                 TotalCost := LaborCost + PartsCost;
 
@@ -115,6 +117,12 @@ codeunit 50109 "KINTO Maint. Plan Excel Import"
         end;
 
         Message(ImportSuccessMsg, PlanID, ImportedLines);
+    end;
+
+    local procedure EvaluateDecimal(var DecimalValue: Decimal; CellValue: Text; RowNo: Integer; ColumnName: Text[50])
+    begin
+        if not Evaluate(DecimalValue, CellValue) then
+            Error(InvalidDecimalValueErr, RowNo, ColumnName, CellValue);
     end;
 
     local procedure GetCellValue(RowNo: Integer; ColNo: Integer): Text

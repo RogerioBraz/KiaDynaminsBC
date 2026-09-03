@@ -8,9 +8,81 @@ page 50140 "KINTO Pricing Role Center"
     {
         area(RoleCenter)
         {
-            part(Headline; "KINTO Pricing Headline") { ApplicationArea = All; }
-            part(QuoteActivities; "KINTO Quote Activities") { ApplicationArea = All; }
-            part(ApprovalActivities; "KINTO Approval Activities") { ApplicationArea = All; }
+            part(Headline; "KINTO Pricing Headline")
+            {
+                ApplicationArea = All;
+            }
+            part(QuoteActivities; "KINTO Quote Activities")
+            {
+                ApplicationArea = All;
+            }
+            part(ApprovalActivities; "KINTO Approval Activities")
+            {
+                ApplicationArea = All;
+            }
+            part(Control1902304208; "Accountant Activities")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+            part("Intercompany Activities"; "Intercompany Activities")
+            {
+                ApplicationArea = Intercompany;
+            }
+            part("User Tasks Activities"; "User Tasks Activities")
+            {
+                ApplicationArea = Suite;
+            }
+            part("Job Queue Tasks Activities"; "Job Queue Tasks Activities")
+            {
+                ApplicationArea = Suite;
+            }
+            part("Emails"; "Email Activities")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+            part(ApprovalsActivities; "Approvals Activities")
+            {
+                ApplicationArea = Suite;
+            }
+            part(Control123; "Team Member Activities")
+            {
+                ApplicationArea = Suite;
+            }
+            part(Control1907692008; "My Accounts")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+            part(Control103; "Trailing Sales Orders Chart")
+            {
+                ApplicationArea = Basic, Suite;
+                Visible = false;
+            }
+            part(Control106; "My Job Queue")
+            {
+                ApplicationArea = Basic, Suite;
+                Visible = false;
+            }
+            part(Control9; "Help And Chart Wrapper")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+            part(Control100; "Cash Flow Forecast Chart")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+            part(Control108; "Report Inbox Part")
+            {
+                AccessByPermission = TableData "Report Inbox" = IMD;
+                ApplicationArea = Basic, Suite;
+            }
+            part(PowerBIEmbeddedReportPart; "Power BI Embedded Report Part")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+            systempart(Control1901377608; MyNotes)
+            {
+                ApplicationArea = Basic, Suite;
+            }
         }
     }
 
@@ -234,11 +306,11 @@ page 50140 "KINTO Pricing Role Center"
                     Caption = '24h Assistance';
                     ApplicationArea = All;
                     RunObject = page "KINTO 24h Assistance List";
-                    Image = Assistance;
+                    Image = ServiceCode;
                 }
                 action(PickupDeliveryList)
                 {
-                    Caption = 'Pick-up & Delivery';
+                    Caption = 'Pick-up Delivery';
                     ApplicationArea = All;
                     RunObject = page "KINTO Pickup Delivery List";
                     Image = Delivery;
@@ -248,7 +320,7 @@ page 50140 "KINTO Pricing Role Center"
                     Caption = 'Replacement Vehicle';
                     ApplicationArea = All;
                     RunObject = page "KINTO Repl Vehicle List";
-                    Image = Car;
+                    Image = Item;
                 }
                 action(TirePackageList)
                 {
@@ -334,7 +406,7 @@ page 50140 "KINTO Pricing Role Center"
                     Caption = 'Quote Groups';
                     ApplicationArea = All;
                     RunObject = page "KINTO Ins. Quote Group List";
-                    Image = ItemGroups;
+                    Image = Group;
                 }
                 action(InsuranceQuoteList)
                 {
@@ -351,15 +423,6 @@ page 50140 "KINTO Pricing Role Center"
                     RunPageMode = Create;
                     Image = New;
                 }
-                action(InsCoverageLimitSub)
-                {
-                    Caption = 'KINTO Ins Coverage Limit Sub';
-                    ApplicationArea = All;
-                    RunObject = page "KINTO Ins Coverage Limit Sub";
-                    RunPageMode = Create;
-                    Image = New;
-                }
-
             }
         }
 

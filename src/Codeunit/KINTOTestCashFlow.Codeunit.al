@@ -80,6 +80,9 @@ codeunit 50153 "KINTO Test Cash Flow"
         CFData.SetRange("Component ID", 'PIS_COFINS_TARIFF');
         Assert.IsTrue(CFData.FindFirst(), 'PIS/COFINS should exist in month 1');
         Assert.IsTrue(CFData."Signed Amount" < 0, 'PIS/COFINS should be negative');
+
+        CFData.SetRange("Component ID", 'BODY_INSURANCE');
+        Assert.IsTrue(CFData.FindFirst(), 'Body insurance should be posted monthly');
     end;
 
     [Test]
@@ -119,6 +122,9 @@ codeunit 50153 "KINTO Test Cash Flow"
         CFData.SetRange("Component ID", 'PURCHASE_PRICE');
         Assert.IsTrue(CFData.FindFirst(), 'Purchase price entry should exist in month zero');
         Assert.AreEqual(-QuoteItem."Purchase Price", CFData."Signed Amount", 'Purchase price should be negative');
+
+        CFData.SetRange("Component ID", 'BODY_INSURANCE');
+        Assert.IsTrue(not CFData.FindFirst(), 'Body insurance should not be posted in month zero');
     end;
 
     [Test]
@@ -155,13 +161,7 @@ codeunit 50153 "KINTO Test Cash Flow"
         Assert.IsTrue(CFData.Count > 0, 'Cash flow should exist after generation');
 
         // Modify the Quote Item — should invalidate cash flow
-        /*QuoteItem."Monthly Tariff" := 6000;
-        QuoteItem.Modify(true);*/
         QuoteItem.Get(QuoteHeader."Quote No.", 10000);
-        Error(
-             'Status antes do segundo Modify = %1',
-                Format(QuoteItem."Pricing Status"));
-
         QuoteItem."Monthly Tariff" := 6000;
         QuoteItem.Modify(true);
 

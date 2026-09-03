@@ -1,25 +1,19 @@
 codeunit 50104 "KINTO Tax Calculator"
 {
+    var
+        CountrySetupNotFoundErr: Label 'Taxes were not calculated because country setup %1 does not exist. Configure the country in KINTO Country Setup and try again.';
 
     procedure CalculateTaxes(var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item")
     var
         CountrySetup: Record "KINTO Country Setup";
     begin
-        if not CountrySetup.Get(QuoteHeader."Country Code") then exit;
+        if not CountrySetup.Get(QuoteHeader."Country Code") then
+            Error(CountrySetupNotFoundErr, QuoteHeader."Country Code");
 
-        // PIS/COFINS rates
-        QuoteItem."PIS COFINS Tariff %" := 9.25; // 1.65% PIS + 7.6% COFINS
-        QuoteItem."PIS COFINS Credit %" := 9.25;
-
-        // IPVA
-        if QuoteItem."IPVA Rate %" = 0 then
-            QuoteItem."IPVA Rate %" := 0.019; // 1.9% default for BR
-
-        // Profit Tax
+        QuoteItem."PIS COFINS Tariff %" := CountrySetup."National Revenue Tax %";
+        QuoteItem."PIS COFINS Credit %" := CountrySetup."PIS COFINS Credit %";
+        QuoteItem."IPVA Rate %" := CountrySetup."IPVA Rate %";
         QuoteItem."Profit Tax Rate %" := CountrySetup."Profit Tax Rate %";
-
-        // Tax Depreciation Period
-        if QuoteItem."Tax Depreciation Period" = 0 then
-            QuoteItem."Tax Depreciation Period" := CountrySetup."Tax Depreciation Period";
+        QuoteItem."Tax Depreciation Period" := CountrySetup."Tax Depreciation Period";
     end;
 }

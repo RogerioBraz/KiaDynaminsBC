@@ -16,7 +16,10 @@ codeunit 50106 "KINTO Depreciation Calc."
             QuoteItem."Projected Depreciation" := QuoteItem."Initial Value (Used)" - QuoteItem."Projected Residual Value";
             if QuoteItem."Projected Depreciation" < 0 then
                 QuoteItem."Projected Depreciation" := 0; // Floor at zero
-            QuoteItem."Monthly Booking Value" := QuoteItem."Projected Depreciation" / QuoteItem."Contract Term (Months)";
+            if QuoteItem."Contract Term (Months)" > 0 then
+                QuoteItem."Monthly Booking Value" := QuoteItem."Projected Depreciation" / QuoteItem."Contract Term (Months)"
+            else
+                QuoteItem."Monthly Booking Value" := 0;
         end;
     end;
 
@@ -26,15 +29,15 @@ codeunit 50106 "KINTO Depreciation Calc."
         // Simplified — in production, lookup from configuration table
         case QuoteItem."Contract Term (Months)" of
             1 .. 12:
-                exit(0.08);
+                exit(8);
             13 .. 24:
-                exit(0.12);
+                exit(12);
             25 .. 36:
-                exit(0.18);
+                exit(18);
             37 .. 48:
-                exit(0.25);
+                exit(25);
             else
-                exit(0.30);
+                exit(30);
         end;
     end;
 
@@ -43,6 +46,8 @@ codeunit 50106 "KINTO Depreciation Calc."
         AnnualDepreciation: Decimal;
     begin
         // Straight-line over tax depreciation period
+        if QuoteItem."Tax Depreciation Period" <= 0 then
+            exit(0);
         AnnualDepreciation := 1 / (QuoteItem."Tax Depreciation Period" / 12);
         exit(AnnualDepreciation * (QuoteItem."Contract Term (Months)" / 12));
     end;

@@ -7,7 +7,7 @@ enum 50113 "KINTO Risk Level"
     value(3; "Agravado") { Caption = 'Agravado'; }
 }
 
-enum 50114 "KINTO Restricted Customer Level"
+enum 50114 "KINTO Restricted Cust. Level"
 {
     Extensible = true;
     value(0; "None") { Caption = 'None'; }

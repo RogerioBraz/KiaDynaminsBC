@@ -94,19 +94,24 @@ codeunit 50114 "KINTO Package Pricing Calc"
     procedure GetMaintenanceMonthly(QuoteItem: Record "KINTO Quote Item"): Decimal
     var
         MaintHeader: Record "KINTO Maintenance Plan Header";
+        InventoryVehicle: Record "KINTO Inventory Vehicle";
         CurrentOdometer: Decimal;
         CurrentAge: Integer;
+        NoInventoryVehicleErr: Label 'An inventory vehicle is required to calculate maintenance for used vehicle quote item %1.';
     begin
         if QuoteItem."Maintenance Plan ID" = '' then exit(0);
         if not MaintHeader.Get(QuoteItem."Maintenance Plan ID") then exit(0);
 
-        // Para veículos usados, usa odômetro atual; para novos, inicia em 0
-        if QuoteItem."Vehicle Condition" = QuoteItem."Vehicle Condition"::Used then
-            CurrentOdometer := QuoteItem."Initial Value (Used)"
-        else
+        if QuoteItem."Vehicle Condition" = QuoteItem."Vehicle Condition"::Used then begin
+            if (QuoteItem."Inventory Vehicle No." = '') or
+               (not InventoryVehicle.Get(QuoteItem."Inventory Vehicle No.")) then
+                Error(NoInventoryVehicleErr, QuoteItem."Line No.");
+            CurrentOdometer := InventoryVehicle."Current Odometer";
+            CurrentAge := InventoryVehicle."Age in Months";
+        end else begin
             CurrentOdometer := 0;
-
-        CurrentAge := 0; // Veículos novos começam em 0
+            CurrentAge := 0;
+        end;
 
         exit(MaintHeader.GetMonthlyMaintenanceCost(
             QuoteItem."Contract Term (Months)",

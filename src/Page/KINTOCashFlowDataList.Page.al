@@ -47,7 +47,7 @@ page 50113 "KINTO Cash Flow Data List"
             {
                 Caption = 'Ver Snapshot';
                 ApplicationArea = All;
-                Image = Snapshot;
+                Image = View;
                 trigger OnAction()
                 var
                     Snapshot: Record "KINTO Simulation Snapshot";

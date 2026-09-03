@@ -162,12 +162,12 @@ table 50111 "KINTO Quote Item"
             begin
                 if Rec."Insurance Quote No." = '' then exit;
                 if not InsQuote.Get(Rec."Insurance Quote No.") then
-                    Error('Cotação de seguro %1 não encontrada.', Rec."Insurance Quote No.");
+                    Error(InsuranceQuoteNotFoundErr, Rec."Insurance Quote No.");
 
                 Rec."Body Insurance" := InsQuote."Insurance Value";
 
                 if InsQuote."KINTO Quote No." <> '' then
-                    Error('Cotação de seguro %1 já está vinculada à cotação %2.',
+                    Error(InsuranceQuoteAlreadyLinkedErr,
                         Rec."Insurance Quote No.", InsQuote."KINTO Quote No.");
 
                 InsQuote."KINTO Quote No." := Rec."Quote No.";
@@ -177,7 +177,7 @@ table 50111 "KINTO Quote Item"
         }
         field(111; "Glass Coverage Package ID"; Code[20]) { Caption = 'Glass Coverage'; TableRelation = "KINTO Glass Coverage Package"; DataClassification = CustomerContent; }
         field(112; "24h Assistance Package ID"; Code[20]) { Caption = '24h Assistance'; TableRelation = "KINTO 24h Assistance Package"; DataClassification = CustomerContent; }
-        field(113; "Pickup Delivery Package ID"; Code[20]) { Caption = 'Pick-up & Delivery'; TableRelation = "KINTO Pickup Delivery Package"; DataClassification = CustomerContent; }
+        field(113; "Pickup Delivery Package ID"; Code[20]) { Caption = 'Pick-up and Delivery'; TableRelation = "KINTO Pickup Delivery Package"; DataClassification = CustomerContent; }
         field(114; "Replacement Vehicle Pkg ID"; Code[20]) { Caption = 'Replacement Vehicle'; TableRelation = "KINTO Replacement Vehicle Pkg"; DataClassification = CustomerContent; }
         field(115; "Tire Package ID"; Code[20]) { Caption = 'Tire Package'; TableRelation = "KINTO Tire Package"; DataClassification = CustomerContent; }
         field(116; "Service Package ID"; Code[20]) { Caption = 'Service Package'; TableRelation = "KINTO Service Package"; DataClassification = CustomerContent; }
@@ -186,6 +186,10 @@ table 50111 "KINTO Quote Item"
     }
 
     keys { key(PK; "Quote No.", "Line No.") { Clustered = true; } }
+
+    var
+        InsuranceQuoteNotFoundErr: Label 'Insurance quote %1 was not found. Select an existing insurance quote before continuing.';
+        InsuranceQuoteAlreadyLinkedErr: Label 'Insurance quote %1 is already linked to KINTO quote %2. Unlink it from the current quote or select another insurance quote.';
 
     trigger OnInsert()
     begin

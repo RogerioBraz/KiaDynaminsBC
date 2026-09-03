@@ -45,7 +45,7 @@ page 50139 "KINTO Vehicle Model Card"
             {
                 Caption = 'Ver Matriz RV';
                 ApplicationArea = All;
-                Image = Matrix;
+                Image = View;
                 trigger OnAction()
                 var
                     RVMatrix: Record "KINTO RV Matrix";

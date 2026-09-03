@@ -1,31 +1,37 @@
 codeunit 50101 "KINTO RV Lookup Mgt."
 {
+    var
+        NoResidualValueErr: Label 'No residual value was found for item %1 and usage type %2. Create an active entry in the KINTO Residual Value Matrix and try again.';
+        NoResidualValueRangeErr: Label 'No residual value range matches item %3, projected mileage %1 km, and contract term %2 months. Review the mileage and age ranges in the KINTO Residual Value Matrix.';
+
     procedure LookupResidualValue(QuoteItem: Record "KINTO Quote Item"): Decimal
     var
         RVMatrix: Record "KINTO RV Matrix";
         SelectedRV: Decimal;
     begin
-        // Step 1: Effective Version Selection
+        RVMatrix.SetCurrentKey("Item No.", "Usage Type", "Has Implement", "Effective Start Date", "Max Mileage", "Max Age");
         RVMatrix.SetRange("Item No.", QuoteItem."Item No.");
         RVMatrix.SetRange("Usage Type", QuoteItem."Usage Type");
         RVMatrix.SetRange("Has Implement", false); // Simplified — enhance for implement check
         RVMatrix.SetRange("Status", RVMatrix.Status::Active);
         RVMatrix.SetFilter("Effective Start Date", '<=%1', Today);
         if RVMatrix.FindLast() then begin
-            // Step 2: Vehicle Attribute Filtering (already filtered by Item No.)
-            // Step 3: Age Group Determination
-            // Step 4: Mileage Band Selection
+            RVMatrix.SetRange("Effective Start Date", RVMatrix."Effective Start Date");
             SelectedRV := SelectByMileageAndAge(RVMatrix, QuoteItem);
             exit(SelectedRV);
         end;
 
-        // Fallback: try MSRP record
-        RVMatrix.SetRange("Has Implement");
+        RVMatrix.Reset();
+        RVMatrix.SetCurrentKey("Item No.", "Usage Type", "Has Implement", "Effective Start Date", "Max Mileage", "Max Age");
+        RVMatrix.SetRange("Item No.", QuoteItem."Item No.");
+        RVMatrix.SetRange("Usage Type", QuoteItem."Usage Type");
+        RVMatrix.SetRange("Status", RVMatrix.Status::Active);
+        RVMatrix.SetFilter("Effective Start Date", '<=%1', Today);
         RVMatrix.SetRange("MSRP Record", true);
         if RVMatrix.FindLast() then
             exit(RVMatrix."Residual Value %");
 
-        Error('No Residual Value found for Item %1, Usage Type %2', QuoteItem."Item No.", QuoteItem."Usage Type");
+        Error(NoResidualValueErr, QuoteItem."Item No.", QuoteItem."Usage Type");
     end;
 
     local procedure SelectByMileageAndAge(var RVMatrix: Record "KINTO RV Matrix"; QuoteItem: Record "KINTO Quote Item"): Decimal
@@ -38,16 +44,13 @@ codeunit 50101 "KINTO RV Lookup Mgt."
         ProjectedMileage := QuoteItem."Monthly Mileage (km)" * QuoteItem."Contract Term (Months)";
         ProjectedAge := QuoteItem."Contract Term (Months)";
 
+        RVMatrix.SetCurrentKey("Item No.", "Usage Type", "Has Implement", "Effective Start Date", "Max Mileage", "Max Age");
         RVMatrix.SetFilter("Max Mileage", '>=%1', ProjectedMileage);
         RVMatrix.SetFilter("Max Age", '>=%1', ProjectedAge);
-        if RVMatrix.FindSet() then
-            repeat
-                if (RVMatrix."Max Mileage" >= ProjectedMileage) and
-                   (RVMatrix."Max Age" >= ProjectedAge) then begin
-                    BestRV := RVMatrix."Residual Value %";
-                    Found := true;
-                end;
-            until (RVMatrix.Next() = 0) or Found;
+        if RVMatrix.FindFirst() then begin
+            BestRV := RVMatrix."Residual Value %";
+            Found := true;
+        end;
 
         if Found then
             exit(BestRV);
@@ -58,7 +61,7 @@ codeunit 50101 "KINTO RV Lookup Mgt."
         if RVMatrix.FindFirst() then
             exit(RVMatrix."Residual Value %");
 
-        Error('No RV Matrix entry matches projected mileage %1 and age %2 for Item %3',
-              ProjectedMileage, ProjectedAge, QuoteItem."Item No.");
+        Error(NoResidualValueRangeErr,
+            ProjectedMileage, ProjectedAge, QuoteItem."Item No.");
     end;
 }

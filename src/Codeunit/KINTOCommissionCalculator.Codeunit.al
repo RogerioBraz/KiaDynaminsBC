@@ -1,11 +1,14 @@
 codeunit 50105 "KINTO Commission Calculator"
 {
+    var
+        CountrySetupNotFoundErr: Label 'Commissions were not calculated because country setup %1 does not exist. Configure the country in KINTO Country Setup and try again.';
 
     procedure CalculateCommissions(var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item")
     var
         CountrySetup: Record "KINTO Country Setup";
     begin
-        if not CountrySetup.Get(QuoteHeader."Country Code") then exit;
+        if not CountrySetup.Get(QuoteHeader."Country Code") then
+            Error(CountrySetupNotFoundErr, QuoteHeader."Country Code");
 
         // DLR Commission
         case CountrySetup."DLR Commission Model" of

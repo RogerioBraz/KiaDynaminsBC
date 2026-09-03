@@ -11,11 +11,15 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
         CountrySetup: Record "KINTO Country Setup";
         CFCalc: Codeunit "KINTO Cash Flow Calculator";
         GoalSeekMgt: Codeunit "KINTO Goal Seek Mgt.";
-        PricingErr: Label 'Pricing Engine is stopped for country %1. Contact administrator.';
-        NoCountryErr: Label 'Country Setup not found for country %1.';
-        NoItemErr: Label 'Item No. is required on Quote Item Line %1.';
-        NoMSRPErr: Label 'MSRP must be greater than 0 on Quote Item Line %1.';
-        NoTermErr: Label 'Contract Term must be greater than 0 on Quote Item Line %1.';
+        TaxCalculator: Codeunit "KINTO Tax Calculator";
+        CommissionCalculator: Codeunit "KINTO Commission Calculator";
+        DepreciationCalculator: Codeunit "KINTO Depreciation Calc.";
+        RVLookupMgt: Codeunit "KINTO RV Lookup Mgt.";
+        PricingErr: Label 'Pricing Engine is stopped for country %1 because the emergency stop is enabled. Contact the administrator to review the country setup before continuing.';
+        NoCountryErr: Label 'Pricing cannot start because country setup %1 does not exist. Configure the country in KINTO Country Setup and try again.';
+        NoItemErr: Label 'Quote item line %1 cannot be priced because no item is selected. Select an item on the line and try again.';
+        NoMSRPErr: Label 'Quote item line %1 cannot be priced because MSRP is zero or negative. Enter an MSRP greater than zero and try again.';
+        NoTermErr: Label 'Quote item line %1 cannot be priced because the contract term is zero or negative. Enter a contract term greater than zero and try again.';
 
     procedure RunPricing(var QuoteHeader: Record "KINTO Quote Header")
     var
@@ -46,9 +50,9 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
     local procedure ProcessQuoteItem(var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item")
     var
         PackagePricing: Codeunit "KINTO Package Pricing Calc";
-        TotalPkgMonthlyCost: Decimal;
         InsuranceFromPackage: Decimal;
         VehicleValue: Decimal;
+        ResidualValuePct: Decimal;
     begin
         Clear(QuoteItem."Error Message");
 
@@ -76,12 +80,14 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
 
         LoadCountryParameters(QuoteHeader, QuoteItem);
         QuoteItem."Purchase Price" := QuoteItem.CalculatePurchasePrice();
+        TaxCalculator.CalculateTaxes(QuoteHeader, QuoteItem);
+        CommissionCalculator.CalculateCommissions(QuoteHeader, QuoteItem);
+        ResidualValuePct := RVLookupMgt.LookupResidualValue(QuoteItem);
+        QuoteItem."Depreciation Market %" := 100 - ResidualValuePct;
+        DepreciationCalculator.CalculateDepreciation(QuoteItem);
         QuoteItem."Final Resale Price" := QuoteItem.CalculateFinalResalePrice();
         QuoteItem."Extended Analysis Months" :=
             QuoteHeader.CalcExtendedAnalysisMonths(QuoteItem."Payment Allowance (days)");
-
-        // Pacotes
-        TotalPkgMonthlyCost := PackagePricing.CalculateAllPackageCosts(QuoteHeader, QuoteItem);
 
         // Seguro via Coverage Limits
         if QuoteItem."Insurance Quote No." <> '' then begin
@@ -111,7 +117,6 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
         QuoteItem.Modify(true);
     end;
 
-    // CORREÇÃO: Agora carrega TODOS os campos tributários (National Revenue Tax % → PIS COFINS Tariff %)
     local procedure LoadCountryParameters(var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item")
     begin
         QuoteItem."Annual Inflation %" := CountrySetup."Default Inflation Index %";
@@ -120,10 +125,6 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
         QuoteItem."Idleness Rate %" := CountrySetup."Idleness Rate %";
         QuoteItem."Tax Depreciation Period" := CountrySetup."Tax Depreciation Period";
         QuoteItem."Profit Tax Rate %" := CountrySetup."Profit Tax Rate %";
-
-        // Campos tributários agora carregados do Country Setup
-        QuoteItem."PIS COFINS Tariff %" := CountrySetup."National Revenue Tax %";
-        QuoteItem."IPVA Rate %" := CountrySetup."IPVA Rate %";
 
         LoadCreditRiskFactor(QuoteHeader, QuoteItem);
     end;
@@ -155,14 +156,10 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
 
     local procedure CalculateKINTOFee(var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item")
     var
-        PackagePricing: Codeunit "KINTO Package Pricing Calc";
         TotalCosts: Decimal;
         TargetMargin: Decimal;
-        PkgCosts: Decimal;
     begin
         TotalCosts := CFCalc.CalculateTotalCosts(QuoteHeader, QuoteItem);
-        PkgCosts := PackagePricing.CalculateAllPackageCosts(QuoteHeader, QuoteItem);
-        TotalCosts += PkgCosts * QuoteItem."Contract Term (Months)";
 
         TargetMargin := QuoteItem."Purchase Price" * CountrySetup."Net Contribution Margin %" / 100;
         QuoteItem."Monthly Tariff" := Round((TotalCosts + TargetMargin) / QuoteItem."Contract Term (Months)", 0.01);
@@ -192,6 +189,7 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
                 QuoteHeader."Total Purchase Price" += QuoteItem."Purchase Price";
                 QuoteHeader."Total Monthly Fee" += QuoteItem."Monthly Tariff";
             until QuoteItem.Next() = 0;
+        QuoteHeader."Calculated Monthly Fee" := QuoteHeader."Total Monthly Fee";
     end;
 
     // CORREÇÃO: Validações de Header fora do loop

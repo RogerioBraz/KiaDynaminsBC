@@ -113,7 +113,7 @@ page 50148 "KINTO Insurance Quote Card"
             {
                 Caption = 'Ver Grupo de Cotação';
                 ApplicationArea = All;
-                Image = ItemGroups;
+                Image = Group;
                 trigger OnAction()
                 var
                     InsGroup: Record "KINTO Insurance Quote Group";

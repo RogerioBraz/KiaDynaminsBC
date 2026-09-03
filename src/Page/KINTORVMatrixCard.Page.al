@@ -66,7 +66,7 @@ page 50102 "KINTO RV Matrix Card"
             {
                 Caption = 'Ver Todas as Entradas RV';
                 ApplicationArea = All;
-                Image = Matrix;
+                Image = View;
                 trigger OnAction()
                 var
                     RVMatrix: Record "KINTO RV Matrix";

@@ -18,7 +18,7 @@ codeunit 50103 "KINTO Goal Seek Mgt."
     begin
         Tolerance := 0.0001;
         MaxIterations := 100;
-        TargetROI := QuoteItem."Target ROI %" / 100;
+        TargetROI := QuoteItem."Target ROI %";
 
         // Initial bounds
         LowerBound := 0.01;

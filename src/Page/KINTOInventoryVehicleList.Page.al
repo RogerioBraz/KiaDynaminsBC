@@ -64,7 +64,7 @@ page 50130 "KINTO Inventory Vehicle List"
             {
                 Caption = 'Freeze Booking Value';
                 ApplicationArea = All;
-                Image = Freeze;
+                Image = Lock;
                 trigger OnAction()
                 var
                     BookingMgt: Codeunit "KINTO Booking Value Mgt.";

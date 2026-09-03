@@ -73,7 +73,7 @@ table 50121 "KINTO Insurance Quote"
                     if Rec."Quote Group ID" <> 0 then begin
                         InsQuoteGroup.Get(Rec."Quote Group ID");
                         if not InsQuoteGroup.Armoring then
-                            Error('Veículo blindado não pode usar grupo de seguro sem flag de blindagem. Grupo: %1', InsQuoteGroup.Name);
+                            Error(ArmoringNotSupportedErr, InsQuoteGroup.Name);
                     end;
                 end;
             end;
@@ -116,6 +116,9 @@ table 50121 "KINTO Insurance Quote"
         key(Idx2; "Item No.") { }
         key(Idx3; "KINTO Quote No.") { }
     }
+
+    var
+        ArmoringNotSupportedErr: Label 'The insurance quote cannot use group %1 because the vehicle is armored and the group does not support armored vehicles. Select a compatible group or clear the armoring option.';
 
     trigger OnInsert()
     var
