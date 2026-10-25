@@ -1,4 +1,4 @@
-page 50122 "KINTO Pricing Workflow API"
+page 50184 "KINTO Pricing Workflow API"
 {
     Caption = 'KINTO Pricing Workflow API';
     PageType = API;
