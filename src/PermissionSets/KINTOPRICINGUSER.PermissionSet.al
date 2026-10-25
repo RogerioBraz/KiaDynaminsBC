@@ -82,6 +82,6 @@ permissionset 50101 "KINTO PRICING USER"
         page "KINTO Vendor Category List" = X,
         page "KINTO Vendor Contact List" = X,
         page "KINTO Supplier Group List" = X,
-        page "KINTO Item Version History" = X
+        page "KINTO Item Version History" = X;
 
 }

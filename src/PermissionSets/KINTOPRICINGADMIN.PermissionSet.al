@@ -89,6 +89,6 @@ permissionset 50100 "KINTO PRICING ADMIN"
         page "KINTO Maint Generic Range Sub" = X,
         page "KINTO Ins Coverage Limit Sub" = X,
         page "KINTO Vendor Cat Assign List" = X,
-        page "KINTO Vendor Contact Listpart" = X
+        page "KINTO Vendor Contact Listpart" = X;
 
 }

@@ -48,7 +48,6 @@ permissionset 50174 "KINTO Contract Admin"
                   tabledata "KINTO Vendor Category Assign" = RIMD,
                   tabledata "KINTO Vendor Category" = RIMD,
                   tabledata "KINTO Vendor Contact" = RIMD,
-,
                   table "KINTO Vehicle Contract" = X,
                   table "KINTO Contract Condition" = X,
                   table "KINTO Financial Product" = X,

@@ -75,6 +75,6 @@ permissionset 50102 "KINTOPRICINGAPPROVER"
         page "KINTO Snapshot Card" = X,
         page "KINTO Approval Request List" = X,
         page "KINTO Approval Request Card" = X,
-        page "KINTO Pricing Role Center" = X
+        page "KINTO Pricing Role Center" = X;
 
 }
