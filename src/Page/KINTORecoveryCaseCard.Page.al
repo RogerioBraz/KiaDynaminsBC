@@ -79,7 +79,7 @@ page 50403 "KINTO Recovery Case Card"
             {
                 Caption = 'Unblock (requires permission)';
                 ApplicationArea = All;
-                Image = Unlock;
+                Image = Undo;
                 trigger OnAction()
                 begin
                     Rec.Unblock();
