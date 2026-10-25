@@ -280,28 +280,27 @@ codeunit 50102 "KINTO Cash Flow Calculator"
         LowRate: Decimal;
         HighRate: Decimal;
         MidRate: Decimal;
-        MidNPV: Decimal;
-        LowNPV: Decimal;
+        HighNPV: Decimal;
         Iteration: Integer;
         MaxIterations: Integer;
         Tolerance: Decimal;
     begin
         // FIX (Fase 0): IRR por bisseção (bisection) em vez de varredura com passo variável.
-        // Monotonicidade: para o perfil de fluxo do contrato (saída inicial, entradas mensais,
-        // entrada final de revenda) o NPV é decrescente na taxa dentro do domínio útil.
-        // Limites: 0% a 100% a.m.; tolerância 1e-6; 60 iterações bastam (2^-60 do intervalo).
+        // FIX (Fase 0, rev.2): verificação de troca de sinal CORRIGIDA.
+        // NPV(0%) > 0 significa projeto lucrativo — o IRR existe entre 0% e 100%.
+        // O teste correto é o NPV na taxa ALTA (100% a.m.): se ainda for >= 0,
+        // não há raiz no intervalo (IRR > 100%/mês, fora do domínio).
         MaxIterations := 60;
         Tolerance := 0.000001;
         LowRate := 0.0;
         HighRate := 1.0;
 
-        // NPV na taxa mínima (0%): soma simples
-        LowNPV := 0;
+        HighNPV := 0;
         for i := 1 to MaxMonth do
-            LowNPV += CashFlows[i];
+            HighNPV += CashFlows[i] / Power(1 + HighRate, i);
 
         // Sem troca de sinal dentro do intervalo não há IRR real — retorna 0
-        if (LowNPV >= 0) then
+        if (HighNPV >= 0) then
             exit(0);
 
         MidNPV := 0;
@@ -318,7 +317,6 @@ codeunit 50102 "KINTO Cash Flow Calculator"
                 LowRate := MidRate
             else
                 HighRate := MidRate;
-            MidNPV := NPV;
         end;
 
         exit(Round(MidRate * 100, 0.01));

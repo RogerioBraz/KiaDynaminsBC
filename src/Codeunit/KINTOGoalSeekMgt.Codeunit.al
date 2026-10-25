@@ -20,9 +20,12 @@ codeunit 50103 "KINTO Goal Seek Mgt."
         MaxIterations := 100;
         TargetROI := QuoteItem."Target ROI %";
 
-        // Initial bounds
+        // FIX (validação): bound superior dinâmico. O bound fixo de 5% do preço de compra
+        // trava o goal seek quando a tarifa necessária excede 5% do PP (ex.: RV baixa,
+        // prazo curto ou custos altos) — o resultado era tarifa no bound e ROI < alvo.
+        // Novo bound: 50% do PP (10× o anterior), suficiente para qualquer perfil realista.
         LowerBound := 0.01;
-        UpperBound := QuoteItem."Purchase Price" * 0.05; // 5% of purchase price as upper bound
+        UpperBound := QuoteItem."Purchase Price" * 0.5;
 
         // Validate monotonicity assumption
         Converged := false;

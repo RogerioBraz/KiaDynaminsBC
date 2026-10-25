@@ -160,10 +160,18 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
         TotalCosts: Decimal;
         TargetMargin: Decimal;
     begin
+        // FIX (validação 25/10): o cálculo anterior usava (TotalCosts + TargetMargin) / Termo.
+        // TotalCosts (CalculateTotalCosts) já inclui depreciação fiscal e juros, mas NÃO o
+        // capital do veículo (Purchase Price) nem desconta a revenda — resultado: tarifa não
+        // cobria o custo do carro e EBT/ROI saíam negativos em TODOS os cenários AR
+        // (ex.: MSRP 30.000, 36m → tarifa 794 vs breakeven 1.078; EBT -10.314).
+        // Fórmula corrigida: (Purchase Price + TotalCosts − Final Resale + TargetMargin) / Termo.
         TotalCosts := CFCalc.CalculateTotalCosts(QuoteHeader, QuoteItem);
 
         TargetMargin := QuoteItem."Purchase Price" * CountrySetup."Net Contribution Margin %" / 100;
-        QuoteItem."Monthly Tariff" := Round((TotalCosts + TargetMargin) / QuoteItem."Contract Term (Months)", 0.01);
+        QuoteItem."Monthly Tariff" :=
+            Round((QuoteItem."Purchase Price" + TotalCosts - QuoteItem."Final Resale Price" + TargetMargin) /
+                QuoteItem."Contract Term (Months)", 0.01);
     end;
 
     local procedure CalculateIndicators(var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item")
