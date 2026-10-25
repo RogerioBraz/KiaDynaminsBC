@@ -33,6 +33,7 @@ codeunit 50206 "KINTO Termination Management"
         VehicleReturn."Contract No." := ContractNo;
         VehicleReturn."Vehicle No." := Contract."Vehicle No.";
         VehicleReturn."Customer No." := Contract."Customer No.";
+        VehicleReturn."Currency Code" := Contract."Currency Code";
         VehicleReturn."Return Date" := ReturnDate;
         VehicleReturn."Return Location" := CopyStr(Location, 1, MaxStrLen(VehicleReturn."Return Location"));
         VehicleReturn.Status := VehicleReturn.Status::Scheduled;

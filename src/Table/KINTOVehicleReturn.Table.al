@@ -74,6 +74,11 @@ table 50400 "KINTO Vehicle Return"
         field(25; "Created DateTime"; DateTime) { Caption = 'Created DateTime'; Editable = false; }
         field(26; "No. Series"; Code[20]) { Caption = 'No. Series'; TableRelation = "No. Series"; }
         field(27; Notes; Text[250]) { Caption = 'Notes'; }
+        field(28; "Currency Code"; Code[10])
+        {
+            Caption = 'Currency Code';
+            TableRelation = Currency;
+        }
     }
 
     keys
@@ -204,7 +209,7 @@ table 50400 "KINTO Vehicle Return"
         BillingLine.Amount := TotalCustomer;
         BillingLine."Billing Period From" := CalcDate('<-CM>', BillingMonth);
         BillingLine."Billing Period To" := CalcDate('<CM>', BillingMonth);
-        BillingLine."Currency Code" := Contract."Currency Code";
+        BillingLine."Currency Code" := "Currency Code";
         BillingLine."Cost Center Code" := Contract."Cost Center Code";
         BillingLine."Origin Description" := CopyStr(StrSubstNo('Return %1', "Return No."), 1, MaxStrLen(BillingLine."Origin Description"));
         BillingLine.Status := BillingLine.Status::Open;

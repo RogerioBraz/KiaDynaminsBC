@@ -34,10 +34,16 @@ table 50401 "KINTO Damage Line"
     trigger OnInsert()
     var
         Return: Record "KINTO Vehicle Return";
+        Contract: Record "KINTO Vehicle Contract";
     begin
+        // Herda a moeda do return; se o return não tiver, herda do contrato
         if "Currency Code" = '' then
             if Return.Get("Return No.") then
-                "Currency Code" := Return."Currency Code";
+                if Return."Currency Code" <> '' then
+                    "Currency Code" := Return."Currency Code"
+                else
+                    if Contract.Get(Return."Contract No.") then
+                        "Currency Code" := Contract."Currency Code";
     end;
 
     procedure Approve()

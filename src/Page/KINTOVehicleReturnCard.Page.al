@@ -19,6 +19,7 @@ page 50400 "KINTO Vehicle Return Card"
                 field("Vehicle No."; Rec."Vehicle No.") { ApplicationArea = All; }
                 field("License Plate"; Rec."License Plate") { ApplicationArea = All; }
                 field("Customer No."; Rec."Customer No.") { ApplicationArea = All; }
+                field("Currency Code"; Rec."Currency Code") { ApplicationArea = All; }
                 field("Return Date"; Rec."Return Date") { ApplicationArea = All; }
                 field("Return Location"; Rec."Return Location") { ApplicationArea = All; }
                 field(Latitude; Rec.Latitude) { ApplicationArea = All; }
