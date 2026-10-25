@@ -4,8 +4,57 @@ permissionset 50101 "KINTO PRICING USER"
     Assignable = true;
 
     Permissions =
-        // ... objetos existentes ...
-        // Pacotes: R (read-only para Users — Admin cria)
+        // tabledata: acesso a dados de TODAS as tabelas KINTO
+        tabledata "KINTO 24h Assistance Package" = R,
+        tabledata "KINTO Approval Request" = R,
+        tabledata "KINTO Billing Line" = R,
+        tabledata "KINTO CF Component" = R,
+        tabledata "KINTO Cash Flow Data" = R,
+        tabledata "KINTO Cash Flow Header" = R,
+        tabledata "KINTO Contract Amendment" = R,
+        tabledata "KINTO Contract Change Log" = R,
+        tabledata "KINTO Contract Condition" = R,
+        tabledata "KINTO Country Setup" = R,
+        tabledata "KINTO Financial Product" = R,
+        tabledata "KINTO Issuing Authority" = R,
+        tabledata "KINTO Glass Coverage Package" = R,
+        tabledata "KINTO Insurance Coverage" = R,
+        tabledata "KINTO Insurance Coverage Limit" = R,
+        tabledata "KINTO Insurance Quote" = R,
+        tabledata "KINTO Insurance Quote Group" = R,
+        tabledata "KINTO Insurer" = R,
+        tabledata "KINTO Inventory Vehicle" = R,
+        tabledata "KINTO Item Supplier Group" = R,
+        tabledata "KINTO Item Version History" = R,
+        tabledata "KINTO Maint Ticket Line" = R,
+        tabledata "KINTO Mainten Generic Range" = R,
+        tabledata "KINTO Maintenance Number" = R,
+        tabledata "KINTO Maintenance Plan Header" = R,
+        tabledata "KINTO Maintenance Plan Line" = R,
+        tabledata "KINTO Maintenance Ticket" = R,
+        tabledata "KINTO Pickup Delivery Package" = R,
+        tabledata "KINTO Pool Ledger Entry" = R,
+        tabledata "KINTO Pool Type" = R,
+        tabledata "KINTO Price Index" = R,
+        tabledata "KINTO Price Index Entry" = R,
+        tabledata "KINTO Pricing Cue" = R,
+        tabledata "KINTO Quote Header" = R,
+        tabledata "KINTO Quote Item" = R,
+        tabledata "KINTO RV Matrix" = R,
+        tabledata "KINTO Replacement Vehicle Pkg" = R,
+        tabledata "KINTO Service Package" = R,
+        tabledata "KINTO Simulation Snapshot" = R,
+        tabledata "KINTO Supplier Group" = R,
+        tabledata "KINTO Supplier Group Assign" = R,
+        tabledata "KINTO Tire Package" = R,
+        tabledata "KINTO Traffic Fine" = R,
+        tabledata "KINTO Vehicle Contract" = R,
+        tabledata "KINTO Vehicle Model" = R,
+        tabledata "KINTO Vehicle Odometer History" = R,
+        tabledata "KINTO Vendor Category Assign" = R,
+        tabledata "KINTO Vendor Category" = R,
+        tabledata "KINTO Vendor Contact" = R,
+        // objetos: execute
         table "KINTO Glass Coverage Package" = X,
         table "KINTO 24h Assistance Package" = X,
         table "KINTO Pickup Delivery Package" = X,
@@ -33,5 +82,6 @@ permissionset 50101 "KINTO PRICING USER"
         page "KINTO Vendor Category List" = X,
         page "KINTO Vendor Contact List" = X,
         page "KINTO Supplier Group List" = X,
-        page "KINTO Item Version History" = X;
+        page "KINTO Item Version History" = X
+
 }

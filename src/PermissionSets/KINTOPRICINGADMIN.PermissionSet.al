@@ -4,8 +4,57 @@ permissionset 50100 "KINTO PRICING ADMIN"
     Assignable = true;
 
     Permissions =
-        // ... objetos existentes ...
-        // NOVOS: Tabelas de Pacotes
+        // tabledata: acesso a dados de TODAS as tabelas KINTO
+        tabledata "KINTO 24h Assistance Package" = RIMD,
+        tabledata "KINTO Approval Request" = RIMD,
+        tabledata "KINTO Billing Line" = RIMD,
+        tabledata "KINTO CF Component" = RIMD,
+        tabledata "KINTO Cash Flow Data" = RIMD,
+        tabledata "KINTO Cash Flow Header" = RIMD,
+        tabledata "KINTO Contract Amendment" = RIMD,
+        tabledata "KINTO Contract Change Log" = RIMD,
+        tabledata "KINTO Contract Condition" = RIMD,
+        tabledata "KINTO Country Setup" = RIMD,
+        tabledata "KINTO Financial Product" = RIMD,
+        tabledata "KINTO Issuing Authority" = RIMD,
+        tabledata "KINTO Glass Coverage Package" = RIMD,
+        tabledata "KINTO Insurance Coverage" = RIMD,
+        tabledata "KINTO Insurance Coverage Limit" = RIMD,
+        tabledata "KINTO Insurance Quote" = RIMD,
+        tabledata "KINTO Insurance Quote Group" = RIMD,
+        tabledata "KINTO Insurer" = RIMD,
+        tabledata "KINTO Inventory Vehicle" = RIMD,
+        tabledata "KINTO Item Supplier Group" = RIMD,
+        tabledata "KINTO Item Version History" = RIMD,
+        tabledata "KINTO Maint Ticket Line" = RIMD,
+        tabledata "KINTO Mainten Generic Range" = RIMD,
+        tabledata "KINTO Maintenance Number" = RIMD,
+        tabledata "KINTO Maintenance Plan Header" = RIMD,
+        tabledata "KINTO Maintenance Plan Line" = RIMD,
+        tabledata "KINTO Maintenance Ticket" = RIMD,
+        tabledata "KINTO Pickup Delivery Package" = RIMD,
+        tabledata "KINTO Pool Ledger Entry" = RIMD,
+        tabledata "KINTO Pool Type" = RIMD,
+        tabledata "KINTO Price Index" = RIMD,
+        tabledata "KINTO Price Index Entry" = RIMD,
+        tabledata "KINTO Pricing Cue" = RIMD,
+        tabledata "KINTO Quote Header" = RIMD,
+        tabledata "KINTO Quote Item" = RIMD,
+        tabledata "KINTO RV Matrix" = RIMD,
+        tabledata "KINTO Replacement Vehicle Pkg" = RIMD,
+        tabledata "KINTO Service Package" = RIMD,
+        tabledata "KINTO Simulation Snapshot" = RIMD,
+        tabledata "KINTO Supplier Group" = RIMD,
+        tabledata "KINTO Supplier Group Assign" = RIMD,
+        tabledata "KINTO Tire Package" = RIMD,
+        tabledata "KINTO Traffic Fine" = RIMD,
+        tabledata "KINTO Vehicle Contract" = RIMD,
+        tabledata "KINTO Vehicle Model" = RIMD,
+        tabledata "KINTO Vehicle Odometer History" = RIMD,
+        tabledata "KINTO Vendor Category Assign" = RIMD,
+        tabledata "KINTO Vendor Category" = RIMD,
+        tabledata "KINTO Vendor Contact" = RIMD,
+        // objetos: execute
         table "KINTO Glass Coverage Package" = X,
         table "KINTO 24h Assistance Package" = X,
         table "KINTO Pickup Delivery Package" = X,
@@ -13,22 +62,17 @@ permissionset 50100 "KINTO PRICING ADMIN"
         table "KINTO Tire Package" = X,
         table "KINTO Service Package" = X,
         table "KINTO Insurance Coverage Limit" = X,
-        // NOVOS: Tabelas de Vendor/Supplier
         table "KINTO Vendor Category" = X,
         table "KINTO Vendor Category Assign" = X,
         table "KINTO Vendor Contact" = X,
         table "KINTO Supplier Group" = X,
         table "KINTO Supplier Group Assign" = X,
         table "KINTO Item Supplier Group" = X,
-        // NOVOS: Tabelas de Manutenção
         table "KINTO Maintenance Range" = X,
         table "KINTO Maintenance Number" = X,
         table "KINTO Mainten Generic Range" = X,
-        // NOVOS: Item Version History
         table "KINTO Item Version History" = X,
-        // NOVOS: Codeunits
         codeunit "KINTO Package Pricing Calc" = X,
-        // NOVOS: Pages
         page "KINTO Glass Coverage List" = X,
         page "KINTO Glass Coverage Card" = X,
         page "KINTO 24h Assistance List" = X,
@@ -45,5 +89,6 @@ permissionset 50100 "KINTO PRICING ADMIN"
         page "KINTO Maint Generic Range Sub" = X,
         page "KINTO Ins Coverage Limit Sub" = X,
         page "KINTO Vendor Cat Assign List" = X,
-        page "KINTO Vendor Contact Listpart" = X;
+        page "KINTO Vendor Contact Listpart" = X
+
 }
