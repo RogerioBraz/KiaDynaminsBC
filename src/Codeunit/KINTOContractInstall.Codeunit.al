@@ -9,6 +9,15 @@ codeunit 50201 "KINTO Contract Install"
         CreateDefaultPoolTypes();
         CreateDefaultPriceIndexes();
         CreateFineSetup();
+        CreateTerminationSetup();
+    end;
+
+    local procedure CreateTerminationSetup()
+    var
+        TermMgt: Codeunit "KINTO Termination Management";
+    begin
+        // Séries KINTO-RET / KINTO-REC + setup de terminação
+        TermMgt.CreateDefaultSetup();
     end;
 
     local procedure CreateFineSetup()
