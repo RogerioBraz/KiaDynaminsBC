@@ -284,6 +284,7 @@ codeunit 50102 "KINTO Cash Flow Calculator"
         Iteration: Integer;
         MaxIterations: Integer;
         Tolerance: Decimal;
+        MidNPV: Decimal;
     begin
         // FIX (Fase 0): IRR por bisseção (bisection) em vez de varredura com passo variável.
         // FIX (Fase 0, rev.2): verificação de troca de sinal CORRIGIDA.
