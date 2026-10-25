@@ -1,7 +1,7 @@
 page 50202 "KINTO Contract Condition List"
 {
     Caption = 'KINTO Contract Conditions';
-    PageType = List;
+    PageType = ListPart;
     SourceTable = "KINTO Contract Condition";
     UsageCategory = Lists;
     ApplicationArea = All;

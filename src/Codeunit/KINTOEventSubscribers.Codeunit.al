@@ -119,8 +119,8 @@ codeunit 50111 "KINTO Event Subscribers"
                 repeat
                     if Vendor."KINTO Default DLR Sales Comm %" > 0 then
                         QuoteItem."DLR Sales Commission %" := Vendor."KINTO Default DLR Sales Comm %";
-                    if Vendor."KINTO Default DLR Delivery Comm %" > 0 then
-                        QuoteItem."DLR Delivery Commission %" := Vendor."KINTO Default DLR Delivery Comm %";
+                    if Vendor."KINTO Default DLR Deli Comm %" > 0 then
+                        QuoteItem."DLR Delivery Commission %" := Vendor."KINTO Default DLR Deli Comm %";
                     QuoteItem.Modify(true);
                 until QuoteItem.Next() = 0;
         end;

@@ -94,7 +94,7 @@ page 50200 "KINTO Vehicle Contract Card"
             {
                 Caption = 'Extend…';
                 ApplicationArea = All;
-                Image = CalendarChange;
+                Image = Calendar;
                 trigger OnAction()
                 begin
                     if Page.RunModal(Page::"KINTO Extend Contract", Rec) = Action::OK then;
@@ -118,12 +118,18 @@ page 50200 "KINTO Vehicle Contract Card"
                     if Choice = 0 then
                         exit;
                     case Choice of
-                        1: TermType := TermType::"End of Term";
-                        2: TermType := TermType::"Early Cancellation";
-                        3: TermType := TermType::"Total Loss";
-                        4: TermType := TermType::Theft;
-                        5: TermType := TermType::"Vehicle Substitution";
-                        6: TermType := TermType::"Sale to Driver";
+                        1:
+                            TermType := TermType::"End of Term";
+                        2:
+                            TermType := TermType::"Early Cancellation";
+                        3:
+                            TermType := TermType::"Total Loss";
+                        4:
+                            TermType := TermType::Theft;
+                        5:
+                            TermType := TermType::"Vehicle Substitution";
+                        6:
+                            TermType := TermType::"Sale to Driver";
                     end;
                     TermDate := WorkDate();
                     Rec.Terminate(TermType, TermDate);
