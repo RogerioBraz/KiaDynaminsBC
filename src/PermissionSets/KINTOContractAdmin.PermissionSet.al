@@ -116,5 +116,6 @@ permissionset 50174 "KINTO Contract Admin"
                   page "KINTO Damage Lines" = X,
                   page "KINTO Recovery Case Card" = X,
                   page "KINTO Recovery Case List" = X,
-                  page "KINTO Termination Setup" = X;
+                  page "KINTO Termination Setup" = X,
+                  page "KINTO Pricing Workflow API" = X;
 }
