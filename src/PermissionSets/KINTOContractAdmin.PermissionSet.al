@@ -110,7 +110,6 @@ permissionset 50174 "KINTO Contract Admin"
                   table "KINTO Damage Line" = X,
                   table "KINTO Recovery Case" = X,
                   table "KINTO Termination Setup" = X,
-                  table "KINTO Purchase Header Ext" = X,
                   page "KINTO Vehicle Return Card" = X,
                   page "KINTO Vehicle Return List" = X,
                   page "KINTO Damage Lines" = X,
