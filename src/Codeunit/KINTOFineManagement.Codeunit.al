@@ -108,8 +108,8 @@ codeunit 50205 "KINTO Fine Management"
                     if Authority.Get(GetLastAuthorityCode()) then
                         if Authority."Grace Period Days" > 0 then
                             GraceDays := Authority."Grace Period Days";
-                    if InfractionDate <= CalcDate(StrSubstNo('<+%1D>', GraceDays), Contract."Current End Date") then
-                        exit(true);
+                if InfractionDate <= CalcDate(StrSubstNo('<+%1D>', GraceDays), Contract."Current End Date") then
+                    exit(true);
             until Contract.Next() = 0;
         exit(false);
     end;
@@ -165,13 +165,13 @@ codeunit 50205 "KINTO Fine Management"
                 StrSubstNo('Traffic fine %1 — %2 %3 (%4)',
                     Fine."Fine No.", Fine."Issuing Authority Code", Fine."AIIP Code",
                     Format(DT2Date(Fine."Infraction DateTime"), 0, '<Day,2>/<Month,2>/<Year4>')),
-                Fine."Customer Amount", Enum "KINTO Financial Product Type"::"Traffic Fine", Fine."Currency Code");
+                Fine."Customer Amount", "KINTO Financial Product Type"::"Traffic Fine", Fine."Currency Code");
         end;
 
         // Taxas por evento (3 linhas do D2: boleto, envio, indicação) — as configuradas
-        BillFineFeeIfConfigured(Fine, Contract, BillingMonth, Enum "KINTO Fine Fee Type"::"Boleto Issuance");
-        BillFineFeeIfConfigured(Fine, Contract, BillingMonth, Enum "KINTO Fine Fee Type"::"Notification Send");
-        BillFineFeeIfConfigured(Fine, Contract, BillingMonth, Enum "KINTO Fine Fee Type"::"Driver Indication");
+        BillFineFeeIfConfigured(Fine, Contract, BillingMonth, "KINTO Fine Fee Type"::"Boleto Issuance");
+        BillFineFeeIfConfigured(Fine, Contract, BillingMonth, "KINTO Fine Fee Type"::"Notification Send");
+        BillFineFeeIfConfigured(Fine, Contract, BillingMonth, "KINTO Fine Fee Type"::"Driver Indication");
 
         Fine.Status := Fine.Status::Billed;
         Fine."Billing Month" := BillingMonth;
@@ -188,7 +188,7 @@ codeunit 50205 "KINTO Fine Management"
             if FeeSetup.Amount > 0 then
                 CreateFineBillingLine(Fine, Contract, BillingMonth, FeeSetup."Financial Product Code",
                     CopyStr(StrSubstNo('Fine fee %1 — %2', FeeType, Fine."Fine No."), 1, 100),
-                    FeeSetup.Amount, Enum "KINTO Financial Product Type"::"Admin Fee", FeeSetup."Currency Code");
+                    FeeSetup.Amount, "KINTO Financial Product Type"::"Admin Fee", FeeSetup."Currency Code");
     end;
 
     local procedure CreateFineBillingLine(var Fine: Record "KINTO Traffic Fine"; var Contract: Record "KINTO Vehicle Contract"; BillingMonth: Date; ProductCode: Code[20]; Description: Text[100]; Amount: Decimal; ProductType: Enum "KINTO Financial Product Type"; CurrencyCode: Code[10])
@@ -226,7 +226,7 @@ codeunit 50205 "KINTO Fine Management"
         BillingLine.Status := BillingLine.Status::Open;
         BillingLine.Insert(true);
 
-        if ProductType = Enum "KINTO Financial Product Type"::"Traffic Fine" then
+        if ProductType = "KINTO Financial Product Type"::"Traffic Fine" then
             Fine."Billing Line Entry No." := BillingLine."Entry No.";
     end;
 

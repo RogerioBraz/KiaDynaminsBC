@@ -34,7 +34,7 @@ page 50303 "KINTO Fine Integration Errors"
             {
                 Caption = 'Mark Resolved';
                 ApplicationArea = All;
-                Image = Done;
+                Image = Document;
                 trigger OnAction()
                 begin
                     Rec.Resolved := true;
