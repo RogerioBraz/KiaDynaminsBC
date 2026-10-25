@@ -34,9 +34,9 @@ codeunit 50202 "KINTO Billing Job Queue"
                     Skipped += 1;
             until Contract.Next() = 0;
 
-        if Rec."Job Queue Status" = Rec."Job Queue Status"::Error then
+        if Rec.Status = Rec.Status::Error then
             exit;
-        LogSummary(SummaryMsg, Generated, Skipped, ErrCount);
+
     end;
 
     local procedure EvaluateContract(var Contract: Record "KINTO Vehicle Contract"; BillingMonth: Date; var BillingMgt: Codeunit "KINTO Contract Billing Mgt."): Boolean
@@ -73,12 +73,5 @@ codeunit 50202 "KINTO Billing Job Queue"
         exit(not BillingLine.IsEmpty());
     end;
 
-    local procedure LogSummary(SummaryMsg: Label 'KINTO monthly billing: %1 contract(s) billed, %2 skipped (already billed/not due), %3 error(s).'; Generated: Integer; Skipped: Integer; ErrCount: Integer)
-    begin
-        // Registra no log de sessão (visível no Job Queue Log Entries)
-        SessionInformation.LogMessage(StrSubstNo(SummaryMsg, Generated, Skipped, ErrCount));
-    end;
 
-    var
-        SessionInformation: Codeunit "Session Information";
 }

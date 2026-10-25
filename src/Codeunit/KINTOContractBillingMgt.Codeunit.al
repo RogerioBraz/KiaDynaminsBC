@@ -392,8 +392,7 @@ codeunit 50200 "KINTO Contract Billing Mgt."
         SalesLine.Validate(Quantity, BillingLine.Quantity);
         SalesLine.Validate("Unit Price", BillingLine."Unit Price");
         SalesLine.Description := CopyStr(BillingLine.Description, 1, MaxStrLen(SalesLine.Description));
-        SalesLine."Applies-to Doc. Type" := SalesLine."Applies-to Doc. Type"::Invoice;
-        SalesLine."Applies-to Doc. No." := BillingLine."Sales Invoice No.";
+
         if BillingLine."Cost Center Code" <> '' then
             SalesLine.Validate("Shortcut Dimension 1 Code", BillingLine."Cost Center Code");
         SalesLine.Modify(true);

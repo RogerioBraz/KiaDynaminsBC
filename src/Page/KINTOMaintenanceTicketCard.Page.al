@@ -137,7 +137,7 @@ page 50213 "KINTO Maintenance Ticket Card"
             {
                 Caption = 'Validate';
                 ApplicationArea = All;
-                Image = Validate;
+                Image = ValidateEmailLoggingSetup;
                 trigger OnAction()
                 var
                     Ok: Boolean;
