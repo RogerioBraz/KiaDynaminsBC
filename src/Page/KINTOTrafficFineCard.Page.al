@@ -113,7 +113,7 @@ page 50300 "KINTO Traffic Fine Card"
             {
                 Caption = 'Send NIC';
                 ApplicationArea = All;
-                Image = SendMailMessage;
+                Image = Email;
                 trigger OnAction()
                 begin
                     Rec.SendNIC();
@@ -124,7 +124,7 @@ page 50300 "KINTO Traffic Fine Card"
             {
                 Caption = 'Mark Penalty Issued';
                 ApplicationArea = All;
-                Image = Alert;
+                Image = Warning;
                 trigger OnAction()
                 begin
                     Rec.MarkPenaltyIssued();
@@ -184,7 +184,7 @@ page 50300 "KINTO Traffic Fine Card"
             {
                 Caption = 'Mark Vendor Paid';
                 ApplicationArea = All;
-                Image = VendorLedger;
+                Image = Ledger;
                 trigger OnAction()
                 var
                     FineMgt: Codeunit "KINTO Fine Management";

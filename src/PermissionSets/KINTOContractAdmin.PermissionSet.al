@@ -54,9 +54,6 @@ permissionset 50174 "KINTO Contract Admin"
                   table "KINTO Fine Fee Setup" = X,
                   table "KINTO Fine Provider" = X,
                   table "KINTO Fine Integration Error" = X,
-                  enum "KINTO Fine Status" = X,
-                  enum "KINTO Fine Link Status" = X,
-                  enum "KINTO Fine Fee Type" = X,
                   codeunit "KINTO Pool Management" = X,
                   codeunit "KINTO Maintenance Management" = X,
                   codeunit "KINTO Billing Job Queue" = X,
@@ -67,5 +64,6 @@ permissionset 50174 "KINTO Contract Admin"
                   page "KINTO Traffic Fine Card" = X,
                   page "KINTO Traffic Fine List" = X,
                   page "KINTO Issuing Authority List" = X,
+                  page "KINTO Fine Provider List" = X,
                   page "KINTO Fine Integration Errors" = X;
 }
