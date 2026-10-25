@@ -6,6 +6,12 @@ codeunit 50200 "KINTO Contract Billing Mgt."
                   tabledata "KINTO Contract Change Log" = RIMD,
                   tabledata "KINTO Maintenance Ticket" = RIMD,
                   tabledata "KINTO Maint Ticket Line" = RIMD,
+                  tabledata "KINTO Traffic Fine" = RIMD,
+                  tabledata "KINTO Fine Driver" = RIMD,
+                  tabledata "KINTO Issuing Authority" = RIMD,
+                  tabledata "KINTO Fine Fee Setup" = RIMD,
+                  tabledata "KINTO Fine Provider" = RIMD,
+                  tabledata "KINTO Fine Integration Error" = RIMD,
                   tabledata "Sales Header" = RIMD,
                   tabledata "Sales Line" = RIMD;
 

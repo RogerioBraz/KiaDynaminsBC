@@ -8,6 +8,33 @@ codeunit 50201 "KINTO Contract Install"
         CreateDefaultFinancialProducts();
         CreateDefaultPoolTypes();
         CreateDefaultPriceIndexes();
+        CreateFineSetup();
+    end;
+
+    local procedure CreateFineSetup()
+    var
+        FineMgt: Codeunit "KINTO Fine Management";
+        NoSeries: Record "No. Series";
+        NoSeriesLine: Record "No. Series Line";
+    begin
+        // Fine No. Series (Fase 4)
+        if not NoSeries.Get('KINTO-FINE') then begin
+            NoSeries.Init();
+            NoSeries.Code := 'KINTO-FINE';
+            NoSeries.Description := 'KINTO Traffic Fine Numbers';
+            NoSeries.Insert(true);
+
+            NoSeriesLine.Init();
+            NoSeriesLine."Series Code" := 'KINTO-FINE';
+            NoSeriesLine."Line No." := 10000;
+            NoSeriesLine."Starting No." := 'F-00001';
+            NoSeriesLine."Ending No." := 'F-99999';
+            NoSeriesLine."Increment-by No." := 1;
+            NoSeriesLine.Insert(true);
+        end;
+
+        // Setup de multas: produtos, órgãos autuadores (SNE 60/80%), taxas por evento
+        FineMgt.CreateDefaultSetup();
     end;
 
     local procedure CreateContractNumberSeries()
