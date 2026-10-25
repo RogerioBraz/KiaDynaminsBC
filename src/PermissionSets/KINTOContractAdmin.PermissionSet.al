@@ -37,5 +37,15 @@ permissionset 50174 "KINTO Contract Admin"
                   page "KINTO Pool Types" = X,
                   page "KINTO Contract Amendment List" = X,
                   page "KINTO Contract Change Log" = X,
-                  page "KINTO Extend Contract" = X;
+                  page "KINTO Extend Contract" = X,
+                  tabledata "KINTO Maintenance Ticket" = RIMD,
+                  tabledata "KINTO Maint Ticket Line" = RIMD,
+                  table "KINTO Maintenance Ticket" = X,
+                  table "KINTO Maint Ticket Line" = X,
+                  codeunit "KINTO Pool Management" = X,
+                  codeunit "KINTO Maintenance Management" = X,
+                  codeunit "KINTO Billing Job Queue" = X,
+                  page "KINTO Maintenance Ticket Card" = X,
+                  page "KINTO Maintenance Ticket List" = X,
+                  page "KINTO Maint Ticket Lines" = X;
 }

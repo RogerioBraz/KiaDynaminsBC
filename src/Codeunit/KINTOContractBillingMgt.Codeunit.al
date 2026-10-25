@@ -4,6 +4,8 @@ codeunit 50200 "KINTO Contract Billing Mgt."
                   tabledata "KINTO Contract Condition" = RIMD,
                   tabledata "KINTO Billing Line" = RIMD,
                   tabledata "KINTO Contract Change Log" = RIMD,
+                  tabledata "KINTO Maintenance Ticket" = RIMD,
+                  tabledata "KINTO Maint Ticket Line" = RIMD,
                   tabledata "Sales Header" = RIMD,
                   tabledata "Sales Line" = RIMD;
 
@@ -341,6 +343,186 @@ codeunit 50200 "KINTO Contract Billing Mgt."
         if A < B then
             exit(A);
         exit(B);
+    end;
+
+    // ============================================================
+    // FASE 2b — CRÉDITOS RETROATIVOS (D6 RN-005/REQ-008)
+    // ============================================================
+    procedure CreateCreditFromBillingLine(BillingLineEntryNo: Integer; Reason: Text[250]): Code[20]
+    var
+        BillingLine: Record "KINTO Billing Line";
+        Contract: Record "KINTO Vehicle Contract";
+        SalesHeader: Record "Sales Header";
+        SalesLine: Record "Sales Line";
+        FinancialProduct: Record "KINTO Financial Product";
+        AlreadyErr: Label 'Billing line %1 is not invoiced — nothing to credit.';
+        NotInvoicedErr: Label 'Billing line %1 has no sales invoice.';
+    begin
+        BillingLine.Get(BillingLineEntryNo);
+        if BillingLine.Status <> BillingLine.Status::Invoiced then
+            Error(AlreadyErr, BillingLine."Entry No.");
+        if BillingLine."Sales Invoice No." = '' then
+            Error(NotInvoicedErr, BillingLine."Entry No.");
+
+        Contract.Get(BillingLine."Contract No.");
+        FinancialProduct.Get(BillingLine."Financial Product Code");
+
+        // Credit Memo espelhando a fatura original (RN-005: crédito no mesmo contrato)
+        SalesHeader.Init();
+        SalesHeader.Validate("Document Type", SalesHeader."Document Type"::"Credit Memo");
+        SalesHeader.Insert(true);
+        SalesHeader.Validate("Sell-to Customer No.", Contract."Customer No.");
+        SalesHeader.Validate("Posting Date", WorkDate());
+        if BillingLine."Currency Code" <> '' then
+            SalesHeader.Validate("Currency Code", BillingLine."Currency Code");
+        if BillingLine."Cost Center Code" <> '' then
+            SalesHeader.Validate("Shortcut Dimension 1 Code", BillingLine."Cost Center Code");
+        SalesHeader."KINTO Contract No." := BillingLine."Contract No.";
+        SalesHeader."KINTO Billing Month" := BillingLine."Billing Month";
+        SalesHeader."KINTO Credit Reason" := CopyStr(Reason, 1, 250);
+        SalesHeader.Modify(true);
+
+        SalesLine.Init();
+        SalesLine."Document Type" := SalesHeader."Document Type";
+        SalesLine."Document No." := SalesHeader."No.";
+        SalesLine."Line No." := 10000;
+        SalesLine.Insert(true);
+        SalesLine.Validate(Type, SalesLine.Type::Item);
+        SalesLine.Validate("No.", FinancialProduct."Service Item No.");
+        SalesLine.Validate(Quantity, BillingLine.Quantity);
+        SalesLine.Validate("Unit Price", BillingLine."Unit Price");
+        SalesLine.Description := CopyStr(BillingLine.Description, 1, MaxStrLen(SalesLine.Description));
+        SalesLine."Applies-to Doc. Type" := SalesLine."Applies-to Doc. Type"::Invoice;
+        SalesLine."Applies-to Doc. No." := BillingLine."Sales Invoice No.";
+        if BillingLine."Cost Center Code" <> '' then
+            SalesLine.Validate("Shortcut Dimension 1 Code", BillingLine."Cost Center Code");
+        SalesLine.Modify(true);
+
+        BillingLine.Status := BillingLine.Status::Credited;
+        BillingLine."Credit Memo No." := SalesHeader."No.";
+        BillingLine."Cancellation Reason" := CopyStr(Reason, 1, 250);
+        BillingLine.Modify(true);
+
+        LogChange(BillingLine."Contract No.", "KINTO Contract Change Type"::ConditionChanged,
+            StrSubstNo('Credit memo %1 issued for billing line %2: %3', SalesHeader."No.", BillingLine."Entry No.", Reason));
+        exit(SalesHeader."No.");
+    end;
+
+    // ============================================================
+    // FASE 2b — MULTAS CONTRATUAIS (D6 PP-02: retenção + rescisória)
+    // ============================================================
+    procedure GenerateRetentionFee(var Contract: Record "KINTO Vehicle Contract"; BillingMonth: Date)
+    var
+        BillingLine: Record "KINTO Billing Line";
+        FinancialProduct: Record "KINTO Financial Product";
+        MonthStart: Date;
+    begin
+        // RN-003/RN-019 do D6: retenção recorrente segue a indicação por placa
+        // (contract."Retention Fee Indicated") e só corre enquanto o contrato faturar.
+        if not Contract."Retention Fee Indicated" then
+            exit;
+        if Contract."Retention Fee Amount" <= 0 then
+            exit;
+        if not ContractIsBilledInMonth(Contract, BillingMonth) then
+            exit;
+
+        // Idempotência: uma linha de retenção por mês
+        BillingLine.SetRange("Contract No.", Contract."Contract No.");
+        BillingLine.SetRange("Billing Month", BillingMonth);
+        BillingLine.SetRange("Product Type", BillingLine."Product Type"::Penalty);
+        BillingLine.SetFilter(Status, '<>%1', BillingLine.Status::Cancelled);
+        if not BillingLine.IsEmpty() then
+            exit;
+
+        FinancialProduct.Get('RENT'); // valida existência do produto base
+        CreatePenaltyLine(Contract, BillingMonth, 'PEN-RETENTION',
+            StrSubstNo('Contractual retention fee — %1', Format(BillingMonth, 0, '<Month,2>/<Year4>')),
+            Contract."Retention Fee Amount");
+    end;
+
+    procedure GenerateRescissionFee(var Contract: Record "KINTO Vehicle Contract")
+    var
+        BillingLine: Record "KINTO Billing Line";
+        Condition: Record "KINTO Contract Condition";
+        MonthsUsed: Integer;
+        MonthsTotal: Integer;
+        FeeAmount: Decimal;
+        MonthStart: Date;
+        NoConditionsErr: Label 'Contract %1 has no active conditions to compute the rescission fee.';
+    begin
+        // RN-004 do D6: rescisória por faixas de utilização — % sobre o valor restante
+        // do contrato (meses restantes × mensalidade), com isenção nos primeiros
+        // N dias (Rescission Waiver Days) e cap de 100%.
+        if Contract."Termination Type" <> Contract."Termination Type"::"Early Cancellation" then
+            exit;
+        if (Contract."Rescission Fee %" <= 0) or (Contract.Status <> Contract.Status::Terminated) then
+            exit;
+        if Contract."Termination Date" = 0D then
+            exit;
+
+        // Isenção: terminação dentro dos primeiros N dias não gera rescisória
+        if (Contract."Rescission Waiver Days" > 0) and
+           (Contract."Termination Date" <= CalcDate(StrSubstNo('<+%1D>', Contract."Rescission Waiver Days"), Contract."Start Date"))
+        then
+            exit;
+
+        // Meses usados vs total
+        MonthsUsed := Round((Contract."Termination Date" - Contract."Start Date") / 30, 1, '<');
+        if MonthsUsed < 0 then
+            MonthsUsed := 0;
+        MonthsTotal := Contract."Contract Term (Months)";
+        if MonthsUsed >= MonthsTotal then
+            exit; // contrato cumprido — sem rescisória
+
+        // Valor restante: mensalidade total ativa × meses restantes
+        Condition.Reset();
+        Condition.SetRange("Contract No.", Contract."Contract No.");
+        Condition.SetRange(Active, true);
+        if Condition.IsEmpty() then
+            Error(NoConditionsErr, Contract."Contract No.");
+        Condition.CalcSums("Monthly Amount");
+        FeeAmount := Round(Condition."Monthly Amount" * (MonthsTotal - MonthsUsed) * Contract."Rescission Fee %" / 100, 0.01);
+        if FeeAmount <= 0 then
+            exit;
+
+        MonthStart := CalcDate('<-CM>', Contract."Termination Date");
+        CreatePenaltyLine(Contract, MonthStart, 'PEN-RECISSION',
+            StrSubstNo('Early termination fee — %1 of remaining %2 month(s)',
+                Contract."Rescission Fee %", MonthsTotal - MonthsUsed),
+            FeeAmount);
+    end;
+
+    local procedure CreatePenaltyLine(var Contract: Record "KINTO Vehicle Contract"; BillingMonth: Date; ProductCode: Code[20]; Description: Text[100]; Amount: Decimal)
+    var
+        BillingLine: Record "KINTO Billing Line";
+        FinancialProduct: Record "KINTO Financial Product";
+    begin
+        if not FinancialProduct.Get(ProductCode) then begin
+            FinancialProduct.Init();
+            FinancialProduct."Product Code" := ProductCode;
+            FinancialProduct.Description := ProductCode;
+            FinancialProduct."Product Type" := FinancialProduct."Product Type"::Penalty;
+            FinancialProduct."Separate Invoice" := true;
+            FinancialProduct.Insert(true);
+        end;
+
+        BillingLine.Init();
+        BillingLine."Contract No." := Contract."Contract No.";
+        BillingLine."Billing Month" := BillingMonth;
+        BillingLine."Condition ID" := '';
+        BillingLine."Financial Product Code" := ProductCode;
+        BillingLine."Product Type" := BillingLine."Product Type"::Penalty;
+        BillingLine.Description := CopyStr(Description, 1, MaxStrLen(BillingLine.Description));
+        BillingLine.Quantity := 1;
+        BillingLine."Days Billed" := 30;
+        BillingLine."Unit Price" := Amount;
+        BillingLine.Amount := Amount;
+        BillingLine."Billing Period From" := CalcDate('<-CM>', BillingMonth);
+        BillingLine."Billing Period To" := CalcDate('<CM>', BillingMonth);
+        BillingLine."Currency Code" := Contract."Currency Code";
+        BillingLine.Status := BillingLine.Status::Open;
+        BillingLine."Origin Description" := 'Contractual penalty';
+        BillingLine.Insert(true);
     end;
 
     // ============================================================

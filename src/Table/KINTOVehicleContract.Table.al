@@ -108,6 +108,14 @@ table 50200 "KINTO Vehicle Contract"
         field(34; "Last Billing Month"; Date) { Caption = 'Last Billing Month'; Editable = false; }
         field(35; "Retention Fee Indicated"; Boolean) { Caption = 'Retention Fee Indicated'; }
         field(36; "Payment Allowance Days"; Integer) { Caption = 'Payment Allowance (days)'; }
+        field(37; "Retention Fee Amount"; Decimal) { Caption = 'Retention Fee Amount (monthly)'; DecimalPlaces = 2 : 2; }
+        field(38; "Rescission Fee %"; Decimal)
+        {
+            Caption = 'Rescission Fee %';
+            DecimalPlaces = 0 : 5;
+            MaxValue = 100;
+        }
+        field(39; "Rescission Waiver Days"; Integer) { Caption = 'Rescission Waiver (days)'; MinValue = 0; }
     }
 
     keys

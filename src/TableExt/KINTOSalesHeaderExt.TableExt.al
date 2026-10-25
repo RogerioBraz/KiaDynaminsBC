@@ -12,5 +12,10 @@ tableextension 50210 "KINTO Sales Header Ext" extends "Sales Header"
             Caption = 'KINTO Billing Month';
             DataClassification = CustomerContent;
         }
+        field(50202; "KINTO Credit Reason"; Text[250])
+        {
+            Caption = 'KINTO Credit Reason';
+            DataClassification = CustomerContent;
+        }
     }
 }

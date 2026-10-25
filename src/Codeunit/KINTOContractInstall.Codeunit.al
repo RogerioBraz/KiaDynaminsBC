@@ -46,6 +46,22 @@ codeunit 50201 "KINTO Contract Install"
             NoSeriesLine."Increment-by No." := 1;
             NoSeriesLine.Insert(true);
         end;
+
+        // Maintenance Ticket No. Series (Fase 3)
+        if not NoSeries.Get('KINTO-TICK') then begin
+            NoSeries.Init();
+            NoSeries.Code := 'KINTO-TICK';
+            NoSeries.Description := 'KINTO Maintenance Ticket Numbers';
+            NoSeries.Insert(true);
+
+            NoSeriesLine.Init();
+            NoSeriesLine."Series Code" := 'KINTO-TICK';
+            NoSeriesLine."Line No." := 10000;
+            NoSeriesLine."Starting No." := 'TK-00001';
+            NoSeriesLine."Ending No." := 'TK-99999';
+            NoSeriesLine."Increment-by No." := 1;
+            NoSeriesLine.Insert(true);
+        end;
     end;
 
     local procedure CreateDefaultFinancialProducts()
@@ -79,6 +95,33 @@ codeunit 50201 "KINTO Contract Install"
             FinProduct."Product Code" := 'ADMIN-FEE';
             FinProduct.Description := 'Administrative Fee';
             FinProduct."Product Type" := FinProduct."Product Type"::"Admin Fee";
+            FinProduct."Separate Invoice" := true;
+            FinProduct.Insert(true);
+        end;
+
+        if not FinProduct.Get('ADD-SERVICE') then begin
+            FinProduct.Init();
+            FinProduct."Product Code" := 'ADD-SERVICE';
+            FinProduct.Description := 'Additional Service (Maintenance)';
+            FinProduct."Product Type" := FinProduct."Product Type"::"Additional Service";
+            FinProduct."Separate Invoice" := true;
+            FinProduct.Insert(true);
+        end;
+
+        if not FinProduct.Get('PEN-RETENTION') then begin
+            FinProduct.Init();
+            FinProduct."Product Code" := 'PEN-RETENTION';
+            FinProduct.Description := 'Contractual Retention Fee';
+            FinProduct."Product Type" := FinProduct."Product Type"::Penalty;
+            FinProduct."Separate Invoice" := true;
+            FinProduct.Insert(true);
+        end;
+
+        if not FinProduct.Get('PEN-RECISSION') then begin
+            FinProduct.Init();
+            FinProduct."Product Code" := 'PEN-RECISSION';
+            FinProduct.Description := 'Early Termination Fee';
+            FinProduct."Product Type" := FinProduct."Product Type"::Penalty;
             FinProduct."Separate Invoice" := true;
             FinProduct.Insert(true);
         end;
