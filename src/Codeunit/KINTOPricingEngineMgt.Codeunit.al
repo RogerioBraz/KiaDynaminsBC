@@ -10,6 +10,7 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
     var
         CountrySetup: Record "KINTO Country Setup";
         CFCalc: Codeunit "KINTO Cash Flow Calculator";
+        NoSeries: Codeunit "No. Series";
         GoalSeekMgt: Codeunit "KINTO Goal Seek Mgt.";
         TaxCalculator: Codeunit "KINTO Tax Calculator";
         CommissionCalculator: Codeunit "KINTO Commission Calculator";
@@ -228,9 +229,9 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
     begin
         Snapshot.Init();
         // Entry No. = AutoIncrement — deixar o BC gerar
-        Snapshot."Snapshot ID" :=
-            Format(CurrentDateTime, 0, '<Year4><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>') +
-            '-' + Format(QuoteItem."Line No.");
+        // FIX (Fase 0): Snapshot ID truncava em Code[20] (timestamp 14 dígitos + '-' + Line No.
+        // excedia o campo). Agora usa contador curto: 'SNP-' + valor da série KINTO-SNAP.
+        Snapshot."Snapshot ID" := NoSeries.GetNextNo('KINTO-SNAP', WorkDate(), true);
         Snapshot."Quote No." := QuoteHeader."Quote No.";
         Snapshot."Quote Line No." := QuoteItem."Line No.";
         Snapshot."Monthly Fee" := QuoteItem."Monthly Tariff";

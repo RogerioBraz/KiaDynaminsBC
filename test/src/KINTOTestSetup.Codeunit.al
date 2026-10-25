@@ -46,7 +46,7 @@ codeunit 50150 "KINTO Test Setup"
         CountrySetup."Pricing Methodology" := CountrySetup."Pricing Methodology"::"KINTO Fee";
         CountrySetup."Currency Code" := 'ARS';
         CountrySetup."Allow USD Contracts" := true;
-        CountrySetup."Profit Tax Rate %" := 0.35;
+        CountrySetup."Profit Tax Rate %" := 35; // FIX (Fase 0): era 0.35 (0,35%) — design é 35% (Argentina)
         CountrySetup."Tax Depreciation Period" := 60;
         CountrySetup."Annual Interest Expense %" := 15.7;
         CountrySetup."Spread" := 1.057;

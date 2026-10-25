@@ -2,31 +2,31 @@
     "id": "8a76abc6-5fb0-4baf-84be-8a28a099b8d4",
     "name": "KiaDynBC",
     "publisher": "RSBTech",
-    "version": "1.0.0.5",
-    "brief": "",
-    "description": "",
-    "privacyStatement": "",
+    "version": "1.1.0.0",
+    "brief": "KINTO NFMS — Fleet Management: pricing, contracts and billing",
+    "description": "KINTO NFMS fleet management for Dynamics 365 Business Central: pricing engine, vehicle contracts, service billing (Essential license).",
+    "privacyStatement": "https://rsbtech.com.br/",
     "EULA": "https://rsbtech.com.br/",
     "help": "https://rsbtech.com.br/",
     "url": "https://rsbtech.com.br/",
     "logo": "",
     "dependencies": [
         {
-            "id": "dd0be2ea-f733-4d65-bb34-a28f4624fb14",
-            "name": "Library Assert",
+            "id": "63d2c1da-a85d-4a68-b16d-8b2ab46b1f3a",
+            "name": "System Application",
             "publisher": "Microsoft",
-            "version": "28.3.52162.52273"
+            "version": "29.0.0.0"
         },
         {
-            "id": "e7320ebb-08b3-4406-b1ec-b4927d3e280b",
-            "name": "Any",
+            "id": "437dbf0e-84ff-417a-965d-ed2bb9650972",
+            "name": "Base Application",
             "publisher": "Microsoft",
-            "version": "28.3.52162.52273"
+            "version": "29.0.0.0"
         }
     ],
     "screenshots": [],
-    "platform": "1.0.0.0",
-    "application": "28.3.52162.52273",
+    "platform": "29.0.0.0",
+    "application": "29.0.0.0",
     "idRanges": [
         {
             "from": 50000,
@@ -38,19 +38,10 @@
         "allowDownloadingSource": true,
         "includeSourceInSymbolFile": true
     },
-    "runtime": "17.0",
+    "runtime": "18.0",
     "features": [
         "NoImplicitWith",
         "TranslationFile",
         "GenerateCaptions"
-    ],
-    "suppressWarnings": [
-        "AL0432",
-        "AL0468",
-        "AL0523",
-        "AL0600",
-        "AL0603",
-        "AL0604",
-        "AL0606"
     ]
 }

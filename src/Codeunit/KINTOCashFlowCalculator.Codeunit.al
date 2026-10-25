@@ -277,29 +277,51 @@ codeunit 50102 "KINTO Cash Flow Calculator"
     var
         i: Integer;
         NPV: Decimal;
-        Rate: Decimal;
-        BestRate: Decimal;
-        BestNPV: Decimal;
+        LowRate: Decimal;
+        HighRate: Decimal;
+        MidRate: Decimal;
+        MidNPV: Decimal;
+        LowNPV: Decimal;
+        Iteration: Integer;
+        MaxIterations: Integer;
+        Tolerance: Decimal;
     begin
-        BestRate := 0;
-        BestNPV := 0;
-        Rate := 0.001;
-        while Rate < 1.0 do begin
+        // FIX (Fase 0): IRR por bisseção (bisection) em vez de varredura com passo variável.
+        // Monotonicidade: para o perfil de fluxo do contrato (saída inicial, entradas mensais,
+        // entrada final de revenda) o NPV é decrescente na taxa dentro do domínio útil.
+        // Limites: 0% a 100% a.m.; tolerância 1e-6; 60 iterações bastam (2^-60 do intervalo).
+        MaxIterations := 60;
+        Tolerance := 0.000001;
+        LowRate := 0.0;
+        HighRate := 1.0;
+
+        // NPV na taxa mínima (0%): soma simples
+        LowNPV := 0;
+        for i := 1 to MaxMonth do
+            LowNPV += CashFlows[i];
+
+        // Sem troca de sinal dentro do intervalo não há IRR real — retorna 0
+        if (LowNPV >= 0) then
+            exit(0);
+
+        MidNPV := 0;
+        for Iteration := 1 to MaxIterations do begin
+            MidRate := (LowRate + HighRate) / 2;
             NPV := 0;
             for i := 1 to MaxMonth do
-                NPV += CashFlows[i] / Power(1 + Rate, i);
+                NPV += CashFlows[i] / Power(1 + MidRate, i);
 
-            if Abs(NPV) < Abs(BestNPV) then begin
-                BestNPV := NPV;
-                BestRate := Rate;
-            end;
+            if Abs(NPV) < Tolerance then
+                break;
 
-            if NPV < 0 then
-                Rate := Rate + 0.01
+            if NPV > 0 then
+                LowRate := MidRate
             else
-                Rate := Rate + 0.001;
+                HighRate := MidRate;
+            MidNPV := NPV;
         end;
-        exit(Round(BestRate * 100, 0.01));
+
+        exit(Round(MidRate * 100, 0.01));
     end;
 
     procedure CalculateROI(var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item"): Decimal

@@ -1,0 +1,41 @@
+permissionset 50174 "KINTO Contract Admin"
+{
+    Caption = 'KINTO Contract Admin';
+    Assignable = true;
+
+    Permissions = tabledata "KINTO Vehicle Contract" = RIMD,
+                  tabledata "KINTO Contract Condition" = RIMD,
+                  tabledata "KINTO Financial Product" = RIMD,
+                  tabledata "KINTO Price Index" = RIMD,
+                  tabledata "KINTO Price Index Entry" = RIMD,
+                  tabledata "KINTO Billing Line" = RIMD,
+                  tabledata "KINTO Pool Ledger Entry" = RIMD,
+                  tabledata "KINTO Pool Type" = RIMD,
+                  tabledata "KINTO Contract Amendment" = RIMD,
+                  tabledata "KINTO Contract Change Log" = RIMD,
+                  table "KINTO Vehicle Contract" = X,
+                  table "KINTO Contract Condition" = X,
+                  table "KINTO Financial Product" = X,
+                  table "KINTO Price Index" = X,
+                  table "KINTO Price Index Entry" = X,
+                  table "KINTO Billing Line" = X,
+                  table "KINTO Pool Ledger Entry" = X,
+                  table "KINTO Pool Type" = X,
+                  table "KINTO Contract Amendment" = X,
+                  table "KINTO Contract Change Log" = X,
+                  codeunit "KINTO Contract Billing Mgt." = X,
+                  codeunit "KINTO Contract Install" = X,
+                  page "KINTO Vehicle Contract Card" = X,
+                  page "KINTO Vehicle Contract List" = X,
+                  page "KINTO Contract Condition List" = X,
+                  page "KINTO Financial Product List" = X,
+                  page "KINTO Financial Product Card" = X,
+                  page "KINTO Billing Line List" = X,
+                  page "KINTO Price Index List" = X,
+                  page "KINTO Price Index Entry List" = X,
+                  page "KINTO Pool Ledger Entries" = X,
+                  page "KINTO Pool Types" = X,
+                  page "KINTO Contract Amendment List" = X,
+                  page "KINTO Contract Change Log" = X,
+                  page "KINTO Extend Contract" = X;
+}

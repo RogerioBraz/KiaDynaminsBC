@@ -107,6 +107,21 @@ page 50110 "KINTO Quote Card"
                     Page.Run(Page::"KINTO Cash Flow Data List", CFData);
                 end;
             }
+            action(CreateContract)
+            {
+                Caption = 'Create Vehicle Contract';
+                ApplicationArea = All;
+                Image = Agreement;
+                Enabled = Rec."Pricing Status" = Rec."Pricing Status"::Approved;
+                trigger OnAction()
+                var
+                    BillingMgt: Codeunit "KINTO Contract Billing Mgt.";
+                    ContractNo: Code[20];
+                begin
+                    ContractNo := BillingMgt.CreateContractFromQuote(Rec);
+                    Message('Vehicle contract %1 created.', ContractNo);
+                end;
+            }
             action(ViewSnapshot)
             {
                 Caption = 'View Snapshot';
@@ -115,10 +130,15 @@ page 50110 "KINTO Quote Card"
                 trigger OnAction()
                 var
                     Snapshot: Record "KINTO Simulation Snapshot";
+                    SnapshotNotFoundErr: Label 'No snapshot found for quote %1. Run the pricing first.';
                 begin
                     if Rec."Snapshot ID" <> '' then begin
-                        Snapshot.Get(Rec."Snapshot ID");
-                        Page.Run(Page::"KINTO Snapshot Card", Snapshot);
+                        // FIX (Fase 0): PK da snapshot é Entry No. (AutoIncrement) — busca por Snapshot ID
+                        Snapshot.SetRange("Snapshot ID", Rec."Snapshot ID");
+                        if Snapshot.FindFirst() then
+                            Page.Run(Page::"KINTO Snapshot Card", Snapshot)
+                        else
+                            Error(SnapshotNotFoundErr, Rec."Quote No.");
                     end;
                 end;
             }
@@ -203,7 +223,9 @@ page 50110 "KINTO Quote Card"
         ApprovalReq: Record "KINTO Approval Request";
     begin
         ApprovalReq.Init();
-        ApprovalReq."Request ID" := Format(QuoteHeader."Quote No.") + '-APP';
+        // FIX (Fase 0): Request ID agora vem da No. Series KINTO-APPR no OnInsert da tabela
+        // (antes era montado manualmente 'QuoteNo-APP', bypassando a série).
+        ApprovalReq."Request ID" := '';
         ApprovalReq."Quote No." := QuoteHeader."Quote No.";
         ApprovalReq.Classification := QuoteHeader."Approval Classification";
         ApprovalReq.Insert(true);
