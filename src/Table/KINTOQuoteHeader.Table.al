@@ -64,6 +64,26 @@ table 50110 "KINTO Quote Header"
             DataClassification = CustomerContent;
             Editable = false;
         }
+        field(68; "Run Pricing Trigger"; Boolean)
+        {
+            Caption = 'Run Pricing Trigger (integration)';
+            DataClassification = CustomerContent;
+        }
+        field(69; "Approve Quote Trigger"; Boolean)
+        {
+            Caption = 'Approve Quote Trigger (integration)';
+            DataClassification = CustomerContent;
+        }
+        field(70; "Create Contract Trigger"; Boolean)
+        {
+            Caption = 'Create Contract Trigger (integration)';
+            DataClassification = CustomerContent;
+        }
+        field(71; "Generate Billing Trigger"; Boolean)
+        {
+            Caption = 'Generate Billing Trigger (integration)';
+            DataClassification = CustomerContent;
+        }
     }
 
     keys { key(PK; "Quote No.") { Clustered = true; } }
