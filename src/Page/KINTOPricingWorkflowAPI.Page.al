@@ -29,6 +29,7 @@ page 50122 "KINTO Pricing Workflow API"
                 field(calculatedROI; Rec."Calculated ROI") { ApplicationArea = All; }
                 field(ebt; Rec.EBT) { ApplicationArea = All; }
                 field(errorMessage; Rec."Error Message") { ApplicationArea = All; }
+                field(createdContractNo; Rec."Created Contract No.") { ApplicationArea = All; Editable = false; }
             }
         }
     }
@@ -48,7 +49,7 @@ page 50122 "KINTO Pricing Workflow API"
                     PricingEngine: Codeunit "KINTO Pricing Engine Mgt.";
                 begin
                     PricingEngine.RunPricing(Rec);
-                    Modify();
+                    Rec.Modify(true);
                 end;
             }
             action(Approve)
@@ -72,13 +73,15 @@ page 50122 "KINTO Pricing Workflow API"
                 ApplicationArea = All;
                 [ServiceEnabled]
                 [Scope('Cloud')]
-                trigger OnAction() ContractNo: Code[20]
+                trigger OnAction()
                 var
                     QuoteHeader: Record "KINTO Quote Header";
                     BillingMgt: Codeunit "KINTO Contract Billing Mgt.";
                 begin
                     QuoteHeader.Get(Rec."Quote No.");
-                    ContractNo := BillingMgt.CreateContractFromQuote(QuoteHeader);
+                    QuoteHeader."Created Contract No." := BillingMgt.CreateContractFromQuote(QuoteHeader);
+                    QuoteHeader.Modify(true);
+                    Rec.Get(Rec."Quote No.");
                 end;
             }
             action(GenerateBilling)

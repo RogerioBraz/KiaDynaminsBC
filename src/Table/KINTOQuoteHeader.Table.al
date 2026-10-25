@@ -58,6 +58,12 @@ table 50110 "KINTO Quote Header"
         field(64; "Replacement Vehicle Pkg ID"; Code[20]) { Caption = 'Replacement Vehicle'; TableRelation = "KINTO Replacement Vehicle Pkg"; DataClassification = CustomerContent; }
         field(65; "Service Package ID"; Code[20]) { Caption = 'Service (Telematics)'; TableRelation = "KINTO Service Package"; DataClassification = CustomerContent; }
         field(66; "Replacement Vehicle Uses"; Integer) { Caption = 'Replacement Vehicle Uses'; DataClassification = CustomerContent; }
+        field(67; "Created Contract No."; Code[20])
+        {
+            Caption = 'Created Contract No.';
+            DataClassification = CustomerContent;
+            Editable = false;
+        }
     }
 
     keys { key(PK; "Quote No.") { Clustered = true; } }
