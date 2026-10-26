@@ -45,8 +45,11 @@ codeunit 50156 "KINTO Demo Data Seed"
     procedure RunPricing(var Quote: Record "KINTO Quote Header")
     var
         Engine: Codeunit "KINTO Pricing Engine Mgt.";
+        PricingContext: Codeunit "KINTO Pricing Context";
     begin
+        PricingContext.BeginPricing();
         Engine.RunPricing(Quote);
+        PricingContext.EndPricing();
     end;
 
     // ============================================================

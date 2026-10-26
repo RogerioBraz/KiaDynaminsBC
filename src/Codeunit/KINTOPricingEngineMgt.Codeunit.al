@@ -9,6 +9,7 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
 
     var
         CountrySetup: Record "KINTO Country Setup";
+        PricingContext: Codeunit "KINTO Pricing Context";
         CFCalc: Codeunit "KINTO Cash Flow Calculator";
         NoSeries: Codeunit "No. Series";
         GoalSeekMgt: Codeunit "KINTO Goal Seek Mgt.";
@@ -32,6 +33,8 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
         if CountrySetup."Emergency Stop" then
             Error(PricingErr, QuoteHeader."Country Code");
 
+        // Contexto programático: guards de OnModify não resetam durante o engine
+        PricingContext.BeginPricing();
         QuoteHeader."Pricing Status" := QuoteHeader."Pricing Status"::Draft;
         QuoteHeader.Modify(true);
 
@@ -46,6 +49,7 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
 
         QuoteHeader."Pricing Status" := QuoteHeader."Pricing Status"::Calculated;
         QuoteHeader.Modify(true);
+        PricingContext.EndPricing();
     end;
 
     local procedure ProcessQuoteItem(var QuoteHeader: Record "KINTO Quote Header"; var QuoteItem: Record "KINTO Quote Item")

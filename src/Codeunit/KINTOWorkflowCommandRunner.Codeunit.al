@@ -30,7 +30,10 @@ codeunit 50207 "KINTO Workflow Command Runner"
         Command: Record "KINTO Workflow Command";
         Processed: Integer;
         Failed: Integer;
+        PricingContext: Codeunit "KINTO Pricing Context";
     begin
+        // Contexto programático: guards de status desativados durante o runner
+        PricingContext.BeginPricing();
         // Rec = Job Queue Entry (passado pelo JQ) — não usamos seus campos,
         // apenas rodamos a varredura das commands pendentes.
         Command.SetFilter("Pending Command", '<>%1', Command."Pending Command"::" ");
@@ -43,6 +46,7 @@ codeunit 50207 "KINTO Workflow Command Runner"
             until Command.Next() = 0;
 
         // Sem comandos pendentes: execução vazia (JQ recorrente normal)
+        PricingContext.EndPricing();
     end;
 
     local procedure ExecuteCommand(var Command: Record "KINTO Workflow Command"; CommandType: Enum "KINTO Command Type"): Boolean

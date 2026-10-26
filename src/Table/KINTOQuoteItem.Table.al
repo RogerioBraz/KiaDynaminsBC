@@ -201,7 +201,12 @@ table 50111 "KINTO Quote Item"
     var
         CFData: Record "KINTO Cash Flow Data";
         CFHeader: Record "KINTO Cash Flow Header";
+        PricingContext: Codeunit "KINTO Pricing Context";
     begin
+        // Contexto programático (engine/runner/seed): guard desativado
+        if PricingContext.GuardsSuppressed() then
+            exit;
+
         if (xRec."Pricing Status" = xRec."Pricing Status"::Calculated) and
            (Rec."Pricing Status" = xRec."Pricing Status"::Calculated) then begin
             CFData.SetRange("Quote No.", Rec."Quote No.");
