@@ -49,7 +49,7 @@ page 50459 "KINTO Remarketing Offer List"
             {
                 Caption = 'Accept Offer';
                 ApplicationArea = All;
-                Image = Accept;
+                Image = Account;
                 trigger OnAction()
                 var
                     RemMgt: Codeunit "KINTO Remarketing Mgt.";
