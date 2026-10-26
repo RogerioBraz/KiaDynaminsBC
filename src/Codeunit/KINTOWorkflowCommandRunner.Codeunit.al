@@ -1,6 +1,6 @@
 codeunit 50207 "KINTO Workflow Command Runner"
 {
-    TableNo = "KINTO Workflow Command";
+    TableNo = "Job Queue Entry";
 
     Permissions = tabledata "KINTO Workflow Command" = RIMD,
                   tabledata "KINTO Quote Header" = RIMD,
@@ -20,42 +20,41 @@ codeunit 50207 "KINTO Workflow Command Runner"
                   tabledata "Job Queue Entry" = RIMD,
                   tabledata "Job Queue Category" = RIMD;
 
-    // Executa comandos pendentes em SEPARATE session (via Task Scheduler) —
-    // gravações em outras tabelas persistem fora da transação do PATCH.
+    // Executa comandos pendentes em background session (Job Queue).
+    // TableNo = Job Queue Entry — o JQ passa o PRÓPRIO JQ Entry ao OnRun
+    // (Record(472) is not compatible with Codeunit.Run(Record(50410)) = TableNo errado).
+    // O OnRun varre TODAS as commands pendentes e executa uma a uma.
 
     trigger OnRun()
     var
         Command: Record "KINTO Workflow Command";
         Processed: Integer;
+        Failed: Integer;
     begin
-        // Via Job Queue (sem record): varre TODAS as commands pendentes
-        // (o JQ Entry roda o codeunit sem record — Rec é default vazio)
-        if Rec."Quote No." <> '' then begin
-            // chamado com record específico (futuro)
-            if Rec."Pending Command" <> Rec."Pending Command"::" " then
-                ExecuteCommand(Rec, Rec."Pending Command");
-            exit;
-        end;
-
+        // Rec = Job Queue Entry (passado pelo JQ) — não usamos seus campos,
+        // apenas rodamos a varredura das commands pendentes.
         Command.SetFilter("Pending Command", '<>%1', Command."Pending Command"::" ");
         if Command.FindSet() then
             repeat
-                ExecuteCommand(Command, Command."Pending Command");
-                Processed += 1;
+                if ExecuteCommand(Command, Command."Pending Command") then
+                    Processed += 1
+                else
+                    Failed += 1;
             until Command.Next() = 0;
+
+        // Sem comandos pendentes: execução vazia (JQ recorrente normal)
     end;
 
-    local procedure ExecuteCommand(var Command: Record "KINTO Workflow Command"; CommandType: Enum "KINTO Command Type")
+    local procedure ExecuteCommand(var Command: Record "KINTO Workflow Command"; CommandType: Enum "KINTO Command Type"): Boolean
     var
         Quote: Record "KINTO Quote Header";
         Engine: Codeunit "KINTO Pricing Engine Mgt.";
         BillingMgt: Codeunit "KINTO Contract Billing Mgt.";
         Contract: Record "KINTO Vehicle Contract";
-        Ok: Boolean;
     begin
         if not Quote.Get(Command."Quote No.") then begin
-            SetResult(Command, CommandType, false, 'Quote not found');
-            exit;
+            SetResult(Command, false, 'Quote not found');
+            exit(false);
         end;
 
         case CommandType of
@@ -69,7 +68,7 @@ codeunit 50207 "KINTO Workflow Command Runner"
                     Command."KINTO IRR" := Quote."KINTO IRR";
                     Command."Calculated ROI" := Quote."Calculated ROI";
                     Command.EBT := Quote.EBT;
-                    SetResult(Command, CommandType, true, 'Pricing calculated');
+                    SetResult(Command, true, 'Pricing calculated');
                 end;
             CommandType::Approve:
                 begin
@@ -77,26 +76,29 @@ codeunit 50207 "KINTO Workflow Command Runner"
                     Quote.Modify(true);
                     Quote.Get(Quote."Quote No.");
                     Command."Pricing Status" := Quote."Pricing Status";
-                    SetResult(Command, CommandType, true, 'Quote approved');
+                    SetResult(Command, true, 'Quote approved');
                 end;
             CommandType::CreateContract:
                 begin
                     Command."Created Contract No." := BillingMgt.CreateContractFromQuote(Quote);
-                    SetResult(Command, CommandType, true, 'Contract ' + Command."Created Contract No." + ' created');
+                    SetResult(Command, true, 'Contract ' + Command."Created Contract No." + ' created');
                 end;
             CommandType::GenerateBilling:
                 begin
                     Contract.SetRange("Quote No.", Quote."Quote No.");
                     if Contract.FindFirst() then begin
                         BillingMgt.GenerateBillingForContract(Contract, CalcDate('<-CM>', WorkDate()));
-                        SetResult(Command, CommandType, true, 'Billing generated for ' + Contract."Contract No.");
-                    end else
-                        SetResult(Command, CommandType, false, 'Contract not found for quote');
+                        SetResult(Command, true, 'Billing generated for ' + Contract."Contract No.");
+                    end else begin
+                        SetResult(Command, false, 'Contract not found for quote');
+                        exit(false);
+                    end;
                 end;
         end;
+        exit(true);
     end;
 
-    local procedure SetResult(var Command: Record "KINTO Workflow Command"; CommandType: Enum "KINTO Command Type"; Ok: Boolean; Msg: Text)
+    local procedure SetResult(var Command: Record "KINTO Workflow Command"; Ok: Boolean; Msg: Text)
     begin
         Command."Pending Command" := Command."Pending Command"::" ";
         Command."Result Message" := CopyStr(Msg, 1, MaxStrLen(Command."Result Message"));
