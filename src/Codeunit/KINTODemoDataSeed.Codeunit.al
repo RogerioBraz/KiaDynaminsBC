@@ -22,6 +22,7 @@ codeunit 50156 "KINTO Demo Data Seed"
 
         Quote.Init();
         Quote."Quote No." := '';
+        Quote."No. Series" := 'KINTO-QUOTE';
         Quote."Customer No." := DemoCustomerNo;
         Quote."Country Code" := CountryCode;
         Quote.Insert(true);
@@ -102,6 +103,7 @@ codeunit 50156 "KINTO Demo Data Seed"
         Contract.Get(ContractNo);
         Fine.Init();
         Fine."Fine No." := '';
+        Fine."No. Series" := 'KINTO-FINE';
         Fine."Vehicle No." := Contract."Vehicle No.";
         Fine."License Plate" := GetVehiclePlate(Contract."Vehicle No.");
         Fine."AIIP Code" := CopyStr('AIIP-' + Format(InfractionDate, 0, '<Year4><Month,2><Day,2>') + '-001', 1, 30);
