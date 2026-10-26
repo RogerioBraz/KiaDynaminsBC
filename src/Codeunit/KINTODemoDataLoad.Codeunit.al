@@ -100,6 +100,8 @@ codeunit 50157 "KINTO Demo Data Load"
             "KINTO Damage Payer"::Customer, 2800);
         Seed.AddDamageLine(ReturnNo, 'Falta tapete de borracha', "KINTO Damage Class"::Wear,
             "KINTO Damage Payer"::Dealer, 180);
+        // Ciclo completo: Scheduled → In Progress → Checklist → Finish
+        TermMgt.StartReturn(VehicleReturn);
         VehicleReturn.Get(ReturnNo);
         VehicleReturn.CompleteChecklist();
         VehicleReturn.FinishReturn();
