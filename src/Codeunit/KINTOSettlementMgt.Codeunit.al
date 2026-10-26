@@ -15,6 +15,7 @@ codeunit 50186 "KINTO Settlement Mgt."
         Settlement: Record "KINTO Settlement";
         BillingLine: Record "KINTO Billing Line";
         DamageLine: Record "KINTO Damage Line";
+        DamageBalance: Decimal;
         Fine: Record "KINTO Traffic Fine";
         VehicleReturn: Record "KINTO Vehicle Return";
         CountrySetup: Record "KINTO Country Setup";
@@ -43,11 +44,17 @@ codeunit 50186 "KINTO Settlement Mgt."
         BillingLine.CalcSums(Amount);
         Settlement."Open Billing Balance" := BillingLine.Amount;
 
-        DamageLine.SetRange("Contract No.", ContractNo);
-        DamageLine.SetRange("Paid By", DamageLine."Paid By"::Customer);
-        DamageLine.SetRange(Approved, true);
-        DamageLine.CalcSums(Amount);
-        Settlement."Damage Balance" := DamageLine.Amount;
+        // Damage Line liga ao contrato via Return No. (não tem Contract No.)
+        VehicleReturn.SetRange("Contract No.", ContractNo);
+        if VehicleReturn.FindSet() then
+            repeat
+                DamageLine.SetRange("Return No.", VehicleReturn."Return No.");
+                DamageLine.SetRange("Paid By", DamageLine."Paid By"::Customer);
+                DamageLine.SetRange(Approved, true);
+                DamageLine.CalcSums(Amount);
+                DamageBalance += DamageLine.Amount;
+            until VehicleReturn.Next() = 0;
+        Settlement."Damage Balance" := DamageBalance;
 
         Fine.SetRange("Contract No.", ContractNo);
         Fine.SetRange("Link Status", Fine."Link Status"::Linked);

@@ -36,7 +36,6 @@ page 50476 "KINTO Task Instances"
                 Caption = 'Complete Task';
                 ApplicationArea = All;
                 Image = Approve;
-                Editable = true;
                 trigger OnAction()
                 var
                     TaskChainMgt: Codeunit "KINTO Task Chain Mgt.";
