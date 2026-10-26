@@ -37,9 +37,14 @@ page 50184 "KINTO Pricing Workflow API"
                     trigger OnValidate()
                     var
                         PricingEngine: Codeunit "KINTO Pricing Engine Mgt.";
+                        FreshQuote: Record "KINTO Quote Header";
                     begin
                         if Rec."Run Pricing Trigger" then begin
-                            PricingEngine.RunPricing(Rec);
+                            // Re-lê do banco: o Rec da page pode estar desatualizado
+                            // e o Modify final sobrescreveria o resultado com valores velhos
+                            FreshQuote.Get(Rec."Quote No.");
+                            PricingEngine.RunPricing(FreshQuote);
+                            Rec := FreshQuote;
                             Rec."Run Pricing Trigger" := false;
                             Rec.Modify(true);
                         end;
@@ -49,11 +54,15 @@ page 50184 "KINTO Pricing Workflow API"
                 {
                     ApplicationArea = All;
                     trigger OnValidate()
+                    var
+                        FreshQuote: Record "KINTO Quote Header";
                     begin
                         if Rec."Approve Quote Trigger" then begin
-                            Rec."Pricing Status" := Rec."Pricing Status"::Approved;
-                            Rec."Approve Quote Trigger" := false;
-                            Rec.Modify(true);
+                            FreshQuote.Get(Rec."Quote No.");
+                            FreshQuote."Pricing Status" := FreshQuote."Pricing Status"::Approved;
+                            FreshQuote."Approve Quote Trigger" := false;
+                            FreshQuote.Modify(true);
+                            Rec := FreshQuote;
                         end;
                     end;
                 }
@@ -63,11 +72,14 @@ page 50184 "KINTO Pricing Workflow API"
                     trigger OnValidate()
                     var
                         BillingMgt: Codeunit "KINTO Contract Billing Mgt.";
+                        FreshQuote: Record "KINTO Quote Header";
                     begin
                         if Rec."Create Contract Trigger" then begin
-                            Rec."Created Contract No." := BillingMgt.CreateContractFromQuote(Rec);
-                            Rec."Create Contract Trigger" := false;
-                            Rec.Modify(true);
+                            FreshQuote.Get(Rec."Quote No.");
+                            FreshQuote."Created Contract No." := BillingMgt.CreateContractFromQuote(FreshQuote);
+                            FreshQuote."Create Contract Trigger" := false;
+                            FreshQuote.Modify(true);
+                            Rec := FreshQuote;
                         end;
                     end;
                 }
@@ -78,13 +90,16 @@ page 50184 "KINTO Pricing Workflow API"
                     var
                         Contract: Record "KINTO Vehicle Contract";
                         BillingMgt: Codeunit "KINTO Contract Billing Mgt.";
+                        FreshQuote: Record "KINTO Quote Header";
                     begin
                         if Rec."Generate Billing Trigger" then begin
-                            Contract.SetRange("Quote No.", Rec."Quote No.");
+                            FreshQuote.Get(Rec."Quote No.");
+                            Contract.SetRange("Quote No.", FreshQuote."Quote No.");
                             if Contract.FindFirst() then
                                 BillingMgt.GenerateBillingForContract(Contract, CalcDate('<-CM>', WorkDate()));
-                            Rec."Generate Billing Trigger" := false;
-                            Rec.Modify(true);
+                            FreshQuote."Generate Billing Trigger" := false;
+                            FreshQuote.Modify(true);
+                            Rec := FreshQuote;
                         end;
                     end;
                 }
