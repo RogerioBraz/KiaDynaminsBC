@@ -364,7 +364,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Cash Flow Data - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3493943856 - Field 3030305174 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Accumulated Mileage</source><target>Quilometragem Acumulada</target>
+          <source>Accumulated Mileage</source><target>Quilometragem Contratada</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Cash Flow Data - Field Accumulated Mileage - Property Caption</note>
         </trans-unit>
@@ -9349,7 +9349,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Service Package List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2178718510 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Settlement</source><target>Fechamento</target>
+          <source>Settlement</source><target>Encerramento</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Settlement - Property Caption</note>
         </trans-unit>
