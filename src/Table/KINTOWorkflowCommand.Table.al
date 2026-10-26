@@ -146,7 +146,7 @@ table 50410 "KINTO Workflow Command"
         JQEntry.Description := 'KINTO Workflow Command Runner (API commands)';
         JQEntry."Earliest Start Date/Time" := CurrentDateTime;
         JQEntry."Recurring Job" := true;
-        JQEntry."Minutes Between Recurrency" := 1;
+        JQEntry."No. of Minutes between Runs" := 1;
         JQEntry."Maximum No. of Attempts to Run" := 3;
         JQEntry.Insert(true);
         JQEntry.SetStatus(JQEntry.Status::Ready);  // sem isso o JQ nasce On Hold e nunca roda

@@ -506,7 +506,7 @@ page 50140 "KINTO Pricing Role Center"
                     Caption = 'Traffic Fines';
                     ApplicationArea = All;
                     RunObject = page "KINTO Traffic Fine List";
-                    Image = Alert;
+                    Image = Alerts;
                 }
                 action(IssuingAuthorities)
                 {
@@ -549,7 +549,7 @@ page 50140 "KINTO Pricing Role Center"
                     Caption = 'Recovery Cases';
                     ApplicationArea = All;
                     RunObject = page "KINTO Recovery Case List";
-                    Image = Alert;
+                    Image = Alerts;
                 }
             }
             // ============================================================
