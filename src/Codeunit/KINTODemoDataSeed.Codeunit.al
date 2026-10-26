@@ -60,6 +60,7 @@ codeunit 50156 "KINTO Demo Data Seed"
     var
         Quote: Record "KINTO Quote Header";
         BillingMgt: Codeunit "KINTO Contract Billing Mgt.";
+        PricingContext: Codeunit "KINTO Pricing Context";
         QuoteNo: Code[20];
         ContractNo: Code[20];
     begin
@@ -67,9 +68,17 @@ codeunit 50156 "KINTO Demo Data Seed"
         Quote.Get(QuoteNo);
         RunPricing(Quote);
         Quote.Get(QuoteNo);
+
+        // Aprovação em contexto programático (guard não interfere)
+        PricingContext.BeginPricing();
         Quote."Pricing Status" := Quote."Pricing Status"::Approved;
         Quote.Modify(true);
+        PricingContext.EndPricing();
         Quote.Get(QuoteNo);
+
+        if Quote."Pricing Status" <> Quote."Pricing Status"::Approved then
+            Error('Quote %1 não ficou Approved após aprovação (status: %2)', QuoteNo, Quote."Pricing Status");
+
         ContractNo := BillingMgt.CreateContractFromQuote(Quote);
 
         // Ativa o contrato
