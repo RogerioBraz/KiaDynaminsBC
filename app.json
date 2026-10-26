@@ -1,47 +1,51 @@
 {
-    "id": "8a76abc6-5fb0-4baf-84be-8a28a099b8d4",
-    "name": "KiaDynBC",
-    "publisher": "RSBTech",
-    "version": "1.1.0.0001",
-    "brief": "KINTO NFMS — Fleet Management: pricing, contracts and billing",
-    "description": "KINTO NFMS fleet management for Dynamics 365 Business Central: pricing engine, vehicle contracts, service billing (Essential license).",
-    "privacyStatement": "https://rsbtech.com.br/",
-    "EULA": "https://rsbtech.com.br/",
-    "help": "https://rsbtech.com.br/",
-    "url": "https://rsbtech.com.br/",
-    "logo": "",
-    "dependencies": [
-         {
-            "id": "dd0be2ea-f733-4d65-bb34-a28f4624fb14",
-            "name": "Library Assert",
-            "publisher": "Microsoft",
-            "version": "29.0.0.0"
-        },
-        {
-            "id": "e7320ebb-08b3-4406-b1ec-b4927d3e280b",
-            "name": "Any",
-            "publisher": "Microsoft",
-            "version": "29.0.0.0"
-        }
-    ],
-    "screenshots": [],
-    "platform": "29.0.0.0",
-    "application": "29.0.0.0",
-    "idRanges": [
-        {
-            "from": 50000,
-            "to": 75149
-        }
-    ],
-    "resourceExposurePolicy": {
-        "allowDebugging": true,
-        "allowDownloadingSource": true,
-        "includeSourceInSymbolFile": true
+  "id": "8a76abc6-5fb0-4baf-84be-8a28a099b8d4",
+  "name": "KiaDynBC",
+  "publisher": "RSBTech",
+  "version": "1.1.0.0001",
+  "brief": "KINTO NFMS — Fleet Management: pricing, contracts and billing",
+  "description": "KINTO NFMS fleet management for Dynamics 365 Business Central: pricing engine, vehicle contracts, service billing (Essential license).",
+  "privacyStatement": "https://rsbtech.com.br/",
+  "EULA": "https://rsbtech.com.br/",
+  "help": "https://rsbtech.com.br/",
+  "url": "https://rsbtech.com.br/",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "dd0be2ea-f733-4d65-bb34-a28f4624fb14",
+      "name": "Library Assert",
+      "publisher": "Microsoft",
+      "version": "29.0.0.0"
     },
-    "runtime": "18.0",
-    "features": [
-        "NoImplicitWith",
-        "TranslationFile",
-        "GenerateCaptions"
-    ]
+    {
+      "id": "e7320ebb-08b3-4406-b1ec-b4927d3e280b",
+      "name": "Any",
+      "publisher": "Microsoft",
+      "version": "29.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "29.0.0.0",
+  "application": "29.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 50499
+    },
+    {
+      "from": 60000,
+      "to": 64999
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "18.0",
+  "features": [
+    "NoImplicitWith",
+    "TranslationFile",
+    "GenerateCaptions"
+  ]
 }

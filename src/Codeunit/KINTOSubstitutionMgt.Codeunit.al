@@ -1,4 +1,4 @@
-codeunit 50174 "KINTO Substitution Mgt."
+codeunit 50200 "KINTO Substitution Mgt."
 {
     // D5: substituição definitiva na linha do contrato. O substituto
     // herda as condições do substituído; saldos/cost center pertencem à

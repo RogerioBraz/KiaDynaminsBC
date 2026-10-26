@@ -1,4 +1,4 @@
-codeunit 50186 "KINTO Settlement Mgt."
+codeunit 50201 "KINTO Settlement Mgt."
 {
     // D5: liquidación final — consolida saldos do contrato (billing,
     // danos, multas, excesso de km, franquia, recuperação de seguro) e
