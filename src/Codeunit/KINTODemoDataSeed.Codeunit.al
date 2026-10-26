@@ -223,19 +223,25 @@ codeunit 50156 "KINTO Demo Data Seed"
             end;
         end;
 
-        // Item demo (veículo)
+        // Item demo: usa o 114743 (tem entrada na RV Matrix). Se não existir,
+        // cria o item E a entrada na RV Matrix (36.000 km / 24 meses, RV 5%).
         if DemoItemNo = '' then begin
-            Item.SetRange(Description, 'Veículo Demo KINTO');
-            if Item.FindFirst() then
-                DemoItemNo := Item."No."
+            if Item.Get('114743') then
+                DemoItemNo := '114743'
             else begin
-                Item.Init();
-                Item."No." := '';
-                Item.Insert(true);
-                Item.Description := 'Veículo Demo KINTO';
-                Item."Base Unit of Measure" := 'UNID';
-                Item.Modify(true);
-                DemoItemNo := Item."No.";
+                Item.SetRange(Description, 'Veículo Demo KINTO');
+                if Item.FindFirst() then
+                    DemoItemNo := Item."No."
+                else begin
+                    Item.Init();
+                    Item."No." := '';
+                    Item.Insert(true);
+                    Item.Description := 'Veículo Demo KINTO';
+                    Item."Base Unit of Measure" := 'UNID';
+                    Item.Modify(true);
+                    DemoItemNo := Item."No.";
+                end;
+                EnsureRVMatrixEntry(DemoItemNo);
             end;
         end;
 
@@ -247,5 +253,30 @@ codeunit 50156 "KINTO Demo Data Seed"
     local procedure GetDemoMSRP(): Decimal
     begin
         exit(191190); // alinhado ao item 114743 da RV Matrix (36.000 km / 24 meses, RV 5%)
+    end;
+
+    local procedure EnsureRVMatrixEntry(ItemNo: Code[20])
+    var
+        RVMatrix: Record "KINTO RV Matrix";
+    begin
+        RVMatrix.SetRange("Item No.", ItemNo);
+        RVMatrix.SetRange("Usage Type", RVMatrix."Usage Type"::Normal);
+        RVMatrix.SetRange(Status, RVMatrix.Status::Active);
+        if not RVMatrix.IsEmpty() then
+            exit;
+
+        // Faixa cobre os cenários demo: até 120.000 km e 48 meses, RV 5%
+        RVMatrix.Init();
+        RVMatrix."Item No." := ItemNo;
+        RVMatrix."Usage Type" := RVMatrix."Usage Type"::Normal;
+        RVMatrix."Has Implement" := false;
+        RVMatrix."Effective Start Date" := CalcDate('<-1Y>', WorkDate());
+        RVMatrix."Max Mileage" := 120000;
+        RVMatrix."Max Age" := 48;
+        RVMatrix."Tabulated Age" := 48;
+        RVMatrix."Residual Value %" := 5;
+        RVMatrix.Status := RVMatrix.Status::Active;
+        RVMatrix."Created Date" := WorkDate();
+        RVMatrix.Insert(true);
     end;
 }
