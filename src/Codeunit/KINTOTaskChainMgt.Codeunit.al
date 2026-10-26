@@ -1,4 +1,4 @@
-codeunit 50202 "KINTO Task Chain Mgt."
+codeunit 50210 "KINTO Task Chain Mgt."
 {
     // D5: cadeias de tarefas por template — recuperação de inadimplentes
     // (só high risk) gera a cadeia de cobrança do template do país.
