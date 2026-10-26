@@ -20,7 +20,7 @@ table 50473 "KINTO Portal Config"
         key(PK; "Primary Key") { Clustered = true; }
     }
 
-    procedure GetConfig()
+    procedure GetConfig(): Boolean
     begin
         if not Get() then begin
             Init();
@@ -29,7 +29,9 @@ table 50473 "KINTO Portal Config"
             "Availability Batch Size" := 50;
             "Max Retry" := 3;
             Insert(true);
+            exit(false); // criada agora com defaults (desabilitada)
         end;
+        exit(true);
     end;
 
     procedure InsertIfMissing()
