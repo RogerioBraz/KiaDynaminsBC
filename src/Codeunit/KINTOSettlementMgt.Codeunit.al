@@ -81,13 +81,21 @@ codeunit 50209 "KINTO Settlement Mgt."
 
     local procedure CalcMileageExcess(var VehicleReturn: Record "KINTO Vehicle Return"; Contract: Record "KINTO Vehicle Contract"): Decimal
     var
-        Setup: Record "KINTO Termination Setup";
+        MileageMgt: Codeunit "KINTO Mileage Closing Mgt.";
+        ExcessKm: Decimal;
+        Charge: Decimal;
     begin
-        // Excesso = (odômetro retorno − km contratado) × tarifa, c/ tolerância
-        if not Setup.Get() then
+        // D5: Mileage Closing com cap FIPE — excesso de km na devolução,
+        // tarifas em faixas (até 10% / acima de 10%), cap = valor FIPE.
+        ExcessKm := MileageMgt.CalcExcessKm(Contract, VehicleReturn."Odometer at Return");
+        if ExcessKm <= 0 then
             exit(0);
-        // Simplificação: usa tolerância do setup; tarifa de excesso do Country Setup
-        exit(0); // cálculo completo na integração c/ billing (tarifa por km)
+        Charge := MileageMgt.CalcCharge(Contract, ExcessKm);
+        VehicleReturn."Contracted Total Mileage" := MileageMgt.ContractedTotalMileage(Contract);
+        VehicleReturn."Mileage Excess (km)" := ExcessKm;
+        VehicleReturn."Mileage Excess Charge" := Charge;
+        VehicleReturn.Modify(true);
+        exit(Charge);
     end;
 
     local procedure GetDeductible(ContractNo: Code[20]): Decimal

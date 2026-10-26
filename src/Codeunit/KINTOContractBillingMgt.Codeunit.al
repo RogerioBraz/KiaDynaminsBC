@@ -49,6 +49,9 @@ codeunit 50200 "KINTO Contract Billing Mgt."
         Contract."Currency Code" := QuoteHeader."Currency Code";
         Contract."Start Date" := WorkDate();
         Contract."Contract Term (Months)" := QuoteItem."Contract Term (Months)";
+        // Excesso de km: tarifas em faixas herdadas da cotação (D5/D6)
+        Contract."Excess Km Price (up to 10%)" := QuoteItem."Price per Excess km 10%";
+        Contract."Excess Km Price (above 10%)" := QuoteItem."Price per Excess km >10%";
         if Contract."Contract Term (Months)" <= 0 then
             Contract."Contract Term (Months)" := 12;
         MonthEnd := CalcDate('<CM>', WorkDate());

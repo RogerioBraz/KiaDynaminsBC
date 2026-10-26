@@ -64,7 +64,9 @@ table 50205 "KINTO Billing Line"
         field(27; "Prorated"; Boolean) { Caption = 'Prorated'; }
         field(28; "Reversal Of Entry No."; Integer) { Caption = 'Reversal Of Entry No.'; Editable = false; }
         field(29; "Cancellation Reason"; Text[250]) { Caption = 'Cancellation Reason'; }
-    }
+            field(30; "Service Credit Days"; Decimal) { Caption = 'Service Credit Days'; DecimalPlaces = 0 : 2; Editable = false; }
+        field(31; "Service Credit Cap Applied"; Boolean) { Caption = 'Service Credit Cap (2%) Applied'; Editable = false; }
+}
 
     keys
     {

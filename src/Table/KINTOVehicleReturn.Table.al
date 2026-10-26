@@ -79,7 +79,10 @@ table 50400 "KINTO Vehicle Return"
             Caption = 'Currency Code';
             TableRelation = Currency;
         }
-    }
+            field(29; "Contracted Total Mileage"; Decimal) { Caption = 'Contracted Total Mileage (km)'; Editable = false; }
+        field(30; "Mileage Excess (km)"; Decimal) { Caption = 'Mileage Excess (km)'; Editable = false; }
+        field(31; "Mileage Excess Charge"; Decimal) { Caption = 'Mileage Excess Charge'; Editable = false; }
+}
 
     keys
     {

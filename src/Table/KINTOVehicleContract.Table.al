@@ -116,6 +116,16 @@ table 50200 "KINTO Vehicle Contract"
             MaxValue = 100;
         }
         field(39; "Rescission Waiver Days"; Integer) { Caption = 'Rescission Waiver (days)'; MinValue = 0; }
+        field(40; "Excess Km Price (up to 10%)"; Decimal)
+        {
+            Caption = 'Excess Km Price (up to 10%)';
+            DecimalPlaces = 2 : 2;
+        }
+        field(41; "Excess Km Price (above 10%)"; Decimal)
+        {
+            Caption = 'Excess Km Price (above 10%)';
+            DecimalPlaces = 2 : 2;
+        }
     }
 
     keys

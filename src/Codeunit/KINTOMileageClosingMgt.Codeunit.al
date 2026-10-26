@@ -1,0 +1,69 @@
+codeunit 50214 "KINTO Mileage Closing Mgt."
+{
+    // D5: Mileage Closing com cap FIPE — excesso de km na devolução.
+    // Faixas: até 10% do contratado usa tarifa 1; acima, tarifa 2.
+    // Cap: cobrança não excede o valor FIPE/booking do veículo.
+
+    var
+        NoOdometerErr: Label 'Return %1 has no Odometer at Return.';
+
+    procedure ContractedTotalMileage(Contract: Record "KINTO Vehicle Contract"): Decimal
+    begin
+        // Km contratado total = mensal × meses decorridos (arredondado p/ baixo)
+        if Contract."Monthly Mileage (km)" = 0 then
+            exit(0);
+        exit(Contract."Monthly Mileage (km)" * ContractMonths(Contract));
+    end;
+
+    procedure CalcExcessKm(Contract: Record "KINTO Vehicle Contract"; OdometerAtReturn: Decimal): Decimal
+    var
+        Contracted: Decimal;
+    begin
+        if OdometerAtReturn = 0 then
+            Error(NoOdometerErr, '');
+        Contracted := ContractedTotalMileage(Contract);
+        if OdometerAtReturn <= Contracted then
+            exit(0);
+        exit(Round(OdometerAtReturn - Contracted, 1));
+    end;
+
+    procedure CalcCharge(Contract: Record "KINTO Vehicle Contract"; ExcessKm: Decimal): Decimal
+    var
+        Vehicle: Record "KINTO Inventory Vehicle";
+        Charge: Decimal;
+        CapValue: Decimal;
+        Band1Km: Decimal;
+    begin
+        if ExcessKm <= 0 then
+            exit(0);
+
+        // Faixa 1: até 10% do contratado = tarifa 1; acima = tarifa 2
+        Band1Km := ContractedTotalMileage(Contract) * 0.1;
+        if ExcessKm <= Band1Km then
+            Charge := ExcessKm * Contract."Excess Km Price (up to 10%)"
+        else
+            Charge := (Band1Km * Contract."Excess Km Price (up to 10%)") +
+                ((ExcessKm - Band1Km) * Contract."Excess Km Price (above 10%)");
+
+        // Cap FIPE: cobrança não excede o booking value do veículo
+        if Vehicle.Get(Contract."Vehicle No.") then begin
+            CapValue := Vehicle."Booking Value";
+            if (CapValue > 0) and (Charge > CapValue) then
+                Charge := CapValue;
+        end;
+        exit(Round(Charge, 0.01));
+    end;
+
+    local procedure ContractMonths(Contract: Record "KINTO Vehicle Contract"): Integer
+    var
+        EndDate: Date;
+    begin
+        EndDate := Contract."Current End Date";
+        if (EndDate = 0D) or (EndDate > WorkDate()) then
+            EndDate := WorkDate();
+        if Contract."Start Date" = 0D then
+            exit(0);
+        // Meses decorridos (mínimo 1)
+        exit((EndDate - Contract."Start Date") div 30 + 1);
+    end;
+}
