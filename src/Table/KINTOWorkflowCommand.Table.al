@@ -142,7 +142,6 @@ table 50410 "KINTO Workflow Command"
         JQEntry."Object ID to Run" := Codeunit::"KINTO Workflow Command Runner";
         JQEntry."Recurring Job" := true;
         JQEntry."Run in User Session" := false;
-        JQEntry."Minimum Seconds Between Runs" := 60;
         JQEntry."Job Queue Category Code" := 'KINTO';
         JQEntry.Description := 'KINTO Workflow Command Runner (API commands)';
         JQEntry.Insert(true);
