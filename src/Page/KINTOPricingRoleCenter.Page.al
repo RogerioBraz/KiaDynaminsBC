@@ -102,7 +102,7 @@ page 50140 "KINTO Pricing Role Center"
                     Caption = 'Inventory Vehicles';
                     ApplicationArea = All;
                     RunObject = page "KINTO Inventory Vehicle List";
-                    Image = Fleet;
+                    Image = InventoryPick;
                 }
                 action(MovementLedger)
                 {
@@ -116,7 +116,7 @@ page 50140 "KINTO Pricing Role Center"
                     Caption = 'Telematic Devices';
                     ApplicationArea = All;
                     RunObject = page "KINTO Telematic Device List";
-                    Image = Tile;
+                    Image = Timeline;
                 }
                 action(InsurancePolicies)
                 {
@@ -129,7 +129,7 @@ page 50140 "KINTO Pricing Role Center"
                 {
                     Caption = 'Monthly Closing';
                     ApplicationArea = All;
-                    RunObject = page "KINTO Fleet Closing Snapshot List";
+                    RunObject = page "KINTO Fleet Closing Snap List";
                     Image = Close;
                 }
             }

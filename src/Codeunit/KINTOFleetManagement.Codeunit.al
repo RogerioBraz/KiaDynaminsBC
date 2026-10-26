@@ -65,7 +65,7 @@ codeunit 50161 "KINTO Fleet Management"
         History.Init();
         History."Entry No." := History.NextEntryNo();
         History."Device No." := DeviceNo;
-        History.Event := History.Event::Installed;
+        History.Events := History.Events::Installed;
         History."Event Date" := WorkDate();
         History."Vehicle No." := VehicleNo;
         History."Contract No." := ContractNo;
@@ -99,7 +99,7 @@ codeunit 50161 "KINTO Fleet Management"
         History.Init();
         History."Entry No." := History.NextEntryNo();
         History."Device No." := DeviceNo;
-        History.Event := History.Event::Removed;
+        History.Events := History.Events::Removed;
         History."Event Date" := WorkDate();
         History."Vehicle No." := VehicleNo;
         History."Vendor No." := Device."Vendor No.";

@@ -1,4 +1,4 @@
-page 50456 "KINTO Fleet Closing Snapshot List"
+page 50456 "KINTO Fleet Closing Snap List"
 {
     Caption = 'Fleet Closing Snapshots';
     PageType = List;

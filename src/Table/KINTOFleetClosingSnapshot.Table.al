@@ -2,9 +2,8 @@ table 50445 "KINTO Fleet Closing Snapshot"
 {
     Caption = 'KINTO Fleet Closing Snapshot';
     DataClassification = CustomerContent;
-    LookupPageId = "KINTO Fleet Closing Snapshot List";
-    DrillDownPageId = "KINTO Fleet Closing Snapshot List";
-
+    LookupPageId = "KINTO Fleet Closing Snap List";
+    DrillDownPageId = "KINTO Fleet Closing Snap List";
     fields
     {
         field(1; "Entry No."; Integer) { Caption = 'Entry No.'; }

@@ -71,7 +71,7 @@ page 50451 "KINTO Telematic Device"
             {
                 Caption = 'Remove from Vehicle';
                 ApplicationArea = All;
-                Image = Unlink;
+                Image = UnLinkAccount;
                 trigger OnAction()
                 var
                     FleetMgt: Codeunit "KINTO Fleet Management";

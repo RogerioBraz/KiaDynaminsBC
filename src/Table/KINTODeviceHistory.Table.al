@@ -11,7 +11,7 @@ table 50443 "KINTO Device History"
             Caption = 'Device No.';
             TableRelation = "KINTO Telematic Device";
         }
-        field(3; "Event"; Enum "KINTO Device Event") { Caption = 'Event'; }
+        field(3; "Events"; Enum "KINTO Device Event") { Caption = 'Event'; }
         field(4; "Event Date"; Date) { Caption = 'Event Date'; }
         field(5; "Vehicle No."; Code[20])
         {

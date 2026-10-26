@@ -16,7 +16,7 @@ page 50453 "KINTO Device History"
             {
                 field("Entry No."; Rec."Entry No.") { ApplicationArea = All; }
                 field("Device No."; Rec."Device No.") { ApplicationArea = All; }
-                field(Event; Rec.Event) { ApplicationArea = All; }
+                field(Events; Rec.Events) { ApplicationArea = All; }
                 field("Event Date"; Rec."Event Date") { ApplicationArea = All; }
                 field("Vehicle No."; Rec."Vehicle No.") { ApplicationArea = All; }
                 field("Contract No."; Rec."Contract No.") { ApplicationArea = All; }
