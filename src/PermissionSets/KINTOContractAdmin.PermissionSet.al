@@ -102,8 +102,6 @@ permissionset 50174 "KINTO Contract Admin"
                   codeunit "KINTO Workflow Command Runner" = X,
                   codeunit "KINTO Demo Data Seed" = X,
                   codeunit "KINTO Pricing Context" = X,
-                  codeunit "KINTO Test Runner" = X,
-                  tabledata "KINTO Test Run Entry" = RIMD,
                   codeunit "KINTO Demo Data Load" = X,
                   page "KINTO Maintenance Ticket Card" = X,
                   page "KINTO Maintenance Ticket List" = X,
