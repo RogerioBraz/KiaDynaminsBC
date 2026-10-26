@@ -115,6 +115,38 @@ codeunit 50201 "KINTO Contract Install"
             NoSeriesLine.Insert(true);
         end;
 
+        // Substitution No. Series (D5)
+        if not NoSeries.Get('KINTO-SUB') then begin
+            NoSeries.Init();
+            NoSeries.Code := 'KINTO-SUB';
+            NoSeries.Description := 'KINTO Contract Substitution Numbers';
+            NoSeries.Insert(true);
+
+            NoSeriesLine.Init();
+            NoSeriesLine."Series Code" := 'KINTO-SUB';
+            NoSeriesLine."Line No." := 10000;
+            NoSeriesLine."Starting No." := 'SUB-00001';
+            NoSeriesLine."Ending No." := 'SUB-99999';
+            NoSeriesLine."Increment-by No." := 1;
+            NoSeriesLine.Insert(true);
+        end;
+
+        // Settlement No. Series (D5)
+        if not NoSeries.Get('KINTO-STL') then begin
+            NoSeries.Init();
+            NoSeries.Code := 'KINTO-STL';
+            NoSeries.Description := 'KINTO Settlement Numbers';
+            NoSeries.Insert(true);
+
+            NoSeriesLine.Init();
+            NoSeriesLine."Series Code" := 'KINTO-STL';
+            NoSeriesLine."Line No." := 10000;
+            NoSeriesLine."Starting No." := 'STL-00001';
+            NoSeriesLine."Ending No." := 'STL-99999';
+            NoSeriesLine."Increment-by No." := 1;
+            NoSeriesLine.Insert(true);
+        end;
+
         // Remarketing Offer No. Series (D8)
         if not NoSeries.Get('KINTO-RMK') then begin
             NoSeries.Init();
