@@ -69,7 +69,9 @@ page 50187 "KINTO Test Run List"
                 ApplicationArea = All;
                 Image = Task;
                 RunObject = page "KINTO Pricing Workflow API";
-                trigger OnAction() begin end;
+                trigger OnAction()
+                begin
+                end;
             }
             action(ShowJobQueue)
             {
@@ -77,13 +79,15 @@ page 50187 "KINTO Test Run List"
                 ApplicationArea = All;
                 Image = BulletList;
                 RunObject = page "Job Queue Entries";
-                trigger OnAction() begin end;
+                trigger OnAction()
+                begin
+                end;
             }
             action(ClearResults)
             {
                 Caption = 'Clear Results';
                 ApplicationArea = All;
-                Image = Clear;
+                Image = ClearLog;
                 trigger OnAction()
                 var
                     Entry: Record "KINTO Test Run Entry";
