@@ -51,6 +51,7 @@ codeunit 50207 "KINTO Workflow Command Runner"
         Engine: Codeunit "KINTO Pricing Engine Mgt.";
         BillingMgt: Codeunit "KINTO Contract Billing Mgt.";
         Contract: Record "KINTO Vehicle Contract";
+        DebugLog: Text;
     begin
         if not Quote.Get(Command."Quote No.") then begin
             SetResult(Command, false, 'Quote not found');
@@ -61,18 +62,18 @@ codeunit 50207 "KINTO Workflow Command Runner"
             CommandType::RunPricing:
                 begin
                     // DEBUG: status ANTES do engine
-                    SetLog(Command, 'BEFORE: ' + Format(Quote."Pricing Status") + ' fee=' + Format(Quote."Calculated Monthly Fee"));
+                    DebugLog := 'BEFORE: ' + Format(Quote."Pricing Status") + ' fee=' + Format(Quote."Calculated Monthly Fee") + ' | ';
                     Engine.RunPricing(Quote);
                     Quote.Get(Quote."Quote No.");
                     // DEBUG: status DEPOIS do engine (re-lido do banco)
-                    SetLog(Command, 'AFTER: ' + Format(Quote."Pricing Status") + ' fee=' + Format(Quote."Calculated Monthly Fee") + ' roi=' + Format(Quote."Calculated ROI"));
+                    DebugLog += 'AFTER: ' + Format(Quote."Pricing Status") + ' fee=' + Format(Quote."Calculated Monthly Fee") + ' roi=' + Format(Quote."Calculated ROI");
                     Command."Pricing Status" := Quote."Pricing Status";
                     Command."Approval Classification" := Quote."Approval Classification";
                     Command."Calculated Monthly Fee" := Quote."Calculated Monthly Fee";
                     Command."KINTO IRR" := Quote."KINTO IRR";
                     Command."Calculated ROI" := Quote."Calculated ROI";
                     Command.EBT := Quote.EBT;
-                    SetResult(Command, true, 'Pricing calculated');
+                    SetResult(Command, true, DebugLog + ' → Pricing calculated');
                 end;
             CommandType::Approve:
                 begin
