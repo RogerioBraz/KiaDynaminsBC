@@ -131,11 +131,20 @@ table 50410 "KINTO Workflow Command"
             JQCategory.Insert(true);
         end;
 
-        // Cria (uma vez) o Job Queue Entry que roda o runner a cada minuto
+        // Cria OU ATUALIZA o Job Queue Entry que roda o runner a cada minuto
         JQEntry.SetRange("Object Type to Run", JQEntry."Object Type to Run"::Codeunit);
         JQEntry.SetRange("Object ID to Run", Codeunit::"KINTO Workflow Command Runner");
-        if not JQEntry.IsEmpty() then
+        if JQEntry.FindFirst() then begin
+            // Entry existente: garante Ready + recorrencia (versões antigas nasceram On Hold)
+            JQEntry."Recurring Job" := true;
+            JQEntry."No. of Minutes between Runs" := 1;
+            JQEntry."Maximum No. of Attempts to Run" := 3;
+            JQEntry."Earliest Start Date/Time" := CurrentDateTime;
+            JQEntry.Modify(true);
+            if JQEntry.Status <> JQEntry.Status::Ready then
+                JQEntry.SetStatus(JQEntry.Status::Ready);
             exit;
+        end;
 
         JQEntry.Init();
         JQEntry."Object Type to Run" := JQEntry."Object Type to Run"::Codeunit;
@@ -145,7 +154,6 @@ table 50410 "KINTO Workflow Command"
         JQEntry."Job Queue Category Code" := 'KINTO';
         JQEntry.Description := 'KINTO Workflow Command Runner (API commands)';
         JQEntry."Earliest Start Date/Time" := CurrentDateTime;
-        JQEntry."Recurring Job" := true;
         JQEntry."No. of Minutes between Runs" := 1;
         JQEntry."Maximum No. of Attempts to Run" := 3;
         JQEntry.Insert(true);
