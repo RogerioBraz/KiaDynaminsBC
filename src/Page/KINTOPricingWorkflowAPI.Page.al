@@ -8,7 +8,7 @@ page 50184 "KINTO Pricing Workflow API"
     EntityName = 'pricingWorkflow';
     EntitySetName = 'pricingWorkflows';
     SourceTable = "KINTO Quote Header";
-    DelayedInsert = false;
+    DelayedInsert = true;
     ODataKeyFields = "Quote No.";
     ApplicationArea = All;
 
