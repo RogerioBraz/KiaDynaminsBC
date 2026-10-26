@@ -55,6 +55,7 @@ permissionset 50100 "KINTO PRICING ADMIN"
         tabledata "KINTO Vendor Category" = RIMD,
         tabledata "KINTO Vendor Contact" = RIMD,
         // objetos: execute
+        tabledata "KINTO Workflow Command" = RIMD,
         table "KINTO Glass Coverage Package" = X,
         table "KINTO 24h Assistance Package" = X,
         table "KINTO Pickup Delivery Package" = X,
