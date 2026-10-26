@@ -120,9 +120,11 @@ codeunit 50200 "KINTO Contract Billing Mgt."
         MonthEnd := CalcDate('<CM>', BillingMonth);
 
         // Medição por condição ativa na data (Condition ID versionado)
+        // Filtro por DATAS (não Active): revisões de reajuste criam a nova
+        // condição com Valid From no mês seguinte — o mês corrente ainda
+        // fatura pela condição antiga (Valid To = véspera da revisão).
         Condition.Reset();
         Condition.SetRange("Contract No.", Contract."Contract No.");
-        Condition.SetRange(Active, true);
         Condition.SetFilter("Valid From", '<=%1', MonthEnd);
         if Condition.FindSet() then
             repeat

@@ -119,7 +119,7 @@ table 50201 "KINTO Contract Condition"
         NewCondition."Daily Amount" := 0; // recalcula no OnInsert
         NewCondition."Valid From" := EffectiveDate;
         NewCondition."Valid To" := 0D;
-        NewCondition.Active := false; // ativa na vigência
+        NewCondition.Active := true; // condição vigente; datas controlam o início
         NewCondition."No. Series" := 'KINTO-COND';
         NewCondition.Insert(true);
 

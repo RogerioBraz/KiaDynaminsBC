@@ -104,12 +104,14 @@ codeunit 50212 "KINTO Claim Management"
             end;
             Claim."FA Written Off" := true;
         end;
-        Vehicle.Status := Vehicle.Status::Inactive;
-        Vehicle.Modify(true);
 
-        // Termina o contrato como Total Loss (se ainda ativo)
+        // Termina o contrato PRIMEIRO (veículo vai p/ Returned), depois
+        // sobrescreve p/ Inactive (salvage — não volta p/ remarketing)
         if not (Contract.Status in [Contract.Status::Terminated, Contract.Status::Cancelled]) then
             Contract.Terminate(Contract."Termination Type"::"Total Loss", WorkDate());
+        Vehicle.Get(Claim."Vehicle No.");
+        Vehicle.Status := Vehicle.Status::Inactive;
+        Vehicle.Modify(true);
 
         // Settlement tipo Insurance Recovery (indenização do segurador)
         SettlementNo := SetMgt.CreateSettlement(Claim."Contract No.", "KINTO Settlement Type"::"Insurance Recovery");
