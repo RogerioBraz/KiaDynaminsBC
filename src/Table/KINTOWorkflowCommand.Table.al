@@ -36,9 +36,10 @@ table 50410 "KINTO Workflow Command"
                 "KINTO IRR" := Quote."KINTO IRR";
                 "Calculated ROI" := Quote."Calculated ROI";
                 EBT := Quote.EBT;
-                "Result Message" := CopyStr(Quote."Error Message", 1, MaxStrLen("Result Message"));
+                "Result Message" := CopyStr('PRICING RUN ' + Format(CurrentDateTime), 1, MaxStrLen("Result Message"));
                 "Last Run DateTime" := CurrentDateTime;
                 "Run Pricing Trigger" := false;
+                Modify(true); // grava o resultado antes do modify implícito da platform
             end;
         }
         field(3; "Approve Quote Trigger"; Boolean)
