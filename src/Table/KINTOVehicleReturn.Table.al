@@ -129,6 +129,7 @@ table 50400 "KINTO Vehicle Return"
         Vehicle: Record "KINTO Inventory Vehicle";
         Contract: Record "KINTO Vehicle Contract";
         DamageLine: Record "KINTO Damage Line";
+        FleetMgt: Codeunit "KINTO Fleet Management";
         NotCompleteErr: Label 'Checklist for return %1 is not complete.';
     begin
         if not "Checklist Complete" then
@@ -144,8 +145,10 @@ table 50400 "KINTO Vehicle Return"
         if "Pending Items" then
             Status := Status::"With Pending Items";
 
-        // Veículo: devolvido ao estoque (guardião fora de contrato — BR)
+        // Veículo: devolvido ao estoque (guardião fora de contrato — BR) + LEDGER (D7)
         if Vehicle.Get("Vehicle No.") then begin
+            FleetMgt.ChangeVehicleStatus(Vehicle."Vehicle No.", Vehicle.Status::Returned,
+                '', StrSubstNo('Return %1 completed', "Return No."));
             Vehicle.Status := Vehicle.Status::Returned;
             Vehicle."Current Odometer" := "Odometer at Return";
             Vehicle.Modify(true);

@@ -98,6 +98,38 @@ codeunit 50201 "KINTO Contract Install"
             NoSeriesLine."Increment-by No." := 1;
             NoSeriesLine.Insert(true);
         end;
+
+        // Device No. Series (D7)
+        if not NoSeries.Get('KINTO-DEV') then begin
+            NoSeries.Init();
+            NoSeries.Code := 'KINTO-DEV';
+            NoSeries.Description := 'KINTO Telematic Device Numbers';
+            NoSeries.Insert(true);
+
+            NoSeriesLine.Init();
+            NoSeriesLine."Series Code" := 'KINTO-DEV';
+            NoSeriesLine."Line No." := 10000;
+            NoSeriesLine."Starting No." := 'DEV-00001';
+            NoSeriesLine."Ending No." := 'DEV-99999';
+            NoSeriesLine."Increment-by No." := 1;
+            NoSeriesLine.Insert(true);
+        end;
+
+        // Policy No. Series (D7)
+        if not NoSeries.Get('KINTO-POL') then begin
+            NoSeries.Init();
+            NoSeries.Code := 'KINTO-POL';
+            NoSeries.Description := 'KINTO Insurance Policy Numbers';
+            NoSeries.Insert(true);
+
+            NoSeriesLine.Init();
+            NoSeriesLine."Series Code" := 'KINTO-POL';
+            NoSeriesLine."Line No." := 10000;
+            NoSeriesLine."Starting No." := 'POL-00001';
+            NoSeriesLine."Ending No." := 'POL-99999';
+            NoSeriesLine."Increment-by No." := 1;
+            NoSeriesLine.Insert(true);
+        end;
     end;
 
     local procedure CreateDefaultFinancialProducts()

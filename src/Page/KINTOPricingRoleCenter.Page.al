@@ -91,6 +91,50 @@ page 50140 "KINTO Pricing Role Center"
         area(Sections)
         {
             // ============================================================
+            // FLEET CONTROL (D7)
+            // ============================================================
+            group(FleetControl)
+            {
+                Caption = 'Fleet Control';
+
+                action(InventoryVehicles)
+                {
+                    Caption = 'Inventory Vehicles';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Inventory Vehicle List";
+                    Image = Fleet;
+                }
+                action(MovementLedger)
+                {
+                    Caption = 'Movement Ledger';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Fleet Movement Ledger";
+                    Image = Ledger;
+                }
+                action(TelematicDevices)
+                {
+                    Caption = 'Telematic Devices';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Telematic Device List";
+                    Image = Tile;
+                }
+                action(InsurancePolicies)
+                {
+                    Caption = 'Insurance Policies';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Insurance Policy List";
+                    Image = Insurance;
+                }
+                action(FleetClosing)
+                {
+                    Caption = 'Monthly Closing';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Fleet Closing Snapshot List";
+                    Image = Close;
+                }
+            }
+
+            // ============================================================
             // QUOTES
             // ============================================================
             group(Quotes)

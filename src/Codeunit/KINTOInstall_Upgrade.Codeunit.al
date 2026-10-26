@@ -6,12 +6,31 @@ codeunit 50110 "KINTO Install/Upgrade"
     trigger OnInstallAppPerCompany()
     begin
         CreateNumberSeries();
+        SetFleetDefaultsBR();
         CreateDefaultCountrySetup();
         CreateDefaultCFComponents();
         CreateInsuranceNumberSeries();
         CreateDefaultVendorCategories();
         CreateDefaultSupplierGroups();
         CreateDefaultItemCategories();
+    end;
+
+    local procedure SetFleetDefaultsBR()
+    var
+        CountrySetup: Record "KINTO Country Setup";
+    begin
+        // Fase 6 — defaults BR (idempotente)
+        if CountrySetup.Get('BR') then
+            if CountrySetup."Demob. SLA Days (Lot)" = 0 then begin
+                CountrySetup."Fleet Behavior" := CountrySetup."Fleet Behavior"::Brazil;
+                CountrySetup."Demob. SLA Days (Lot)" := 5;
+                CountrySetup."Demob. SLA Days (Wash)" := 3;
+                CountrySetup."Demob. SLA Days (Save)" := 10;
+                CountrySetup."Device Aging Charge Days" := 60;
+                CountrySetup."Closing Reconcile By VIN" := true;
+                CountrySetup."Closing Reconcile By Plate" := true;
+                CountrySetup.Modify(true);
+            end;
     end;
 
     local procedure CreateNumberSeries()

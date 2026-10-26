@@ -152,6 +152,7 @@ table 50200 "KINTO Vehicle Contract"
     var
         InventoryVehicle: Record "KINTO Inventory Vehicle";
         FixedAsset: Record "Fixed Asset";
+        FleetMgt: Codeunit "KINTO Fleet Management";
         AlreadyActiveErr: Label 'Contract %1 is already active.';
         VehicleInUseErr: Label 'Vehicle %1 is already in contract %2.';
     begin
@@ -173,9 +174,10 @@ table 50200 "KINTO Vehicle Contract"
         Status := Status::Active;
         Modify(true);
 
-        // Atualiza veículo: status In Contract + reserva
+        // Atualiza veículo: status In Contract + reserva + LEDGER (D7)
+        FleetMgt.ChangeVehicleStatus(InventoryVehicle."Vehicle No.", InventoryVehicle.Status::"In Contract",
+            '', StrSubstNo('Contract %1 activated', "Contract No."));
         InventoryVehicle."Last Contract No." := "Contract No.";
-        InventoryVehicle.Status := InventoryVehicle.Status::"In Contract";
         InventoryVehicle.Modify(true);
 
         // Popula a extensão do Fixed Asset (ponte pronta no código atual)

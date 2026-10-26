@@ -31,6 +31,8 @@ codeunit 50157 "KINTO Demo Data Load"
         TicketNo: Code[20];
         ReturnNo: Code[20];
         FineMgt: Codeunit "KINTO Fine Management";
+        DeviceNo: Code[20];
+        PolicyNo: Code[20];
         MaintMgt: Codeunit "KINTO Maintenance Management";
         TermMgt: Codeunit "KINTO Termination Management";
         BillingMgt: Codeunit "KINTO Contract Billing Mgt.";
@@ -54,6 +56,11 @@ codeunit 50157 "KINTO Demo Data Load"
             SB.AppendLine('1. Contrato ativo ' + ContractNo1 + ' + billing gerada e aprovada');
         end else
             SB.AppendLine('1. Contrato ativo ' + ContractNo1 + ' (billing já existente)');
+
+        // D7: dispositivo telemático instalado + apólice ativa no contrato 1
+        DeviceNo := Seed.CreateDemoDevice(Contract."Vehicle No.", ContractNo1);
+        PolicyNo := Seed.CreateDemoPolicy(Contract."Vehicle No.", ContractNo1);
+        SB.AppendLine('7. Dispositivo ' + DeviceNo + ' instalado + apólice ' + PolicyNo + ' ativa');
 
         // ============================================================
         // CENÁRIO 2 — CONTRATO ATIVO + MULTAS (vinculação e cobrança)

@@ -24,6 +24,7 @@ table 50102 "KINTO Inventory Vehicle"
         field(17; "Acquisition Date"; Date) { Caption = 'Acquisition Date'; }
         field(18; "Acquisition Cost"; Decimal) { Caption = 'Acquisition Cost'; }
 
+        field(20; "Country Code"; Code[10]) { Caption = 'Country Code'; }
         field(19; "No. Series"; Code[20])
         {
             Caption = 'No. Series';

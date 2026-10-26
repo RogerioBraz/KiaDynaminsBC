@@ -168,6 +168,16 @@ table 50100 "KINTO Country Setup"
         field(50; "SGA Inflation Adj. Freq."; Enum "KINTO Inflation Frequency") { Caption = 'SG&A Inflation Adjustment Frequency'; }
         field(51; "Min. Extended Analysis Months"; Integer) { Caption = 'Minimum Extended Analysis Months'; }
         field(52; "Extended Analysis Months"; Integer) { Caption = 'Extended Analysis Period (Months)'; }
+        // ============================================================
+        // FASE 6 — COMPORTAMENTO POR PAÍS (Fleet Control)
+        // ============================================================
+        field(53; "Fleet Behavior"; Enum "KINTO Fleet Behavior") { Caption = 'Fleet Behavior'; }
+        field(54; "Demob. SLA Days (Lot)"; Integer) { Caption = 'Demobilization SLA: Lot (days)'; }
+        field(55; "Demob. SLA Days (Wash)"; Integer) { Caption = 'Demobilization SLA: Wash (days)'; }
+        field(56; "Demob. SLA Days (Save)"; Integer) { Caption = 'Demobilization SLA: Salvage (days)'; }
+        field(57; "Device Aging Charge Days"; Integer) { Caption = 'Device Aging Charge Threshold (days)'; }
+        field(58; "Closing Reconcile By VIN"; Boolean) { Caption = 'Monthly Closing Reconcile by VIN'; }
+        field(59; "Closing Reconcile By Plate"; Boolean) { Caption = 'Monthly Closing Reconcile by Plate'; }
 
         field(149; "IPVA Rate %"; Decimal) { Caption = 'IPVA Rate %'; DecimalPlaces = 0 : 5; }
         field(150; "PIS COFINS Credit %"; Decimal) { Caption = 'PIS/COFINS Credit on Depreciation %'; DecimalPlaces = 0 : 5; }

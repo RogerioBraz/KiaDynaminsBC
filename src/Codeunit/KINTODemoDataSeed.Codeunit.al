@@ -93,6 +93,7 @@ codeunit 50156 "KINTO Demo Data Seed"
     var
         Contract: Record "KINTO Vehicle Contract";
         Vehicle: Record "KINTO Inventory Vehicle";
+        FleetMgt: Codeunit "KINTO Fleet Management";
     begin
         Contract.Get(ContractNo);
         if Contract."Vehicle No." <> '' then
@@ -109,10 +110,55 @@ codeunit 50156 "KINTO Demo Data Seed"
         Vehicle."Acquisition Date" := CalcDate('<-6M>', WorkDate());
         Vehicle."Acquisition Cost" := GetDemoMSRP() * 0.85;
         Vehicle."Booking Value" := GetDemoMSRP();
+        Vehicle."Country Code" := Contract."Country Code";
         Vehicle.Insert(true);
+
+        // Movimento inicial no ledger (D7)
+        FleetMgt.ChangeVehicleStatus(Vehicle."Vehicle No.", Vehicle.Status::"In Contract",
+            '', StrSubstNo('Contract %1 activated (demo)', ContractNo));
 
         Contract."Vehicle No." := Vehicle."Vehicle No.";
         Contract.Modify(true);
+    end;
+
+    procedure CreateDemoDevice(VehicleNo: Code[20]; ContractNo: Code[20]): Code[20]
+    var
+        Device: Record "KINTO Telematic Device";
+        FleetMgt: Codeunit "KINTO Fleet Management";
+    begin
+        Device.Init();
+        Device."Device No." := '';
+        Device."No. Series" := 'KINTO-DEV';
+        Device.Description := 'Telemático demo (KINTO)';
+        Device."Serial Number" := CopyStr('SN-DEMO-' + Format(WorkDate(), 0, '<Year4><Month,2><Day,2>'), 1, 50);
+        Device."Vendor No." := '';
+        Device."Country Code" := 'BR';
+        Device.Insert(true);
+        FleetMgt.InstallDevice(Device."Device No.", VehicleNo, ContractNo);
+        exit(Device."Device No.");
+    end;
+
+    procedure CreateDemoPolicy(VehicleNo: Code[20]; ContractNo: Code[20]): Code[20]
+    var
+        Policy: Record "KINTO Insurance Policy";
+    begin
+        Policy.Init();
+        Policy."Policy No." := '';
+        Policy."No. Series" := 'KINTO-POL';
+        Policy."Vehicle No." := VehicleNo;
+        Policy."Policy Number (Ext.)" := 'APOL-DEMO-001';
+        Policy.Description := 'Apólice demo (cobertura completa)';
+        Policy.Status := Policy.Status::Active;
+        Policy."Start Date" := CalcDate('<-1M>', WorkDate());
+        Policy."End Date" := CalcDate('<+11M>', WorkDate());
+        Policy."Annual Premium" := 4200;
+        Policy."Monthly Cost" := 350;
+        Policy."Coverage Type" := 'Compreensiva';
+        Policy."Deductible Amount" := 5000;
+        Policy."Contract No." := ContractNo;
+        Policy."Country Code" := 'BR';
+        Policy.Insert(true);
+        exit(Policy."Policy No.");
     end;
 
     local procedure GetVehicleCounter(): Integer

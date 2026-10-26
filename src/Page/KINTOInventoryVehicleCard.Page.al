@@ -50,6 +50,7 @@ page 50131 "KINTO Inventory Vehicle Card"
             {
                 Caption = 'Other';
                 field("Color Code"; Rec."Color Code") { ApplicationArea = All; }
+                field("Country Code"; Rec."Country Code") { ApplicationArea = All; }
             }
         }
     }
@@ -58,6 +59,70 @@ page 50131 "KINTO Inventory Vehicle Card"
     {
         area(Processing)
         {
+            action(ChangeStatus)
+            {
+                Caption = 'Change Status...';
+                ApplicationArea = All;
+                Image = Status;
+                trigger OnAction()
+                var
+                    FleetMgt: Codeunit "KINTO Fleet Management";
+                begin
+                    FleetMgt.ChangeVehicleStatus(Rec."Vehicle No.", Rec.Status, '',
+                        'Manual status change from card');
+                    CurrPage.Update(true);
+                end;
+            }
+            action(ChangePlate)
+            {
+                Caption = 'Change Plate...';
+                ApplicationArea = All;
+                Image = TransferOrder;
+                trigger OnAction()
+                var
+                    FleetMgt: Codeunit "KINTO Fleet Management";
+                    NewPlate: Text[20];
+                begin
+                    NewPlate := Rec."License Plate";
+                    if Page.RunModal(Page::"KINTO Extend Contract") = Action::OK then; // placeholder dialog
+                    FleetMgt.ChangePlate(Rec."Vehicle No.", NewPlate, '');
+                    CurrPage.Update(true);
+                end;
+            }
+            action(StartDemobilization)
+            {
+                Caption = 'Start Demobilization (BR)';
+                ApplicationArea = All;
+                Image = Stop;
+                trigger OnAction()
+                var
+                    FleetMgt: Codeunit "KINTO Fleet Management";
+                begin
+                    FleetMgt.StartDemobilization(Rec."Vehicle No.", '');
+                    CurrPage.Update(true);
+                end;
+            }
+            action(LogSanitization)
+            {
+                Caption = 'Log Sanitization';
+                ApplicationArea = All;
+                Image = Approve;
+                trigger OnAction()
+                var
+                    FleetMgt: Codeunit "KINTO Fleet Management";
+                begin
+                    FleetMgt.LogSanitization(Rec."Vehicle No.", 'Sanitization One/Share completed');
+                    CurrPage.Update(true);
+                end;
+            }
+            action(ViewMovements)
+            {
+                Caption = 'Movement Ledger';
+                ApplicationArea = All;
+                Image = Ledger;
+                RunObject = page "KINTO Fleet Movement Ledger";
+                trigger OnAction() begin end;
+            }
             action(SoftReserve)
             {
                 Caption = 'Soft Reserve';
