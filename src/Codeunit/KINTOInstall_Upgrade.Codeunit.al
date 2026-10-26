@@ -7,12 +7,83 @@ codeunit 50110 "KINTO Install/Upgrade"
     begin
         CreateNumberSeries();
         SetFleetDefaultsBR();
+        SetRemarketingDefaultsBR();
         CreateDefaultCountrySetup();
         CreateDefaultCFComponents();
         CreateInsuranceNumberSeries();
         CreateDefaultVendorCategories();
         CreateDefaultSupplierGroups();
         CreateDefaultItemCategories();
+    end;
+
+    local procedure SetRemarketingDefaultsBR()
+    var
+        RemarkSetup: Record "KINTO Remarketing Setup";
+        Channel: Record "KINTO Remarketing Channel";
+        Source: Record "KINTO Remark. Pricing Source";
+    begin
+        // D8 — defaults BR (idempotente)
+        if not RemarkSetup.Get('BR') then begin
+            RemarkSetup.Init();
+            RemarkSetup."Country Code" := 'BR';
+            RemarkSetup."Target Sale Days" := 60;
+            RemarkSetup."Min. Margin %" := 8;
+            RemarkSetup."Target Margin %" := 15;
+            RemarkSetup."Four Eyes Approval" := true;
+            RemarkSetup."Sale to Driver Closes Contract" := true;
+            RemarkSetup."NFe Enabled" := true;
+            RemarkSetup."Write-off Before Payment" := false; // BR baixa APÓS pagamento
+            RemarkSetup."Commission %" := 2;
+            RemarkSetup."Driver Discount %" := 10;
+            RemarkSetup.Insert(false);
+        end;
+
+        // Cascata BR (3 canais — portal externo tem 3 touchpoints)
+        if not Channel.Get('BR', 1) then begin
+            Channel.Init();
+            Channel."Country Code" := 'BR';
+            Channel."Step No." := 1;
+            Channel."Channel Type" := Channel."Channel Type"::Customer;
+            Channel.Description := 'Cliente do contrato (venda ao motorista)';
+            Channel."Duration Days" := 10;
+            Channel."Price Adj. %" := 0;
+            Channel.Insert(false);
+
+            Channel.Init();
+            Channel."Country Code" := 'BR';
+            Channel."Step No." := 2;
+            Channel."Channel Type" := Channel."Channel Type"::"Commercial Dealer";
+            Channel.Description := 'Dealer comercial';
+            Channel."Duration Days" := 20;
+            Channel."Price Adj. %" := 8;
+            Channel.Insert(false);
+
+            Channel.Init();
+            Channel."Country Code" := 'BR';
+            Channel."Step No." := 3;
+            Channel."Channel Type" := Channel."Channel Type"::Auction;
+            Channel.Description := 'Leilão (subasta)';
+            Channel."Duration Days" := 30;
+            Channel."Price Adj. %" := 15;
+            Channel.Insert(false);
+        end;
+
+        // Fontes de preço BR (FIPE + Webmotors ponderadas)
+        if not Source.Get('BR', Source."Source Type"::FIPE) then begin
+            Source.Init();
+            Source."Country Code" := 'BR';
+            Source."Source Type" := Source."Source Type"::FIPE;
+            Source."Weight %" := 60;
+            Source."Last Update" := WorkDate();
+            Source.Insert(false);
+
+            Source.Init();
+            Source."Country Code" := 'BR';
+            Source."Source Type" := Source."Source Type"::Webmotors;
+            Source."Weight %" := 40;
+            Source."Last Update" := WorkDate();
+            Source.Insert(false);
+        end;
     end;
 
     local procedure SetFleetDefaultsBR()

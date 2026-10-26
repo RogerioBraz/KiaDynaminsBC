@@ -115,6 +115,38 @@ codeunit 50201 "KINTO Contract Install"
             NoSeriesLine.Insert(true);
         end;
 
+        // Remarketing Offer No. Series (D8)
+        if not NoSeries.Get('KINTO-RMK') then begin
+            NoSeries.Init();
+            NoSeries.Code := 'KINTO-RMK';
+            NoSeries.Description := 'KINTO Remarketing Offer Numbers';
+            NoSeries.Insert(true);
+
+            NoSeriesLine.Init();
+            NoSeriesLine."Series Code" := 'KINTO-RMK';
+            NoSeriesLine."Line No." := 10000;
+            NoSeriesLine."Starting No." := 'RMK-00001';
+            NoSeriesLine."Ending No." := 'RMK-99999';
+            NoSeriesLine."Increment-by No." := 1;
+            NoSeriesLine.Insert(true);
+        end;
+
+        // Remarketing Sale No. Series (D8)
+        if not NoSeries.Get('KINTO-RMS') then begin
+            NoSeries.Init();
+            NoSeries.Code := 'KINTO-RMS';
+            NoSeries.Description := 'KINTO Remarketing Sale Numbers';
+            NoSeries.Insert(true);
+
+            NoSeriesLine.Init();
+            NoSeriesLine."Series Code" := 'KINTO-RMS';
+            NoSeriesLine."Line No." := 10000;
+            NoSeriesLine."Starting No." := 'RMS-00001';
+            NoSeriesLine."Ending No." := 'RMS-99999';
+            NoSeriesLine."Increment-by No." := 1;
+            NoSeriesLine.Insert(true);
+        end;
+
         // Policy No. Series (D7)
         if not NoSeries.Get('KINTO-POL') then begin
             NoSeries.Init();
