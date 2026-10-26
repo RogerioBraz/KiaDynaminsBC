@@ -6,10 +6,25 @@ codeunit 50207 "KINTO Workflow Command Runner"
     // gravações em outras tabelas persistem fora da transação do PATCH.
 
     trigger OnRun()
+    var
+        Command: Record "KINTO Workflow Command";
+        Processed: Integer;
     begin
-        // Via Task Scheduler: a task passa o record da command (TableNo) ao OnRun
-        if Rec."Pending Command" <> Rec."Pending Command"::" " then
-            ExecuteCommand(Rec, Rec."Pending Command");
+        // Via Job Queue (sem record): varre TODAS as commands pendentes
+        // (o JQ Entry roda o codeunit sem record — Rec é default vazio)
+        if Rec."Quote No." <> '' then begin
+            // chamado com record específico (futuro)
+            if Rec."Pending Command" <> Rec."Pending Command"::" " then
+                ExecuteCommand(Rec, Rec."Pending Command");
+            exit;
+        end;
+
+        Command.SetFilter("Pending Command", '<>%1', Command."Pending Command"::" ");
+        if Command.FindSet() then
+            repeat
+                ExecuteCommand(Command, Command."Pending Command");
+                Processed += 1;
+            until Command.Next() = 0;
     end;
 
     local procedure ExecuteCommand(var Command: Record "KINTO Workflow Command"; CommandType: Enum "KINTO Command Type")

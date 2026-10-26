@@ -33,7 +33,7 @@ table 50410 "KINTO Workflow Command"
             trigger OnValidate()
             begin
                 if "Run Pricing Trigger" then
-                    EnqueueCommand("Command Type"::RunPricing);
+                    EnqueueCommand("KINTO Command Type"::RunPricing);
             end;
         }
         field(3; "Approve Quote Trigger"; Boolean)
@@ -43,7 +43,7 @@ table 50410 "KINTO Workflow Command"
             trigger OnValidate()
             begin
                 if "Approve Quote Trigger" then
-                    EnqueueCommand("Command Type"::Approve);
+                    EnqueueCommand("KINTO Command Type"::Approve);
             end;
         }
         field(4; "Create Contract Trigger"; Boolean)
@@ -53,7 +53,7 @@ table 50410 "KINTO Workflow Command"
             trigger OnValidate()
             begin
                 if "Create Contract Trigger" then
-                    EnqueueCommand("Command Type"::CreateContract);
+                    EnqueueCommand("KINTO Command Type"::CreateContract);
             end;
         }
         field(5; "Generate Billing Trigger"; Boolean)
@@ -63,7 +63,7 @@ table 50410 "KINTO Workflow Command"
             trigger OnValidate()
             begin
                 if "Generate Billing Trigger" then
-                    EnqueueCommand("Command Type"::GenerateBilling);
+                    EnqueueCommand("KINTO Command Type"::GenerateBilling);
             end;
         }
         field(10; "Pricing Status"; Enum "KINTO Pricing Status") { Caption = 'Quote Pricing Status'; Editable = false; }
@@ -76,7 +76,6 @@ table 50410 "KINTO Workflow Command"
         field(17; "Result Message"; Text[250]) { Caption = 'Result Message'; Editable = false; }
         field(18; "Last Run DateTime"; DateTime) { Caption = 'Last Run DateTime'; Editable = false; }
         field(19; "Pending Command"; Enum "KINTO Command Type") { Caption = 'Pending Command'; Editable = false; }
-        field(20; "Task ID"; Guid) { Caption = 'Task ID'; Editable = false; }
     }
 
     keys
@@ -96,13 +95,13 @@ table 50410 "KINTO Workflow Command"
         "Last Run DateTime" := CurrentDateTime;
         // reseta o gatilho (o PATCH já gravou true; gravamos false no mesmo modify)
         case CommandType of
-            "Command Type"::RunPricing:
+            "KINTO Command Type"::RunPricing:
                 "Run Pricing Trigger" := false;
-            "Command Type"::Approve:
+            "KINTO Command Type"::Approve:
                 "Approve Quote Trigger" := false;
-            "Command Type"::CreateContract:
+            "KINTO Command Type"::CreateContract:
                 "Create Contract Trigger" := false;
-            "Command Type"::GenerateBilling:
+            "KINTO Command Type"::GenerateBilling:
                 "Generate Billing Trigger" := false;
         end;
         Modify(true);
@@ -112,26 +111,43 @@ table 50410 "KINTO Workflow Command"
     end;
 
     local procedure ScheduleTask(CommandType: Enum "KINTO Command Type")
-    var
-        TaskScheduler: Codeunit "Task Scheduler";
-        TaskID: Guid;
-        TaskRecord: Record "KINTO Workflow Command";
     begin
-        // Cancela task anterior pendente desta cotação
-        if ("Task ID" <> NullGuid) then begin
-            TaskScheduler.CancelTask("Task ID");
-            "Task ID" := NullGuid;
+        // Task Scheduler não está disponível neste contexto (AL0185) — usa Job Queue:
+        // um único JQ Entry recorrente (codeunit 50207) varre e executa as commands
+        // pendentes em background session. Este método só garante que o JQ existe.
+        EnsureJobQueueEntry();
+    end;
+
+    local procedure EnsureJobQueueEntry()
+    var
+        JQEntry: Record "Job Queue Entry";
+        JQCategory: Record "Job Queue Category";
+    begin
+        // Categoria KINTO (cria uma vez)
+        if not JQCategory.Get('KINTO') then begin
+            JQCategory.Init();
+            JQCategory.Code := 'KINTO';
+            JQCategory.Description := 'KINTO Workflow Commands';
+            JQCategory.Insert(true);
         end;
 
-        // CreateTask passa o record ao OnRun (TableNo = command) em background session
-        TaskRecord := Rec;
-        TaskRecord."Pending Command" := CommandType;
-        TaskID := TaskScheduler.CreateTask(Codeunit::"KINTO Workflow Command Runner", 0, false, CompanyName(), CurrentDateTime + 100, TaskRecord);
-        "Task ID" := TaskID;
-        Modify(true);
+        // Cria (uma vez) o Job Queue Entry que roda o runner a cada minuto
+        JQEntry.SetRange("Object Type to Run", JQEntry."Object Type to Run"::Codeunit);
+        JQEntry.SetRange("Object ID to Run", Codeunit::"KINTO Workflow Command Runner");
+        if not JQEntry.IsEmpty() then
+            exit;
+
+        JQEntry.Init();
+        JQEntry."Object Type to Run" := JQEntry."Object Type to Run"::Codeunit;
+        JQEntry."Object ID to Run" := Codeunit::"KINTO Workflow Command Runner";
+        JQEntry."Recurring Job" := true;
+        JQEntry."Run in User Session" := false;
+        JQEntry."Minimum Seconds Between Runs" := 60;
+        JQEntry."Job Queue Category Code" := 'KINTO';
+        JQEntry.Description := 'KINTO Workflow Command Runner (API commands)';
+        JQEntry.Insert(true);
     end;
 
     var
         QuoteNotFoundErr: Label 'Quote %1 does not exist.';
-        NullGuid: Guid;
 }

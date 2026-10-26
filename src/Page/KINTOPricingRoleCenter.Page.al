@@ -289,6 +289,13 @@ page 50140 "KINTO Pricing Role Center"
                     RunPageMode = Create;
                     Image = New;
                 }
+                action(TerminationSetup)
+                {
+                    Caption = 'Termination Setup';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Termination Setup";
+                    Image = Setup;
+                }
             }
             group(Packages)
             {
@@ -388,7 +395,165 @@ page 50140 "KINTO Pricing Role Center"
                 }
             }
             // ============================================================
-            // INSURANCE (NEW)
+            //  CONTRACTS & BILLING (Fases 1-2)
+            // ============================================================
+            group(Contracts)
+            {
+                Caption = 'Contracts & Billing';
+
+                action(ContractList)
+                {
+                    Caption = 'Vehicle Contracts';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Vehicle Contract List";
+                    Image = Agreement;
+                }
+                action(ContractConditions)
+                {
+                    Caption = 'Contract Conditions';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Contract Condition List";
+                    Image = SetupLines;
+                }
+                action(Amendments)
+                {
+                    Caption = 'Amendments';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Contract Amendment List";
+                    Image = History;
+                }
+                action(ChangeLog)
+                {
+                    Caption = 'Contract Change Log';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Contract Change Log";
+                    Image = History;
+                }
+                action(BillingLines)
+                {
+                    Caption = 'Billing Lines';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Billing Line List";
+                    Image = Invoice;
+                }
+                action(FinancialProducts)
+                {
+                    Caption = 'Financial Products';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Financial Product List";
+                    Image = Ledger;
+                }
+                action(PriceIndexes)
+                {
+                    Caption = 'Price Indexes';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Price Index List";
+                    Image = Calculate;
+                }
+                action(PoolLedger)
+                {
+                    Caption = 'Pool Ledger';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Pool Ledger Entries";
+                    Image = Ledger;
+                }
+                action(PoolTypes)
+                {
+                    Caption = 'Pool Types';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Pool Types";
+                    Image = Setup;
+                }
+            }
+            // ============================================================
+            //  MAINTENANCE (Fase 3)
+            // ============================================================
+            group(Maintenance)
+            {
+                Caption = 'Maintenance';
+
+                action(MaintTickets)
+                {
+                    Caption = 'Maintenance Tickets';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Maintenance Ticket List";
+                    Image = TaskList;
+                }
+                action(MaintPlans)
+                {
+                    Caption = 'Maintenance Plans';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Maint. Plan List";
+                    Image = Calendar;
+                }
+                action(MaintRanges)
+                {
+                    Caption = 'Maintenance Ranges';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Maint. Plan Subform";
+                    Image = SetupLines;
+                }
+            }
+            // ============================================================
+            //  TRAFFIC FINES (Fase 4)
+            // ============================================================
+            group(Fines)
+            {
+                Caption = 'Traffic Fines';
+
+                action(TrafficFines)
+                {
+                    Caption = 'Traffic Fines';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Traffic Fine List";
+                    Image = Alert;
+                }
+                action(IssuingAuthorities)
+                {
+                    Caption = 'Issuing Authorities';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Issuing Authority List";
+                    Image = MapSetup;
+                }
+                action(FineProviders)
+                {
+                    Caption = 'Fine Providers';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Fine Provider List";
+                    Image = Setup;
+                }
+                action(FineIntegrationErrors)
+                {
+                    Caption = 'Integration Errors';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Fine Integration Errors";
+                    Image = Warning;
+                }
+            }
+            // ============================================================
+            //  TERMINATION & RECOVERY (Fase 5)
+            // ============================================================
+            group(Termination)
+            {
+                Caption = 'Termination & Recovery';
+
+                action(VehicleReturns)
+                {
+                    Caption = 'Vehicle Returns';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Vehicle Return List";
+                    Image = Close;
+                }
+                action(RecoveryCases)
+                {
+                    Caption = 'Recovery Cases';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Recovery Case List";
+                    Image = Alert;
+                }
+            }
+            // ============================================================
+            //  INSURANCE
             // ============================================================
             group(Insurance)
             {
