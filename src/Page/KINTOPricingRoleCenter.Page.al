@@ -139,7 +139,6 @@ page 50140 "KINTO Pricing Role Center"
                     Caption = 'Price Adjustment Ledger';
                     ApplicationArea = All;
                     RunObject = page "KINTO Adjustment Ledger";
-                    Image = Analysis;
                 }
             }
 

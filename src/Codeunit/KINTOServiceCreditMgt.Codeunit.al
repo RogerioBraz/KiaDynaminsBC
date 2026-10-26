@@ -56,12 +56,12 @@ codeunit 50215 "KINTO Service Credit Mgt."
         BillingLine."Vehicle No." := Contract."Vehicle No.";
         BillingLine."Condition ID" := 'SVC-CREDIT';
         BillingLine."Financial Product Code" := 'SVC-CREDIT';
-        BillingLine."Product Type" := FinancialProduct."Product Type"::Service;
+        BillingLine."Product Type" := FinancialProduct."Product Type"::Credit;
         BillingLine.Description := CopyStr(StrSubstNo('Crédito %1 dias sem serviço: %2', Days, Reason), 1, 100);
         BillingLine.Quantity := Days;
         BillingLine."Unit Price" := -Round(Amount / Days, 0.01);
         BillingLine.Amount := -Amount;
-        BillingLine.Status := BillingLine.Status::Pending;
+        BillingLine.Status := BillingLine.Status::Open;
         BillingLine."Service Credit Days" := Days;
         BillingLine."Service Credit Cap Applied" := CapApplied;
         BillingLine."Cost Center Code" := Contract."Cost Center Code";
