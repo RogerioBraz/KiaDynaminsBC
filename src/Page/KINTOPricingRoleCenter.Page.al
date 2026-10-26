@@ -91,6 +91,36 @@ page 50140 "KINTO Pricing Role Center"
         area(Sections)
         {
             // ============================================================
+            // PORTAL DE SEMINOVOS (D8 BR — 3 TOUCHPOINTS)
+            // ============================================================
+            group(PortalSeminovos)
+            {
+                Caption = 'Portal Seminovos';
+
+                action(PortalActions)
+                {
+                    Caption = 'Portal Actions';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Portal Actions";
+                    Image = Web;
+                }
+                action(PortalSync)
+                {
+                    Caption = 'Sync Entries';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Portal Sync Entries";
+                    Image = TransferOrder;
+                }
+                action(PortalConfigPage)
+                {
+                    Caption = 'Portal Config';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Portal Config";
+                    Image = Setup;
+                }
+            }
+
+            // ============================================================
             // SINISTROS (D3c) + REAJUSTES (D6)
             // ============================================================
             group(ClaimsAndAdjustments)

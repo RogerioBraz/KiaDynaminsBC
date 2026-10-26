@@ -186,6 +186,21 @@ codeunit 50171 "KINTO Remarketing Mgt."
         Sale.Status := Sale.Status::Invoiced;
         Sale."Invoice No." := CopyStr('SIM-' + Sale."Sale No.", 1, 20); // placeholder — Sales Invoice real depois
         Sale.Modify(true);
+
+        // TP2 automático: lança a venda no portal (se integração ativa)
+        EnqueuePortalSale(Sale);
+    end;
+
+    local procedure EnqueuePortalSale(var Sale: Record "KINTO Remarketing Sale")
+    var
+        PortalConfig: Record "KINTO Portal Config";
+        PortalIntegration: Codeunit "KINTO Portal Integration";
+    begin
+        if not PortalConfig.GetConfig() then
+            exit;
+        if not PortalConfig.Enabled then
+            exit;
+        PortalIntegration.PostSaleToPortal(Sale);
     end;
 
     procedure RegisterPayment(var Sale: Record "KINTO Remarketing Sale"; PaymentDate: Date)
@@ -214,13 +229,23 @@ codeunit 50171 "KINTO Remarketing Mgt."
     procedure CompleteSale(var Sale: Record "KINTO Remarketing Sale")
     var
         Setup: Record "KINTO Remarketing Setup";
+        PortalConfig: Record "KINTO Portal Config";
     begin
         Setup.GetSetup(Sale."Country Code");
         if not Setup."Write-off Before Payment" then
             WriteOffAsset(Sale); // BR: baixa após pagamento
         Sale.Status := Sale.Status::Completed;
         Sale.Modify(true);
+
+        // TP3 automático: baixa no portal (se integração ativa)
+        if PortalConfig.GetConfig() then
+            if PortalConfig.Enabled then begin
+                PortalIntegrationHook.WriteOffToPortal(Sale);
+            end;
     end;
+
+    var
+        PortalIntegrationHook: Codeunit "KINTO Portal Integration";
 
     local procedure WriteOffAsset(var Sale: Record "KINTO Remarketing Sale")
     var
