@@ -12,7 +12,7 @@ table 50471 "KINTO Adjustment Ledger"
         field(3; "Adjustment Month"; Date) { Caption = 'Adjustment Month'; }
         field(4; "Index Code"; Code[10]) { Caption = 'Index Code'; }
         field(5; "Index Variation %"; Decimal) { Caption = 'Index Variation %'; DecimalPlaces = 0 : 4; }
-        field(6; "Cap Applied %"; Decimal) { Caption = 'Cap Applied %'; DecimalLimit = 0 : 100; }
+        field(6; "Cap Applied %"; Decimal) { Caption = 'Cap Applied %'; DecimalPlaces = 0 : 2; }
         field(7; "Conditions Adjusted"; Integer) { Caption = 'Conditions Adjusted'; }
         field(8; "Prior Letter"; Boolean) { Caption = 'Prior Letter (exception)'; }
         field(9; "Created By"; Code[50]) { Caption = 'Created By'; }

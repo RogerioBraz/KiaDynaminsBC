@@ -56,10 +56,9 @@ codeunit 50211 "KINTO Price Adjustment Sch."
     end;
 
     [TryFunction]
-    local procedure TryAdjust(var Contract: Record "KINTO Vehicle Contract"; AdjustmentMonth: Date): Boolean
+    local procedure TryAdjust(var Contract: Record "KINTO Vehicle Contract"; AdjustmentMonth: Date)
     begin
         ApplyAdjustment(Contract, AdjustmentMonth, false);
-        exit(true);
     end;
 
     procedure ApplyAdjustment(var Contract: Record "KINTO Vehicle Contract"; AdjustmentMonth: Date; PriorLetter: Boolean)
