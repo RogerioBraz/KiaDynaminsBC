@@ -229,6 +229,17 @@ codeunit 50201 "KINTO Contract Install"
             FinProduct.Insert(true);
         end;
 
+        if not FinProduct.Get('SVC-CREDIT') then begin
+            FinProduct.Init();
+            FinProduct."Product Code" := 'SVC-CREDIT';
+            FinProduct.Description := 'Service Credit (days without service)';
+            FinProduct."Product Type" := FinProduct."Product Type"::Credit;
+            FinProduct."Separate Invoice" := false;
+            FinProduct."Credit Allowed" := true;
+            FinProduct."Credit Limit % of Billing" := 2;
+            FinProduct.Insert(true);
+        end;
+
         if not FinProduct.Get('FINE') then begin
             FinProduct.Init();
             FinProduct."Product Code" := 'FINE';

@@ -49,6 +49,16 @@ codeunit 50215 "KINTO Service Credit Mgt."
         BillingLine: Record "KINTO Billing Line";
         FinancialProduct: Record "KINTO Financial Product";
     begin
+        if not FinancialProduct.Get('SVC-CREDIT') then begin
+            FinancialProduct.Init();
+            FinancialProduct."Product Code" := 'SVC-CREDIT';
+            FinancialProduct.Description := 'Service Credit (days without service)';
+            FinancialProduct."Product Type" := FinancialProduct."Product Type"::Credit;
+            FinancialProduct."Separate Invoice" := false;
+            FinancialProduct."Credit Allowed" := true;
+            FinancialProduct."Credit Limit % of Billing" := 2;
+            FinancialProduct.Insert(true);
+        end;
         BillingLine.Init();
         BillingLine."Contract No." := Contract."Contract No.";
         BillingLine."Billing Month" := BillingMonth;
