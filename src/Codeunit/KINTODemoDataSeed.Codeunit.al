@@ -81,9 +81,47 @@ codeunit 50156 "KINTO Demo Data Seed"
 
         ContractNo := BillingMgt.CreateContractFromQuote(Quote);
 
+        // Vincula veículo demo ao contrato (multas/odômetro/pool precisam)
+        EnsureDemoVehicle(ContractNo);
+
         // Ativa o contrato
         ActivateContract(ContractNo);
         exit(ContractNo);
+    end;
+
+    procedure EnsureDemoVehicle(ContractNo: Code[20])
+    var
+        Contract: Record "KINTO Vehicle Contract";
+        Vehicle: Record "KINTO Inventory Vehicle";
+    begin
+        Contract.Get(ContractNo);
+        if Contract."Vehicle No." <> '' then
+            exit;
+
+        // 1 veículo demo por contrato (placa única por contador)
+        Vehicle.Init();
+        Vehicle."Vehicle No." := '';
+        Vehicle."No. Series" := 'KINTO-VEH';
+        Vehicle."Item No." := DemoItemNo;
+        Vehicle."License Plate" := CopyStr(StrSubstNo('DEM%1A99', GetVehicleCounter()), 1, 20);
+        Vehicle."Vehicle Condition" := Vehicle."Vehicle Condition"::New;
+        Vehicle."Current Odometer" := 35000;
+        Vehicle."Acquisition Date" := CalcDate('<-6M>', WorkDate());
+        Vehicle."Acquisition Cost" := GetDemoMSRP() * 0.85;
+        Vehicle."Booking Value" := GetDemoMSRP();
+        Vehicle.Insert(true);
+
+        Contract."Vehicle No." := Vehicle."Vehicle No.";
+        Contract.Modify(true);
+    end;
+
+    local procedure GetVehicleCounter(): Integer
+    var
+        Vehicle: Record "KINTO Inventory Vehicle";
+    begin
+        if Vehicle.FindLast() then
+            exit(Vehicle.Count() + 1);
+        exit(1);
     end;
 
     local procedure ActivateContract(ContractNo: Code[20])
