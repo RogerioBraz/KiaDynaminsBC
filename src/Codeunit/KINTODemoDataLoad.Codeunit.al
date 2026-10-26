@@ -25,6 +25,7 @@ codeunit 50157 "KINTO Demo Data Load"
         ContractNo1: Code[20];
         ContractNo2: Code[20];
         ContractNo3: Code[20];
+        ContractNo4: Code[20];
         FineNo: Code[20];
         FineNo2: Code[20];
         TicketNo: Code[20];
@@ -109,9 +110,9 @@ codeunit 50157 "KINTO Demo Data Load"
         // ============================================================
         // CENÁRIO 5 — TOTAL LOSS (recovery automático)
         // ============================================================
-        ContractNo := Seed.CreateActiveContract('BR', 24, 1500, 3.4);
-        Seed.TerminateContract(ContractNo, "KINTO Termination Type"::"Total Loss");
-        Contract.Get(ContractNo);
+        ContractNo4 := Seed.CreateActiveContract('BR', 24, 1500, 3.4);
+        Seed.TerminateContract(ContractNo4, "KINTO Termination Type"::"Total Loss");
+        Contract.Get(ContractNo4);
         TermMgt.HandleTotalLoss(Contract);
         SB.AppendLine('6. Total loss → recovery case automático (risco alto)');
 
