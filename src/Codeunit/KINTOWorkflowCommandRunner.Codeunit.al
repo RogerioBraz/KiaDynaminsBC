@@ -60,8 +60,12 @@ codeunit 50207 "KINTO Workflow Command Runner"
         case CommandType of
             CommandType::RunPricing:
                 begin
+                    // DEBUG: status ANTES do engine
+                    SetLog(Command, 'BEFORE: ' + Format(Quote."Pricing Status") + ' fee=' + Format(Quote."Calculated Monthly Fee"));
                     Engine.RunPricing(Quote);
                     Quote.Get(Quote."Quote No.");
+                    // DEBUG: status DEPOIS do engine (re-lido do banco)
+                    SetLog(Command, 'AFTER: ' + Format(Quote."Pricing Status") + ' fee=' + Format(Quote."Calculated Monthly Fee") + ' roi=' + Format(Quote."Calculated ROI"));
                     Command."Pricing Status" := Quote."Pricing Status";
                     Command."Approval Classification" := Quote."Approval Classification";
                     Command."Calculated Monthly Fee" := Quote."Calculated Monthly Fee";
@@ -96,6 +100,13 @@ codeunit 50207 "KINTO Workflow Command Runner"
                 end;
         end;
         exit(true);
+    end;
+
+    local procedure SetLog(var Command: Record "KINTO Workflow Command"; Msg: Text)
+    begin
+        Command."Result Message" := CopyStr(Msg, 1, MaxStrLen(Command."Result Message"));
+        Command."Last Run DateTime" := CurrentDateTime;
+        Command.Modify(true);
     end;
 
     local procedure SetResult(var Command: Record "KINTO Workflow Command"; Ok: Boolean; Msg: Text)
