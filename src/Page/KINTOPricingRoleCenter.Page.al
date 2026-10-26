@@ -91,6 +91,41 @@ page 50140 "KINTO Pricing Role Center"
         area(Sections)
         {
             // ============================================================
+            // TEST MANAGEMENT (gestão de testes e carga demo)
+            // ============================================================
+            group(TestManagement)
+            {
+                Caption = 'Test Management';
+
+                action(TestManagementCard)
+                {
+                    Caption = 'Test Management';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Test Management";
+                    Image = Setup;
+                }
+                action(TestRuns)
+                {
+                    Caption = 'Test Runs';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Test Run List";
+                    Image = History;
+                }
+                action(RunDemoLoad)
+                {
+                    Caption = 'Run Demo Data Load';
+                    ApplicationArea = All;
+                    Image = Import;
+                    trigger OnAction()
+                    var
+                        DemoLoad: Codeunit "KINTO Demo Data Load";
+                    begin
+                        Message(DemoLoad.LoadDemoData());
+                    end;
+                }
+            }
+
+            // ============================================================
             // QUOTES
             // ============================================================
             group(Quotes)

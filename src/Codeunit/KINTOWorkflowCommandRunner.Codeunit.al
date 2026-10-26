@@ -31,6 +31,7 @@ codeunit 50207 "KINTO Workflow Command Runner"
         Processed: Integer;
         Failed: Integer;
         PricingContext: Codeunit "KINTO Pricing Context";
+        LastError: Text;
     begin
         // Contexto programático: guards de status desativados durante o runner
         PricingContext.BeginPricing();
@@ -39,14 +40,24 @@ codeunit 50207 "KINTO Workflow Command Runner"
         Command.SetFilter("Pending Command", '<>%1', Command."Pending Command"::" ");
         if Command.FindSet() then
             repeat
-                if ExecuteCommand(Command, Command."Pending Command") then
+                Clear(LastError);
+                if TryExecuteCommand(Command, Command."Pending Command") then
                     Processed += 1
-                else
+                else begin
                     Failed += 1;
+                    // Erro capturado: grava no Result Message em vez de abortar o JQ
+                    SetResult(Command, false, 'ERROR: ' + GetLastErrorText());
+                end;
             until Command.Next() = 0;
 
         // Sem comandos pendentes: execução vazia (JQ recorrente normal)
         PricingContext.EndPricing();
+    end;
+
+    [TryFunction]
+    local procedure TryExecuteCommand(var Command: Record "KINTO Workflow Command"; CommandType: Enum "KINTO Command Type")
+    begin
+        ExecuteCommand(Command, CommandType);
     end;
 
     local procedure ExecuteCommand(var Command: Record "KINTO Workflow Command"; CommandType: Enum "KINTO Command Type"): Boolean
@@ -96,6 +107,12 @@ codeunit 50207 "KINTO Workflow Command Runner"
                 begin
                     Contract.SetRange("Quote No.", Quote."Quote No.");
                     if Contract.FindFirst() then begin
+                        // Integração/demo: contrato criado pela API nasce Draft
+                        // (ativação UI exige Vehicle No. de veículo usado) — ativa aqui
+                        if Contract.Status = Contract.Status::Draft then begin
+                            Contract.Status := Contract.Status::Active;
+                            Contract.Modify(true);
+                        end;
                         BillingMgt.GenerateBillingForContract(Contract, CalcDate('<-CM>', WorkDate()));
                         SetResult(Command, true, 'Billing generated for ' + Contract."Contract No.");
                     end else begin
