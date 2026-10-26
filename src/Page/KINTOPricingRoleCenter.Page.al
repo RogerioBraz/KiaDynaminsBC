@@ -91,27 +91,6 @@ page 50140 "KINTO Pricing Role Center"
         area(Sections)
         {
             // ============================================================
-            // DEMO (carga de demonstração)
-            // ============================================================
-            group(DemoData)
-            {
-                Caption = 'Demo';
-
-                action(RunDemoLoad)
-                {
-                    Caption = 'Run Demo Data Load';
-                    ApplicationArea = All;
-                    Image = Import;
-                    trigger OnAction()
-                    var
-                        DemoLoad: Codeunit "KINTO Demo Data Load";
-                    begin
-                        Message(DemoLoad.LoadDemoData());
-                    end;
-                }
-            }
-
-            // ============================================================
             // QUOTES
             // ============================================================
             group(Quotes)
