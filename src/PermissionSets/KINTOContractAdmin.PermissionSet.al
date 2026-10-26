@@ -99,6 +99,7 @@ permissionset 50174 "KINTO Contract Admin"
                   codeunit "KINTO Billing Job Queue" = X,
                   codeunit "KINTO Fine Management" = X,
                   codeunit "KINTO Termination Management" = X,
+                  codeunit "KINTO Workflow Command Runner" = X,
                   page "KINTO Maintenance Ticket Card" = X,
                   page "KINTO Maintenance Ticket List" = X,
                   page "KINTO Maint Ticket Lines" = X,
