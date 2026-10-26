@@ -214,7 +214,6 @@ codeunit 50213 "KINTO Portal Integration"
         HttpContent: HttpContent;
         Response: HttpResponseMessage;
         Payload: Text;
-        Json: JsonBuffer;
     begin
         SyncEntry.CalcFields(Payload);
         Payload := SyncEntry.GetPayload();
@@ -223,9 +222,8 @@ codeunit 50213 "KINTO Portal Integration"
         ContentHeaders.Add('Content-Type', 'application/json');
         HttpContent.GetHeaders(ContentHeaders);
 
-        HttpHeaders.Clear();
-        HttpHeaders.Add('Authorization', 'Bearer ' + PortalConfig."API Key");
-        HttpClient.DefaultRequestHeaders := HttpHeaders;
+        HttpClient.DefaultRequestHeaders.Clear();
+        HttpClient.DefaultRequestHeaders.Add('Authorization', 'Bearer ' + PortalConfig."API Key");
 
         HttpClient.Post(PortalConfig."Endpoint URL", HttpContent, Response);
         if Response.IsSuccessStatusCode() then begin
