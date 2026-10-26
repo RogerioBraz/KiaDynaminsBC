@@ -91,6 +91,29 @@ page 50140 "KINTO Pricing Role Center"
         area(Sections)
         {
             // ============================================================
+            // SINISTROS (D3c) + REAJUSTES (D6)
+            // ============================================================
+            group(ClaimsAndAdjustments)
+            {
+                Caption = 'Claims & Price Adjustments';
+
+                action(Claims)
+                {
+                    Caption = 'Claims';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Claim List";
+                    Image = Insurance;
+                }
+                action(AdjustmentLedger)
+                {
+                    Caption = 'Price Adjustment Ledger';
+                    ApplicationArea = All;
+                    RunObject = page "KINTO Adjustment Ledger";
+                    Image = Chart;
+                }
+            }
+
+            // ============================================================
             // FLEET CONTROL (D7)
             // ============================================================
             group(FleetControl)

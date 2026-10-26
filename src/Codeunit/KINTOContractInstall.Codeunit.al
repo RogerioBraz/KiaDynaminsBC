@@ -115,6 +115,22 @@ codeunit 50201 "KINTO Contract Install"
             NoSeriesLine.Insert(true);
         end;
 
+        // Claim No. Series (D3c)
+        if not NoSeries.Get('KINTO-CLM') then begin
+            NoSeries.Init();
+            NoSeries.Code := 'KINTO-CLM';
+            NoSeries.Description := 'KINTO Claim Numbers';
+            NoSeries.Insert(true);
+
+            NoSeriesLine.Init();
+            NoSeriesLine."Series Code" := 'KINTO-CLM';
+            NoSeriesLine."Line No." := 10000;
+            NoSeriesLine."Starting No." := 'CLM-00001';
+            NoSeriesLine."Ending No." := 'CLM-99999';
+            NoSeriesLine."Increment-by No." := 1;
+            NoSeriesLine.Insert(true);
+        end;
+
         // Substitution No. Series (D5)
         if not NoSeries.Get('KINTO-SUB') then begin
             NoSeries.Init();
