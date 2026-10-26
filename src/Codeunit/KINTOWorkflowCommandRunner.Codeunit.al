@@ -2,6 +2,24 @@ codeunit 50207 "KINTO Workflow Command Runner"
 {
     TableNo = "KINTO Workflow Command";
 
+    Permissions = tabledata "KINTO Workflow Command" = RIMD,
+                  tabledata "KINTO Quote Header" = RIMD,
+                  tabledata "KINTO Quote Item" = RIMD,
+                  tabledata "KINTO Cash Flow Data" = RIMD,
+                  tabledata "KINTO Cash Flow Header" = RIMD,
+                  tabledata "KINTO Simulation Snapshot" = RIMD,
+                  tabledata "KINTO Country Setup" = R,
+                  tabledata "KINTO RV Matrix" = R,
+                  tabledata "KINTO Vehicle Contract" = RIMD,
+                  tabledata "KINTO Contract Condition" = RIMD,
+                  tabledata "KINTO Billing Line" = RIMD,
+                  tabledata "KINTO Financial Product" = RIMD,
+                  tabledata "KINTO Contract Change Log" = RIMD,
+                  tabledata "Sales Header" = RIMD,
+                  tabledata "Sales Line" = RIMD,
+                  tabledata "Job Queue Entry" = RIMD,
+                  tabledata "Job Queue Category" = RIMD;
+
     // Executa comandos pendentes em SEPARATE session (via Task Scheduler) —
     // gravações em outras tabelas persistem fora da transação do PATCH.
 
