@@ -26,7 +26,7 @@ page 50188 "KINTO Billing Line API"
                 field(daysBilled; Rec."Days Billed") { ApplicationArea = All; }
                 field(amount; Rec.Amount) { ApplicationArea = All; }
                 field(status; Rec.Status) { ApplicationArea = All; }
-                field(invoiceNo; Rec."Invoice No.") { ApplicationArea = All; }
+                field(salesInvoiceNo; Rec."Sales Invoice No.") { ApplicationArea = All; }
                 field(systemId; Rec.SystemId) { ApplicationArea = All; }
             }
         }
