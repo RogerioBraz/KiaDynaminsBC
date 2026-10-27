@@ -1213,6 +1213,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Apply SGA in Cash Flow - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 1616836976 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approval Request No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Approval Series - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 1565263644 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Auto-Extend Expired Contracts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Auto Extend Contracts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 2711190980 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Billing No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Billing Series - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 4171043907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Claim No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Claim Series - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1652137844 - Field 4076972318 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Monthly Closing Reconcile by Plate</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1223,6 +1243,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Closing Reconcile By VIN - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 2756554484 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Condition No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Condition Series - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1652137844 - Field 3971873512 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contingencies %</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1232,6 +1257,16 @@
           <source>Contingencies Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Contingencies Desc. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 1535349385 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Expiry Notice Days</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Contract Notice Days - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 2490264075 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Contract Series - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1652137844 - Field 2542713143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Country Code</source>
@@ -1303,6 +1338,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Device Aging Charge Days - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 3254388589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Device Storage Daily Charge</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Device Daily Charge - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 2677597213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Telematic Device No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Device Series - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1652137844 - Field 1631004212 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>DLR Commission Model</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1313,10 +1358,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Emergency Stop - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 2271089831 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract Evaluation No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Evaluation Series - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1652137844 - Field 3674193192 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Exceeded Mileage Cost Cap</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Exceeded Mileage Cost Cap - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 3469342228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Excess Km Band 1 Threshold %</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Excess Km Band 1 % - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1652137844 - Field 210283670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Excess Mileage Aggravation Threshold %</source>
@@ -1337,6 +1392,11 @@
           <source>Financial Transactions Tax Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Financial Trans. Tax Desc. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 3818823433 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Traffic Fine No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Fine Series - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1652137844 - Field 4170115014 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fleet Behavior</source>
@@ -1398,20 +1458,50 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Net Contribution Margin % - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 4083640491 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default Preventive Odometer Tolerance (km)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Odometer Tolerance (km) - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1652137844 - Field 2281390184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>PIS/COFINS Credit on Depreciation %</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field PIS COFINS Credit % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 75673125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Insurance Policy No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Policy Series - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 77993340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pre-Closure No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Pre-Closure Series - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 1536973404 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default Preventive Interval (months)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Preventive Interval Months - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1652137844 - Field 3334847031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pricing Methodology</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Pricing Methodology - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 912224709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quote No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Pricing Series - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1652137844 - Field 259429008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Profit Tax Rate %</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Profit Tax Rate % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 2752120884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Recovery Case No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Recovery Series - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1652137844 - Field 1842448018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reference Interest Rate Index Periodicity</source>
@@ -1423,10 +1513,35 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field reKinto Pre-Approved - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 3270185021 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remarketing Max Depreciation % at Base Km</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Remarketing Km Deprec. % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 3035125389 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remarketing Depreciation Base (km)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Remarketing Km Deprec. Base - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 704527820 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remarketing Offer No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Remarketing Offer Series - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 3967890237 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remarketing Sale No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Remarketing Sale Series - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1652137844 - Field 1529718279 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Renew Used Car Pricing Pre-Approved</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Renew Used Car Pre-Approved - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 4005126147 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Return No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Return Series - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1652137844 - Field 2814522527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Security Fee (Surety Insurance) %</source>
@@ -1438,10 +1553,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Security Fee Desc. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 563094193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Service Credit Cap % of Monthly Billing</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Service Credit Cap % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 2605217474 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Settlement No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Settlement Series - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1652137844 - Field 694732310 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>SG&amp;A Inflation Adjustment Frequency</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field SGA Inflation Adj. Freq. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 4250754422 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default SLA Penalty Cap %</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field SLA Penalty Cap % - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1652137844 - Field 2176268379 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Spread</source>
@@ -1473,6 +1603,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field State Revenue Tax Desc. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 1539131176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Substitution No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Substitution Series - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1652137844 - Field 2928409411 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Suggested Negotiation Buffer %</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1483,10 +1618,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Tax Depreciation Period - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 2142601721 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Maintenance Ticket No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Ticket Series - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 2499580941 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Loss Threshold % of Vehicle Value</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Total Loss Threshold % - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1652137844 - Field 3252811209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Validity Period (days)</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Validity Period - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 4233192429 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vehicle No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Vehicle Series - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3723748302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Damage Line</source>
@@ -8583,6 +8733,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup Card - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 821288576 - Control 3081268901 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculation Limits and Caps</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup Card - Control CalcLimits - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 821288576 - Control 2488242589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cash Flow and Inflation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup Card - Control CashFlow - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 821288576 - Control 835771410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Commissions</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8603,15 +8763,35 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup Card - Control Financial - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 821288576 - Control 2958332526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fleet Operations</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup Card - Control FleetOps - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 821288576 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup Card - Control General - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 821288576 - Control 2034243644 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Maintenance and Contract Rules</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup Card - Control MaintenanceRules - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 821288576 - Control 736648186 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Mileage</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup Card - Control Mileage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 821288576 - Control 1833901164 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Number Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup Card - Control NumberSeries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 821288576 - Control 2998415061 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Number Series — Remarketing &amp; Contracts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup Card - Control NumberSeriesRemarketing - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 821288576 - Control 2770449500 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pricing Parameters</source>
@@ -8627,6 +8807,11 @@
           <source>Used Vehicles</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup Card - Control UsedVehicles - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1948779654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Country Setups</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4077387803 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Damage Lines</source>
@@ -10698,6 +10883,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Vendor Labor Rate List - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3685491479 - Control 3624558886 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>País do KINTO usado por esta empresa. Define qual KINTO Country Setup os processos usam (séries, impostos, limites de cálculo).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Company Information Ext - Control KINTO Country Code - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2033137810 - Control 447642841 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>KINTO</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10837,6 +11027,16 @@
           <source>KINTO Dealer</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Vendor List Ext - Control KINTO Is Dealer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3685491479 - Field 3624558886 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
+          <source>KINTO Country</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Company Information Ext - Field KINTO Country Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3685491479 - Field 3624558886 - Method 2126772001 - NamedType 1820438706" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3685491479">
+          <source>KINTO Country Setup %1 does not exist. Create the country setup before linking it to the company.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Company Information Ext - Field KINTO Country Code - Method OnValidate - NamedType CountryNotFoundErr</note>
         </trans-unit>
         <trans-unit id="TableExtension 2075339590 - Field 84051796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>KINTO Credit Risk Factor Override %</source>
