@@ -5,6 +5,7 @@ codeunit 50201 "KINTO Contract Install"
     trigger OnInstallAppPerCompany()
     begin
         CreateContractNumberSeries();
+        CreateD1D5Series();
         CreateDefaultFinancialProducts();
         CreateDefaultPoolTypes();
         CreateDefaultPriceIndexes();
@@ -44,6 +45,36 @@ codeunit 50201 "KINTO Contract Install"
 
         // Setup de multas: produtos, órgãos autuadores (SNE 60/80%), taxas por evento
         FineMgt.CreateDefaultSetup();
+    end;
+
+    // D1/D4/D5 — series usadas pelos documentos novos. Sem a serie criada, o
+    // documento nasce com PK vazia e o segundo registro colide ("... No.:=''").
+    local procedure CreateD1D5Series()
+    var
+        NoSeries: Record "No. Series";
+        NoSeriesLine: Record "No. Series Line";
+    begin
+        CreateSeries('KINTO-EVAL', 'KINTO Contract Evaluations', 'EV-00001', 'EV-99999', NoSeries, NoSeriesLine);
+        CreateSeries('KINTO-PCL', 'KINTO Pre-Closures', 'PC-00001', 'PC-99999', NoSeries, NoSeriesLine);
+    end;
+
+    local procedure CreateSeries(Code: Code[20]; Descr: Text[100]; StartNo: Code[20]; EndNo: Code[20];
+        var NoSeries: Record "No. Series"; var NoSeriesLine: Record "No. Series Line")
+    begin
+        if NoSeries.Get(Code) then
+            exit;
+        NoSeries.Init();
+        NoSeries.Code := Code;
+        NoSeries.Description := Descr;
+        NoSeries.Insert(true);
+
+        NoSeriesLine.Init();
+        NoSeriesLine."Series Code" := Code;
+        NoSeriesLine."Line No." := 10000;
+        NoSeriesLine."Starting No." := StartNo;
+        NoSeriesLine."Ending No." := EndNo;
+        NoSeriesLine."Increment-by No." := 1;
+        NoSeriesLine.Insert(true);
     end;
 
     local procedure CreateContractNumberSeries()

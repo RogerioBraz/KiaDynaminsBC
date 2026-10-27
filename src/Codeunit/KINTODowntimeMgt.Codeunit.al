@@ -121,22 +121,55 @@ codeunit 60002 "KINTO Downtime Mgt."
         exit(true);
     end;
 
-    // Faturamento do mes do contrato (base do cap de penalidade) — mesma base do
-    // service credit: linhas nao canceladas do Billing Month.
+    // Faturamento de referencia para o cap de penalidade — mesma base do service
+    // credit (linhas de billing nao canceladas do Billing Month).
+    // Ordem: mes corrente; se ainda nao foi faturado, o ULTIMO mes faturado do
+    // contrato. A penalidade e detectada durante o mes, muitas vezes ANTES de o
+    // billing rodar — olhar so o mes corrente zeraria a penalidade por um motivo
+    // que nao tem relacao com o SLA.
     local procedure GetMonthRevenue(ContractNo: Code[20]): Decimal
     var
         BillingLine: Record "KINTO Billing Line";
-        BillingMonth: Date;
-        Amount: Decimal;
     begin
-        BillingMonth := CalcDate('<CM>', WorkDate());
         BillingLine.SetRange("Contract No.", ContractNo);
-        BillingLine.SetRange("Billing Month", BillingMonth);
         BillingLine.SetFilter(Status, '<>%1', BillingLine.Status::Cancelled);
         if BillingLine.IsEmpty() then
             exit(0);
-        BillingLine.CalcSums(Amount);
-        exit(Amount);
+        exit(GetRevenueOfMonth(ContractNo, CalcDate('<CM>', WorkDate())));
+    end;
+
+    local procedure GetRevenueOfMonth(ContractNo: Code[20]; BillingMonth: Date): Decimal
+    var
+        BillingLine: Record "KINTO Billing Line";
+        LastBilledMonth: Date;
+        Amount: Decimal;
+    begin
+        BillingLine.SetRange("Contract No.", ContractNo);
+        BillingLine.SetRange("Billing Month", BillingMonth);
+        BillingLine.SetFilter(Status, '<>%1', BillingLine.Status::Cancelled);
+        if not BillingLine.IsEmpty() then begin
+            BillingLine.CalcSums(Amount);
+            exit(Amount);
+        end;
+
+        // Mes corrente ainda nao faturado: usa o ultimo mes faturado do contrato
+        BillingLine.Reset();
+        BillingLine.SetRange("Contract No.", ContractNo);
+        BillingLine.SetFilter(Status, '<>%1', BillingLine.Status::Cancelled);
+        BillingLine.SetFilter("Billing Month", '<%1', BillingMonth);
+        BillingLine.SetCurrentKey("Billing Month");
+        if BillingLine.FindLast() then begin
+            LastBilledMonth := BillingLine."Billing Month";
+            BillingLine.Reset();
+            BillingLine.SetRange("Contract No.", ContractNo);
+            BillingLine.SetRange("Billing Month", LastBilledMonth);
+            BillingLine.SetFilter(Status, '<>%1', BillingLine.Status::Cancelled);
+            if BillingLine.IsEmpty() then
+                exit(0);
+            BillingLine.CalcSums(Amount);
+            exit(Amount);
+        end;
+        exit(0);
     end;
 
     // Penalidades ja aplicadas ao contrato no mes corrente (acumulado do cap)

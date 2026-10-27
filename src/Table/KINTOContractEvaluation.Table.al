@@ -59,9 +59,28 @@ table 60005 "KINTO Contract Evaluation"
             if "No. Series" = '' then
                 "No. Series" := 'KINTO-EVAL';
             if ("No. Series" <> '') and NoSeriesRec.Get("No. Series") then
-                "Evaluation No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
+                "Evaluation No." := NoSeries.GetNextNo("No. Series", WorkDate(), true)
+            else
+                // Sem serie configurada: gera um numero sequencial proprio para
+                // nao gravar PK vazia (dois registros com No.='' colidem).
+                "Evaluation No." := GetNextEvaluationNo();
         end;
+        if "Evaluation No." = '' then
+            "Evaluation No." := GetNextEvaluationNo();
         CalculateScore();
+    end;
+
+    local procedure GetNextEvaluationNo(): Code[20]
+    var
+        Eval: Record "KINTO Contract Evaluation";
+        NextNo: Integer;
+    begin
+        Eval.Reset();
+        Eval.SetCurrentKey("Evaluation No.");
+        NextNo := 1;
+        while Eval.Get(Format(NextNo, 0, '<Integer,5,0>')) do
+            NextNo += 1;
+        exit(Format(NextNo, 0, '<Integer,5,0>'));
     end;
 
     trigger OnModify()

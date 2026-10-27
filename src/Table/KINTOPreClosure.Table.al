@@ -95,8 +95,25 @@ table 60011 "KINTO Pre-Closure"
             if "No. Series" = '' then
                 "No. Series" := 'KINTO-PCL';
             if ("No. Series" <> '') and NoSeriesRec.Get("No. Series") then
-                "Pre-Closure No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
+                "Pre-Closure No." := NoSeries.GetNextNo("No. Series", WorkDate(), true)
+            else
+                "Pre-Closure No." := GetNextPreClosureNo();
         end;
+        if "Pre-Closure No." = '' then
+            "Pre-Closure No." := GetNextPreClosureNo();
+    end;
+
+    local procedure GetNextPreClosureNo(): Code[20]
+    var
+        PreClosureRec: Record "KINTO Pre-Closure";
+        NextNo: Integer;
+    begin
+        NextNo := 1;
+        PreClosureRec.Reset();
+        PreClosureRec.SetCurrentKey("Pre-Closure No.");
+        while PreClosureRec.Get(Format(NextNo, 0, '<Integer,5,0>')) do
+            NextNo += 1;
+        exit(Format(NextNo, 0, '<Integer,5,0>'));
     end;
 
 }
