@@ -388,6 +388,85 @@ table 50100 "KINTO Country Setup"
     trigger OnInsert()
     begin
         ValidateDefaults();
+        SeedSeriesDefaults();
+        SeedCalcLimitDefaults();
+    end;
+
+    // Um setup novo por pais precisa sair da criacao ja funcional: sem series,
+    // os documentos nascem com PK vazia ("Ja existe o registro ... No.=''").
+    local procedure SeedSeriesDefaults()
+    var
+        NoSeries: Record "No. Series";
+    begin
+        if "Contract Series" = '' then
+            "Contract Series" := PickSeries('KINTO-CONTR');
+        if "Pricing Series" = '' then
+            "Pricing Series" := PickSeries('KINTO-QUOTE');
+        if "Condition Series" = '' then
+            "Condition Series" := PickSeries('KINTO-COND');
+        if "Ticket Series" = '' then
+            "Ticket Series" := PickSeries('KINTO-TICK');
+        if "Return Series" = '' then
+            "Return Series" := PickSeries('KINTO-RET');
+        if "Substitution Series" = '' then
+            "Substitution Series" := PickSeries('KINTO-SUB');
+        if "Settlement Series" = '' then
+            "Settlement Series" := PickSeries('KINTO-STL');
+        if "Recovery Series" = '' then
+            "Recovery Series" := PickSeries('KINTO-REC');
+        if "Claim Series" = '' then
+            "Claim Series" := PickSeries('KINTO-CLM');
+        if "Fine Series" = '' then
+            "Fine Series" := PickSeries('KINTO-FINE');
+        if "Policy Series" = '' then
+            "Policy Series" := PickSeries('KINTO-POL');
+        if "Device Series" = '' then
+            "Device Series" := PickSeries('KINTO-DEV');
+        if "Vehicle Series" = '' then
+            "Vehicle Series" := PickSeries('KINTO-VEH');
+        if "Approval Series" = '' then
+            "Approval Series" := PickSeries('KINTO-APPR');
+        if "Remarketing Offer Series" = '' then
+            "Remarketing Offer Series" := PickSeries('KINTO-RMK');
+        if "Remarketing Sale Series" = '' then
+            "Remarketing Sale Series" := PickSeries('KINTO-RMS');
+        if "Evaluation Series" = '' then
+            "Evaluation Series" := PickSeries('KINTO-EVAL');
+        if "Pre-Closure Series" = '' then
+            "Pre-Closure Series" := PickSeries('KINTO-PCL');
+    end;
+
+    local procedure PickSeries(Code: Code[20]): Code[20]
+    var
+        NoSeries: Record "No. Series";
+    begin
+        if NoSeries.Get(Code) then
+            exit(Code);
+        exit('');
+    end;
+
+    // Limites de calculo com os mesmos defaults do codigo, visiveis desde a
+    // criacao — antes eram 0 e o usuario nao sabia que havia um default oculto.
+    local procedure SeedCalcLimitDefaults()
+    begin
+        if "Excess Km Band 1 %" = 0 then
+            "Excess Km Band 1 %" := 10;
+        if "Service Credit Cap %" = 0 then
+            "Service Credit Cap %" := 2;
+        if "Preventive Interval Months" = 0 then
+            "Preventive Interval Months" := 6;
+        if "Contract Notice Days" = 0 then
+            "Contract Notice Days" := 60;
+        if "Remarketing Km Deprec. Base" = 0 then
+            "Remarketing Km Deprec. Base" := 300000;
+        if "Remarketing Km Deprec. %" = 0 then
+            "Remarketing Km Deprec. %" := 15;
+        if "Device Daily Charge" = 0 then
+            "Device Daily Charge" := 5;
+        if "Total Loss Threshold %" = 0 then
+            "Total Loss Threshold %" := 70;
+        if "Odometer Tolerance (km)" = 0 then
+            "Odometer Tolerance (km)" := 500;
     end;
 
 
