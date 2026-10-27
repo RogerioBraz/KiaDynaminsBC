@@ -75,7 +75,6 @@ codeunit 50200 "KINTO Contract Billing Mgt."
             Condition."Product Type" := FinancialProduct."Product Type";
             Condition.Description := FinancialProduct.Description;
             Condition."Monthly Amount" := MonthlyAmount;
-            Condition.Active := true; // FIX 27/10: condição recém-criada está ativa
             Condition."Valid From" := Contract."Start Date";
             Condition."Source Quote No." := QuoteHeader."Quote No.";
             Condition."Source Quote Line No." := QuoteItem."Line No.";
@@ -322,6 +321,9 @@ codeunit 50200 "KINTO Contract Billing Mgt."
         IndexEntry: Record "KINTO Price Index Entry";
         NewAmount: Decimal;
         AppliedCount: Integer;
+        i: Integer;
+        RevisionIds: Array[100] of Code[20];
+        RevisionCount: Integer;
         NoIndexErr: Label 'Contract %1 has no price index configured.';
     begin
         if Contract."Price Index Code" = '' then
@@ -332,15 +334,30 @@ codeunit 50200 "KINTO Contract Billing Mgt."
         if not IndexEntry.FindLast() then
             exit;
 
+        // FIX 27/10: coleta os Condition IDs ANTES de revisar — CreateRevision insere
+        // a revisão como nova linha Active=true e o repeat-until dinâmico pegava a
+        // revisão recém-criada, aplicando o reajuste em cascata (510× ×1.05 → overflow)
         Condition.Reset();
         Condition.SetRange("Contract No.", Contract."Contract No.");
         Condition.SetRange(Active, true);
-        if Condition.FindSet() then
+        if Condition.FindSet() then begin
+            Clear(RevisionIds);
+            Clear(RevisionCount);
             repeat
-                NewAmount := Condition."Monthly Amount" * (1 + MinDec(IndexEntry."Variation %", Contract."Index Cap %") / 100);
-                Condition.CreateRevision(Round(NewAmount, 0.01), CalcDate('<CM+1D>', AdjustmentMonth));
-                AppliedCount += 1;
-            until Condition.Next() = 0;
+                RevisionCount += 1;
+                RevisionIds[RevisionCount] := Condition."Condition ID";
+            until (Condition.Next() = 0) or (RevisionCount >= ArrayLen(RevisionIds));
+            for i := 1 to RevisionCount do begin
+                Condition.Reset();
+                Condition.SetRange("Contract No.", Contract."Contract No.");
+                Condition.SetRange("Condition ID", RevisionIds[i]);
+                if Condition.FindFirst() then begin
+                    NewAmount := Condition."Monthly Amount" * (1 + MinDec(IndexEntry."Variation %", Contract."Index Cap %") / 100);
+                    Condition.CreateRevision(Round(NewAmount, 0.01), CalcDate('<CM+1D>', AdjustmentMonth));
+                    AppliedCount += 1;
+                end;
+            end;
+        end;
 
         if AppliedCount > 0 then
             LogChange(Contract."Contract No.", "KINTO Contract Change Type"::ConditionChanged,
