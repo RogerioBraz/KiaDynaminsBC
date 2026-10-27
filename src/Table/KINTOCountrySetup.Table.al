@@ -181,6 +181,203 @@ table 50100 "KINTO Country Setup"
 
         field(149; "IPVA Rate %"; Decimal) { Caption = 'IPVA Rate %'; DecimalPlaces = 0 : 5; }
         field(150; "PIS COFINS Credit %"; Decimal) { Caption = 'PIS/COFINS Credit on Depreciation %'; DecimalPlaces = 0 : 5; }
+
+        // ============================================================
+        // SERIES DE NUMERACAO (configuraveis por pais/empresa)
+        // Antes ficavam hardcoded no OnInsert das tabelas: o usuario nao
+        // conseguia trocar a numeracao e um ambiente sem a serie gravava
+        // PK vazia ("Ja existe o registro ... No.=''").
+        // ============================================================
+        field(200; "Pricing Series"; Code[20])
+        {
+            Caption = 'Quote No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(201; "Contract Series"; Code[20])
+        {
+            Caption = 'Contract No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(202; "Condition Series"; Code[20])
+        {
+            Caption = 'Condition No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(203; "Billing Series"; Code[20])
+        {
+            Caption = 'Billing No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(204; "Ticket Series"; Code[20])
+        {
+            Caption = 'Maintenance Ticket No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(205; "Return Series"; Code[20])
+        {
+            Caption = 'Return No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(206; "Substitution Series"; Code[20])
+        {
+            Caption = 'Substitution No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(207; "Settlement Series"; Code[20])
+        {
+            Caption = 'Settlement No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(208; "Recovery Series"; Code[20])
+        {
+            Caption = 'Recovery Case No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(209; "Claim Series"; Code[20])
+        {
+            Caption = 'Claim No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(210; "Fine Series"; Code[20])
+        {
+            Caption = 'Traffic Fine No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(211; "Policy Series"; Code[20])
+        {
+            Caption = 'Insurance Policy No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(212; "Device Series"; Code[20])
+        {
+            Caption = 'Telematic Device No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(213; "Vehicle Series"; Code[20])
+        {
+            Caption = 'Vehicle No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(214; "Approval Series"; Code[20])
+        {
+            Caption = 'Approval Request No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(215; "Remarketing Offer Series"; Code[20])
+        {
+            Caption = 'Remarketing Offer No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(216; "Remarketing Sale Series"; Code[20])
+        {
+            Caption = 'Remarketing Sale No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(217; "Evaluation Series"; Code[20])
+        {
+            Caption = 'Contract Evaluation No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(218; "Pre-Closure Series"; Code[20])
+        {
+            Caption = 'Pre-Closure No. Series';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+
+        // ============================================================
+        // LIMITES DE CALCULO (antes hardcoded nos codeunits)
+        // ============================================================
+        field(230; "Excess Km Band 1 %"; Decimal)
+        {
+            Caption = 'Excess Km Band 1 Threshold %';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 0 : 5;
+            InitValue = 10;
+        }
+        field(231; "Service Credit Cap %"; Decimal)
+        {
+            Caption = 'Service Credit Cap % of Monthly Billing';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 0 : 5;
+            InitValue = 2;
+        }
+        field(232; "SLA Penalty Cap %"; Decimal)
+        {
+            Caption = 'Default SLA Penalty Cap %';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 0 : 5;
+        }
+        field(233; "Preventive Interval Months"; Integer)
+        {
+            Caption = 'Default Preventive Interval (months)';
+            DataClassification = CustomerContent;
+            InitValue = 6;
+        }
+        field(234; "Contract Notice Days"; Integer)
+        {
+            Caption = 'Expiry Notice Days';
+            DataClassification = CustomerContent;
+            InitValue = 60;
+        }
+        field(235; "Auto Extend Contracts"; Boolean)
+        {
+            Caption = 'Auto-Extend Expired Contracts';
+            DataClassification = CustomerContent;
+        }
+        field(236; "Remarketing Km Deprec. Base"; Decimal)
+        {
+            Caption = 'Remarketing Depreciation Base (km)';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 0 : 1;
+            InitValue = 300000;
+        }
+        field(237; "Remarketing Km Deprec. %"; Decimal)
+        {
+            Caption = 'Remarketing Max Depreciation % at Base Km';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 0 : 5;
+            InitValue = 15;
+        }
+        field(238; "Device Daily Charge"; Decimal)
+        {
+            Caption = 'Device Storage Daily Charge';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 2 : 2;
+            InitValue = 5;
+        }
+        field(239; "Total Loss Threshold %"; Decimal)
+        {
+            Caption = 'Total Loss Threshold % of Vehicle Value';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 0 : 5;
+            InitValue = 70;
+        }
+        field(240; "Odometer Tolerance (km)"; Decimal)
+        {
+            Caption = 'Default Preventive Odometer Tolerance (km)';
+            DataClassification = CustomerContent;
+            DecimalPlaces = 0 : 1;
+            InitValue = 500;
+        }
     }
 
     keys
@@ -191,6 +388,95 @@ table 50100 "KINTO Country Setup"
     trigger OnInsert()
     begin
         ValidateDefaults();
+    end;
+
+
+    // Devolve a serie configurada para o pais do documento. Se o pais nao tiver
+    // setup ou o campo estiver vazio, devolve o default historico — assim nada
+    // quebra em ambiente que ainda nao configurou as series novas.
+    procedure GetDefaultSeries(FieldName: Text; Fallback: Code[20]): Code[20]
+    var
+        CountrySetup: Record "KINTO Country Setup";
+        CountryCode: Code[10];
+    begin
+        CountryCode := GetActiveCountryCode();
+        if (CountryCode <> '') and CountrySetup.Get(CountryCode) then
+            case FieldName of
+                'Contract Series':
+                    if CountrySetup."Contract Series" <> '' then
+                        exit(CountrySetup."Contract Series");
+                'Condition Series':
+                    if CountrySetup."Condition Series" <> '' then
+                        exit(CountrySetup."Condition Series");
+                'Ticket Series':
+                    if CountrySetup."Ticket Series" <> '' then
+                        exit(CountrySetup."Ticket Series");
+                'Return Series':
+                    if CountrySetup."Return Series" <> '' then
+                        exit(CountrySetup."Return Series");
+                'Substitution Series':
+                    if CountrySetup."Substitution Series" <> '' then
+                        exit(CountrySetup."Substitution Series");
+                'Settlement Series':
+                    if CountrySetup."Settlement Series" <> '' then
+                        exit(CountrySetup."Settlement Series");
+                'Recovery Series':
+                    if CountrySetup."Recovery Series" <> '' then
+                        exit(CountrySetup."Recovery Series");
+                'Claim Series':
+                    if CountrySetup."Claim Series" <> '' then
+                        exit(CountrySetup."Claim Series");
+                'Fine Series':
+                    if CountrySetup."Fine Series" <> '' then
+                        exit(CountrySetup."Fine Series");
+                'Policy Series':
+                    if CountrySetup."Policy Series" <> '' then
+                        exit(CountrySetup."Policy Series");
+                'Device Series':
+                    if CountrySetup."Device Series" <> '' then
+                        exit(CountrySetup."Device Series");
+                'Vehicle Series':
+                    if CountrySetup."Vehicle Series" <> '' then
+                        exit(CountrySetup."Vehicle Series");
+                'Approval Series':
+                    if CountrySetup."Approval Series" <> '' then
+                        exit(CountrySetup."Approval Series");
+                'Remarketing Offer Series':
+                    if CountrySetup."Remarketing Offer Series" <> '' then
+                        exit(CountrySetup."Remarketing Offer Series");
+                'Remarketing Sale Series':
+                    if CountrySetup."Remarketing Sale Series" <> '' then
+                        exit(CountrySetup."Remarketing Sale Series");
+                'Evaluation Series':
+                    if CountrySetup."Evaluation Series" <> '' then
+                        exit(CountrySetup."Evaluation Series");
+                'Pre-Closure Series':
+                    if CountrySetup."Pre-Closure Series" <> '' then
+                        exit(CountrySetup."Pre-Closure Series");
+                'Pricing Series':
+                    if CountrySetup."Pricing Series" <> '' then
+                        exit(CountrySetup."Pricing Series");
+            end;
+        exit(Fallback);
+    end;
+
+    // Pais "ativo" da sessao: o unico setup existente, ou o setup marcado como
+    // default. Evita exigir que cada documento carregue o pais so para numerar.
+    local procedure GetActiveCountryCode(): Code[10]
+    var
+        CountrySetup: Record "KINTO Country Setup";
+        Count: Integer;
+    begin
+        CountrySetup.Reset();
+        if CountrySetup.FindSet() then
+            repeat
+                Count += 1;
+                if Count > 1 then
+                    exit(''); // mais de um pais: nao ha como inferir
+            until CountrySetup.Next() = 0;
+        if Count = 1 then
+            exit(CountrySetup."Country Code");
+        exit('');
     end;
 
     local procedure ValidateDefaults()

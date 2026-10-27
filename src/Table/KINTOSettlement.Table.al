@@ -45,11 +45,13 @@ table 50465 "KINTO Settlement"
 
     trigger OnInsert()
     var
+        CountrySetup: Record "KINTO Country Setup";
         NoSeries: Codeunit "No. Series";
     begin
         if "Settlement No." = '' then begin
             if "No. Series" = '' then
-                "No. Series" := 'KINTO-STL';
+                if "No. Series" = '' then
+                "No. Series" := CountrySetup.GetDefaultSeries('Settlement Series', 'KINTO-STL');
             "Settlement No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
     end;

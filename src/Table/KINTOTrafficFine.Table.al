@@ -117,13 +117,15 @@ table 50300 "KINTO Traffic Fine"
 
     trigger OnInsert()
     var
+        CountrySetup: Record "KINTO Country Setup";
         NoSeries: Codeunit "No. Series";
     begin
         "Created By" := UserId;
         "Created DateTime" := CurrentDateTime;
         if "Fine No." = '' then begin
             if "No. Series" = '' then
-                "No. Series" := 'KINTO-FINE';
+                if "No. Series" = '' then
+                "No. Series" := CountrySetup.GetDefaultSeries('Fine Series', 'KINTO-FINE');
             "Fine No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
     end;

@@ -66,13 +66,15 @@ table 50402 "KINTO Recovery Case"
 
     trigger OnInsert()
     var
+        CountrySetup: Record "KINTO Country Setup";
         NoSeries: Codeunit "No. Series";
     begin
         "Created By" := UserId;
         "Created DateTime" := CurrentDateTime;
         if "Case No." = '' then begin
             if "No. Series" = '' then
-                "No. Series" := 'KINTO-REC';
+                if "No. Series" = '' then
+                "No. Series" := CountrySetup.GetDefaultSeries('Recovery Series', 'KINTO-REC');
             "Case No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
     end;

@@ -45,11 +45,13 @@ table 50442 "KINTO Telematic Device"
 
     trigger OnInsert()
     var
+        CountrySetup: Record "KINTO Country Setup";
         NoSeries: Codeunit "No. Series";
     begin
         if "Device No." = '' then begin
             if "No. Series" = '' then
-                "No. Series" := 'KINTO-DEV';
+                if "No. Series" = '' then
+                "No. Series" := CountrySetup.GetDefaultSeries('Device Series', 'KINTO-DEV');
             "Device No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
     end;

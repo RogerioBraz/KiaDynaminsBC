@@ -33,7 +33,7 @@ codeunit 50215 "KINTO Service Credit Mgt."
         CreditAmount := Round(DaysWithoutService * (Contract."Monthly Rent" / 30), 0.01);
 
         // Cap 2% do faturamento do mês
-        CapAmount := Round(MonthRevenue * 0.02, 0.01);
+        CapAmount := Round(MonthRevenue * (GetCreditCapPercent(Contract) / 100), 0.01);
         if CreditAmount > CapAmount then begin
             CreditAmount := CapAmount;
             // registra que o cap aplicou (na linha de crédito criada abaixo)
@@ -81,5 +81,16 @@ codeunit 50215 "KINTO Service Credit Mgt."
         BillingLine."Created By" := CopyStr(UserId, 1, 50);
         BillingLine."Created DateTime" := CurrentDateTime;
         BillingLine.Insert(true);
+    end;
+
+    // Cap do credito de servico configuravel por pais. Default 2%.
+    local procedure GetCreditCapPercent(Contract: Record "KINTO Vehicle Contract"): Decimal
+    var
+        CountrySetup: Record "KINTO Country Setup";
+    begin
+        if (Contract."Country Code" <> '') and CountrySetup.Get(Contract."Country Code") then
+            if CountrySetup."Service Credit Cap %" > 0 then
+                exit(CountrySetup."Service Credit Cap %");
+        exit(2);
     end;
 }

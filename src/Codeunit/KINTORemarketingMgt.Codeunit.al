@@ -53,7 +53,7 @@ codeunit 50171 "KINTO Remarketing Mgt."
 
         // Depreciação por km (AR: Infoauto/ACARA/CCA − depreciação por km)
         if Vehicle."Current Odometer" > 0 then
-            WeightedPrice := WeightedPrice * (1 - (Vehicle."Current Odometer" / 300000 * 0.15));
+            WeightedPrice := WeightedPrice * (1 - (Vehicle."Current Odometer" / GetDeprecBaseKm(Vehicle."Country Code") * (GetDeprecPercent(Vehicle."Country Code") / 100)));
         // (depreciação máx. 15% para 300.000 km — simplificação configurável depois)
 
         exit(Round(WeightedPrice, 1));
@@ -261,5 +261,25 @@ codeunit 50171 "KINTO Remarketing Mgt."
                 StrSubstNo('Asset written off — sale %1', Sale."Sale No."));
         Sale."Asset Written Off" := true;
         Sale.Modify(true);
+    end;
+
+    local procedure GetDeprecBaseKm(CountryCode: Code[10]): Decimal
+    var
+        CountrySetup: Record "KINTO Country Setup";
+    begin
+        if (CountryCode <> '') and CountrySetup.Get(CountryCode) then
+            if CountrySetup."Remarketing Km Deprec. Base" > 0 then
+                exit(CountrySetup."Remarketing Km Deprec. Base");
+        exit(300000);
+    end;
+
+    local procedure GetDeprecPercent(CountryCode: Code[10]): Decimal
+    var
+        CountrySetup: Record "KINTO Country Setup";
+    begin
+        if (CountryCode <> '') and CountrySetup.Get(CountryCode) then
+            if CountrySetup."Remarketing Km Deprec. %" > 0 then
+                exit(CountrySetup."Remarketing Km Deprec. %");
+        exit(15);
     end;
 }

@@ -40,7 +40,7 @@ codeunit 50214 "KINTO Mileage Closing Mgt."
             exit(0);
 
         // Faixa 1: até 10% do contratado = tarifa 1; acima = tarifa 2
-        Band1Km := ContractedTotalMileage(Contract) * 0.1;
+        Band1Km := ContractedTotalMileage(Contract) * (GetBand1Percent(Contract) / 100);
         if ExcessKm <= Band1Km then
             Charge := ExcessKm * Contract."Excess Km Price (up to 10%)"
         else
@@ -67,5 +67,16 @@ codeunit 50214 "KINTO Mileage Closing Mgt."
             exit(0);
         // Meses decorridos (mínimo 1)
         exit((EndDate - Contract."Start Date") div 30 + 1);
+    end;
+
+    // Limite da faixa 1 configuravel por pais (Country Setup). Default 10%.
+    local procedure GetBand1Percent(Contract: Record "KINTO Vehicle Contract"): Decimal
+    var
+        CountrySetup: Record "KINTO Country Setup";
+    begin
+        if (Contract."Country Code" <> '') and CountrySetup.Get(Contract."Country Code") then
+            if CountrySetup."Excess Km Band 1 %" > 0 then
+                exit(CountrySetup."Excess Km Band 1 %");
+        exit(10);
     end;
 }

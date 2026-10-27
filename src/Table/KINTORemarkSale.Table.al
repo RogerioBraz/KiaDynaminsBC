@@ -47,11 +47,13 @@ table 50449 "KINTO Remarketing Sale"
 
     trigger OnInsert()
     var
+        CountrySetup: Record "KINTO Country Setup";
         NoSeries: Codeunit "No. Series";
     begin
         if "Sale No." = '' then begin
             if "No. Series" = '' then
-                "No. Series" := 'KINTO-RMS';
+                if "No. Series" = '' then
+                "No. Series" := CountrySetup.GetDefaultSeries('Remarketing Sale Series', 'KINTO-RMS');
             "Sale No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
     end;

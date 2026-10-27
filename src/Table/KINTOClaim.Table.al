@@ -45,11 +45,13 @@ table 50469 "KINTO Claim"
 
     trigger OnInsert()
     var
+        CountrySetup: Record "KINTO Country Setup";
         NoSeries: Codeunit "No. Series";
     begin
         if "Claim No." = '' then begin
             if "No. Series" = '' then
-                "No. Series" := 'KINTO-CLM';
+                if "No. Series" = '' then
+                "No. Series" := CountrySetup.GetDefaultSeries('Claim Series', 'KINTO-CLM');
             "Claim No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
     end;
@@ -61,7 +63,7 @@ table 50469 "KINTO Claim"
         if "Market Value" = 0 then
             Error(MarketValueZeroErr);
         "Loss Ratio %" := Round("Damage Amount" / "Market Value" * 100, 0.01);
-        "Total Destruction" := "Loss Ratio %" >= 70;
+        "Total Destruction" := "Loss Ratio %" >= GetTotalLossThreshold();
         if "Total Destruction" then
             "Claim Class" := "Claim Class"::"Total Destruction";
         Modify(true);
@@ -69,4 +71,17 @@ table 50469 "KINTO Claim"
 
     var
         MarketValueZeroErr: Label 'Market Value must be informed to classify.';
+
+    // Limite de destruicao total configuravel por pais (Country Setup, default 70%)
+    local procedure GetTotalLossThreshold(): Decimal
+    var
+        CountrySetup: Record "KINTO Country Setup";
+        Contract: Record "KINTO Vehicle Contract";
+    begin
+        if ("Contract No." <> '') and Contract.Get("Contract No.") then
+            if (Contract."Country Code" <> '') and CountrySetup.Get(Contract."Country Code") then
+                if CountrySetup."Total Loss Threshold %" > 0 then
+                    exit(CountrySetup."Total Loss Threshold %");
+        exit(70);
+    end;
 }

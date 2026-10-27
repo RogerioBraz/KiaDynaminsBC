@@ -68,6 +68,7 @@ table 50201 "KINTO Contract Condition"
 
     trigger OnInsert()
     var
+        CountrySetup: Record "KINTO Country Setup";
         NoSeries: Codeunit "No. Series";
         Contract: Record "KINTO Vehicle Contract";
     begin
@@ -76,7 +77,8 @@ table 50201 "KINTO Contract Condition"
 
         if "Condition ID" = '' then begin
             if "No. Series" = '' then
-                "No. Series" := 'KINTO-COND';
+                if "No. Series" = '' then
+                "No. Series" := CountrySetup.GetDefaultSeries('Condition Series', 'KINTO-COND');
             "Condition ID" := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
 

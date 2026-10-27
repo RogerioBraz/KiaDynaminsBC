@@ -89,6 +89,7 @@ table 50210 "KINTO Maintenance Ticket"
 
     trigger OnInsert()
     var
+        CountrySetup: Record "KINTO Country Setup";
         NoSeries: Codeunit "No. Series";
     begin
         "Created By" := UserId;
@@ -98,7 +99,8 @@ table 50210 "KINTO Maintenance Ticket"
 
         if "Ticket No." = '' then begin
             if "No. Series" = '' then
-                "No. Series" := 'KINTO-TICK';
+                if "No. Series" = '' then
+                "No. Series" := CountrySetup.GetDefaultSeries('Ticket Series', 'KINTO-TICK');
             "Ticket No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
     end;

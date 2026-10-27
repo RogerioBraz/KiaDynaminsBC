@@ -139,6 +139,7 @@ table 50200 "KINTO Vehicle Contract"
 
     trigger OnInsert()
     var
+        CountrySetup: Record "KINTO Country Setup";
         NoSeries: Codeunit "No. Series";
     begin
         "Created By" := UserId;
@@ -147,7 +148,8 @@ table 50200 "KINTO Vehicle Contract"
 
         if "Contract No." = '' then begin
             if "No. Series" = '' then
-                "No. Series" := 'KINTO-CONTR';
+                if "No. Series" = '' then
+                "No. Series" := CountrySetup.GetDefaultSeries('Contract Series', 'KINTO-CONTR');
             "Contract No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
     end;

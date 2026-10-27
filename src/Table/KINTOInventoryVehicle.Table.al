@@ -42,6 +42,7 @@ table 50102 "KINTO Inventory Vehicle"
 
     trigger OnInsert()
     var
+        CountrySetup: Record "KINTO Country Setup";
         NoSeries: Codeunit "No. Series";
     begin
         if "Vehicle Condition" = "Vehicle Condition"::New then
@@ -49,7 +50,8 @@ table 50102 "KINTO Inventory Vehicle"
 
         if "Vehicle No." = '' then begin
             if "No. Series" = '' then
-                "No. Series" := 'KINTO-VEH';
+                if "No. Series" = '' then
+                "No. Series" := CountrySetup.GetDefaultSeries('Vehicle Series', 'KINTO-VEH');
             "Vehicle No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
     end;

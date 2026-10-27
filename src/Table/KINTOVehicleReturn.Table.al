@@ -94,13 +94,15 @@ table 50400 "KINTO Vehicle Return"
 
     trigger OnInsert()
     var
+        CountrySetup: Record "KINTO Country Setup";
         NoSeries: Codeunit "No. Series";
     begin
         "Created By" := UserId;
         "Created DateTime" := CurrentDateTime;
         if "Return No." = '' then begin
             if "No. Series" = '' then
-                "No. Series" := 'KINTO-RET';
+                if "No. Series" = '' then
+                "No. Series" := CountrySetup.GetDefaultSeries('Return Series', 'KINTO-RET');
             "Return No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
     end;

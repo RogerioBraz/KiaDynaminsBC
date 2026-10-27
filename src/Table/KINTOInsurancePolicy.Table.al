@@ -45,11 +45,13 @@ table 50444 "KINTO Insurance Policy"
 
     trigger OnInsert()
     var
+        CountrySetup: Record "KINTO Country Setup";
         NoSeries: Codeunit "No. Series";
     begin
         if "Policy No." = '' then begin
             if "No. Series" = '' then
-                "No. Series" := 'KINTO-POL';
+                if "No. Series" = '' then
+                "No. Series" := CountrySetup.GetDefaultSeries('Policy Series', 'KINTO-POL');
             "Policy No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
     end;

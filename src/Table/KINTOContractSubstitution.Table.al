@@ -48,11 +48,13 @@ table 50464 "KINTO Contract Substitution"
 
     trigger OnInsert()
     var
+        CountrySetup: Record "KINTO Country Setup";
         NoSeries: Codeunit "No. Series";
     begin
         if "Substitution No." = '' then begin
             if "No. Series" = '' then
-                "No. Series" := 'KINTO-SUB';
+                if "No. Series" = '' then
+                "No. Series" := CountrySetup.GetDefaultSeries('Substitution Series', 'KINTO-SUB');
             "Substitution No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
     end;

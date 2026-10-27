@@ -65,9 +65,13 @@ codeunit 50172 "KINTO Device Aging Mgt."
     local procedure GetDailyCharge(CountryCode: Code[10]): Decimal
     var
         Setup: Record "KINTO Remarketing Setup";
+        CountrySetup: Record "KINTO Country Setup";
     begin
-        // Diária de armazenagem do dispositivo — configurável no setup (default 5)
+        // Diaria de armazenagem do dispositivo configuravel por pais (default 5)
         if Setup.Get(CountryCode) then;
+        if CountrySetup.Get(CountryCode) then
+            if CountrySetup."Device Daily Charge" > 0 then
+                exit(CountrySetup."Device Daily Charge");
         exit(5);
     end;
 

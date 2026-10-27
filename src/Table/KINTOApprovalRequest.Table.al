@@ -32,6 +32,7 @@ table 50117 "KINTO Approval Request"
 
     trigger OnInsert()
     var
+        CountrySetup: Record "KINTO Country Setup";
         NoSeries: Codeunit "No. Series";
     begin
         "Request DateTime" := CurrentDateTime;
@@ -40,7 +41,8 @@ table 50117 "KINTO Approval Request"
 
         if "Request ID" = '' then begin
             if "No. Series" = '' then
-                "No. Series" := 'KINTO-APPR';
+                if "No. Series" = '' then
+                "No. Series" := CountrySetup.GetDefaultSeries('Approval Series', 'KINTO-APPR');
             "Request ID" := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
     end;
