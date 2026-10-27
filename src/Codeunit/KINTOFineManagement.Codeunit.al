@@ -104,12 +104,16 @@ codeunit 50205 "KINTO Fine Management"
             Contract.Status::Terminated);
         if Contract.FindSet() then
             repeat
-                if (Contract."Current End Date" <> 0D) and (Contract."Current End Date" < InfractionDate) then
+                // FIX 27/10: grace period é janela APÓS o fim do contrato — a infração
+                // precisa ser POSTERIOR ao Current End Date (antes, qualquer infração
+                // dentro da vigência caía no grace e virava Linked).
+                if (Contract."Current End Date" <> 0D) and (InfractionDate > Contract."Current End Date") then begin
                     if Authority.Get(GetLastAuthorityCode()) then
                         if Authority."Grace Period Days" > 0 then
                             GraceDays := Authority."Grace Period Days";
-                if InfractionDate <= CalcDate(StrSubstNo('<+%1D>', GraceDays), Contract."Current End Date") then
-                    exit(true);
+                    if InfractionDate <= CalcDate(StrSubstNo('<+%1D>', GraceDays), Contract."Current End Date") then
+                        exit(true);
+                end;
             until Contract.Next() = 0;
         exit(false);
     end;
