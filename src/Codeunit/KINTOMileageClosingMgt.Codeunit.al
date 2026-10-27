@@ -9,10 +9,12 @@ codeunit 50214 "KINTO Mileage Closing Mgt."
 
     procedure ContractedTotalMileage(Contract: Record "KINTO Vehicle Contract"): Decimal
     begin
-        // Km contratado total = mensal × meses decorridos (arredondado p/ baixo)
-        if Contract."Monthly Mileage (km)" = 0 then
+        // FIX 27/10: km contratado total = mensal × PRAZO do contrato (não meses decorridos).
+        // O cliente contrata 12×1.500 = 18.000 km — a devolução antecipada cobra o excesso
+        // sobre o total contratado (meses decorridos davam contratado menor e cobrança maior).
+        if (Contract."Monthly Mileage (km)" = 0) or (Contract."Contract Term (Months)" = 0) then
             exit(0);
-        exit(Contract."Monthly Mileage (km)" * ContractMonths(Contract));
+        exit(Contract."Monthly Mileage (km)" * Contract."Contract Term (Months)");
     end;
 
     procedure CalcExcessKm(Contract: Record "KINTO Vehicle Contract"; OdometerAtReturn: Decimal): Decimal
