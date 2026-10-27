@@ -323,12 +323,23 @@ codeunit 50157 "KINTO Demo Data Load"
         BillingMgt: Codeunit "KINTO Contract Billing Mgt.";
         CreditMgt: Codeunit "KINTO Service Credit Mgt.";
         Contract: Record "KINTO Vehicle Contract";
+        Condition: Record "KINTO Contract Condition";
         CreditAmount: Decimal;
         ContractNo: Code[20];
         BillingMonth: Date;
     begin
         ContractNo := Seed.CreateActiveContract('BR', 24, 1500, 3.4);
         Contract.Get(ContractNo);
+        // FIX 27/10: RequestServiceCredit calcula com Contract."Monthly Rent" — o contrato
+        // demo não preenche o campo (billing usa as condições) e o crédito saía R$ 0.
+        if Contract."Monthly Rent" = 0 then begin
+            Condition.SetRange("Contract No.", ContractNo);
+            Condition.SetRange("Financial Product Code", 'RENT');
+            if Condition.FindFirst() then begin
+                Contract."Monthly Rent" := Condition."Monthly Amount";
+                Contract.Modify(true);
+            end;
+        end;
         BillingMonth := CalcDate('<-CM>', WorkDate());
         BillingMgt.GenerateBillingForContract(Contract, BillingMonth);
         // 30 dias sem serviço = mês inteiro → estoura o cap de 2%
