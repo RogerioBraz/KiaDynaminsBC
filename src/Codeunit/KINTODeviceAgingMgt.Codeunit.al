@@ -45,8 +45,10 @@ codeunit 50172 "KINTO Device Aging Mgt."
     var
         Charge: Record "KINTO Device Aging Charge";
     begin
+        // FIX 27/10: device sem vendor NÃO bloqueia o lote — pula (era Error e um
+        // device antigo sem vendor abortava toda a geração de aging)
         if Device."Vendor No." = '' then
-            Error(NoVendorErr, Device."Device No.");
+            exit;
 
         Charge.Init();
         Charge."Entry No." := Charge.NextEntryNo();
