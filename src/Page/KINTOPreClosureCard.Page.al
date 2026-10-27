@@ -46,7 +46,7 @@ page 60014 "KINTO Pre-Closure Card"
             {
                 Caption = 'Recalculate Forecast';
                 ApplicationArea = All;
-                Image = Refresh;
+                Image = Undo;
                 trigger OnAction()
                 begin
                     Rec.CalcForecasts();
@@ -58,7 +58,7 @@ page 60014 "KINTO Pre-Closure Card"
             {
                 Caption = 'Register Notice Sent';
                 ApplicationArea = All;
-                Image = Send;
+                Image = SendTo;
                 trigger OnAction()
                 begin
                     Rec."Notice Sent Date" := Today;
@@ -72,7 +72,7 @@ page 60014 "KINTO Pre-Closure Card"
             {
                 Caption = 'Convert to Return';
                 ApplicationArea = All;
-                Image = Move;
+                Image = TransferOrder;
                 trigger OnAction()
                 var
                     PreClosureMgt: Codeunit "KINTO Pre-Closure Mgt.";

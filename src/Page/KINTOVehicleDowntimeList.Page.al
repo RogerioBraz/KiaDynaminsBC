@@ -34,7 +34,7 @@ page 60009 "KINTO Vehicle Downtime List"
             {
                 Caption = 'Create Service Credits';
                 ApplicationArea = All;
-                Image = Process;
+                Image = Calculate;
                 trigger OnAction()
                 var
                     DowntimeMgt: Codeunit "KINTO Downtime Mgt.";

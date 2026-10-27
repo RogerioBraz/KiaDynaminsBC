@@ -33,10 +33,12 @@ table 60003 "KINTO Contract Clause Link"
     }
 
     trigger OnInsert()
+    var
+        ContractClause: Record "KINTO Contract Clause";
     begin
         "Added DateTime" := CurrentDateTime;
         if "Clause Text" = '' then
-            if "KINTO Contract Clause".Get("Clause Code") then
-                "Clause Text" := CopyStr("KINTO Contract Clause"."Clause Text", 1, 2048);
+            if ContractClause.Get("Clause Code") then
+                "Clause Text" := CopyStr(ContractClause."Clause Text", 1, 2048);
     end;
 }

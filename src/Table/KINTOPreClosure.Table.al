@@ -53,6 +53,7 @@ table 60011 "KINTO Pre-Closure"
         BillingLine: Record "KINTO Billing Line";
         ExcessKm: Decimal;
         MonthsToReturn: Integer;
+        Amount: Decimal;
     begin
         if not Contract.Get("Contract No.") then
             exit;
@@ -84,6 +85,8 @@ table 60011 "KINTO Pre-Closure"
     end;
 
     trigger OnInsert()
+    var
+        NoSeries: Codeunit "No. Series";
     begin
         "Created By" := UserId;
         "Created DateTime" := CurrentDateTime;
@@ -91,10 +94,8 @@ table 60011 "KINTO Pre-Closure"
             if "No. Series" = '' then
                 "No. Series" := 'KINTO-PCL';
             if "No. Series" <> '' then
-                "Pre-Closure No." := "No. Series".GetNextNo("No. Series", WorkDate(), true);
+                "Pre-Closure No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
     end;
 
-    var
-        Amount: Decimal;
 }

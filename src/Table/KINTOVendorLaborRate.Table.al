@@ -13,7 +13,7 @@ table 60000 "KINTO Vendor Labor Rate"
         field(1; "Vendor No."; Code[20])
         {
             Caption = 'Vendor No.';
-            TableRelation = Vendor."No.";
+            TableRelation = "Vendor"."No.";
             NotBlank = true;
         }
         field(2; "Service Type"; Enum "KINTO Maint Service Type")

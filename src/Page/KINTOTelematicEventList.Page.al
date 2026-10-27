@@ -19,7 +19,7 @@ page 60001 "KINTO Telematic Event List"
                 field("Event DateTime"; Rec."Event DateTime") { ApplicationArea = All; }
                 field("Vehicle No."; Rec."Vehicle No.") { ApplicationArea = All; }
                 field("Device No."; Rec."Device No.") { ApplicationArea = All; }
-                field(Trigger; Rec.Trigger) { ApplicationArea = All; }
+                field("Event Trigger"; Rec."Event Trigger") { ApplicationArea = All; }
                 field("Fault Code"; Rec."Fault Code") { ApplicationArea = All; }
                 field("Odometer (km)"; Rec."Odometer (km)") { ApplicationArea = All; }
                 field("Ticket Created"; Rec."Ticket Created") { ApplicationArea = All; }
@@ -38,7 +38,7 @@ page 60001 "KINTO Telematic Event List"
             {
                 Caption = 'Process Events (create tickets)';
                 ApplicationArea = All;
-                Image = Process;
+                Image = Calculate;
                 trigger OnAction()
                 var
                     MaintMgr: Codeunit "KINTO Preventive Maint. Mgt.";

@@ -12,7 +12,7 @@ table 60004 "KINTO Contract Expiry Log"
         field(3; "Action Date"; Date) { Caption = 'Action Date'; }
         field(4; "Action Type"; Enum "KINTO Contract Expiry Action") { Caption = 'Action'; }
         field(5; "Days to Expiry"; Integer) { Caption = 'Days to Expiry'; }
-        field(6; Message; Text[250]) { Caption = 'Message'; }
+        field(6; "Log Message"; Text[250]) { Caption = 'Log Message'; }
         field(7; "Created DateTime"; DateTime) { Caption = 'Created DateTime'; }
     }
 

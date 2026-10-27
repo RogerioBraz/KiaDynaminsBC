@@ -128,7 +128,7 @@ codeunit 60000 "KINTO Preventive Maint. Mgt."
         TelematicEvent.SetFilter("Ticket No.", '');
         if TelematicEvent.FindSet() then
             repeat
-                if TelematicEvent.Trigger <> TelematicEvent.Trigger::None then begin
+                if TelematicEvent."Event Trigger" <> TelematicEvent."Event Trigger"::None then begin
                     // Contrato ativo do veiculo
                     Contract.Reset();
                     Contract.SetRange("Vehicle No.", TelematicEvent."Vehicle No.");
@@ -139,7 +139,7 @@ codeunit 60000 "KINTO Preventive Maint. Mgt."
                         TelematicEvent.Modify(false);
                     end else begin
                         Description := StrSubstNo('Telematic trigger %1 (code %2) - vehicle %3',
-                            TelematicEvent.Trigger, TelematicEvent."Fault Code", TelematicEvent."Vehicle No.");
+                            TelematicEvent."Event Trigger", TelematicEvent."Fault Code", TelematicEvent."Vehicle No.");
                         TicketNo := MaintMgt.CreateTicketFromContract(Contract."Contract No.",
                             "KINTO Maint Ticket Type"::Corrective, Description, AsOfDate, TelematicEvent."Odometer (km)");
                         if TicketNo <> '' then begin

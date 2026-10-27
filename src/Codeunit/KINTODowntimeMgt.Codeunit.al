@@ -57,6 +57,7 @@ codeunit 60002 "KINTO Downtime Mgt."
         Ticket: Record "KINTO Maintenance Ticket";
         SLA: Record "KINTO Service Level";
         Violation: Record "KINTO SLA Violation";
+        ViolationType: Enum "KINTO SLA Violation Type";
         HoursElapsed: Decimal;
         Count: Integer;
     begin
@@ -65,10 +66,10 @@ codeunit 60002 "KINTO Downtime Mgt."
         if Ticket.FindSet() then
             repeat
                 if SLA.Get(Ticket."Contract No.") and SLA.Active then begin
-                    // Horas desde a abertura (tickets sem data de criacao usam Service Date)
-                    HoursElapsed := (CurrentDateTime - CreateDateTime(Ticket."Service Date", 080000T)) / 3600;
+                    // Horas desde a abertura do ticket
+                    HoursElapsed := (CurrentDateTime - Ticket."Created DateTime") / 3600;
                     if (SLA."Resolution Time (hours)" > 0) and (HoursElapsed > SLA."Resolution Time (hours)") then
-                        if RegisterViolation(Ticket, SLA, HoursElapsed, Violation."Violation Type"::"Resolution Breach") then
+                        if RegisterViolation(Ticket, SLA, HoursElapsed, ViolationType::"Resolution Breach") then
                             Count += 1;
                 end;
             until Ticket.Next() = 0;

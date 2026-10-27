@@ -21,7 +21,7 @@ table 60001 "KINTO Telematic Event"
             TableRelation = "KINTO Telematic Device"."Device No.";
         }
         field(4; "Event DateTime"; DateTime) { Caption = 'Event DateTime'; }
-        field(5; Trigger; Enum "KINTO Telematic Trigger") { Caption = 'Trigger'; }
+        field(5; "Event Trigger"; Enum "KINTO Telematic Trigger") { Caption = 'Event Trigger'; }
         field(6; "Fault Code"; Code[20]) { Caption = 'Fault Code'; }
         field(7; "Odometer (km)"; Decimal) { Caption = 'Odometer (km)'; DecimalPlaces = 0 : 1; }
         field(8; "Raw Payload"; Text[2048]) { Caption = 'Raw Payload'; }
@@ -40,6 +40,6 @@ table 60001 "KINTO Telematic Event"
     {
         key(PK; "Entry No.") { Clustered = true; }
         key(Idx1; "Vehicle No.", "Event DateTime") { }
-        key(Idx2; "Ticket Created", Trigger) { }
+        key(Idx2; "Ticket Created", "Event Trigger") { }
     }
 }

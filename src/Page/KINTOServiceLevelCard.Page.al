@@ -3,7 +3,7 @@ page 60010 "KINTO Service Level Card"
     Caption = 'Service Level Agreement';
     PageType = Card;
     SourceTable = "KINTO Service Level";
-    UsageCategory = Administration;
+    UsageCategory = None;
     ApplicationArea = All;
     Editable = true;
     InsertAllowed = true;

@@ -53,7 +53,7 @@ table 60007 "KINTO Vehicle Downtime"
 
     procedure CalcDays()
     begin
-        if ("Start DateTime <> 0DT") and (Rec."End DateTime" <> 0DT) then
+        if (Rec."Start DateTime" <> 0DT) and (Rec."End DateTime" <> 0DT) then
             Rec."Days Lost" := Round((Rec."End DateTime" - Rec."Start DateTime") / 86400, 0.01)
         else
             Rec."Days Lost" := 0;

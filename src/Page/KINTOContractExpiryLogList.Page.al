@@ -19,7 +19,7 @@ page 60007 "KINTO Contract Expiry Log List"
                 field("Contract No."; Rec."Contract No.") { ApplicationArea = All; }
                 field("Action Type"; Rec."Action Type") { ApplicationArea = All; }
                 field("Days to Expiry"; Rec."Days to Expiry") { ApplicationArea = All; }
-                field(Message; Rec.Message) { ApplicationArea = All; }
+                field("Log Message"; Rec."Log Message") { ApplicationArea = All; }
             }
         }
     }

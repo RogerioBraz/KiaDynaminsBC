@@ -49,6 +49,8 @@ table 60005 "KINTO Contract Evaluation"
     }
 
     trigger OnInsert()
+    var
+        NoSeries: Codeunit "No. Series";
     begin
         "Created By" := UserId;
         "Created DateTime" := CurrentDateTime;
@@ -56,7 +58,7 @@ table 60005 "KINTO Contract Evaluation"
             if "No. Series" = '' then
                 "No. Series" := 'KINTO-EVAL';
             if "No. Series" <> '' then
-                "Evaluation No." := "No. Series".GetNextNo("No. Series", WorkDate(), true);
+                "Evaluation No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
         CalculateScore();
     end;
@@ -81,14 +83,13 @@ table 60005 "KINTO Contract Evaluation"
             Score := 1;
         Rec."Overall Score" := Score;
 
-        case true of
-            Score >= 4.5:
-                Rec."Risk Rating" := Rec."Risk Rating"::Low;
-            Score >= 3.0:
-                Rec."Risk Rating" := Rec."Risk Rating"::Medium;
+        if Score >= 4.5 then
+            Rec."Risk Rating" := Rec."Risk Rating"::Low
+        else
+            if Score >= 3.0 then
+                Rec."Risk Rating" := Rec."Risk Rating"::Medium
             else
                 Rec."Risk Rating" := Rec."Risk Rating"::High;
-        end;
     end;
 
     procedure CreateFromContract(ContractNo: Code[20]): Code[20]
@@ -97,6 +98,7 @@ table 60005 "KINTO Contract Evaluation"
         Fine: Record "KINTO Traffic Fine";
         Damage: Record "KINTO Damage Line";
         ReturnRec: Record "KINTO Vehicle Return";
+        Amount: Decimal;
     begin
         if not Contract.Get(ContractNo) then
             exit('');
@@ -125,7 +127,4 @@ table 60005 "KINTO Contract Evaluation"
         Insert(true);
         exit("Evaluation No.");
     end;
-
-    var
-        Amount: Decimal;
 }
