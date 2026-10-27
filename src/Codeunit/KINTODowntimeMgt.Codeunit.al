@@ -153,7 +153,7 @@ codeunit 60002 "KINTO Downtime Mgt."
         BillingLine.SetFilter(Status, '<>%1', BillingLine.Status::Cancelled);
         if not BillingLine.IsEmpty() then begin
             BillingLine.CalcSums(Amount);
-            exit(Amount);
+            exit(BillingLine.Amount);
         end;
 
         // Mes corrente ainda nao faturado: usa o ultimo mes faturado do contrato
@@ -171,7 +171,8 @@ codeunit 60002 "KINTO Downtime Mgt."
             if BillingLine.IsEmpty() then
                 exit(0);
             BillingLine.CalcSums(Amount);
-            exit(Amount);
+            // CalcSums agrega NO CAMPO, nao na variavel local
+            exit(BillingLine.Amount);
         end;
         exit(0);
     end;
@@ -185,7 +186,7 @@ codeunit 60002 "KINTO Downtime Mgt."
         Violation.SetRange("Contract No.", ContractNo);
         Violation.SetFilter("Detected DateTime", '>=%1', CreateDateTime(CalcDate('<CM>', WorkDate()), 0T));
         Violation.CalcSums("Penalty Amount");
-        exit(Amount);
+        exit(Violation."Penalty Amount");
     end;
 
     // Cap de penalidade default do pais (usado quando o SLA do contrato nao define)
@@ -241,7 +242,7 @@ codeunit 60002 "KINTO Downtime Mgt."
             BillingLine.SetFilter(Status, '<>%1', BillingLine.Status::Cancelled);
             if not BillingLine.IsEmpty() then begin
                 BillingLine.CalcSums(Amount);
-                exit(Amount);
+                exit(BillingLine.Amount);
             end;
         end;
         exit(0);

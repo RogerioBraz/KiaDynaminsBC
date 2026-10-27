@@ -28,7 +28,12 @@ codeunit 60000 "KINTO Preventive Maint. Mgt."
             repeat
                 if PlanHeader.Get(Contract."Maintenance Plan ID") and
                    PlanHeader."Preventive Enabled" and
-                   Vehicle.Get(Contract."Vehicle No.") then
+                   Vehicle.Get(Contract."Vehicle No.") then begin
+                    // PlanLine PRECISA estar carregado: ScheduleNext usa o KM
+                    // Interval dele para avancar o proximo odometro. Sem isso o
+                    // intervalo vinha 0 e o contrato voltava a ser devido no
+                    // MESMO odometro na execucao seguinte.
+                    LoadPlanLine(PlanHeader, PlanLine);
                     if IsPreventiveDue(Contract, Vehicle, PlanHeader, PlanLine, AsOfDate, DueKm, DueDate) and
                        not HasOpenPreventiveTicket(Contract."Contract No.") then begin
                         TicketNo := MaintMgt.CreateTicketFromContract(Contract."Contract No.",
@@ -43,10 +48,31 @@ codeunit 60000 "KINTO Preventive Maint. Mgt."
                             Created += 1;
                         end;
                     end;
+                end;
             until Contract.Next() = 0;
         exit(Created);
     end;
 
+
+
+    // Carrega a linha do plano (menor intervalo de km > 0). Idempotente: se ja
+    // estiver carregada para este plano, nao recarrega.
+    local procedure LoadPlanLine(var PlanHeader: Record "KINTO Maintenance Plan Header";
+        var PlanLine: Record "KINTO Maintenance Plan Line")
+    var
+        Line: Record "KINTO Maintenance Plan Line";
+    begin
+        if (PlanLine."Plan ID" = PlanHeader."Plan ID") and (PlanLine."KM Interval" > 0) then
+            exit;
+        Line.Reset();
+        Line.SetRange("Plan ID", PlanHeader."Plan ID");
+        Line.SetFilter("KM Interval", '>0');
+        Line.SetCurrentKey("KM Interval");
+        if Line.FindFirst() then
+            PlanLine := Line
+        else
+            PlanLine.Reset();
+    end;
 
     // Idempotencia real: ja existe ticket preventivo em aberto para o contrato?
     // Sem esta guarda, a mesma preventive pode gerar um ticket novo a cada

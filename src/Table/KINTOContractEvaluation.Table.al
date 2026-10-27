@@ -50,51 +50,35 @@ table 60005 "KINTO Contract Evaluation"
 
     trigger OnInsert()
     var
+        EvaluationRec: Record "KINTO Contract Evaluation";
+        Sequencer: Codeunit "KINTO Entry No. Sequencer";
         NoSeries: Codeunit "No. Series";
         NoSeriesRec: Record "No. Series";
-        EvaluationRec: Record "KINTO Contract Evaluation";
-        Attempts: Integer;
     begin
         "Created By" := UserId;
         "Created DateTime" := CurrentDateTime;
-        if "Evaluation No." = '' then begin
+        // Numeracao a prova de colisao.
+        // Duas fontes, nesta ordem:
+        //  1. a No. Series configurada ('KINTO-EVAL' por default) — respeita o
+        //     prefixo/sequencia que o usuario definiu;
+        //  2. o sequenciador (maior numero EXISTENTE + 1, com memoria de sessao).
+        // O passo 2 existe porque a serie nao e confiavel aqui: o incremento dela
+        // volta com o rollback da transacao de teste enquanto o registro gravado
+        // permanece, entao ela reentrega numero ja usado.
+        // A condicao cobre tambem o caso de o numero ja vir preenchido e em uso
+        // (Insert anterior que falhou): sem isso a 2a tentativa repetiria o mesmo.
+        if ("Evaluation No." = '') or EvaluationRec.Get("Evaluation No.") then begin
+            "Evaluation No." := '';
             if "No. Series" = '' then
                 "No. Series" := 'KINTO-EVAL';
-            if ("No. Series" <> '') and NoSeriesRec.Get("No. Series") then begin
+            if NoSeriesRec.Get("No. Series") then
                 "Evaluation No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
-                // A serie pode devolver numero que JA existe: o incremento da
-                // No. Series volta com o rollback da transacao do teste enquanto
-                // o registro gravado permanece. Avanca com LIMITE — se a serie
-                // nao avancar, cai no sequencial proprio em vez de girar eterno.
-                Attempts := 0;
-                while EvaluationRec.Get("Evaluation No.") and (Attempts < 100) do begin
-                    "Evaluation No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
-                    Attempts += 1;
-                end;
-                if EvaluationRec.Get("Evaluation No.") then
-                    "Evaluation No." := GetNextEvaluationNo();
-            end else
-                // Sem serie configurada: gera um numero sequencial proprio para
-                // nao gravar PK vazia (dois registros com No.='' colidem).
-                "Evaluation No." := GetNextEvaluationNo();
+            if ("Evaluation No." = '') or EvaluationRec.Get("Evaluation No.") then
+                "Evaluation No." := Sequencer.NextEvaluationNo();
         end;
-        if "Evaluation No." = '' then
-            "Evaluation No." := GetNextEvaluationNo();
         CalculateScore();
     end;
 
-    local procedure GetNextEvaluationNo(): Code[20]
-    var
-        Eval: Record "KINTO Contract Evaluation";
-        NextNo: Integer;
-    begin
-        Eval.Reset();
-        Eval.SetCurrentKey("Evaluation No.");
-        NextNo := 1;
-        while Eval.Get(Format(NextNo, 0, '<Integer,5,0>')) do
-            NextNo += 1;
-        exit(Format(NextNo, 0, '<Integer,5,0>'));
-    end;
 
     trigger OnModify()
     begin
