@@ -51,13 +51,14 @@ table 60005 "KINTO Contract Evaluation"
     trigger OnInsert()
     var
         NoSeries: Codeunit "No. Series";
+        NoSeriesRec: Record "No. Series";
     begin
         "Created By" := UserId;
         "Created DateTime" := CurrentDateTime;
         if "Evaluation No." = '' then begin
             if "No. Series" = '' then
                 "No. Series" := 'KINTO-EVAL';
-            if "No. Series" <> '' then
+            if ("No. Series" <> '') and NoSeriesRec.Get("No. Series") then
                 "Evaluation No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
         CalculateScore();

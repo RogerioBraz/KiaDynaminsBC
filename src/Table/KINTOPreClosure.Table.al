@@ -87,13 +87,14 @@ table 60011 "KINTO Pre-Closure"
     trigger OnInsert()
     var
         NoSeries: Codeunit "No. Series";
+        NoSeriesRec: Record "No. Series";
     begin
         "Created By" := UserId;
         "Created DateTime" := CurrentDateTime;
         if "Pre-Closure No." = '' then begin
             if "No. Series" = '' then
                 "No. Series" := 'KINTO-PCL';
-            if "No. Series" <> '' then
+            if ("No. Series" <> '') and NoSeriesRec.Get("No. Series") then
                 "Pre-Closure No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
         end;
     end;
