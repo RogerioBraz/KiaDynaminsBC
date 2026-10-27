@@ -7,7 +7,7 @@ codeunit 50105 "KINTO Commission Calculator"
     var
         CountrySetup: Record "KINTO Country Setup";
     begin
-        if not CountrySetup.Get(QuoteHeader."Country Code") then
+        if not CountrySetup.GetForCompanyOr(QuoteHeader."Country Code") then
             Error(CountrySetupNotFoundErr, QuoteHeader."Country Code");
 
         // DLR Commission

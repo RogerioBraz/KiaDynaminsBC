@@ -14,7 +14,7 @@ codeunit 50172 "KINTO Device Aging Mgt."
         AgingDays: Integer;
         Count: Integer;
     begin
-        if not CountrySetup.Get(CountryCode) then
+        if not CountrySetup.GetForCompanyOr(CountryCode) then
             Error('Country setup %1 not found.', CountryCode);
 
         Device.SetRange(Status, Device.Status::"In Stock");
@@ -69,7 +69,7 @@ codeunit 50172 "KINTO Device Aging Mgt."
     begin
         // Diaria de armazenagem do dispositivo configuravel por pais (default 5)
         if Setup.Get(CountryCode) then;
-        if CountrySetup.Get(CountryCode) then
+        if CountrySetup.GetForCompanyOr(CountryCode) then
             if CountrySetup."Device Daily Charge" > 0 then
                 exit(CountrySetup."Device Daily Charge");
         exit(5);

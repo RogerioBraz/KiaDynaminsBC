@@ -391,6 +391,65 @@ table 50100 "KINTO Country Setup"
     end;
 
 
+
+    // ============================================================
+    // VINCULO EMPRESA -> PAIS
+    // O pais usado pela empresa vem da Company Information
+    // ("KINTO Country Code"). Assim duas empresas no mesmo tenant
+    // podem rodar regras BR e AR sem conflito.
+    // ============================================================
+    procedure GetForCompany(): Boolean
+    var
+        CompanyInformation: Record "Company Information";
+    begin
+        if not CompanyInformation.Get() then
+            exit(false);
+        if CompanyInformation."KINTO Country Code" = '' then
+            exit(false);
+        exit(Get(CompanyInformation."KINTO Country Code"));
+    end;
+
+    // Prefere o vinculo da empresa; cai para o codigo do documento quando a
+    // empresa ainda nao foi configurada (compatibilidade com base existente).
+    procedure GetForCompanyOr(DocumentCountryCode: Code[10]): Boolean
+    begin
+        if GetForCompany() then
+            exit(true);
+        if DocumentCountryCode <> '' then
+            exit(Get(DocumentCountryCode));
+        exit(GetSingleSetup());
+    end;
+
+    // Ultimo recurso: existe exatamente um setup -> usa (base antiga, 1 pais).
+    procedure GetSingleSetup(): Boolean
+    var
+        Count: Integer;
+        FoundCode: Code[10];
+    begin
+        Reset();
+        if FindSet() then
+            repeat
+                Count += 1;
+                FoundCode := "Country Code";
+            until (Next() = 0) or (Count > 1);
+        if Count = 1 then
+            exit(Get(FoundCode));
+        exit(false);
+    end;
+
+    // Codigo do pais usado pela empresa (Company Info), com fallback ao setup unico
+    procedure GetCompanyCountryCode(): Code[10]
+    var
+        CompanyInformation: Record "Company Information";
+        CountrySetup: Record "KINTO Country Setup";
+    begin
+        if CompanyInformation.Get() and (CompanyInformation."KINTO Country Code" <> '') then
+            exit(CompanyInformation."KINTO Country Code");
+        if CountrySetup.GetSingleSetup() then
+            exit(CountrySetup."Country Code");
+        exit('');
+    end;
+
     // Devolve a serie configurada para o pais do documento. Se o pais nao tiver
     // setup ou o campo estiver vazio, devolve o default historico — assim nada
     // quebra em ambiente que ainda nao configurou as series novas.
@@ -399,7 +458,7 @@ table 50100 "KINTO Country Setup"
         CountrySetup: Record "KINTO Country Setup";
         CountryCode: Code[10];
     begin
-        CountryCode := GetActiveCountryCode();
+        CountryCode := GetCompanyCountryCode();
         if (CountryCode <> '') and CountrySetup.Get(CountryCode) then
             case FieldName of
                 'Contract Series':
@@ -460,24 +519,6 @@ table 50100 "KINTO Country Setup"
         exit(Fallback);
     end;
 
-    // Pais "ativo" da sessao: o unico setup existente, ou o setup marcado como
-    // default. Evita exigir que cada documento carregue o pais so para numerar.
-    local procedure GetActiveCountryCode(): Code[10]
-    var
-        CountrySetup: Record "KINTO Country Setup";
-        Count: Integer;
-    begin
-        CountrySetup.Reset();
-        if CountrySetup.FindSet() then
-            repeat
-                Count += 1;
-                if Count > 1 then
-                    exit(''); // mais de um pais: nao ha como inferir
-            until CountrySetup.Next() = 0;
-        if Count = 1 then
-            exit(CountrySetup."Country Code");
-        exit('');
-    end;
 
     local procedure ValidateDefaults()
     begin

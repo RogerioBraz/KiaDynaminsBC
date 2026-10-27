@@ -74,7 +74,7 @@ codeunit 50214 "KINTO Mileage Closing Mgt."
     var
         CountrySetup: Record "KINTO Country Setup";
     begin
-        if (Contract."Country Code" <> '') and CountrySetup.Get(Contract."Country Code") then
+        if CountrySetup.GetForCompanyOr(Contract."Country Code") then
             if CountrySetup."Excess Km Band 1 %" > 0 then
                 exit(CountrySetup."Excess Km Band 1 %");
         exit(10);

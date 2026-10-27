@@ -110,7 +110,7 @@ table 50110 "KINTO Quote Header"
     var
         CountrySetup: Record "KINTO Country Setup";
     begin
-        if CountrySetup.Get("Country Code") then
+        if CountrySetup.GetForCompanyOr("Country Code") then
             "Expiration Date" := CalcDate('+' + Format(CountrySetup."Validity Period") + 'D', Today)
         else
             "Expiration Date" := CalcDate('+30D', Today);
@@ -122,7 +122,7 @@ table 50110 "KINTO Quote Header"
         CountrySetup: Record "KINTO Country Setup";
     begin
         if "Country Code" = '' then exit;
-        if not CountrySetup.Get("Country Code") then exit;
+        if not CountrySetup.GetForCompanyOr("Country Code") then exit;
         "Pricing Methodology" := CountrySetup."Pricing Methodology";
         "Currency Code" := CountrySetup."Currency Code";
         "Negotiation Buffer %" := CountrySetup."Suggested Negot. Buffer %";

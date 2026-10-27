@@ -116,7 +116,7 @@ codeunit 50161 "KINTO Fleet Management"
     var
         CountrySetup: Record "KINTO Country Setup";
     begin
-        if CountrySetup.Get(CountryCode) then
+        if CountrySetup.GetForCompanyOr(CountryCode) then
             exit(CountrySetup."Device Aging Charge Days");
         exit(60);
     end;
@@ -130,10 +130,10 @@ codeunit 50161 "KINTO Fleet Management"
     begin
         Vehicle.Get(VehicleNo);
         if Vehicle."Country Code" <> '' then begin
-            if not CountrySetup.Get(Vehicle."Country Code") then
+            if not CountrySetup.GetForCompanyOr(Vehicle."Country Code") then
                 Error(CountryNotFoundErr, Vehicle."Country Code");
         end else
-            if not CountrySetup.Get('BR') then
+            if not CountrySetup.GetForCompanyOr('BR') then
                 Error(CountryNotFoundErr, 'BR');
         if CountrySetup."Fleet Behavior" <> CountrySetup."Fleet Behavior"::Brazil then
             Error(DemobNotBRLabel);
@@ -172,7 +172,7 @@ codeunit 50161 "KINTO Fleet Management"
         MonthStart: Date;
         MonthEnd: Date;
     begin
-        if not CountrySetup.Get(CountryCode) then
+        if not CountrySetup.GetForCompanyOr(CountryCode) then
             Error(CountryNotFoundErr, CountryCode);
 
         MonthStart := CalcDate('<-CM>', ClosingMonth);

@@ -370,7 +370,7 @@ codeunit 50156 "KINTO Demo Data Seed"
         end;
 
         // Country Setup BR (se não existir — o engine exige)
-        if not CountrySetup.Get('BR') then
+        if not CountrySetup.GetForCompanyOr('BR') then
             Error('Country Setup BR não existe — rode o setup padrão antes da carga demo.');
 
         // Garante RENT com service item (billing falha sem o vínculo)

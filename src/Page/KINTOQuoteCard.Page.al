@@ -180,7 +180,7 @@ page 50110 "KINTO Quote Card"
                 var
                     CountrySetup: Record "KINTO Country Setup";
                 begin
-                    if CountrySetup.Get(Rec."Country Code") then
+                    if CountrySetup.GetForCompanyOr(Rec."Country Code") then
                         Page.Run(Page::"KINTO Country Setup Card", CountrySetup);
                 end;
             }

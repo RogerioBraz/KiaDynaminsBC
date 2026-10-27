@@ -27,7 +27,7 @@ codeunit 50100 "KINTO Pricing Engine Mgt."
     var
         QuoteItem: Record "KINTO Quote Item";
     begin
-        if not CountrySetup.Get(QuoteHeader."Country Code") then
+        if not CountrySetup.GetForCompanyOr(QuoteHeader."Country Code") then
             Error(NoCountryErr, QuoteHeader."Country Code");
 
         if CountrySetup."Emergency Stop" then

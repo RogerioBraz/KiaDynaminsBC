@@ -7,7 +7,7 @@ codeunit 50104 "KINTO Tax Calculator"
     var
         CountrySetup: Record "KINTO Country Setup";
     begin
-        if not CountrySetup.Get(QuoteHeader."Country Code") then
+        if not CountrySetup.GetForCompanyOr(QuoteHeader."Country Code") then
             Error(CountrySetupNotFoundErr, QuoteHeader."Country Code");
 
         QuoteItem."PIS COFINS Tariff %" := CountrySetup."National Revenue Tax %";

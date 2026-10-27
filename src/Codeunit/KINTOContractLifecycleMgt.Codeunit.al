@@ -20,7 +20,7 @@ codeunit 60001 "KINTO Contract Lifecycle Mgt."
         Contract.SetFilter("Current End Date", '<>%1', 0D);
         if Contract.FindSet() then
             repeat
-                if CountrySetup.Get(Contract."Country Code") then begin
+                if CountrySetup.GetForCompanyOr(Contract."Country Code") then begin
                     if ProcessExpiry(Contract, CountrySetup, AsOfDate) then
                         Processed += 1;
                 end;

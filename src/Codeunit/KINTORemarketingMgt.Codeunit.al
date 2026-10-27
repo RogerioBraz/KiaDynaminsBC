@@ -267,7 +267,7 @@ codeunit 50171 "KINTO Remarketing Mgt."
     var
         CountrySetup: Record "KINTO Country Setup";
     begin
-        if (CountryCode <> '') and CountrySetup.Get(CountryCode) then
+        if CountrySetup.GetForCompanyOr(CountryCode) then
             if CountrySetup."Remarketing Km Deprec. Base" > 0 then
                 exit(CountrySetup."Remarketing Km Deprec. Base");
         exit(300000);
@@ -277,7 +277,7 @@ codeunit 50171 "KINTO Remarketing Mgt."
     var
         CountrySetup: Record "KINTO Country Setup";
     begin
-        if (CountryCode <> '') and CountrySetup.Get(CountryCode) then
+        if CountrySetup.GetForCompanyOr(CountryCode) then
             if CountrySetup."Remarketing Km Deprec. %" > 0 then
                 exit(CountrySetup."Remarketing Km Deprec. %");
         exit(15);

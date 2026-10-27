@@ -88,7 +88,7 @@ codeunit 50215 "KINTO Service Credit Mgt."
     var
         CountrySetup: Record "KINTO Country Setup";
     begin
-        if (Contract."Country Code" <> '') and CountrySetup.Get(Contract."Country Code") then
+        if CountrySetup.GetForCompanyOr(Contract."Country Code") then
             if CountrySetup."Service Credit Cap %" > 0 then
                 exit(CountrySetup."Service Credit Cap %");
         exit(2);

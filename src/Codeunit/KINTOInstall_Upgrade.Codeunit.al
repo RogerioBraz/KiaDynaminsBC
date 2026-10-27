@@ -91,7 +91,7 @@ codeunit 50110 "KINTO Install/Upgrade"
         CountrySetup: Record "KINTO Country Setup";
     begin
         // Fase 6 — defaults BR (idempotente)
-        if CountrySetup.Get('BR') then
+        if CountrySetup.GetForCompanyOr('BR') then
             if CountrySetup."Demob. SLA Days (Lot)" = 0 then begin
                 CountrySetup."Fleet Behavior" := CountrySetup."Fleet Behavior"::Brazil;
                 CountrySetup."Demob. SLA Days (Lot)" := 5;
@@ -179,7 +179,7 @@ codeunit 50110 "KINTO Install/Upgrade"
         CountrySetup: Record "KINTO Country Setup";
     begin
         // Brazil
-        if not CountrySetup.Get('BR') then begin
+        if not CountrySetup.GetForCompanyOr('BR') then begin
             CountrySetup.Init();
             CountrySetup."Country Code" := 'BR';
             CountrySetup."Pricing Methodology" := CountrySetup."Pricing Methodology"::"Target ROI";
@@ -216,7 +216,7 @@ codeunit 50110 "KINTO Install/Upgrade"
         end;
 
         // Argentina
-        if not CountrySetup.Get('AR') then begin
+        if not CountrySetup.GetForCompanyOr('AR') then begin
             CountrySetup.Init();
             CountrySetup."Country Code" := 'AR';
             CountrySetup."Pricing Methodology" := CountrySetup."Pricing Methodology"::"KINTO Fee";

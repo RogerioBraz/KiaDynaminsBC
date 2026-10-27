@@ -79,7 +79,7 @@ table 50469 "KINTO Claim"
         Contract: Record "KINTO Vehicle Contract";
     begin
         if ("Contract No." <> '') and Contract.Get("Contract No.") then
-            if (Contract."Country Code" <> '') and CountrySetup.Get(Contract."Country Code") then
+            if CountrySetup.GetForCompanyOr(Contract."Country Code") then
                 if CountrySetup."Total Loss Threshold %" > 0 then
                     exit(CountrySetup."Total Loss Threshold %");
         exit(70);

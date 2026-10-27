@@ -16,6 +16,7 @@ codeunit 60004 "KINTO Series Setup Upgrade"
         NoSeriesLine: Record "No. Series Line";
     begin
         EnsureSeries(NoSeries, NoSeriesLine);
+        SeedCompanyCountryBinding(CountrySetup);
         SeedCountrySeriesFields(CountrySetup);
         SeedCountryCalcLimits(CountrySetup);
     end;
@@ -46,6 +47,30 @@ codeunit 60004 "KINTO Series Setup Upgrade"
         CreateSeries('KINTO-RET', 'KINTO Vehicle Returns', 'R-00001', 'R-99999', NoSeries, NoSeriesLine);
         CreateSeries('KINTO-REC', 'KINTO Recovery Cases', 'RC-00001', 'RC-99999', NoSeries, NoSeriesLine);
         CreateSeries('KINTO-BILL', 'KINTO Billing', 'B-00001', 'B-99999', NoSeries, NoSeriesLine);
+    end;
+
+
+    // Vincula a EMPRESA ao Country Setup. Sem isso, os processos nao sabem qual
+    // pais usar. Regra: se a empresa ja tem vinculo, respeita; senao usa o setup
+    // unico (base antiga, 1 pais) ou, havendo mais de um, o setup 'BR' como
+    // default historico — o usuario ajusta na Company Information.
+    local procedure SeedCompanyCountryBinding(var CountrySetup: Record "KINTO Country Setup")
+    var
+        CompanyInformation: Record "Company Information";
+    begin
+        if not CompanyInformation.Get() then
+            exit;
+        if CompanyInformation."KINTO Country Code" <> '' then
+            exit; // ja configurado pelo usuario: nao sobrescreve
+        if CountrySetup.GetSingleSetup() then begin
+            CompanyInformation."KINTO Country Code" := CountrySetup."Country Code";
+            CompanyInformation.Modify(false);
+            exit;
+        end;
+        if CountrySetup.Get('BR') then begin
+            CompanyInformation."KINTO Country Code" := 'BR';
+            CompanyInformation.Modify(false);
+        end;
     end;
 
     // Preenche os campos de serie do Country Setup com as series existentes,
