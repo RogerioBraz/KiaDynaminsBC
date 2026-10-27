@@ -341,6 +341,52 @@ codeunit 50156 "KINTO Demo Data Seed"
         // Country Setup BR (se não existir — o engine exige)
         if not CountrySetup.Get('BR') then
             Error('Country Setup BR não existe — rode o setup padrão antes da carga demo.');
+
+        // Garante RENT com service item (billing falha sem o vínculo)
+        EnsureRentServiceItem();
+    end;
+
+    // FIX (27/10): o billing exige Financial Product RENT com Service Item No.
+    // (Item Type=Service). O Install cria o produto SEM service item — se o
+    // ambiente não tiver o vínculo, toda geração de billing falha com
+    // "Financial product RENT not found or has no service item".
+    procedure EnsureRentServiceItem()
+    var
+        FinProduct: Record "KINTO Financial Product";
+        ServiceItem: Record Item;
+        DemoItem: Record Item;
+    begin
+        if not FinProduct.Get('RENT') then
+            exit; // Install cria o produto; nada a fazer aqui sem ele
+
+        if FinProduct."Service Item No." <> '' then
+            if DemoItem.Get(FinProduct."Service Item No.") then
+                exit; // já configurado
+
+        // Procura item de serviço demo existente
+        ServiceItem.SetRange(Type, ServiceItem.Type::Service);
+        ServiceItem.SetRange(Description, 'Serviço Locação KINTO');
+        if ServiceItem.FindFirst() then begin
+            FinProduct."Service Item No." := ServiceItem."No.";
+            FinProduct.Modify(true);
+            exit;
+        end;
+
+        // Cria o item de serviço demo (posting groups herdados do item demo 114743 se houver)
+        ServiceItem.Init();
+        ServiceItem."No." := '';
+        ServiceItem.Insert(true);
+        ServiceItem.Description := 'Serviço Locação KINTO';
+        ServiceItem.Type := ServiceItem.Type::Service;
+        ServiceItem."Base Unit of Measure" := 'UNID';
+        if DemoItem.Get('114743') then begin
+            ServiceItem."Gen. Prod. Posting Group" := DemoItem."Gen. Prod. Posting Group";
+            ServiceItem."VAT Prod. Posting Group" := DemoItem."VAT Prod. Posting Group";
+            ServiceItem."Inventory Posting Group" := DemoItem."Inventory Posting Group";
+        end;
+        ServiceItem.Modify(true);
+        FinProduct."Service Item No." := ServiceItem."No.";
+        FinProduct.Modify(true);
     end;
 
     local procedure GetDemoMSRP(): Decimal
