@@ -127,35 +127,15 @@ codeunit 50157 "KINTO Demo Data Load"
         SB.AppendLine('7. Total loss → recovery case automático (risco alto)');
 
         // ============================================================
-        // CENÁRIO 6 (NOVO) — REAJUSTE POR ÍNDICE (ledger + cap)
+        // CENÁRIOS 6-11 (NOVOS) — cada um em TryFunction: um erro não
+        // aborta o demo inteiro; a mensagem do erro vai p/ o summary.
         // ============================================================
-        DemoAdjustment(SB);
-
-        // ============================================================
-        // CENÁRIO 7 (NOVO) — SINISTRO (5 trilhas, ciclo completo)
-        // ============================================================
-        DemoClaim(SB);
-
-        // ============================================================
-        // CENÁRIO 8 (NOVO) — REMARKETING COMPLETO (cascata → venda → baixa)
-        // Habilita o portal ANTES da venda p/ gerar TP2 e TP3.
-        // ============================================================
-        DemoRemarketing(SB);
-
-        // ============================================================
-        // CENÁRIO 9 (NOVO) — PORTAL TP1 (disponíveis com preço)
-        // ============================================================
-        DemoPortalAvailability(SB);
-
-        // ============================================================
-        // CENÁRIO 10 (NOVO) — MILEAGE CLOSING (faixas + cap FIPE)
-        // ============================================================
-        DemoMileageClosing(SB);
-
-        // ============================================================
-        // CENÁRIO 11 (NOVO) — SERVICE CREDIT (cap 2%)
-        // ============================================================
-        DemoServiceCredit(SB);
+        RunDemoScenario('Reajuste por índice', 1, SB);
+        RunDemoScenario('Sinistro (5 trilhas)', 2, SB);
+        RunDemoScenario('Remarketing completo (TP2/TP3)', 3, SB);
+        RunDemoScenario('Portal TP1 disponíveis', 4, SB);
+        RunDemoScenario('Mileage closing', 5, SB);
+        RunDemoScenario('Service credit', 6, SB);
 
         SB.AppendLine('');
         SB.AppendLine('Carga demo v2 concluída — 11 cenários. Páginas p/ demonstrar:');
@@ -356,6 +336,28 @@ codeunit 50157 "KINTO Demo Data Load"
             'DEMO: veículo indisponível 30 dias (cap 2% aplicado)');
         SB.AppendLine('13. Service credit: 30 dias sem serviço → crédito R$ ' + Format(-CreditAmount) +
             ' (limitado a 2% do faturamento do mês)');
+    end;
+
+    local procedure RunDemoScenario(ScenarioName: Text; ScenarioId: Integer; var SB: TextBuilder)
+    var
+        ErrMsg: Text;
+    begin
+        if TryRunDemoScenario(ScenarioId, SB, ErrMsg) then
+            exit; // cenário já appendou a linha dele
+        SB.AppendLine('! ' + ScenarioName + ': FALHOU — ' + CopyStr(ErrMsg, 1, 200));
+    end;
+
+    [TryFunction]
+    local procedure TryRunDemoScenario(ScenarioId: Integer; var SB: TextBuilder; var ErrMsg: Text)
+    begin
+        case ScenarioId of
+            1: DemoAdjustment(SB);
+            2: DemoClaim(SB);
+            3: DemoRemarketing(SB);
+            4: DemoPortalAvailability(SB);
+            5: DemoMileageClosing(SB);
+            6: DemoServiceCredit(SB);
+        end;
     end;
 
     // ============================================================
