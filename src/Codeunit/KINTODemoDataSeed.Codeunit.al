@@ -344,6 +344,9 @@ codeunit 50156 "KINTO Demo Data Seed"
 
         // Garante RENT com service item (billing falha sem o vínculo)
         EnsureRentServiceItem();
+
+        // Garante Reference Price nas fontes de remarketing (oferta nasce com preço 0 sem isso)
+        EnsureRemarketingPrices();
     end;
 
     // FIX (27/10): o billing exige Financial Product RENT com Service Item No.
@@ -387,6 +390,69 @@ codeunit 50156 "KINTO Demo Data Seed"
         ServiceItem.Modify(true);
         FinProduct."Service Item No." := ServiceItem."No.";
         FinProduct.Modify(true);
+    end;
+
+    // FIX (27/10): o Install cria as fontes de preço BR (FIPE/Webmotors) SEM
+    // Reference Price → CalculatePrice devolve 0 → oferta nasce com preço 0 e
+    // SendOffer estoura "Oferta Price deve ter um valor". Demo garante preços.
+    procedure EnsureRemarketingPrices()
+    var
+        Source: Record "KINTO Remark. Pricing Source";
+        Updated: Boolean;
+    begin
+        Updated := false;
+        if Source.Get('BR', Source."Source Type"::FIPE) then
+            if Source."Reference Price" = 0 then begin
+                Source."Reference Price" := 100000;
+                Source.Active := true;
+                Source."Last Update" := WorkDate();
+                Source.Modify(true);
+                Updated := true;
+            end;
+        if Source.Get('BR', Source."Source Type"::Webmotors) then
+            if Source."Reference Price" = 0 then begin
+                Source."Reference Price" := 95000;
+                Source.Active := true;
+                Source."Last Update" := WorkDate();
+                Source.Modify(true);
+                Updated := true;
+            end;
+        // Sem fontes ativas nenhuma (ambiente limpo): cria as duas
+        Source.Reset();
+        Source.SetRange("Country Code", 'BR');
+        Source.SetRange(Active, true);
+        if Source.IsEmpty() then begin
+            if not Source.Get('BR', Source."Source Type"::FIPE) then begin
+                Source.Init();
+                Source."Country Code" := 'BR';
+                Source."Source Type" := Source."Source Type"::FIPE;
+                Source."Reference Price" := 100000;
+                Source."Weight %" := 60;
+                Source.Active := true;
+                Source."Last Update" := WorkDate();
+                Source.Insert(true);
+            end else begin
+                Source."Reference Price" := 100000;
+                Source.Active := true;
+                Source."Last Update" := WorkDate();
+                Source.Modify(true);
+            end;
+            if not Source.Get('BR', Source."Source Type"::Webmotors) then begin
+                Source.Init();
+                Source."Country Code" := 'BR';
+                Source."Source Type" := Source."Source Type"::Webmotors;
+                Source."Reference Price" := 95000;
+                Source."Weight %" := 40;
+                Source.Active := true;
+                Source."Last Update" := WorkDate();
+                Source.Insert(true);
+            end else begin
+                Source."Reference Price" := 95000;
+                Source.Active := true;
+                Source."Last Update" := WorkDate();
+                Source.Modify(true);
+            end;
+        end;
     end;
 
     local procedure GetDemoMSRP(): Decimal
