@@ -39,6 +39,7 @@ table 60009 "KINTO Ticket Subtask"
         Subtask: Record "KINTO Ticket Subtask";
     begin
         Subtask.SetRange("Ticket No.", TicketNo);
+        Subtask.SetCurrentKey("Ticket No.", "Subtask No.");
         if Subtask.FindLast() then
             exit(Subtask."Subtask No." + 1);
         exit(1);

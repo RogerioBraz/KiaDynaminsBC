@@ -57,6 +57,7 @@ table 60006 "KINTO Vehicle Document"
     begin
         Doc.SetRange("Vehicle No.", "Vehicle No.");
         Doc.SetRange("Document Type", "Document Type");
+        Doc.SetCurrentKey("Vehicle No.", "Document Type", "Version No.");
         if Doc.FindLast() then
             exit(Doc."Version No." + 1);
         exit(1);
@@ -89,16 +90,6 @@ table 60006 "KINTO Vehicle Document"
         exit(0);
     end;
 
-    procedure GetNextEntryNo(): Integer
-    var
-        Rec2: Record "KINTO Vehicle Document";
-    begin
-        Rec2.Reset();
-        Rec2.SetCurrentKey("Entry No.");
-        if Rec2.FindLast() then
-            exit(Rec2."Entry No." + 1);
-        exit(1);
-    end;
 
     // Atribui Entry No. unico. Usa MAX+1 e, se colidir (historico deixado por
     // execucao abortada), avanca ate achar um livre. AutoIncrement NAO serve aqui:

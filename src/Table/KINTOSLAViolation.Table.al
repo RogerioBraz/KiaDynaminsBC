@@ -32,17 +32,6 @@ table 60010 "KINTO SLA Violation"
             AssignEntryNo();
     end;
 
-    procedure GetNextEntryNo(): Integer
-    var
-        Rec2: Record "KINTO SLA Violation";
-    begin
-        Rec2.Reset();
-        Rec2.SetCurrentKey("Entry No.");
-        if Rec2.FindLast() then
-            exit(Rec2."Entry No." + 1);
-        exit(1);
-    end;
-
     // Atribui Entry No. unico. Usa MAX+1 e, se colidir (historico deixado por
     // execucao abortada), avanca ate achar um livre. AutoIncrement NAO serve aqui:
     // o rollback do harness de teste reinicia a sequencia e o Insert seguinte
