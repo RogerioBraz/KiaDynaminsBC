@@ -114,13 +114,17 @@ codeunit 60001 "KINTO Contract Lifecycle Mgt."
 
     local procedure GetNoticeDays(var CountrySetup: Record "KINTO Country Setup"): Integer
     begin
-        // Default 60 dias; campo do Country Setup se existir
+        if CountrySetup."Contract Notice Days" > 0 then
+            exit(CountrySetup."Contract Notice Days");
         exit(60);
     end;
 
     local procedure GetAutoExtend(var CountrySetup: Record "KINTO Country Setup"): Boolean
     begin
-        // BR: sem renovacao automatica (exige termo aditivo)
-        exit(CountrySetup."Country Code" <> 'BR');
+        // Configuravel por pais: BR nasce desligado (exige termo aditivo),
+        // os demais nascem ligados. O campo do Setup sempre vence.
+        if CountrySetup."Country Code" = 'BR' then
+            exit(CountrySetup."Auto Extend Contracts");
+        exit(true);
     end;
 }

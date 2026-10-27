@@ -52,15 +52,28 @@ table 60005 "KINTO Contract Evaluation"
     var
         NoSeries: Codeunit "No. Series";
         NoSeriesRec: Record "No. Series";
+        EvaluationRec: Record "KINTO Contract Evaluation";
+        Attempts: Integer;
     begin
         "Created By" := UserId;
         "Created DateTime" := CurrentDateTime;
         if "Evaluation No." = '' then begin
             if "No. Series" = '' then
                 "No. Series" := 'KINTO-EVAL';
-            if ("No. Series" <> '') and NoSeriesRec.Get("No. Series") then
-                "Evaluation No." := NoSeries.GetNextNo("No. Series", WorkDate(), true)
-            else
+            if ("No. Series" <> '') and NoSeriesRec.Get("No. Series") then begin
+                "Evaluation No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
+                // A serie pode devolver numero que JA existe: o incremento da
+                // No. Series volta com o rollback da transacao do teste enquanto
+                // o registro gravado permanece. Avanca com LIMITE — se a serie
+                // nao avancar, cai no sequencial proprio em vez de girar eterno.
+                Attempts := 0;
+                while EvaluationRec.Get("Evaluation No.") and (Attempts < 100) do begin
+                    "Evaluation No." := NoSeries.GetNextNo("No. Series", WorkDate(), true);
+                    Attempts += 1;
+                end;
+                if EvaluationRec.Get("Evaluation No.") then
+                    "Evaluation No." := GetNextEvaluationNo();
+            end else
                 // Sem serie configurada: gera um numero sequencial proprio para
                 // nao gravar PK vazia (dois registros com No.='' colidem).
                 "Evaluation No." := GetNextEvaluationNo();

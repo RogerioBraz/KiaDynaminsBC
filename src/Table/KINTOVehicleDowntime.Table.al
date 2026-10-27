@@ -42,9 +42,10 @@ table 60007 "KINTO Vehicle Downtime"
     }
 
     trigger OnInsert()
+    var
+        Sequencer: Codeunit "KINTO Entry No. Sequencer";
     begin
-        if "Entry No." = 0 then
-            AssignEntryNo();
+        "Entry No." := Sequencer.NextDowntimeEntryNo();
         CalcDays();
     end;
 
@@ -78,19 +79,4 @@ table 60007 "KINTO Vehicle Downtime"
     // execucao abortada), avanca ate achar um livre. AutoIncrement NAO serve aqui:
     // o rollback do harness de teste reinicia a sequencia e o Insert seguinte
     // repete o numero ("Ja existe o registro ... Entry No.='N'").
-    local procedure AssignEntryNo()
-    var
-        Rec2: Record "KINTO Vehicle Downtime";
-        NextNo: Integer;
-    begin
-        Rec2.Reset();
-        Rec2.SetCurrentKey("Entry No.");
-        if Rec2.FindLast() then
-            NextNo := Rec2."Entry No." + 1
-        else
-            NextNo := 1;
-        while Rec2.Get(NextNo) do
-            NextNo += 1;
-        "Entry No." := NextNo;
-    end;
 }

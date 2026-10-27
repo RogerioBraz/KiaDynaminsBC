@@ -29,7 +29,8 @@ codeunit 60000 "KINTO Preventive Maint. Mgt."
                 if PlanHeader.Get(Contract."Maintenance Plan ID") and
                    PlanHeader."Preventive Enabled" and
                    Vehicle.Get(Contract."Vehicle No.") then
-                    if IsPreventiveDue(Contract, Vehicle, PlanHeader, PlanLine, AsOfDate, DueKm, DueDate) then begin
+                    if IsPreventiveDue(Contract, Vehicle, PlanHeader, PlanLine, AsOfDate, DueKm, DueDate) and
+                       not HasOpenPreventiveTicket(Contract."Contract No.") then begin
                         TicketNo := MaintMgt.CreateTicketFromContract(Contract."Contract No.",
                             "KINTO Maint Ticket Type"::Preventive,
                             StrSubstNo('Preventive service (plan %1, interval %2 km)', PlanHeader."Plan ID", PlanLine."KM Interval"),
@@ -44,6 +45,23 @@ codeunit 60000 "KINTO Preventive Maint. Mgt."
                     end;
             until Contract.Next() = 0;
         exit(Created);
+    end;
+
+
+    // Idempotencia real: ja existe ticket preventivo em aberto para o contrato?
+    // Sem esta guarda, a mesma preventive pode gerar um ticket novo a cada
+    // execucao do job (o reagendamento sozinho nao garante, porque o job
+    // processa todos os contratos e roda varias vezes ao dia).
+    local procedure HasOpenPreventiveTicket(ContractNo: Code[20]): Boolean
+    var
+        Ticket: Record "KINTO Maintenance Ticket";
+    begin
+        Ticket.SetRange("Contract No.", ContractNo);
+        Ticket.SetRange("Ticket Type", Ticket."Ticket Type"::Preventive);
+        Ticket.SetFilter(Status, '%1|%2|%3|%4',
+            Ticket.Status::Open, Ticket.Status::"In Analysis",
+            Ticket.Status::"In Execution", Ticket.Status::"Pending Approval");
+        exit(not Ticket.IsEmpty());
     end;
 
     local procedure IsPreventiveDue(var Contract: Record "KINTO Vehicle Contract"; var Vehicle: Record "KINTO Inventory Vehicle";
@@ -79,7 +97,7 @@ codeunit 60000 "KINTO Preventive Maint. Mgt."
     begin
         if PlanLine."KM Interval" > 0 then
             Contract."Next Preventive Odometer" := Contract."Last Preventive Odometer" + PlanLine."KM Interval";
-        Contract."Next Preventive Date" := CalcDate('<+6M>', Contract."Last Preventive Date");
+        Contract."Next Preventive Date" := CalcDate(StrSubstNo('<+%1M>', GetIntervalMonths(Contract."Country Code")), Contract."Last Preventive Date");
     end;
 
     local procedure GetNextIntervalKm(var PlanHeader: Record "KINTO Maintenance Plan Header";
@@ -105,7 +123,7 @@ codeunit 60000 "KINTO Preventive Maint. Mgt."
     local procedure GetNextIntervalDate(var PlanHeader: Record "KINTO Maintenance Plan Header";
         var PlanLine: Record "KINTO Maintenance Plan Line"; AsOfDate: Date): Date
     begin
-        exit(CalcDate('<+6M>', AsOfDate));
+        exit(CalcDate(StrSubstNo('<+%1M>', GetIntervalMonths('')), AsOfDate));
     end;
 
     // ============================================================
@@ -150,5 +168,16 @@ codeunit 60000 "KINTO Preventive Maint. Mgt."
                 end;
             until TelematicEvent.Next() = 0;
         exit(Processed);
+    end;
+
+    // Intervalo padrao de preventiva em meses (Country Setup, default 6)
+    local procedure GetIntervalMonths(CountryCode: Code[10]): Integer
+    var
+        CountrySetup: Record "KINTO Country Setup";
+    begin
+        if CountrySetup.GetForCompanyOr(CountryCode) then
+            if CountrySetup."Preventive Interval Months" > 0 then
+                exit(CountrySetup."Preventive Interval Months");
+        exit(6);
     end;
 }
