@@ -142,17 +142,6 @@ codeunit 60002 "KINTO Downtime Mgt."
     // contrato. A penalidade e detectada durante o mes, muitas vezes ANTES de o
     // billing rodar — olhar so o mes corrente zeraria a penalidade por um motivo
     // que nao tem relacao com o SLA.
-    local procedure GetMonthRevenue(ContractNo: Code[20]): Decimal
-    var
-        BillingLine: Record "KINTO Billing Line";
-    begin
-        BillingLine.SetRange("Contract No.", ContractNo);
-        BillingLine.SetFilter(Status, '<>%1', BillingLine.Status::Cancelled);
-        if BillingLine.IsEmpty() then
-            exit(0);
-        exit(GetRevenueOfMonth(ContractNo, CalcDate('<CM>', WorkDate())));
-    end;
-
     local procedure GetRevenueOfMonth(ContractNo: Code[20]; BillingMonth: Date): Decimal
     var
         BillingLine: Record "KINTO Billing Line";
