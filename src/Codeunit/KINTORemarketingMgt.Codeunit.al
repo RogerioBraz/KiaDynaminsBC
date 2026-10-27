@@ -232,16 +232,18 @@ codeunit 50171 "KINTO Remarketing Mgt."
         PortalConfig: Record "KINTO Portal Config";
     begin
         Setup.GetSetup(Sale."Country Code");
+
+        // TP3 automático ANTES de completar (FIX 27/10): o WriteOffToPortal exige
+        // Status=Paid — mudar p/ Completed ANTES do TP3 fazia o portal rejeitar
+        // ("Sale %1 is not Paid") sempre que a integração estava ativa.
+        if PortalConfig.GetConfig() then
+            if PortalConfig.Enabled then
+                PortalIntegrationHook.WriteOffToPortal(Sale);
+
         if not Setup."Write-off Before Payment" then
             WriteOffAsset(Sale); // BR: baixa após pagamento
         Sale.Status := Sale.Status::Completed;
         Sale.Modify(true);
-
-        // TP3 automático: baixa no portal (se integração ativa)
-        if PortalConfig.GetConfig() then
-            if PortalConfig.Enabled then begin
-                PortalIntegrationHook.WriteOffToPortal(Sale);
-            end;
     end;
 
     var
