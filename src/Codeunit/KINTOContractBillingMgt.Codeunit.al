@@ -75,6 +75,7 @@ codeunit 50200 "KINTO Contract Billing Mgt."
             Condition."Product Type" := FinancialProduct."Product Type";
             Condition.Description := FinancialProduct.Description;
             Condition."Monthly Amount" := MonthlyAmount;
+            Condition.Active := true; // FIX 27/10: condição recém-criada está ativa
             Condition."Valid From" := Contract."Start Date";
             Condition."Source Quote No." := QuoteHeader."Quote No.";
             Condition."Source Quote Line No." := QuoteItem."Line No.";
