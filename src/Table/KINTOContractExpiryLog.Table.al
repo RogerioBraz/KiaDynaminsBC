@@ -7,7 +7,7 @@ table 60004 "KINTO Contract Expiry Log"
 
     fields
     {
-        field(1; "Entry No."; Integer) { Caption = 'Entry No.'; AutoIncrement = true; }
+        field(1; "Entry No."; Integer) { Caption = 'Entry No.'; }
         field(2; "Contract No."; Code[20]) { Caption = 'Contract No.'; }
         field(3; "Action Date"; Date) { Caption = 'Action Date'; }
         field(4; "Action Type"; Enum "KINTO Contract Expiry Action") { Caption = 'Action'; }
@@ -21,4 +21,19 @@ table 60004 "KINTO Contract Expiry Log"
         key(PK; "Entry No.") { Clustered = true; }
         key(Idx1; "Contract No.", "Action Date") { }
     }
+
+    trigger OnInsert()
+    begin
+        if "Entry No." = 0 then
+            "Entry No." := GetNextEntryNo();
+    end;
+
+    procedure GetNextEntryNo(): Integer
+    var
+        Rec2: Record "KINTO Contract Expiry Log";
+    begin
+        if Rec2.FindLast() then
+            exit(Rec2."Entry No." + 1);
+        exit(1);
+    end;
 }

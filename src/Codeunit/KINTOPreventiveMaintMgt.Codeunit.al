@@ -87,20 +87,17 @@ codeunit 60000 "KINTO Preventive Maint. Mgt."
     var
         Interval: Decimal;
     begin
-        // Menor intervalo de km do plano acima do odometro atual
+        // Menor intervalo de km do plano acima do odometro atual.
+        // ATENCAO: "KM Interval" e o intervalo (10.000), NAO um odometro absoluto —
+        // comparar com o odometro aqui escolhia sempre a mesma linha e o
+        // reagendamento nao avancava (Next Preventive Odometer repetia).
         PlanLine.Reset();
         PlanLine.SetRange("Plan ID", PlanHeader."Plan ID");
         PlanLine.SetFilter("KM Interval", '>0');
-        PlanLine.SetFilter("KM Interval", '>=%1', CurrentOdometer);
-        if PlanLine.FindFirst() then
-            exit(PlanLine."KM Interval");
-        // Se nenhum intervalo maior, pega o maior do plano (proximo ciclo)
-        PlanLine.Reset();
-        PlanLine.SetRange("Plan ID", PlanHeader."Plan ID");
-        PlanLine.SetFilter("KM Interval", '>0');
-        if PlanLine.FindLast() then begin
+        if PlanLine.FindFirst() then begin
             Interval := PlanLine."KM Interval";
-            exit(Round(CurrentOdometer / Interval, 1, '>') * Interval + Interval);
+            // proximo multiplo do intervalo acima do odometro atual
+            exit((Round(CurrentOdometer / Interval, 1, '>') + 1) * Interval);
         end;
         exit(0);
     end;

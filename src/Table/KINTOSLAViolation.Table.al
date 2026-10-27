@@ -7,7 +7,7 @@ table 60010 "KINTO SLA Violation"
 
     fields
     {
-        field(1; "Entry No."; Integer) { Caption = 'Entry No.'; AutoIncrement = true; }
+        field(1; "Entry No."; Integer) { Caption = 'Entry No.'; }
         field(2; "Ticket No."; Code[20]) { Caption = 'Ticket No.'; }
         field(3; "Contract No."; Code[20]) { Caption = 'Contract No.'; }
         field(4; "Violation Type"; Enum "KINTO SLA Violation Type") { Caption = 'Violation Type'; }
@@ -25,4 +25,19 @@ table 60010 "KINTO SLA Violation"
         key(Idx1; "Ticket No.", "Violation Type") { }
         key(Idx2; "Contract No.") { }
     }
+
+    trigger OnInsert()
+    begin
+        if "Entry No." = 0 then
+            "Entry No." := GetNextEntryNo();
+    end;
+
+    procedure GetNextEntryNo(): Integer
+    var
+        Rec2: Record "KINTO SLA Violation";
+    begin
+        if Rec2.FindLast() then
+            exit(Rec2."Entry No." + 1);
+        exit(1);
+    end;
 }

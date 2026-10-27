@@ -9,7 +9,7 @@ table 60006 "KINTO Vehicle Document"
 
     fields
     {
-        field(1; "Entry No."; Integer) { Caption = 'Entry No.'; AutoIncrement = true; }
+        field(1; "Entry No."; Integer) { Caption = 'Entry No.'; }
         field(2; "Vehicle No."; Code[20])
         {
             Caption = 'Vehicle No.';
@@ -39,6 +39,8 @@ table 60006 "KINTO Vehicle Document"
 
     trigger OnInsert()
     begin
+        if "Entry No." = 0 then
+            "Entry No." := GetNextEntryNo();
         "Created By" := UserId;
         "Created DateTime" := CurrentDateTime;
         if "Version No." = 0 then
@@ -85,5 +87,14 @@ table 60006 "KINTO Vehicle Document"
         if FindFirst() then
             exit("Entry No.");
         exit(0);
+    end;
+
+    procedure GetNextEntryNo(): Integer
+    var
+        Rec2: Record "KINTO Vehicle Document";
+    begin
+        if Rec2.FindLast() then
+            exit(Rec2."Entry No." + 1);
+        exit(1);
     end;
 }

@@ -9,7 +9,7 @@ table 60001 "KINTO Telematic Event"
 
     fields
     {
-        field(1; "Entry No."; Integer) { Caption = 'Entry No.'; AutoIncrement = true; }
+        field(1; "Entry No."; Integer) { Caption = 'Entry No.'; }
         field(2; "Vehicle No."; Code[20])
         {
             Caption = 'Vehicle No.';
@@ -42,4 +42,19 @@ table 60001 "KINTO Telematic Event"
         key(Idx1; "Vehicle No.", "Event DateTime") { }
         key(Idx2; "Ticket Created", "Event Trigger") { }
     }
+
+    trigger OnInsert()
+    begin
+        if "Entry No." = 0 then
+            "Entry No." := GetNextEntryNo();
+    end;
+
+    procedure GetNextEntryNo(): Integer
+    var
+        Rec2: Record "KINTO Telematic Event";
+    begin
+        if Rec2.FindLast() then
+            exit(Rec2."Entry No." + 1);
+        exit(1);
+    end;
 }

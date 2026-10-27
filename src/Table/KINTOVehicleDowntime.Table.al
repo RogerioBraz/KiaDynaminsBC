@@ -9,7 +9,7 @@ table 60007 "KINTO Vehicle Downtime"
 
     fields
     {
-        field(1; "Entry No."; Integer) { Caption = 'Entry No.'; AutoIncrement = true; }
+        field(1; "Entry No."; Integer) { Caption = 'Entry No.'; }
         field(2; "Vehicle No."; Code[20])
         {
             Caption = 'Vehicle No.';
@@ -43,6 +43,8 @@ table 60007 "KINTO Vehicle Downtime"
 
     trigger OnInsert()
     begin
+        if "Entry No." = 0 then
+            "Entry No." := GetNextEntryNo();
         CalcDays();
     end;
 
@@ -70,5 +72,14 @@ table 60007 "KINTO Vehicle Downtime"
         Rec."Ticket No." := TicketNo;
         Insert(true);
         exit(Rec."Entry No.");
+    end;
+
+    procedure GetNextEntryNo(): Integer
+    var
+        Rec2: Record "KINTO Vehicle Downtime";
+    begin
+        if Rec2.FindLast() then
+            exit(Rec2."Entry No." + 1);
+        exit(1);
     end;
 }

@@ -67,7 +67,7 @@ codeunit 60002 "KINTO Downtime Mgt."
             repeat
                 if SLA.Get(Ticket."Contract No.") and SLA.Active then begin
                     // Horas desde a abertura do ticket
-                    HoursElapsed := (CurrentDateTime - Ticket."Created DateTime") / 3600;
+                    HoursElapsed := Round((CurrentDateTime - Ticket."Created DateTime") / 3600, 0.01);
                     if (SLA."Resolution Time (hours)" > 0) and (HoursElapsed > SLA."Resolution Time (hours)") then
                         if RegisterViolation(Ticket, SLA, HoursElapsed, ViolationType::"Resolution Breach") then
                             Count += 1;
