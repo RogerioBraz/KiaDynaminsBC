@@ -173,16 +173,27 @@ codeunit 50156 "KINTO Demo Data Seed"
     local procedure ActivateContract(ContractNo: Code[20])
     var
         Contract: Record "KINTO Vehicle Contract";
+        Vehicle: Record "KINTO Inventory Vehicle";
     begin
         Contract.Get(ContractNo);
         if Contract.Status = Contract.Status::Active then
             exit;
         Contract.Status := Contract.Status::Active;
-        if Contract."Start Date" = 0D then
-            Contract."Start Date" := CalcDate('<-2M>', WorkDate());
+        // FIX 27/10: Start Date retroativo SEMPRE no demo — multas/billing/reajuste
+        // precisam de vigência que cubra datas passadas (CreateContractFromQuote
+        // seta Start Date = hoje, e a multa de -1M ficava fora da vigência).
+        Contract."Start Date" := CalcDate('<-2M>', WorkDate());
         if Contract."Current End Date" = 0D then
             Contract."Current End Date" := CalcDate('<+22M>', Contract."Start Date");
         Contract.Modify(true);
+        // FIX 27/10: vincula o veículo ao contrato (Last Contract No.) — sem isso
+        // a oferta de remarketing nasce sem Contract No. e a venda ao motorista
+        // não fecha o contrato no pagamento.
+        if (Contract."Vehicle No." <> '') and Vehicle.Get(Contract."Vehicle No.") then
+            if Vehicle."Last Contract No." = '' then begin
+                Vehicle."Last Contract No." := ContractNo;
+                Vehicle.Modify(true);
+            end;
     end;
 
     // ============================================================
