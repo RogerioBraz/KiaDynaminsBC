@@ -22,21 +22,23 @@ table 50473 "KINTO Portal Config"
 
     procedure GetConfig(): Boolean
     begin
-        if not Get() then begin
-            Init();
-            "Primary Key" := 'SETUP';
-            Enabled := false;
-            "Availability Batch Size" := 50;
-            "Max Retry" := 3;
-            Insert(true);
-            exit(false); // criada agora com defaults (desabilitada)
-        end;
-        exit(true);
+        // FIX (27/10): Get() sem argumento procurava PK='' (nunca existe — a PK
+        // real é 'SETUP'), falhava sempre e tentava Insert → erro
+        // "Já existe o registro na tabela KINTO Portal Config" na 2ª chamada.
+        // Agora busca pela PK real e só cria quando NÃO existe.
+        if Get('SETUP') then
+            exit(true);
+        Init();
+        "Primary Key" := 'SETUP';
+        Enabled := false;
+        "Availability Batch Size" := 50;
+        "Max Retry" := 3;
+        Insert(true);
+        exit(false); // criada agora com defaults (desabilitada)
     end;
 
     procedure InsertIfMissing()
     begin
-        if not Get() then
-            GetConfig(); // cria com defaults
+        GetConfig(); // cria com defaults se faltar
     end;
 }

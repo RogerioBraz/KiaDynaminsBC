@@ -32,7 +32,8 @@ page 50482 "KINTO Portal Config"
 
     trigger OnOpenPage()
     begin
+        // FIX (27/10): GetConfig() já cria com defaults se faltar;
+        // InsertIfMissing() duplicava a lógica (e o bug do Get() sem chave).
         Rec.GetConfig();
-        Rec.InsertIfMissing();
     end;
 }
