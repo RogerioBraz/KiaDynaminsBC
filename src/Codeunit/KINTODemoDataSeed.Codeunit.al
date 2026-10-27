@@ -131,7 +131,9 @@ codeunit 50156 "KINTO Demo Data Seed"
         Device."No. Series" := 'KINTO-DEV';
         Device.Description := 'Telemático demo (KINTO)';
         Device."Serial Number" := CopyStr('SN-DEMO-' + Format(WorkDate(), 0, '<Year4><Month,2><Day,2>'), 1, 50);
-        Device."Vendor No." := '';
+        // FIX 27/10: device demo COM vendor — sem vendor o aging pula o device
+        // (e o cenário E2E de aging não gera cobrança)
+        Device."Vendor No." := EnsureDemoVendor();
         Device."Country Code" := 'BR';
         Device.Insert(true);
         FleetMgt.InstallDevice(Device."Device No.", VehicleNo, ContractNo);
@@ -159,6 +161,24 @@ codeunit 50156 "KINTO Demo Data Seed"
         Policy."Country Code" := 'BR';
         Policy.Insert(true);
         exit(Policy."Policy No.");
+    end;
+
+    procedure EnsureDemoVendor(): Code[20]
+    var
+        Vendor: Record Vendor;
+    begin
+        // Vendor demo p/ dispositivos telemáticos (aging cobra dele)
+        Vendor.SetRange(Name, 'Fornecedor Demo Telematica');
+        if Vendor.FindFirst() then
+            exit(Vendor."No.");
+        Vendor.Init();
+        Vendor.Insert(true);
+        Vendor.Name := 'Fornecedor Demo Telematica';
+        Vendor."Vendor Posting Group" := 'DOMESTIC';
+        Vendor."Gen. Bus. Posting Group" := 'DOMESTIC';
+        Vendor."VAT Bus. Posting Group" := 'DOMESTIC';
+        Vendor.Modify(true);
+        exit(Vendor."No.");
     end;
 
     local procedure GetVehicleCounter(): Integer
