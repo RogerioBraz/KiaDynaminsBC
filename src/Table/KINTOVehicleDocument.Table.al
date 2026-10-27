@@ -93,6 +93,8 @@ table 60006 "KINTO Vehicle Document"
     var
         Rec2: Record "KINTO Vehicle Document";
     begin
+        Rec2.Reset();
+        Rec2.SetCurrentKey("Entry No.");
         if Rec2.FindLast() then
             exit(Rec2."Entry No." + 1);
         exit(1);

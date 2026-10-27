@@ -108,7 +108,7 @@ codeunit 60001 "KINTO Contract Lifecycle Mgt."
         ExpiryLog."Days to Expiry" := DaysToExpiry;
         ExpiryLog."Log Message" := CopyStr(Msg, 1, 250);
         ExpiryLog."Created DateTime" := CurrentDateTime;
-        ExpiryLog.Insert(false);
+        ExpiryLog.Insert(true);
         exit(true);
     end;
 

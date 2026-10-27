@@ -36,6 +36,8 @@ table 60010 "KINTO SLA Violation"
     var
         Rec2: Record "KINTO SLA Violation";
     begin
+        Rec2.Reset();
+        Rec2.SetCurrentKey("Entry No.");
         if Rec2.FindLast() then
             exit(Rec2."Entry No." + 1);
         exit(1);

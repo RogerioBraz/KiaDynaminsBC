@@ -81,6 +81,8 @@ codeunit 60002 "KINTO Downtime Mgt."
     var
         Violation: Record "KINTO SLA Violation";
         Penalty: Decimal;
+        Cap: Decimal;
+        MonthRevenue: Decimal;
     begin
         Violation.SetRange("Ticket No.", Ticket."Ticket No.");
         Violation.SetRange("Violation Type", ViolationType);
@@ -88,6 +90,25 @@ codeunit 60002 "KINTO Downtime Mgt."
             exit(false);
 
         Penalty := SLA."Penalty Per Hour" * (HoursElapsed - SLA."Resolution Time (hours)");
+
+        // CAP SOBRE O FATURAMENTO DO MES (decisao Rogerio 27/10) — mesmo criterio
+        // do service credit: base = linhas de billing do mes, sem as canceladas.
+        // O cap vale sobre o ACUMULADO de penalidades do contrato no mes, nao por
+        // violacao: senao N violacoes furariam o cap.
+        if SLA."Penalty Cap %" > 0 then begin
+            MonthRevenue := GetMonthRevenue(Ticket."Contract No.");
+            if MonthRevenue <= 0 then
+                // sem faturamento no mes nao ha base de cap: penalidade zerada
+                Penalty := 0
+            else begin
+                Cap := Round(MonthRevenue * SLA."Penalty Cap %" / 100, 0.01);
+                if (GetMonthPenalties(Ticket."Contract No.") + Penalty) > Cap then
+                    Penalty := Cap - GetMonthPenalties(Ticket."Contract No.");
+                if Penalty < 0 then
+                    Penalty := 0;
+            end;
+        end;
+
         Violation.Init();
         Violation."Ticket No." := Ticket."Ticket No.";
         Violation."Contract No." := Ticket."Contract No.";
@@ -96,7 +117,37 @@ codeunit 60002 "KINTO Downtime Mgt."
         Violation."Hours Elapsed" := HoursElapsed;
         Violation."SLA Target Hours" := SLA."Resolution Time (hours)";
         Violation."Penalty Amount" := Round(Penalty, 0.01);
-        Violation.Insert(false);
+        Violation.Insert(true);
         exit(true);
+    end;
+
+    // Faturamento do mes do contrato (base do cap de penalidade) — mesma base do
+    // service credit: linhas nao canceladas do Billing Month.
+    local procedure GetMonthRevenue(ContractNo: Code[20]): Decimal
+    var
+        BillingLine: Record "KINTO Billing Line";
+        BillingMonth: Date;
+        Amount: Decimal;
+    begin
+        BillingMonth := CalcDate('<CM>', WorkDate());
+        BillingLine.SetRange("Contract No.", ContractNo);
+        BillingLine.SetRange("Billing Month", BillingMonth);
+        BillingLine.SetFilter(Status, '<>%1', BillingLine.Status::Cancelled);
+        if BillingLine.IsEmpty() then
+            exit(0);
+        BillingLine.CalcSums(Amount);
+        exit(Amount);
+    end;
+
+    // Penalidades ja aplicadas ao contrato no mes corrente (acumulado do cap)
+    local procedure GetMonthPenalties(ContractNo: Code[20]): Decimal
+    var
+        Violation: Record "KINTO SLA Violation";
+        Amount: Decimal;
+    begin
+        Violation.SetRange("Contract No.", ContractNo);
+        Violation.SetFilter("Detected DateTime", '>=%1', CreateDateTime(CalcDate('<CM>', WorkDate()), 0T));
+        Violation.CalcSums("Penalty Amount");
+        exit(Amount);
     end;
 }

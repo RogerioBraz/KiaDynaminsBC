@@ -32,6 +32,8 @@ table 60004 "KINTO Contract Expiry Log"
     var
         Rec2: Record "KINTO Contract Expiry Log";
     begin
+        Rec2.Reset();
+        Rec2.SetCurrentKey("Entry No.");
         if Rec2.FindLast() then
             exit(Rec2."Entry No." + 1);
         exit(1);

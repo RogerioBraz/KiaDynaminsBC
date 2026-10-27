@@ -53,6 +53,8 @@ table 60001 "KINTO Telematic Event"
     var
         Rec2: Record "KINTO Telematic Event";
     begin
+        Rec2.Reset();
+        Rec2.SetCurrentKey("Entry No.");
         if Rec2.FindLast() then
             exit(Rec2."Entry No." + 1);
         exit(1);
