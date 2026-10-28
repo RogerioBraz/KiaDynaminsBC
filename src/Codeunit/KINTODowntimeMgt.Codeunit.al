@@ -193,17 +193,18 @@ codeunit 60002 "KINTO Downtime Mgt."
     local procedure GetMonthPenalties(ContractNo: Code[20]): Decimal
     var
         Violation: Record "KINTO SLA Violation";
-        Amount: Decimal;
     begin
         Violation.SetRange("Contract No.", ContractNo);
-        // CUIDADO: '<CM>' devolve o ULTIMO dia do mes, nao o primeiro. Usar
-        // '<CM>' aqui filtrava violacoes a partir do fim do mes, excluindo as
-        // detectadas hoje -> acumulado sempre 0 -> cada violacao recebia o cap
-        // INTEIRO (no teste: 158,59 x 3 = 475,77 em vez de 158,59 no total).
-        // Primeiro dia do mes corrente = '<-CM>' (forma canonica do AL e ja
-        // usada no resto do projeto; NAO confundir com '<CM>' = ultimo dia).
-        Violation.SetFilter("Detected DateTime", '>=%1',
-            CreateDateTime(CalcDate('<-CM>', WorkDate()), 0T));
+        // Penalidades ja aplicadas ao contrato no MES CORRENTE.
+        // Atencao as duas bordas:
+        //   '<-CM>' = PRIMEIRO dia do mes   (limite inferior)
+        //   '<CM>'  = ULTIMO dia do mes     (limite superior)
+        // Usar '<CM>' como limite INFERIOR (erro de uma versao anterior) filtra
+        // a partir de 31/10 e deixa as violacoes de hoje de fora: acumulado 0 e
+        // cada violacao recebe o cap inteiro (158,59 x 3 = 475,77).
+        Violation.SetFilter("Detected DateTime", '>=%1&<=%2',
+            CreateDateTime(CalcDate('<-CM>', WorkDate()), 0T),
+            CreateDateTime(CalcDate('<CM>', WorkDate()), 235959T));
         Violation.CalcSums("Penalty Amount");
         exit(Violation."Penalty Amount");
     end;
