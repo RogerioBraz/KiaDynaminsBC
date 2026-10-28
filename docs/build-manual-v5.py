@@ -46,7 +46,7 @@ r = p.add_run("\nKiaDynBC — NFMS\n"); r.bold = True; r.font.size = Pt(26); r.f
 p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 r = p.add_run("Manual de Usuário — v4 (capturas + regras + configuração)\n"); r.font.size = Pt(14); r.font.color.rgb = TEAL
 p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-r = p.add_run("RSBTech · Dynamics 365 Business Central · 27/10/2026 · versão 1.1.7.0"); r.font.size = Pt(10); r.italic = True
+r = p.add_run("RSBTech · Dynamics 365 Business Central · 27/10/2026 · versão 1.1.8.0"); r.font.size = Pt(10); r.italic = True
 doc.add_paragraph()
 para("Novidades da v4:", bold=True)
 bullet("NOVO — Apêndice A: regras de cálculo de todos os valores do sistema (fórmula, base, cap e exemplo numérico)")
@@ -206,8 +206,18 @@ para("Eventos tratados: alerta de desgaste de freio, nível baixo de fluidos, li
 note("Processar os eventos é idempotente: o mesmo evento não gera dois tickets, mesmo que a rotina rode mais de uma vez.")
 h2("16.3 Taxa de hora-homem (HH rate)")
 para("A mão de obra é valorizada por hora-homem, e não por um preço fixo digitado à mão. A taxa fica na KINTO Vendor Labor Rate, por fornecedor + tipo de serviço + data de vigência, com valor/hora, horas mínimas faturáveis e moeda.")
-para("Na linha do ticket, o campo Tipo de Serviço define qual taxa será buscada. O sistema pega a taxa ATIVA vigente na data do serviço e calcula: valor da mão de obra = horas × taxa. Se as horas executadas ficarem abaixo do mínimo faturável do fornecedor, as horas sobem para o mínimo e a linha é marcada com Mínimo de Horas Aplicado.")
-note("Corrigir a tabela de taxas depois não reescreve ticket já faturado: só a linha com o tipo de serviço preenchido é recalculada, e apenas antes do faturamento.")
+para("Na linha do ticket, marque o Tipo de Linha como Mão de Obra (HH) e escolha o Tipo de Serviço — é ele que seleciona qual taxa será buscada. A taxa não é digitada: o campo HH Rate é somente leitura e vem do cadastro do fornecedor.")
+h2("16.4 Horas trabalhadas x horas faturáveis")
+para("São dois números diferentes, e o sistema guarda os dois:")
+bullet("Horas: o que o técnico executou de fato. Nunca é alterado pelo sistema.")
+bullet("Horas Faturáveis: o que se cobra = o maior entre as horas executadas e o mínimo faturável do fornecedor.")
+para("Exemplo: execução de 1h com mínimo de 2h no cadastro. As Horas continuam 1 (o serviço durou 1 hora), as Horas Faturáveis ficam 2 e a linha é marcada com Mínimo de Horas Aplicado. O valor cobrado é 2 × taxa.")
+note("O mínimo nunca apaga as horas executadas. Se as horas trabalhadas fossem sobrescritas pelo mínimo, o histórico perderia o registro do que realmente aconteceu — e não haveria como auditar depois se o serviço foi rápido ou demorado.")
+h2("16.5 Quando a taxa é aplicada")
+bullet("Na ação Apply Labor Rates, dentro do ticket, para aplicar na hora e ver o resultado.")
+bullet("Ao validar o ticket (Validate), que garante a taxa preenchida antes de aprovar.")
+bullet("Antes de faturar, ao cobrar do cliente: a taxa vigente é reaplicada, para o cliente ser cobrado pelo valor certo mesmo que a tabela tenha sido corrigida depois da execução.")
+para("A data usada é a Data de Serviço do ticket, não a data de hoje. Assim, reprocessar um ticket antigo traz a taxa que valia na época do serviço.")
 
 # ================= 17. ACORDO DE NÍVEL DE SERVIÇO (D3) =================
 h1("17. Acordo de nível de serviço (SLA)")
