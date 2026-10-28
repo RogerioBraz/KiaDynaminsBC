@@ -189,5 +189,15 @@ codeunit "KINTO Contract Billing Mgt." = X,
                   codeunit "KINTO Downtime Mgt." = X,
                   codeunit "KINTO Pre-Closure Mgt." = X,
                   codeunit "KINTO Series Setup Upgrade" = X,
-                  codeunit "KINTO Entry No. Sequencer" = X;
+                  codeunit "KINTO Entry No. Sequencer" = X,
+                  tabledata "KINTO Prospect" = RIMD,
+                  tabledata "KINTO Interaction Log" = RIMD,
+                  tabledata "KINTO Portfolio Transfer" = RIMD,
+                  tabledata "KINTO Customer Block" = RIMD,
+                  page "KINTO Prospect List" = X,
+                  page "KINTO Prospect Card" = X,
+                  page "KINTO Interaction Log List" = X,
+                  page "KINTO Portfolio Transfer List" = X,
+                  page "KINTO Customer Block List" = X,
+                  codeunit "KINTO Prospect Management" = X;
 }

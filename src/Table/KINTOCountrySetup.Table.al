@@ -378,7 +378,12 @@ table 50100 "KINTO Country Setup"
             DecimalPlaces = 0 : 1;
             InitValue = 500;
         }
-    }
+    field(241; "Prospect No. Series"; Code[20])
+        {
+            Caption = 'Prospect No. Series';
+            TableRelation = "No. Series";
+        }
+        }
 
     keys
     {
