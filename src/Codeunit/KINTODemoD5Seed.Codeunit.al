@@ -58,6 +58,7 @@ codeunit 60007 "KINTO Demo D1-D5 Seed"
         SB.AppendLine('Eventos telemetricos: ' + Format(SeedTelematicEvents(VehicleNo)));
         SB.AppendLine('Pre-fechamento: ' + Format(SeedPreClosure(ContractNo)));
         SB.AppendLine('Log de expiracao: ' + Format(SeedExpiryLog(ContractNo)));
+        SB.AppendLine('Violacao de SLA: ' + Format(SeedSLAViolation(ContractNo, TicketNo)));
         exit(SB.ToText());
     end;
 
@@ -430,6 +431,40 @@ codeunit 60007 "KINTO Demo D1-D5 Seed"
         PC.Status := PC.Status::Notified;
         PC."Odometer Forecast" := 58200;
         PC.Insert(true);
+        exit(1);
+    end;
+
+    // ---------- D3: violacao de SLA (para a tela nao sair vazia) ----------
+    procedure SeedSLAViolation(ContractNo: Code[20]; TicketNo: Code[20]): Integer
+    var
+        Violation: Record "KINTO SLA Violation";
+        Seq: Codeunit "KINTO Entry No. Sequencer";
+        SLA: Record "KINTO Service Level";
+        HoursElapsed: Decimal;
+        VT: Enum "KINTO SLA Violation Type";
+    begin
+        Violation.SetRange("Contract No.", ContractNo);
+        if not Violation.IsEmpty() then
+            exit(0);
+
+        if not SLA.Get(ContractNo) then
+            exit(0);
+
+        // Violacao coerente com o SLA vigente: o prazo de resolucao foi estourado
+        // em 3x. A penalidade segue a mesma regra do RegisterViolation
+        // (horas extras x valor/hora).
+        HoursElapsed := SLA."Resolution Time (hours)" * 3;
+        Violation.Init();
+        Violation."Entry No." := Seq.NextSLAViolationEntryNo();
+        Violation."Ticket No." := TicketNo;
+        Violation."Contract No." := ContractNo;
+        Violation."Violation Type" := VT::"Resolution Breach";
+        Violation."Detected DateTime" := CurrentDateTime - (3600000 * 2);
+        Violation."Hours Elapsed" := HoursElapsed;
+        Violation."SLA Target Hours" := SLA."Resolution Time (hours)";
+        Violation."Penalty Amount" := SLA."Penalty Per Hour" * (HoursElapsed - SLA."Resolution Time (hours)");
+        Violation.Notes := 'Violacao gerada pelo seed de demonstracao - prazo de resolucao excedido.';
+        Violation.Insert(true);
         exit(1);
     end;
 
