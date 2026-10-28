@@ -72,7 +72,7 @@ codeunit 60300 "KINTO Prospect Management"
         ToNo := 'KINTO-C99999';
         C.Reset();
         C.SetRange("No.", FromNo, ToNo);
-        exit('KINTO-C' + Format(C.Count() + 1, 0, '<Integer,5,0>'));
+        exit('KINTO-C' + Format(C.Count() + 1, 0, '<Integer,5><Precision,0>'));
     end;
 
     local procedure GetCountryRegionCode(CountryCode: Code[10]): Code[10]

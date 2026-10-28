@@ -144,7 +144,7 @@ codeunit 60006 "KINTO Entry No. Sequencer"
 
     local procedure FormatNumber(Prefix: Text[10]; Value: Integer): Code[20]
     begin
-        exit(CopyStr(Prefix + Format(Value, 0, '<Integer,5,0>'), 1, 20));
+        exit(CopyStr(Prefix + Format(Value, 0, '<Integer,5><Precision,0>'), 1, 20));
     end;
 
     local procedure NextFrom(TableMax: Integer; LastIssued: Integer): Integer

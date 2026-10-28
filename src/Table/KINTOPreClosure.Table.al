@@ -121,9 +121,9 @@ table 60011 "KINTO Pre-Closure"
         NextNo := 1;
         PreClosureRec.Reset();
         PreClosureRec.SetCurrentKey("Pre-Closure No.");
-        while PreClosureRec.Get(Format(NextNo, 0, '<Integer,5,0>')) do
+        while PreClosureRec.Get(Format(NextNo, 0, '<Integer,5><Precision,0>')) do
             NextNo += 1;
-        exit(Format(NextNo, 0, '<Integer,5,0>'));
+        exit(Format(NextNo, 0, '<Integer,5><Precision,0>'));
     end;
 
 }

@@ -132,7 +132,7 @@ table 60310 "KINTO Prospect"
         P.Reset();
         P.SetRange("Prospect No.", FromNo, ToNo);
         Next := P.Count() + 1;
-        exit('PRS-' + Format(Next, 0, '<Integer,6,0>'));
+        exit('PRS-' + Format(Next, 0, '<Integer,6><Precision,0>'));
     end;
 
     // Unicidade do Tax ID: nao pode repetir entre prospects nem existir como
