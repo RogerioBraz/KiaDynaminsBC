@@ -1,50 +1,69 @@
 # Guia de captura — telas D1–D5 (manual v7)
 
-**Status: 14 de 16 telas capturadas.** Faltam duas.
+**Status em 28/10 10:05: 14 de 16 capturadas. Faltam 2, e 1 precisa ser refeita.**
 
-| # | Tela | Page ID | Status |
+## O que falta
+
+| # | Tela | Page ID | Arquivo esperado | Situação |
+|---|---|---|---|---|
+| 5 | KINTO SLA Violation List | **60012** | `25-sla-violacoes.png` | ⬜ **falta** |
+| 16 | KINTO Contract Expiry Log List | **60007** | `36-log-expiracao.png` | ⬜ **falta** |
+| 6 | KINTO Vehicle Downtime List | 60009 | `26-downtime-lista.png` | ⚠️ **refazer** |
+
+## O que já está pronto (14)
+
+| # | Tela | Page ID | Arquivo |
 |---|---|---|---|
-| 1 | KINTO Contract Clause List | 60003 | ✅ 21-clausulas-lista.png |
-| 2 | KINTO Contract Clause Card | 60004 | ✅ 22-clausula-card.png |
-| 3 | KINTO Service Level List | 60015 | ✅ 23-sla-lista.png |
-| 4 | KINTO Service Level Card | 60016 | ✅ 24-sla-card.png |
-| 5 | KINTO SLA Violation List | 60012 | ⬜ falta |
-| 6 | KINTO Vehicle Downtime List | 60009 | ✅ 26-downtime-lista.png |
-| 7 | KINTO Ticket Subtask List | 60011 | ✅ 27-subtarefas.png |
-| 8 | KINTO Vehicle Document List | 60008 | ✅ 28-documentos-veiculo.png |
-| 9 | KINTO Contract Evaluation List | 60005 | ✅ 29-avaliacao-lista.png |
-| 10 | KINTO Contract Evaluation Card | 60006 | ✅ 30-avaliacao-card.png |
-| 11 | KINTO Pre-Closure List | 60013 | ✅ 31-prefechamento-lista.png |
-| 12 | KINTO Pre-Closure Card | 60014 | ✅ 32-prefechamento-card.png |
-| 13 | KINTO Vendor Labor Rate List | 60000 | ✅ 33-hh-rate-lista.png |
-| 14 | KINTO Vendor Labor Rate Card | 60002 | ✅ 34-hh-rate-card.png |
-| 15 | KINTO Telematic Event List | 60001 | ✅ 35-eventos-telematicos.png |
-| 16 | KINTO Contract Expiry Log List | 60007 | ⬜ falta |
+| 1 | KINTO Contract Clause List | 60003 | `21-clausulas-lista.png` ✅ |
+| 2 | KINTO Contract Clause Card | 60004 | `22-clausula-card.png` ✅ |
+| 3 | KINTO Service Level List | 60015 | `23-sla-lista.png` ✅ |
+| 4 | KINTO Service Level Card | **60016** | `24-sla-card.png` ✅ |
+| 6 | KINTO Vehicle Downtime List | 60009 | `26-downtime-lista.png` ⚠️ refazer |
+| 7 | KINTO Ticket Subtask List | 60011 | `27-subtarefas.png` ✅ |
+| 8 | KINTO Vehicle Document List | 60008 | `28-documentos-veiculo.png` ✅ |
+| 9 | KINTO Contract Evaluation List | 60005 | `29-avaliacao-lista.png` ✅ |
+| 10 | KINTO Contract Evaluation Card | 60006 | `30-avaliacao-card.png` ✅ |
+| 11 | KINTO Pre-Closure List | 60013 | `31-prefechamento-lista.png` ✅ |
+| 12 | KINTO Pre-Closure Card | 60014 | `32-prefechamento-card.png` ✅ |
+| 13 | KINTO Vendor Labor Rate List | 60000 | `33-hh-rate-lista.png` ✅ |
+| 14 | KINTO Vendor Labor Rate Card | 60002 | `34-hh-rate-card.png` ✅ |
+| 15 | KINTO Telematic Event List | 60001 | `35-eventos-telematicos.png` ✅ |
 
-> **Atenção:** a numeração de páginas mudou na 1.2.0.2. O Service Level Card saiu de
-> 60010 para **60016** (eliminando a colisão com a tabela 60010) e foi criada a
-> **60017 KINTO SLA Violation Card**. Use a coluna Page ID acima, que já está atualizada.
+## Instruções para as três pendências
 
-## As duas que faltam
+Publique **KiaDynBC 1.2.0.4** ou superior antes de capturar (a 1.2.0.4 adicionou a
+ação que gera as violações e o seed que cria uma).
 
-### 5 — KINTO SLA Violation List (60012)
+### 25 — SLA Violations (60012)
 
-Ficou de fora porque a página quebrava ao abrir o registro. **Corrigida na 1.2.0.2** (card próprio 60017 e fim da colisão de número com a 60010). Publique a 1.2.0.2 ou superior e capture:
+1. Publicar 1.2.0.4+
+2. Página de testes → **Run D1-D5 Seed** (agora cria uma violação)
+3. Abrir `.../Dev?company=CoreSetup&page=60012`
+4. Se quiser mais linhas na tela, clicar em **Check SLA Violations** (ação nova)
+5. Salvar como `25-sla-violacoes.png`
 
-`.../Dev?company=CoreSetup&page=60012` → salvar como `25-sla-violacoes.png`
+### 36 — Contract Expiry Log (60007)
 
-Se a lista estiver vazia, rode **Run D1-D5 Seed** antes.
-
-### 16 — KINTO Contract Expiry Log List (60007)
+O seed já grava duas entradas (Aviso Enviado e Avaliação Devida).
 
 `.../Dev?company=CoreSetup&page=60007` → salvar como `36-log-expiracao.png`
 
-A lista só tem conteúdo depois que a rotina de ciclo de vida roda com contratos perto do vencimento. Se sair vazia, capture mesmo assim com os filtros visíveis — serve de referência da tela.
+### 26 — Downtime (60009) — refazer
 
-## Depois das duas capturas
+A versão atual foi capturada com a 1.2.0.2, **antes** da correção dos dias perdidos.
+Nela, uma parada de 27/07 08:00→08:07 aparece como "5 dias". Com a 1.2.0.4 o mesmo
+registro fica correto (a parada em si é de minutos, então o valor será 0,00 — o que é
+o resultado certo).
 
-O script `docs/build-manual-v7.py` já tem todos os blocos `img()` posicionados. Solte os dois arquivos com os nomes acima em `artifacts/kiadyn-manual-v2-imgs/`, adicione as duas linhas `img()` nos capítulos 17.2 e 22.3, e regenere. Se preferir, me mande as duas imagens que eu faço a inserção.
+Para a captura ficar didática, o ideal é ter uma parada de alguns dias: o seed cria
+duas — a encerrada (12 dias atrás, 08:00→17:00) e a aberta (ontem 14:00). Depois de
+rodar o seed com a 1.2.0.4, os "Dias Perdidos" saem em 0,38 e 0 — números pequenos
+porque as paradas do seed são curtas.
 
-## Correção que afeta uma captura já feita
+`.../Dev?company=CoreSetup&page=60009` → sobrescrever `26-downtime-lista.png`
 
-A tela de **Indisponibilidade** (`26-downtime-lista.png`) foi capturada **antes** da 1.2.0.3. Nela, "Dias Perdidos" aparece inflado 1.000×: uma parada de 7 minutos está marcada como **5 dias**. Recapture depois de publicar a 1.2.0.3 e rodar o seed. A legenda no manual já está correta; a imagem é que mostra o valor antigo.
+## Depois de capturar
+
+Soltar os arquivos em `artifacts/kiadyn-manual-v2-imgs/` e me avisar — eu insiro os
+três `img()` que faltam no `docs/build-manual-v7.py` (capítulos 17.2, 22.3 e 18.1) e
+regero o manual. Ou mande as três imagens aqui que eu faço tudo.
