@@ -3,7 +3,7 @@ table 60010 "KINTO SLA Violation"
     Caption = 'KINTO SLA Violation';
     DataClassification = CustomerContent;
     LookupPageId = "KINTO SLA Violation List";
-    DrillDownPageId = "KINTO SLA Violation List";
+    DrillDownPageId = "KINTO SLA Violation Card";
 
     fields
     {

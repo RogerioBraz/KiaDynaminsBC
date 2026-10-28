@@ -6,6 +6,7 @@ page 60012 "KINTO SLA Violation List"
     UsageCategory = Lists;
     ApplicationArea = All;
     Editable = false;
+    CardPageId = "KINTO SLA Violation Card";
 
     layout
     {

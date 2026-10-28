@@ -1,4 +1,4 @@
-page 60010 "KINTO Service Level Card"
+page 60016 "KINTO Service Level Card"
 {
     Caption = 'Service Level Agreement';
     PageType = Card;
