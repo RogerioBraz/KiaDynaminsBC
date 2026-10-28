@@ -56,8 +56,13 @@ table 60007 "KINTO Vehicle Downtime"
 
     procedure CalcDays()
     begin
+        // DateTime em AL e um numero de MILISSEGUNDOS desde 01/01/0001.
+        // Um dia tem 86.400.000 ms, nao 86.400 (que e a quantidade de SEGUNDOS).
+        // A divisao por 86.400 inflava os dias perdidos em 1.000x — uma parada de
+        // 7 minutos virava "5 dias", e o credito de servico, calculado sobre esse
+        // numero, era cobrado do cliente com o mesmo fator.
         if (Rec."Start DateTime" <> 0DT) and (Rec."End DateTime" <> 0DT) then
-            Rec."Days Lost" := Round((Rec."End DateTime" - Rec."Start DateTime") / 86400, 0.01)
+            Rec."Days Lost" := Round((Rec."End DateTime" - Rec."Start DateTime") / 86400000, 0.01)
         else
             Rec."Days Lost" := 0;
     end;

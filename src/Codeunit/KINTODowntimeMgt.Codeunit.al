@@ -72,8 +72,12 @@ codeunit 60002 "KINTO Downtime Mgt."
         if Ticket.FindSet() then
             repeat
                 if SLA.Get(Ticket."Contract No.") and SLA.Active then begin
-                    // Horas desde a abertura do ticket
-                    HoursElapsed := Round((CurrentDateTime - Ticket."Created DateTime") / 3600, 0.01);
+                    // Horas desde a abertura do ticket.
+                    // DateTime em AL conta MILISSEGUNDOS: uma hora tem 3.600.000 ms.
+                    // Dividir por 3.600 tratava o resultado como se fosse segundos e
+                    // inflava o tempo decorrido em 1.000x — um ticket de 2 horas
+                    // aparecia com 2.000 horas e violava qualquer SLA na hora.
+                    HoursElapsed := Round((CurrentDateTime - Ticket."Created DateTime") / 3600000, 0.01);
                     if (SLA."Resolution Time (hours)" > 0) and (HoursElapsed > SLA."Resolution Time (hours)") then
                         if RegisterViolation(Ticket, SLA, HoursElapsed, ViolationType::"Resolution Breach", AppliedInRun) then
                             Count += 1;
