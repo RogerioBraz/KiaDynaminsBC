@@ -3,7 +3,7 @@
   <file datatype="xml" source-language="en-US" target-language="pt-BR" original="KiaDynBC">
     <body>
       <group id="body">
-                <trans-unit id="Table 1023991719 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+                        <trans-unit id="Table 1023991719 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO 24h Assistance Package</source><target>KINTO Pacote de Assistência 24h</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO 24h Assistance Package - Property Caption</note>
@@ -1376,6 +1376,9 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Profit Tax Rate % - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 3189973028 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prospect No. Series</source><target>Série de Nº de Prospect</target>
+        </trans-unit>
         <trans-unit id="Table 1652137844 - Field 2752120884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Recovery Case No. Series</source><target>Série de Nº de Caso de Recuperação</target>
         </trans-unit>
@@ -1489,6 +1492,39 @@
         </trans-unit>
         <trans-unit id="Table 1652137844 - Field 4233192429 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vehicle No. Series</source><target>Série de Nº de Veículo</target>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Customer Block</source><target>KINTO Bloqueio de Cliente</target>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 1090351696 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Active Block</source><target>Bloqueio Ativo</target>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 3822144143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Block Date</source><target>Data do Bloqueio</target>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 4008583839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Block Reason</source><target>Motivo do Bloqueio</target>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 2662392749 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blocked By</source><target>Bloqueado por</target>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 4190130733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No.</source><target>Nº do Cliente</target>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source><target>Nº do Movimento</target>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 391071131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reason</source><target>Motivo</target>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 3919357263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Release Reason</source><target>Motivo da Liberação</target>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 3664870498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Released By</source><target>Liberado por</target>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 572750435 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Released Date</source><target>Data da Liberação</target>
         </trans-unit>
         <trans-unit id="Table 3723748302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Damage Line</source><target>KINTO Dano Linha</target>
@@ -2770,6 +2806,48 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurer - Field Trade Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1251140291 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Interaction Log</source><target>KINTO Log de Interações</target>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 2378863201 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact Name</source><target>Nome do Contato</target>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 2369664869 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source><target>Criado por</target>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 3572756595 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created DateTime</source><target>Data e Hora de Criação</target>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 4190130733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No.</source><target>Nº do Cliente</target>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 318613646 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Details</source><target>Detalhes</target>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source><target>Nº do Movimento</target>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 3128059970 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Interaction Date</source><target>Data da Interação</target>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 1108160158 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source><target>Tipo</target>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 2051965255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Next Step</source><target>Próximo Passo</target>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 3530007147 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Next Step Date</source><target>Data do Próximo Passo</target>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 1919512485 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prospect No.</source><target>Nº do Prospect</target>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 553464652 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Salesperson Code</source><target>Cód. do Vendedor</target>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 1234124704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Subject</source><target>Assunto</target>
+        </trans-unit>
         <trans-unit id="Table 1721918671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Inventory Vehicle</source><target>KINTO Inventory Veículo</target>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3835,6 +3913,45 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Portal Sync Entry - Field Vehicle No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3938071026 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Portfolio Transfer</source><target>KINTO Transferência de Carteira</target>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 4041162204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approved By</source><target>Aprovado por</target>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 3027137289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approved Date</source><target>Data de Aprovação</target>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 4014080942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customers Moved</source><target>Clientes Movidos</target>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 693554325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>From Salesperson</source><target>Vendedor de Origem</target>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 222620933 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Notes</source><target>Observações</target>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 1900084694 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prospects Moved</source><target>Prospects Movidos</target>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 3369789712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reason</source><target>Motivo</target>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 1438758551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Request Date</source><target>Data da Solicitação</target>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 79791429 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Requested By</source><target>Solicitado por</target>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source><target>Status</target>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 2964443338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>To Salesperson</source><target>Vendedor de Destino</target>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 4087076640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transfer No.</source><target>Nº da Transferência</target>
+        </trans-unit>
         <trans-unit id="Table 18306152 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Pre-Closure</source><target>KINTO Pré-Fechamento</target>
         </trans-unit>
@@ -4030,6 +4147,93 @@
           <source>Used Vehicles</source><target>Veículos Usados</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Pricing Cue - Field Used Vehicles - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Prospect</source><target>KINTO Prospect</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 4008583839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Block Reason</source><target>Motivo do Bloqueio</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 3543129988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blocked</source><target>Bloqueado</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 3276792861 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Origin Channel</source><target>Canal de Origem</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 714791889 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>City</source><target>Cidade</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 2632886192 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact E-mail</source><target>E-mail de Contato</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 2378863201 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact Name</source><target>Nome do Contato</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 1993848112 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact Phone</source><target>Telefone do Contato</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 3566277575 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Converted to Customer No.</source><target>Nº do Cliente Convertido</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 2942153286 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Converted Date</source><target>Data de Conversão</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 2542713143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Country Code</source><target>Cód. do País</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 2369664869 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source><target>Criado por</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 3572756595 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created DateTime</source><target>Data e Hora de Criação</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 379183542 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ERP Registration</source><target>Cadastro no ERP</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 379183542 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Pending,OK,Missing Info</source><target>,Pendente,OK,Informação Faltante</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 3084455704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IBGE Code (BR)</source><target>Código IBGE (BR)</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 596019230 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By</source><target>Modificado por</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 1127265756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified DateTime</source><target>Data e Hora de Modificação</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source><target>Nome</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 222620933 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Notes</source><target>Observações</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 1919512485 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prospect No.</source><target>Nº do Prospect</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 2867385672 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source><target>Tipo</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 1486708140 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Rural Producer</source><target>Produtor Rural</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 553464652 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Salesperson Code</source><target>Cód. do Vendedor</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 269761521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>State</source><target>UF</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source><target>Status</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 3661882300 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax ID (CPF/CNPJ)</source><target>Tax ID (CPF/CNPJ)</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 3664202605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax ID Validation</source><target>Validação do Tax ID</target>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 3664202605 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Valid,Invalid,Pending</source><target>,Válido,Inválido,Pendente</target>
         </trans-unit>
         <trans-unit id="Table 4223300238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Quote Header</source><target>KINTO Cotação Header</target>
@@ -8431,6 +8635,9 @@
         <trans-unit id="Page 1948779654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Country Setups</source><target>KINTO Configurações de País</target>
         </trans-unit>
+        <trans-unit id="Page 2967055076 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Customer Blocks</source><target>KINTO Bloqueios de Cliente</target>
+        </trans-unit>
         <trans-unit id="Page 4077387803 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Damage Lines</source><target>KINTO Dano Lines</target>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8726,6 +8933,9 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Insurer List - Action InsuranceQuotes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 4697965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Interaction Log</source><target>KINTO Log de Interações</target>
+        </trans-unit>
         <trans-unit id="Page 393212459 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Inventory Vehicle</source><target>KINTO Inventory Veículo</target>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8961,6 +9171,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Maintenance Ticket Card - Control Vehicle - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3537972438 - Action 3761606113 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Busca a taxa hora-homem do fornecedor na data do servico e aplica nas linhas de mao de obra.</source><target>Busca a taxa hora-homem do fornecedor na data do serviço e aplica nas linhas de mão de obra.</target>
+        </trans-unit>
+        <trans-unit id="Page 3537972438 - Action 3761606113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apply Labor Rates</source><target>Aplicar Taxas de Mão de Obra</target>
+        </trans-unit>
         <trans-unit id="Page 3537972438 - Action 803889193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approve</source><target>Approve</target>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9090,6 +9306,15 @@
           <source>Show Payload (JSON)</source><target>Show Payload (JSON)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Portal Sync Entries - Action ShowPayload - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 732575760 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Portfolio Transfers</source><target>KINTO Transferências de Carteira</target>
+        </trans-unit>
+        <trans-unit id="Page 732575760 - Action 803889193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approve Transfer</source><target>Aprovar Transferência</target>
+        </trans-unit>
+        <trans-unit id="Page 732575760 - Action 113888489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reject Transfer</source><target>Rejeitar Transferência</target>
         </trans-unit>
         <trans-unit id="Page 1486413180 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pre-Closure</source><target>Pré-Fechamento</target>
@@ -9629,6 +9854,51 @@
           <source>KINTO Pricing Workflow API</source><target>KINTO Precificação Workflow API</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Workflow API - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Prospect Card</source><target>KINTO Cartão de Prospect</target>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Control 3168444338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Address</source><target>Endereço</target>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Control 1358406803 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Block</source><target>Bloquear</target>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Control 3993128796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact</source><target>Contato</target>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Control 213671212 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Conversion</source><target>Conversão</target>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source><target>Geral</target>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Control 1184938952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Notes</source><target>Observações</target>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Control 213023903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Identification</source><target>Identificação</target>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Action 612977212 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Convert to Customer</source><target>Converter em Cliente</target>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Action 520388578 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log Interaction</source><target>Registrar Interação</target>
+        </trans-unit>
+        <trans-unit id="Page 733590523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Prospects</source><target>KINTO Prospects</target>
+        </trans-unit>
+        <trans-unit id="Page 733590523 - Action 139733687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Block</source><target>Bloquear</target>
+        </trans-unit>
+        <trans-unit id="Page 733590523 - Action 612977212 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Creates the BC customer from the selected prospect, keeping the prospect as history.</source><target>Cria o cliente no BC a partir do prospect selecionado, mantendo o prospect como histórico.</target>
+        </trans-unit>
+        <trans-unit id="Page 733590523 - Action 612977212 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Convert to Customer</source><target>Converter em Cliente</target>
+        </trans-unit>
+        <trans-unit id="Page 733590523 - Action 2030665386 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unblock</source><target>Desbloquear</target>
         </trans-unit>
         <trans-unit id="Page 1773596298 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cotações</source><target>Precificação</target>
@@ -10861,6 +11131,9 @@
         <trans-unit id="Table 1536153490 - Field 3782368787 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Generate Preventive Tickets</source><target>Gerar Tickets Preventivos</target>
         </trans-unit>
+        <trans-unit id="Table 1193908894 - Field 3857150950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Billable Hours</source><target>Horas Faturáveis</target>
+        </trans-unit>
         <trans-unit id="Table 1193908894 - Field 2260408894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>HH Rate</source><target>Taxa de Hora-Homem</target>
         </trans-unit>
@@ -10869,6 +11142,9 @@
         </trans-unit>
         <trans-unit id="Table 1193908894 - Field 158172202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Line Type</source><target>Tipo de Linha</target>
+        </trans-unit>
+        <trans-unit id="Table 1193908894 - Field 811996852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Minimum Billable Hours Applied</source><target>Mínimo de Horas Faturáveis Aplicado</target>
         </trans-unit>
         <trans-unit id="Table 1193908894 - Field 1896974463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Service Type</source><target>Tipo de Serviço</target>
@@ -11020,6 +11296,32 @@
           <source>Open</source><target>Aberto</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Billing Status - EnumValue Open - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1451729774 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Block Reason</source><target>KINTO Motivo de Bloqueio</target>
+        </trans-unit>
+        <trans-unit id="Enum 1451729774 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Block Reason - EnumValue   - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1451729774 - EnumValue 2408125584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Commercial Decision</source><target>Decisão Comercial</target>
+        </trans-unit>
+        <trans-unit id="Enum 1451729774 - EnumValue 429200823 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract Breach</source><target>Quebra de Contrato</target>
+        </trans-unit>
+        <trans-unit id="Enum 1451729774 - EnumValue 2141525479 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Credit Restriction</source><target>Restrição de Crédito</target>
+        </trans-unit>
+        <trans-unit id="Enum 1451729774 - EnumValue 835052336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fraud Suspect</source><target>Suspeita de Fraude</target>
+        </trans-unit>
+        <trans-unit id="Enum 1451729774 - EnumValue 4207495877 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Legal Restriction</source><target>Restrição Jurídica</target>
+        </trans-unit>
+        <trans-unit id="Enum 1451729774 - EnumValue 4263389294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Overdue Payment</source><target>Pagamento em Atraso</target>
         </trans-unit>
         <trans-unit id="Enum 1237464844 - EnumValue 90410743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fixed Value</source><target>Valor Fixo</target>
@@ -11741,6 +12043,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Insurance Status - EnumValue Inativo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 3259355935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Interaction Type</source><target>KINTO Tipo de Interação</target>
+        </trans-unit>
+        <trans-unit id="Enum 3259355935 - EnumValue 3533622062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone Call</source><target>Ligação Telefônica</target>
+        </trans-unit>
+        <trans-unit id="Enum 3259355935 - EnumValue 2744557225 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Complaint</source><target>Reclamação</target>
+        </trans-unit>
+        <trans-unit id="Enum 3259355935 - EnumValue 1285973296 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>E-mail</source><target>E-mail</target>
+        </trans-unit>
+        <trans-unit id="Enum 3259355935 - EnumValue 1406650067 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Meeting</source><target>Reunião</target>
+        </trans-unit>
+        <trans-unit id="Enum 3259355935 - EnumValue 3448339824 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Other</source><target>Outro</target>
+        </trans-unit>
+        <trans-unit id="Enum 3259355935 - EnumValue 1411282128 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proposal Sent</source><target>Proposta Enviada</target>
+        </trans-unit>
+        <trans-unit id="Enum 3259355935 - EnumValue 1983338003 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Visit</source><target>Visita</target>
+        </trans-unit>
         <trans-unit id="Enum 603749262 - EnumValue 2968795412 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>24h Assistance</source><target>Assistência 24 Horas</target>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12077,6 +12403,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Portal Sync Status - EnumValue Sent - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 442249612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Portfolio Transfer Status</source><target>KINTO Status da Transferência de Carteira</target>
+        </trans-unit>
+        <trans-unit id="Enum 442249612 - EnumValue 2913119229 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approved</source><target>Aprovado</target>
+        </trans-unit>
+        <trans-unit id="Enum 442249612 - EnumValue 4069904181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cancelled</source><target>Cancelado</target>
+        </trans-unit>
+        <trans-unit id="Enum 442249612 - EnumValue 3481143665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pending Approval</source><target>Pendente de Aprovação</target>
+        </trans-unit>
+        <trans-unit id="Enum 442249612 - EnumValue 496445946 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Rejected</source><target>Rejeitado</target>
+        </trans-unit>
         <trans-unit id="Enum 1813527295 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Pre-Closure Status</source><target>KINTO Status do Pré-Fechamento</target>
         </trans-unit>
@@ -12147,6 +12488,60 @@
           <source>KINTO ONE Used (Re-KINTO)</source><target>KINTO ONE Used (Re-KINTO)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Product Type - EnumValue KINTO ONE Used - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 656920644 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Prospect Channel</source><target>KINTO Canal do Prospect</target>
+        </trans-unit>
+        <trans-unit id="Enum 656920644 - EnumValue 2611991338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Campaign</source><target>Campanha</target>
+        </trans-unit>
+        <trans-unit id="Enum 656920644 - EnumValue 327020741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dealer</source><target>Concessionária</target>
+        </trans-unit>
+        <trans-unit id="Enum 656920644 - EnumValue 2672871879 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Direct Contact</source><target>Contato Direto</target>
+        </trans-unit>
+        <trans-unit id="Enum 656920644 - EnumValue 3448339824 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Other</source><target>Outro</target>
+        </trans-unit>
+        <trans-unit id="Enum 656920644 - EnumValue 186081026 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Partner</source><target>Parceiro</target>
+        </trans-unit>
+        <trans-unit id="Enum 656920644 - EnumValue 1933101771 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Referral</source><target>Indicação</target>
+        </trans-unit>
+        <trans-unit id="Enum 656920644 - EnumValue 2459809053 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Website</source><target>Site</target>
+        </trans-unit>
+        <trans-unit id="Enum 1034841321 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Prospect Status</source><target>KINTO Status do Prospect</target>
+        </trans-unit>
+        <trans-unit id="Enum 1034841321 - EnumValue 6247114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Converted to Customer</source><target>Convertido em Cliente</target>
+        </trans-unit>
+        <trans-unit id="Enum 1034841321 - EnumValue 4136100152 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>In Negotiation</source><target>Em Negociação</target>
+        </trans-unit>
+        <trans-unit id="Enum 1034841321 - EnumValue 525852245 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inactive</source><target>Inativo</target>
+        </trans-unit>
+        <trans-unit id="Enum 1034841321 - EnumValue 1596556440 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lost</source><target>Perdido</target>
+        </trans-unit>
+        <trans-unit id="Enum 1034841321 - EnumValue 4137051400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New</source><target>Novo</target>
+        </trans-unit>
+        <trans-unit id="Enum 1034841321 - EnumValue 2726257986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Qualified</source><target>Qualificado</target>
+        </trans-unit>
+        <trans-unit id="Enum 3696887293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Prospect Type</source><target>KINTO Tipo de Prospect</target>
+        </trans-unit>
+        <trans-unit id="Enum 3696887293 - EnumValue 297040718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>B2B (Company)</source><target>B2B (Empresa)</target>
+        </trans-unit>
+        <trans-unit id="Enum 3696887293 - EnumValue 3954311397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>B2C (Individual)</source><target>B2C (Pessoa Física)</target>
         </trans-unit>
         <trans-unit id="Enum 455461009 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source> </source><target> </target>
