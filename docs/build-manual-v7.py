@@ -237,13 +237,15 @@ h2("17.2 Como a violação é apurada")
 para("A rotina Check SLA Violations varre os tickets em aberto e em andamento, mede as horas decorridas desde a abertura e, quando o prazo do SLA estoura, grava uma violação com a data/hora da detecção e o valor da penalidade.")
 para("A penalidade é acumulada no mês e limitada ao teto configurado. Exemplo real, com faturamento mensal de R$ 15.858,60 e teto de 1%: o máximo de penalidade no mês é R$ 158,59, ainda que ocorram três violações de R$ 240,30 — as violações seguintes a zero, e o total nunca passa do teto.")
 note("O acumulado considera o que já foi gravado na tabela de violações E o que a própria varredura aplicou na mesma execução, para o teto valer mesmo quando a releitura do mês não encontra as violações recém-criadas.")
+img("25-sla-violacoes.png", "KINTO Violações de SLA — cada linha é um prazo estourado, com horas decorridas, meta, valor da penalidade e se o crédito foi criado. Nas linhas do contrato C-00659 a penalidade sai 0,00: o teto do mês já havia sido consumido pelas violações anteriores.")
+para("Use a ação Check SLA Violations na lista para rodar a apuração na hora, sem esperar o Job Queue. É a mesma varredura que o job executa.")
 
 # ================= 18. INDISPONIBILIDADE E CRÉDITO (D3) =================
 h1("18. Indisponibilidade do veículo (downtime)")
 para("Downtime é o registro do período em que o veículo ficou parado (KINTO Vehicle Downtime): veículo, contrato, início, fim, motivo, ticket de origem e dias perdidos calculados.")
 h2("18.1 Do downtime ao crédito de serviço")
 para("A rotina Create Service Credits varre as indisponibilidades ainda não creditadas, com fim preenchido e marcadas como cobráveis da KINTO, e gera automaticamente o crédito de serviço no faturamento do mês.")
-img("26-downtime-lista.png", "KINTO Indisponibilidade do Veículo — paradas por veículo/contrato com início, fim, motivo, dias perdidos e a marca de crédito já criado")
+img("26-downtime-lista.png", "KINTO Indisponibilidade do Veículo — paradas por veículo/contrato com início, fim, motivo, dias perdidos, ticket de origem e a marca de crédito já criado. Esta captura é de uma base anterior à 1.2.0.5: nela os Dias Perdidos ainda aparecem inflados (7 minutos marcados como 5 dias). A 1.2.0.5 recalcula o histórico no upgrade e o valor passa a refletir a duração real.")
 bullet("Só gera crédito se o contrato estiver ativo e já tiver faturamento no mês corrente — não se credita contrato sem cobrança.")
 bullet("Depois de gerar, a linha de downtime é marcada como Crédito de Serviço Criado, impedindo crédito em dobro.")
 bullet("O motivo da indisponibilidade entra na descrição do crédito, para rastrear a causa.")
@@ -273,7 +275,7 @@ bullet("Contagem de Violações / Multas: volume de multas e infrações no per�
 bullet("Valor dos Danos: soma dos danos cobrados do cliente.")
 para("A Pontuação Geral combina as notas e o histórico; a Classificação de Risco (Baixo, Médio, Alto) é derivada da pontuação e não é editável. A Recomendação de Renovação aponta o caminho: Renovar, Renovar com Condições ou Não Renovar.")
 img("29-avaliacao-lista.png", "KINTO Avaliação de Contrato — avaliações com nota geral, classificação de risco e recomendação de renovação")
-img("30-avaliacao-card.png", "Avaliação EV-337 do contrato C-00565: notas por dimensão, pontuação geral 3, risco Médio e recomendação de renovação")
+img("30-avaliacao-card.png", "Cartão da avaliação do contrato C-00565, ainda em Rascunho: as notas por dimensão são preenchidas aqui e a pontuação geral, a classificação de risco e a recomendação de renovação são calculadas pelo sistema")
 note("A classificação de risco alimenta a cadeia de tarefas da recuperação: casos de risco Alto acionam o fluxo completo de recuperação de veículo.")
 
 # ================= 21. PRÉ-FECHAMENTO (D5) =================
@@ -285,7 +287,7 @@ bullet("Previsão de odômetro e previsão de excesso de quilometragem (km).")
 bullet("Cobrança estimada do excesso, calculada pela mesma regra da quilometragem final.")
 bullet("Multas em aberto e valor de faturamento em aberto.")
 img("31-prefechamento-lista.png", "KINTO Pré-Fechamento — contratos em pré-fechamento com data prevista de devolução, previsão de excesso de km, multas e faturamento em aberto")
-img("32-prefechamento-card.png", "Pré-fechamento do contrato C-00567: odômetro previsto 39.500 km, excesso previsto de 3.500 km e checklist de encerramento")
+img("32-prefechamento-card.png", "Cartão do pré-fechamento do contrato C-00567, em Rascunho: data prevista de devolução 01/11/2027 e data de envio do aviso ao cliente")
 h2("21.2 Estágios e efeito")
 para("Os estágios vão de Rascunho a Pronto para Devolução e Concluído. O aviso ao cliente é registrado com data (Aviso Enviado / Data de Envio do Aviso). A previsão pode ser recalculada a qualquer momento antes do fechamento.")
 note("Quando o contrato é convertido em devolução, o pré-fechamento correspondente passa a Convertido em Devolução — o estorno do que foi apurado fica no fechamento definitivo.")
@@ -304,6 +306,7 @@ bullet("Aviso com Dias de Antecedência configurável (pré-expiração).")
 bullet("Prorrogação automática opcional para contratos expirados.")
 bullet("Recomendação de renovação vinda da avaliação de cliente.")
 note("Contrato encerrado não pode ser prorrogado: o sistema rejeita a extensão e pede a renovação como contrato novo.")
+img("36-log-expiracao.png", "KINTO Log de Expiração de Contrato — ações registradas pelo ciclo de vida por contrato: aviso enviado (30 dias antes), avaliação devida (15 dias) e a mensagem do que foi feito")
 
 
 # ================= 23. PROSPECT E CLIENTE (DX1) =================
