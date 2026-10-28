@@ -60,6 +60,12 @@ codeunit 60002 "KINTO Downtime Mgt."
         ViolationType: Enum "KINTO SLA Violation Type";
         HoursElapsed: Decimal;
         Count: Integer;
+        // Acumulado aplicado NESTA varredura, por contrato. O cap precisa somar
+        // as violacoes anteriores mesmo que a releitura da tabela nao as
+        // encontre (relogio de gravacao x filtro, ou registros ainda nao
+        // visiveis). Sem isto, cada violacao recebia o cap inteiro:
+        // 158,59 x 3 = 475,77 em vez de 158,59 no total.
+        AppliedInRun: Dictionary of [Code[20], Decimal];
     begin
         Ticket.Reset();
         Ticket.SetFilter(Status, '%1|%2', Ticket.Status::Open, Ticket.Status::"In Execution");
@@ -69,7 +75,7 @@ codeunit 60002 "KINTO Downtime Mgt."
                     // Horas desde a abertura do ticket
                     HoursElapsed := Round((CurrentDateTime - Ticket."Created DateTime") / 3600, 0.01);
                     if (SLA."Resolution Time (hours)" > 0) and (HoursElapsed > SLA."Resolution Time (hours)") then
-                        if RegisterViolation(Ticket, SLA, HoursElapsed, ViolationType::"Resolution Breach") then
+                        if RegisterViolation(Ticket, SLA, HoursElapsed, ViolationType::"Resolution Breach", AppliedInRun) then
                             Count += 1;
                 end;
             until Ticket.Next() = 0;
@@ -77,13 +83,16 @@ codeunit 60002 "KINTO Downtime Mgt."
     end;
 
     local procedure RegisterViolation(var Ticket: Record "KINTO Maintenance Ticket"; var SLA: Record "KINTO Service Level";
-        HoursElapsed: Decimal; ViolationType: Enum "KINTO SLA Violation Type"): Boolean
+        HoursElapsed: Decimal; ViolationType: Enum "KINTO SLA Violation Type";
+        var AppliedInRun: Dictionary of [Code[20], Decimal]): Boolean
     var
         Violation: Record "KINTO SLA Violation";
         Penalty: Decimal;
         Cap: Decimal;
         CapPercent: Decimal;
         MonthRevenue: Decimal;
+        MonthPenalties: Decimal;
+        RunPenalties: Decimal;
         NoCapBase: Boolean;
     begin
         Violation.SetRange("Ticket No.", Ticket."Ticket No.");
@@ -109,8 +118,17 @@ codeunit 60002 "KINTO Downtime Mgt."
                 NoCapBase := true
             else begin
                 Cap := Round(MonthRevenue * CapPercent / 100, 0.01);
-                if (GetMonthPenalties(Ticket."Contract No.") + Penalty) > Cap then
-                    Penalty := Cap - GetMonthPenalties(Ticket."Contract No.");
+                // Acumulado = o que a tabela tem OU o que esta varredura ja
+                // aplicou, o que for MAIOR. A releitura pode vir 0 (relogio de
+                // gravacao x filtro), e sem esta salvaguarda o cap seria
+                // concedido integralmente a cada violacao.
+                MonthPenalties := GetMonthPenalties(Ticket."Contract No.");
+                if AppliedInRun.Get(Ticket."Contract No.", RunPenalties) then begin
+                    if RunPenalties > MonthPenalties then
+                        MonthPenalties := RunPenalties;
+                end;
+                if (MonthPenalties + Penalty) > Cap then
+                    Penalty := Cap - MonthPenalties;
                 if Penalty < 0 then
                     Penalty := 0;
             end;
@@ -131,8 +149,14 @@ codeunit 60002 "KINTO Downtime Mgt."
             HoursElapsed - SLA."Resolution Time (hours)", SLA."Penalty Per Hour",
             SLA."Penalty Per Hour" * (HoursElapsed - SLA."Resolution Time (hours)"),
             MonthRevenue, CapPercent, Cap,
-            GetMonthPenalties(Ticket."Contract No."), Round(Penalty, 0.01), NoCapBase), 1, 250);
+            MonthPenalties, Round(Penalty, 0.01), NoCapBase), 1, 250);
         Violation.Insert(true);
+        // registra no acumulado da varredura (mesmo que a linha ainda nao esteja
+        // visivel para o filtro da releitura)
+        if AppliedInRun.Get(Ticket."Contract No.", RunPenalties) then
+            AppliedInRun.Set(Ticket."Contract No.", RunPenalties + Round(Penalty, 0.01))
+        else
+            AppliedInRun.Add(Ticket."Contract No.", Round(Penalty, 0.01));
         exit(true);
     end;
 
