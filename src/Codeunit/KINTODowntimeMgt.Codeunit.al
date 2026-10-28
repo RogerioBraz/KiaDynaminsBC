@@ -145,36 +145,24 @@ codeunit 60002 "KINTO Downtime Mgt."
     local procedure GetRevenueOfMonth(ContractNo: Code[20]; BillingMonth: Date): Decimal
     var
         BillingLine: Record "KINTO Billing Line";
-        LastBilledMonth: Date;
         Amount: Decimal;
     begin
         BillingLine.SetRange("Contract No.", ContractNo);
-        BillingLine.SetRange("Billing Month", BillingMonth);
+        // MES INTEIRO, nao um dia exato: o projeto grava "Billing Month" ora no
+        // 1o dia ('<-CM>', convencao do Billing Job Queue), ora no ultimo
+        // ('<CM>', convencao do harness de teste). Comparar igualdade so
+        // funciona em uma delas e a base do cap vinha 0 na outra.
+        BillingLine.SetFilter("Billing Month", '>=%1&<=%2',
+            CalcDate('<-CM>', BillingMonth), CalcDate('<CM>', BillingMonth));
         BillingLine.SetFilter(Status, '<>%1', BillingLine.Status::Cancelled);
         if not BillingLine.IsEmpty() then begin
             BillingLine.CalcSums(Amount);
             exit(BillingLine.Amount);
         end;
 
-        // Mes corrente ainda nao faturado: usa o ultimo mes faturado do contrato
-        BillingLine.Reset();
-        BillingLine.SetRange("Contract No.", ContractNo);
-        BillingLine.SetFilter(Status, '<>%1', BillingLine.Status::Cancelled);
-        BillingLine.SetFilter("Billing Month", '<%1', BillingMonth);
-        BillingLine.SetCurrentKey("Billing Month");
-        if BillingLine.FindLast() then begin
-            LastBilledMonth := BillingLine."Billing Month";
-            BillingLine.Reset();
-            BillingLine.SetRange("Contract No.", ContractNo);
-            BillingLine.SetRange("Billing Month", LastBilledMonth);
-            BillingLine.SetFilter(Status, '<>%1', BillingLine.Status::Cancelled);
-            if BillingLine.IsEmpty() then
-                exit(0);
-            BillingLine.CalcSums(Amount);
-            // CalcSums agrega NO CAMPO, nao na variavel local
-            exit(BillingLine.Amount);
-        end;
-        exit(0);
+        // Mes corrente ainda nao faturado: ultimo mes faturado do contrato.
+        // Delegado: a logica de faixa vive em um lugar so.
+        exit(GetLastBilledRevenue(ContractNo, BillingMonth));
     end;
 
     // Penalidades ja aplicadas ao contrato no mes corrente (acumulado do cap)
@@ -184,7 +172,14 @@ codeunit 60002 "KINTO Downtime Mgt."
         Amount: Decimal;
     begin
         Violation.SetRange("Contract No.", ContractNo);
-        Violation.SetFilter("Detected DateTime", '>=%1', CreateDateTime(CalcDate('<CM>', WorkDate()), 0T));
+        // CUIDADO: '<CM>' devolve o ULTIMO dia do mes, nao o primeiro. Usar
+        // '<CM>' aqui filtrava violacoes a partir do fim do mes, excluindo as
+        // detectadas hoje -> acumulado sempre 0 -> cada violacao recebia o cap
+        // INTEIRO (no teste: 158,59 x 3 = 475,77 em vez de 158,59 no total).
+        // Primeiro dia do mes corrente = '<-CM>' (forma canonica do AL e ja
+        // usada no resto do projeto; NAO confundir com '<CM>' = ultimo dia).
+        Violation.SetFilter("Detected DateTime", '>=%1',
+            CreateDateTime(CalcDate('<-CM>', WorkDate()), 0T));
         Violation.CalcSums("Penalty Amount");
         exit(Violation."Penalty Amount");
     end;
@@ -231,14 +226,16 @@ codeunit 60002 "KINTO Downtime Mgt."
         Amount: Decimal;
     begin
         BillingLine.SetRange("Contract No.", ContractNo);
-        BillingLine.SetFilter("Billing Month", '<%1', BeforeMonth);
+        BillingLine.SetFilter("Billing Month", '<%1', CalcDate('<-CM>', BeforeMonth));
         BillingLine.SetFilter(Status, '<>%1', BillingLine.Status::Cancelled);
         BillingLine.SetCurrentKey("Billing Month");
         if BillingLine.FindLast() then begin
             LastMonth := BillingLine."Billing Month";
             BillingLine.Reset();
             BillingLine.SetRange("Contract No.", ContractNo);
-            BillingLine.SetRange("Billing Month", LastMonth);
+            // mesma logica de faixa, aplicada ao mes encontrado
+            BillingLine.SetFilter("Billing Month", '>=%1&<=%2',
+                CalcDate('<-CM>', LastMonth), CalcDate('<CM>', LastMonth));
             BillingLine.SetFilter(Status, '<>%1', BillingLine.Status::Cancelled);
             if not BillingLine.IsEmpty() then begin
                 BillingLine.CalcSums(Amount);
