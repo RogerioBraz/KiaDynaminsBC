@@ -56,6 +56,7 @@ page 50200 "KINTO Vehicle Contract Card"
                 field("Non-Operational"; Rec."Non-Operational") { ApplicationArea = All; }
                 field("Legal Proceeding"; Rec."Legal Proceeding") { ApplicationArea = All; }
                 field("Retention Fee Indicated"; Rec."Retention Fee Indicated") { ApplicationArea = All; }
+                field("Retention Fee Amount"; Rec."Retention Fee Amount") { ApplicationArea = All; }
             }
             group(Termination)
             {
@@ -65,6 +66,14 @@ page 50200 "KINTO Vehicle Contract Card"
                 field("Extension Count"; Rec."Extension Count") { ApplicationArea = All; Editable = false; }
                 field("Amendment Count"; Rec."Amendment Count") { ApplicationArea = All; Editable = false; }
                 field("Last Billing Month"; Rec."Last Billing Month") { ApplicationArea = All; Editable = false; }
+                field("Rescission Fee %"; Rec."Rescission Fee %") { ApplicationArea = All; }
+                field("Rescission Waiver Days"; Rec."Rescission Waiver Days") { ApplicationArea = All; }
+            }
+            group(ExcessKm)
+            {
+                Caption = 'Excess Mileage Pricing';
+                field("Excess Km Price (up to 10%)"; Rec."Excess Km Price (up to 10%)") { ApplicationArea = All; }
+                field("Excess Km Price (above 10%)"; Rec."Excess Km Price (above 10%)") { ApplicationArea = All; }
             }
             part(Conditions; "KINTO Contract Condition List")
             {

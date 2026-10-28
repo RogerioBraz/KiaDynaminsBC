@@ -125,6 +125,7 @@ page 50100 "KINTO Country Setup Card"
                 field("Remarketing Sale Series"; Rec."Remarketing Sale Series") { ApplicationArea = All; }
                 field("Evaluation Series"; Rec."Evaluation Series") { ApplicationArea = All; }
                 field("Pre-Closure Series"; Rec."Pre-Closure Series") { ApplicationArea = All; }
+                field("Prospect No. Series"; Rec."Prospect No. Series") { ApplicationArea = All; }
             }
             group(CalcLimits)
             {

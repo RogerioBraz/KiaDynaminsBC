@@ -38,8 +38,11 @@ table 50303 "KINTO Fine Fee Setup"
 {
     Caption = 'KINTO Fine Fee Setup';
     DataClassification = CustomerContent;
-    LookupPageId = "KINTO Issuing Authority List";
-    DrillDownPageId = "KINTO Issuing Authority List";
+    // CORRIGIDO 1.2.0.6: apontava para "KINTO Issuing Authority List", pagina de
+    // OUTRA tabela (a de orgaos autuadores). Abrir o lookup desta tabela trazia
+    // um RecordID de outra tabela e quebrava — mesmo defeito da pagina 60012.
+    LookupPageId = "KINTO Fine Fee Setup List";
+    DrillDownPageId = "KINTO Fine Fee Setup Card";
 
     fields
     {
