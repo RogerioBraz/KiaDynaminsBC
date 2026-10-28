@@ -149,6 +149,25 @@ page 50213 "KINTO Maintenance Ticket Card"
                         Message('Validation found issues — check Sequence OK and lines.');
                 end;
             }
+            action(ApplyLaborRates)
+            {
+                Caption = 'Apply Labor Rates';
+                ApplicationArea = All;
+                Image = Calculate;
+                ToolTip = 'Busca a taxa hora-homem do fornecedor na data do servico e aplica nas linhas de mao de obra.';
+                trigger OnAction()
+                var
+                    MaintMgt: Codeunit "KINTO Maintenance Management";
+                    Applied: Integer;
+                begin
+                    Applied := MaintMgt.ApplyLaborRates(Rec);
+                    if Applied = 0 then
+                        Message('No labor line was updated. Check the vendor, the line type and the labor rate table.')
+                    else
+                        Message('%1 labor line(s) updated.', Applied);
+                    CurrPage.Update(true);
+                end;
+            }
             action(BillCustomer)
             {
                 Caption = 'Bill Additional to Customer';

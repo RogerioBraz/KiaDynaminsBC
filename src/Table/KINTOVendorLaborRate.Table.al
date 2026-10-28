@@ -51,6 +51,19 @@ table 60000 "KINTO Vendor Labor Rate"
         key(Idx1; "Valid From") { }
     }
 
+    // Carrega a taxa VIGENTE do fornecedor para o tipo de servico na data
+    // informada. A PK e (Fornecedor, Tipo de Servico, Valido a Partir), entao
+    // FindLast() apos os SetRange devolve a vigencia MAIS RECENTE que ainda
+    // valia na data do servico — e nao a mais antiga.
+    procedure FindRate(VendorNo: Code[20]; ServiceType: Enum "KINTO Maint Service Type"; ServiceDate: Date): Boolean
+    begin
+        SetRange("Vendor No.", VendorNo);
+        SetRange("Service Type", ServiceType);
+        SetRange(Active, true);
+        SetFilter("Valid From", '<=%1', ServiceDate);
+        exit(FindLast());
+    end;
+
     procedure GetRate(VendorNo: Code[20]; ServiceType: Enum "KINTO Maint Service Type"; ServiceDate: Date): Decimal
     begin
         SetRange("Vendor No.", VendorNo);

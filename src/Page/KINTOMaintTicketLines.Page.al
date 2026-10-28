@@ -24,6 +24,12 @@ page 50215 "KINTO Maint Ticket Lines"
                 field("Covered by Warranty"; Rec."Covered by Warranty") { ApplicationArea = All; }
                 field("Standard Price Found"; Rec."Standard Price Found") { ApplicationArea = All; Editable = false; }
                 field("Price Deviation %"; Rec."Price Deviation %") { ApplicationArea = All; Editable = false; }
+                field("Line Type"; Rec."Line Type") { ApplicationArea = All; }
+                field("Service Type"; Rec."Service Type") { ApplicationArea = All; }
+                field(Hours; Rec.Hours) { ApplicationArea = All; }
+                field("Billable Hours"; Rec."Billable Hours") { ApplicationArea = All; Editable = false; }
+                field("HH Rate"; Rec."HH Rate") { ApplicationArea = All; Editable = false; }
+                field("Minimum Hours Applied"; Rec."Minimum Hours Applied") { ApplicationArea = All; Editable = false; }
             }
         }
     }

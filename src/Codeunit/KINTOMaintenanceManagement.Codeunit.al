@@ -26,6 +26,11 @@ codeunit 50204 "KINTO Maintenance Management"
         if Ticket."Billing Line Entry No." <> 0 then
             Error(AlreadyErr, Ticket."Ticket No.");
 
+        // Garante a taxa HH vigente ANTES de apurar o total a faturar: se a
+        // tabela de taxas foi corrigida entre a execucao e o faturamento, o
+        // cliente e cobrado pelo valor certo, e nao pelo que estava na linha.
+        ApplyLaborRates(Ticket);
+
         TicketLine.SetRange("Ticket No.", Ticket."Ticket No.");
         TicketLine.SetRange("Bill to Customer", true);
         if TicketLine.FindSet() then
@@ -105,6 +110,35 @@ codeunit 50204 "KINTO Maintenance Management"
     // ============================================================
     // FASE 3 — VALIDAÇÃO DE VALOR vs PREÇO PADRÃO (D1 PP-05, RN-021)
     // ============================================================
+    // D1 — aplica a taxa hora-homem do fornecedor em TODAS as linhas de mao de
+    // obra do ticket. Usa a Data de Servico do ticket (nao a data de hoje), para
+    // que reprocessar um ticket antigo traga a taxa que valia na epoca.
+    //
+    // Devolve a quantidade de linhas efetivamente atualizadas.
+    procedure ApplyLaborRates(var Ticket: Record "KINTO Maintenance Ticket"): Integer
+    var
+        TicketLine: Record "KINTO Maint Ticket Line";
+        Applied: Integer;
+        ServiceDate: Date;
+    begin
+        if Ticket."Vendor No." = '' then
+            exit(0);
+
+        ServiceDate := Ticket."Service Date";
+        if ServiceDate = 0D then
+            ServiceDate := Today();
+
+        TicketLine.SetRange("Ticket No.", Ticket."Ticket No.");
+        if TicketLine.FindSet(true) then
+            repeat
+                if TicketLine.ApplyLaborRate(Ticket."Vendor No.", ServiceDate) then begin
+                    TicketLine.Modify(true);
+                    Applied += 1;
+                end;
+            until TicketLine.Next() = 0;
+        exit(Applied);
+    end;
+
     procedure ValidateTicketPrices(var Ticket: Record "KINTO Maintenance Ticket"): Decimal
     var
         TicketLine: Record "KINTO Maint Ticket Line";

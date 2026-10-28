@@ -232,6 +232,7 @@ table 50210 "KINTO Maintenance Ticket"
         PrevTicket: Record "KINTO Maintenance Ticket";
         ErrList: Text;
         SequenceBroken: Boolean;
+        MaintMgt: Codeunit "KINTO Maintenance Management";
     begin
         ErrList := '';
         SequenceBroken := false;
@@ -252,6 +253,11 @@ table 50210 "KINTO Maintenance Ticket"
         TicketLine.SetRange("Ticket No.", "Ticket No.");
         if TicketLine.IsEmpty() then
             ErrList += 'No service lines; ';
+
+        // 3. Mao de obra: garante que a taxa HH do fornecedor foi aplicada.
+        // Sem isto o usuario pode fechar o ticket com valor de mao de obra zerado
+        // ou com uma taxa digitada a mao que nao corresponde ao cadastro.
+        MaintMgt.ApplyLaborRates(Rec);
 
         Modify(true);
         exit(ErrList = '');
