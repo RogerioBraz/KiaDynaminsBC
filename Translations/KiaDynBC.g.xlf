@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="en-US" target-language="pt-BR" original="KiaDynBC">
+  <file datatype="xml" source-language="en-US" target-language="en-US" original="KiaDynBC">
     <body>
       <group id="body">
         <trans-unit id="Table 1023991719 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1498,6 +1498,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Profit Tax Rate % - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1652137844 - Field 3189973028 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prospect No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Prospect No. Series - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1652137844 - Field 2752120884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Recovery Case No. Series</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1637,6 +1642,61 @@
           <source>Vehicle No. Series</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Country Setup - Field Vehicle Series - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Customer Block</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Customer Block - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 1090351696 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Active Block</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Customer Block - Field Active - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 3822144143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Block Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Customer Block - Field Block Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 4008583839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Block Reason</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Customer Block - Field Block Reason - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 2662392749 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blocked By</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Customer Block - Field Blocked By - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 4190130733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Customer Block - Field Customer No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Customer Block - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 391071131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reason</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Customer Block - Field Reason Text - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 3919357263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Release Reason</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Customer Block - Field Release Reason - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 3664870498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Released By</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Customer Block - Field Released By - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1409153958 - Field 572750435 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Released Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Customer Block - Field Released Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3723748302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Damage Line</source>
@@ -2918,6 +2978,76 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Insurer - Field Trade Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1251140291 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Interaction Log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Interaction Log - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 2378863201 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Interaction Log - Field Contact Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 2369664869 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Interaction Log - Field Created By - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 3572756595 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created DateTime</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Interaction Log - Field Created DateTime - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 4190130733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Interaction Log - Field Customer No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 318613646 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Details</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Interaction Log - Field Details - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Interaction Log - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 3128059970 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Interaction Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Interaction Log - Field Interaction Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 1108160158 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Interaction Log - Field Interaction Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 2051965255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Next Step</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Interaction Log - Field Next Step - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 3530007147 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Next Step Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Interaction Log - Field Next Step Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 1919512485 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prospect No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Interaction Log - Field Prospect No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 553464652 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Salesperson Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Interaction Log - Field Salesperson Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1251140291 - Field 1234124704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Subject</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Interaction Log - Field Subject - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1721918671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Inventory Vehicle</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3983,6 +4113,71 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Portal Sync Entry - Field Vehicle No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3938071026 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Portfolio Transfer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Portfolio Transfer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 4041162204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approved By</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Portfolio Transfer - Field Approved By - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 3027137289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approved Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Portfolio Transfer - Field Approved Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 4014080942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customers Moved</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Portfolio Transfer - Field Customers Moved - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 693554325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>From Salesperson</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Portfolio Transfer - Field From Salesperson - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 222620933 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Notes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Portfolio Transfer - Field Notes - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 1900084694 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prospects Moved</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Portfolio Transfer - Field Prospects Moved - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 3369789712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reason</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Portfolio Transfer - Field Reason - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 1438758551 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Request Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Portfolio Transfer - Field Request Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 79791429 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Requested By</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Portfolio Transfer - Field Requested By - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Portfolio Transfer - Field Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 2964443338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>To Salesperson</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Portfolio Transfer - Field To Salesperson - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3938071026 - Field 4087076640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transfer No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Portfolio Transfer - Field Transfer No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 18306152 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Pre-Closure</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4212,6 +4407,151 @@
           <source>Used Vehicles</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Pricing Cue - Field Used Vehicles - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Prospect</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 4008583839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Block Reason</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Block Reason - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 3543129988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blocked</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Blocked - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 3276792861 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Origin Channel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Channel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 714791889 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>City</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field City - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 2632886192 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact E-mail</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Contact Email - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 2378863201 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Contact Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 1993848112 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact Phone</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Contact Phone - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 3566277575 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Converted to Customer No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Converted Customer No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 2942153286 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Converted Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Converted Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 2542713143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Country Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Country Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 2369664869 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Created By - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 3572756595 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created DateTime</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Created DateTime - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 379183542 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ERP Registration</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field ERP Registration Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 379183542 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Pending,OK,Missing Info</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field ERP Registration Status - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 3084455704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IBGE Code (BR)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field IBGE Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 596019230 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Modified By - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 1127265756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified DateTime</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Modified DateTime - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 222620933 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Notes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Notes - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 1919512485 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prospect No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Prospect No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 2867385672 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Prospect Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 1486708140 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Rural Producer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Rural Producer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 553464652 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Salesperson Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Salesperson Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 269761521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>State</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field State - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 3661882300 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax ID (CPF/CNPJ)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Tax ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 3664202605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax ID Validation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Tax ID Validation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 21217061 - Field 3664202605 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Valid,Invalid,Pending</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Prospect - Field Tax ID Validation - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 4223300238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Quote Header</source>
@@ -8813,6 +9153,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Country Setup List - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2967055076 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Customer Blocks</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Customer Block List - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 4077387803 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Damage Lines</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9108,6 +9453,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Insurer List - Action InsuranceQuotes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 4697965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Interaction Log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Interaction Log List - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 393212459 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Inventory Vehicle</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9343,6 +9693,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Maintenance Ticket Card - Control Vehicle - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3537972438 - Action 3761606113 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Busca a taxa hora-homem do fornecedor na data do servico e aplica nas linhas de mao de obra.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Maintenance Ticket Card - Action ApplyLaborRates - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3537972438 - Action 3761606113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apply Labor Rates</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Maintenance Ticket Card - Action ApplyLaborRates - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3537972438 - Action 803889193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approve</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9472,6 +9832,21 @@
           <source>Show Payload (JSON)</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Portal Sync Entries - Action ShowPayload - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 732575760 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Portfolio Transfers</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Portfolio Transfer List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 732575760 - Action 803889193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approve Transfer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Portfolio Transfer List - Action Approve - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 732575760 - Action 113888489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reject Transfer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Portfolio Transfer List - Action Reject - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1486413180 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pre-Closure</source>
@@ -10027,6 +10402,81 @@
           <source>KINTO Pricing Workflow API</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Pricing Workflow API - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Prospect Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Prospect Card - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Control 3168444338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Address</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Prospect Card - Control Address - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Control 1358406803 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Block</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Prospect Card - Control Block - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Control 3993128796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Prospect Card - Control Contact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Control 213671212 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Conversion</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Prospect Card - Control Conversion - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Prospect Card - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Control 1184938952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Notes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Prospect Card - Control NotesGroup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Control 213023903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Identification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Prospect Card - Control Tax - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Action 612977212 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Convert to Customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Prospect Card - Action ConvertToCustomer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1678126121 - Action 520388578 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log Interaction</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Prospect Card - Action NewInteraction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 733590523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Prospects</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Prospect List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 733590523 - Action 139733687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Block</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Prospect List - Action BlockProspect - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 733590523 - Action 612977212 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Creates the BC customer from the selected prospect, keeping the prospect as history.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Prospect List - Action ConvertToCustomer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 733590523 - Action 612977212 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Convert to Customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Prospect List - Action ConvertToCustomer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 733590523 - Action 2030665386 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unblock</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Prospect List - Action UnblockProspect - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1773596298 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cotações</source>
@@ -11303,6 +11753,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Maint Plan Header Ext - Field Preventive Enabled - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1193908894 - Field 3857150950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1193908894">
+          <source>Billable Hours</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Maint Ticket Line Ext - Field Billable Hours - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1193908894 - Field 2260408894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1193908894">
           <source>HH Rate</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11317,6 +11772,11 @@
           <source>Line Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Maint Ticket Line Ext - Field Line Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1193908894 - Field 811996852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1193908894">
+          <source>Minimum Billable Hours Applied</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Maint Ticket Line Ext - Field Minimum Hours Applied - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1193908894 - Field 1896974463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1193908894">
           <source>Service Type</source>
@@ -11482,6 +11942,46 @@
           <source>Open</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Billing Status - EnumValue Open - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1451729774 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Block Reason</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Block Reason - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1451729774 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Block Reason - EnumValue   - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1451729774 - EnumValue 2408125584 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Commercial Decision</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Block Reason - EnumValue Commercial - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1451729774 - EnumValue 429200823 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract Breach</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Block Reason - EnumValue Contract Breach - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1451729774 - EnumValue 2141525479 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Credit Restriction</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Block Reason - EnumValue Credit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1451729774 - EnumValue 835052336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fraud Suspect</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Block Reason - EnumValue Fraud - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1451729774 - EnumValue 4207495877 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Legal Restriction</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Block Reason - EnumValue Legal - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1451729774 - EnumValue 4263389294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Overdue Payment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Block Reason - EnumValue Overdue - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1237464844 - EnumValue 90410743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fixed Value</source>
@@ -12263,6 +12763,46 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Insurance Status - EnumValue Inativo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 3259355935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Interaction Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Interaction Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3259355935 - EnumValue 3533622062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Phone Call</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Interaction Type - EnumValue Call - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3259355935 - EnumValue 2744557225 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Complaint</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Interaction Type - EnumValue Complaint - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3259355935 - EnumValue 1285973296 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>E-mail</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Interaction Type - EnumValue Email - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3259355935 - EnumValue 1406650067 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Meeting</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Interaction Type - EnumValue Meeting - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3259355935 - EnumValue 3448339824 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Other</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Interaction Type - EnumValue Other - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3259355935 - EnumValue 1411282128 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proposal Sent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Interaction Type - EnumValue Proposal - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3259355935 - EnumValue 1983338003 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Visit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Interaction Type - EnumValue Visit - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 603749262 - EnumValue 2968795412 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>24h Assistance</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12623,6 +13163,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Portal Sync Status - EnumValue Sent - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 442249612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Portfolio Transfer Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Portfolio Request Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 442249612 - EnumValue 2913119229 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approved</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Portfolio Request Status - EnumValue Approved - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 442249612 - EnumValue 4069904181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cancelled</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Portfolio Request Status - EnumValue Cancelled - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 442249612 - EnumValue 3481143665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pending Approval</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Portfolio Request Status - EnumValue Pending - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 442249612 - EnumValue 496445946 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Rejected</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Portfolio Request Status - EnumValue Rejected - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 1813527295 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Pre-Closure Status</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12707,6 +13272,96 @@
           <source>KINTO ONE Used (Re-KINTO)</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Product Type - EnumValue KINTO ONE Used - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 656920644 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Prospect Channel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Channel - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 656920644 - EnumValue 2611991338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Campaign</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Channel - EnumValue Campaign - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 656920644 - EnumValue 327020741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dealer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Channel - EnumValue Dealer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 656920644 - EnumValue 2672871879 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Direct Contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Channel - EnumValue Direct - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 656920644 - EnumValue 3448339824 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Other</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Channel - EnumValue Other - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 656920644 - EnumValue 186081026 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Partner</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Channel - EnumValue Partner - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 656920644 - EnumValue 1933101771 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Referral</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Channel - EnumValue Referral - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 656920644 - EnumValue 2459809053 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Website</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Channel - EnumValue Website - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1034841321 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Prospect Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1034841321 - EnumValue 6247114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Converted to Customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Status - EnumValue Converted - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1034841321 - EnumValue 4136100152 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>In Negotiation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Status - EnumValue In Negotiation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1034841321 - EnumValue 525852245 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inactive</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Status - EnumValue Inactive - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1034841321 - EnumValue 1596556440 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Status - EnumValue Lost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1034841321 - EnumValue 4137051400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Status - EnumValue New - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1034841321 - EnumValue 2726257986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Qualified</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Status - EnumValue Qualified - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3696887293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO Prospect Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3696887293 - EnumValue 297040718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>B2B (Company)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Type - EnumValue B2B - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3696887293 - EnumValue 3954311397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>B2C (Individual)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum KINTO Prospect Type - EnumValue B2C - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 455461009 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source> </source>
