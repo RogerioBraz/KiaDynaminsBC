@@ -98,8 +98,8 @@ page 50309 "KINTO CEP Import"
                         InStr: InStream;
                         FileName: Text;
                         Size: Integer;
+                        Stored: Integer;
                         Ok: Boolean;
-                        VerifIn: InStream;
                     begin
                         // UploadIntoStream e a funcao nativa do cliente:
                         // (titulo, pasta, filtro, var nome, var stream)
@@ -108,19 +108,19 @@ page 50309 "KINTO CEP Import"
                             '', 'Arquivo CSV (*.csv)|*.csv', FileName, InStr);
                         if (not Ok) or (FileName = '') then
                             exit;
-                        Size := Rec.StoreFile(FileName, InStr);
-                        Rec.Modify();
-                        // Confere o que REALMENTE ficou no Blob: se a gravacao
-                        // falhar, o usuario ve na hora em vez de descobrir no
-                        // "Importar" com a mensagem generica de arquivo vazio.
-                        Rec."CSV Blob".CreateInStream(VerifIn);
-                        Rec."Last Result" := 'Arquivo ' + FileName + ' anexado: ' +
-                            Format(Size) + ' bytes enviados, ' + Format(VerifIn.Length()) +
-                            ' bytes gravados. Agora use "Importar arquivo anexado".';
-                        if VerifIn.Length() = 0 then
-                            Rec."Last Result" := 'ATENÇÃO: o Blob ficou vazio (0 bytes gravados). ' +
-                                'Arquivo enviado: ' + FileName + ' (' + Format(Size) + ' bytes). Anexe novamente.';
+
+                        // AttachFile grava e faz Modify na MESMA instancia,
+                        // e devolve o tamanho conferido no banco.
+                        // AttachFile grava e faz Modify na MESMA instancia, e
+                        // grava o Last Result junto — a pagina so recarrega e
+                        // exibe. Nenhum Modify() na pagina depois disso: ele
+                        // gravaria o registro inteiro a partir do buffer da
+                        // pagina e poderia zerar o Blob recem-gravado.
+                        Stored := Rec.AttachFile(FileName, InStr);
+                        Rec.GetBuffer();
                         CurrPage.Update(false);
+                        if Stored = 0 then
+                            Error(GravacaoFalhouErr, FileName);
                     end;
                 }
 
@@ -234,6 +234,7 @@ page 50309 "KINTO CEP Import"
         CepVazioErr: Label 'Informe o CEP no campo "CEP para consultar".';
         UrlObrigatoriaErr: Label 'Informe a URL do CSV da base completa.';
         CarregarBaseConfirm: Label 'A carga completa tem cerca de 1,2 milhão de CEPs e roda em background. Confirma?', Locked = true;
+        GravacaoFalhouErr: Label 'Não foi possível gravar o arquivo %1 no Blob do Business Central. Nada foi importado.';
         NenhumArquivoErr: Label 'Anexe um arquivo CSV antes de importar (menu Importação > Anexar arquivo CSV).';
 
     trigger OnOpenPage()

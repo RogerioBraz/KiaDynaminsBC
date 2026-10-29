@@ -119,30 +119,44 @@ table 50308 "KINTO CEP Import Buffer"
     end;
 
     // Guarda o arquivo enviado pelo usuario no campo Blob.
-    procedure StoreFile(FileName: Text; var InStr: InStream): Integer
+    // ANEXA o CSV ao campo Blob e devolve o tamanho REALMENTE persistido.
+    //
+    // Historico de "0 bytes gravados" neste campo (1.2.0.9, 1.2.1.1), sempre
+    // com nome e tamanho certos na tela:
+    //
+    //  1. Abrir CreateInStream() no Blob com um OutStream dele ainda vivo:
+    //     invalida a escrita pendente e o campo fica zerado.
+    //  2. Gravar o Blob numa instancia e chamar Modify() em OUTRA: o Modify
+    //     grava o registro inteiro e sobrescreve o Blob com o buffer vazio da
+    //     segunda instancia. Era este o caso — a pagina gravava no Rec dela e
+    //     o Modify saia em outro momento.
+    //
+    // Por isso tudo acontece aqui, numa unica instancia obtida por Get():
+    // escreve com CreateOutStream INLINE (liberado no fim da instrucao, como
+    // em Report Layouts), faz Modify(), rele e devolve o tamanho conferido.
+    procedure AttachFile(FileName: Text; var InStr: InStream): Integer
     var
+        Buf: Record "KINTO CEP Import Buffer";
+        ChkIn: InStream;
         OutStr: OutStream;
         Size: Integer;
     begin
-        // Padrao da plataforma (o mesmo de Report Layouts):
-        //   CopyStream(Blob.CreateOutStream(), InStream)
-        //
-        // ARMADILHA que quebrou o teste de 29/10: a versao anterior copiava
-        // para um Temp Blob e chamava CreateInStream() com o OutStream do
-        // Temp Blob ainda aberto. Isso devolve stream VAZIO — o segundo
-        // CopyStream gravava 0 bytes no campo e o Blob ficava sem conteudo,
-        // embora nome e tamanho aparecessem na tela. Dai o erro
-        // "Arquivo vazio ou sem linhas de dados".
-        //
-        // Aqui nao ha reabertura: mede o tamanho no proprio InStream de
-        // origem e copia direto para o campo. Nada e lido de volta enquanto
-        // o OutStream existir.
+        if not Buf.Get("Entry No.") then
+            Buf.Insert();
+
         Size := InStr.Length();
-        "CSV Blob".CreateOutStream(OutStr);
+        Buf."CSV Blob".CreateOutStream(OutStr);
         CopyStream(OutStr, InStr);
-        "File Name" := FileName;
-        "CSV Size (KB)" := Size div 1024;
-        exit(Size);
+        Clear(OutStr);                     // libera a escrita ANTES do Modify
+        Buf."File Name" := FileName;
+        Buf."CSV Size (KB)" := Size div 1024;
+        Buf."Last Result" := 'Arquivo ' + FileName + ' anexado. Use "Importar arquivo anexado".';
+        Buf.Modify();
+
+        // confere no banco, em leitura nova
+        Buf.Get("Entry No.");
+        Buf."CSV Blob".CreateInStream(ChkIn);
+        exit(ChkIn.Length());
     end;
 
     procedure FileIntoStream(var InStr: InStream): Boolean
