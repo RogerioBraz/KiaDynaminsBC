@@ -38,6 +38,19 @@ page 50309 "KINTO CEP Import"
                     Editable = false;
                 }
             }
+            group(FullBase)
+            {
+                Caption = 'Base completa pela URL';
+                field("Source URL"; Rec."Source URL")
+                {
+                    ApplicationArea = All;
+                    ShowMandatory = false;
+                }
+                field("Last Url Used"; Rec."Last Url Used") { ApplicationArea = All; }
+                field("Load Status"; Rec."Load Status") { ApplicationArea = All; }
+                field("Load Started"; Rec."Load Started") { ApplicationArea = All; }
+                field("Load Finished"; Rec."Load Finished") { ApplicationArea = All; }
+            }
             group(Options)
             {
                 Caption = 'Opções';
@@ -122,6 +135,45 @@ page 50309 "KINTO CEP Import"
                     end;
                 }
 
+                action(LoadFullBaseFromUrl)
+                {
+                    Caption = 'Carregar base completa da URL (job)';
+                    ApplicationArea = All;
+                    Image = Start;
+                    trigger OnAction()
+                    var
+                        JobQueue: Record "Job Queue Entry";
+                        JobMgt: Codeunit "Job Queue Management";
+                        FullLoad: Codeunit "KINTO CEP Full Load";
+                    begin
+                        if Rec."Source URL" = '' then
+                            Error(UrlObrigatoriaErr);
+                        if not Confirm(CarregarBaseConfirm, false) then
+                            exit;
+
+                        // 1,2 milhao de CEPs nao cabem numa sessao interativa:
+                        // enfileira para o job queue rodar em background.
+                        Rec."Source URL" := Rec."Source URL";
+                        Rec.Modify();
+
+                        JobQueue.Init();
+                        JobQueue."Object Type to Run" := JobQueue."Object Type to Run"::Codeunit;
+                        JobQueue."Object ID to Run" := Codeunit::"KINTO CEP Full Load";
+                        JobQueue.Description := 'KINTO CEP - carga completa da base';
+                        JobQueue."Parameter String" := Rec."Source URL";
+                        JobQueue."Earliest Start Date/Time" := CurrentDateTime;
+                        JobQueue."Recurring Job" := false;
+                        JobQueue."Job Queue Category Code" := '';
+                        JobQueue.Insert(true);
+
+                        Rec."Load Status" := Rec."Load Status"::"Not started";
+                        Rec."Last Result" := 'Carga agendada na fila de trabalhos (ID ' +
+                            Format(JobQueue.ID) + '). Acompanhe em "Job Queue Entries".';
+                        Rec.Modify();
+                        CurrPage.Update(false);
+                    end;
+                }
+
                 action(ClearFile)
                 {
                     Caption = 'Remover arquivo anexado';
@@ -171,6 +223,8 @@ page 50309 "KINTO CEP Import"
 
     var
         CepVazioErr: Label 'Informe o CEP no campo "CEP para consultar".';
+        UrlObrigatoriaErr: Label 'Informe a URL do CSV da base completa.';
+        CarregarBaseConfirm: Label 'A carga completa tem cerca de 1,2 milhão de CEPs e roda em background. Confirma?', Locked = true;
         NenhumArquivoErr: Label 'Anexe um arquivo CSV antes de importar (menu Importação > Anexar arquivo CSV).';
 
     trigger OnOpenPage()

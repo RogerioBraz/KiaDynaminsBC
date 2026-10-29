@@ -25,6 +25,7 @@ codeunit 60025 "KINTO CEP Loader"
         UrlEmptyErr: Label 'Informe a URL do arquivo CSV.';
         DownloadErr: Label 'Falha ao baixar o arquivo (HTTP %1).';
         NoHeaderErr: Label 'Cabeçalho do CSV não contém a coluna "cep".';
+        ZipNotSupportedErr: Label 'A URL aponta para um arquivo ZIP, não para o CSV. O ZIP do OpenCEP traz um JSON por CEP e não pode ser lido direto pelo BC. Use a URL de um CSV já convertido (colunas cep,logradouro,complemento,bairro,localidade,uf,ibge).';
         EmptyFileErr: Label 'Arquivo vazio ou sem linhas de dados.';
 
     // ============================================================
@@ -48,6 +49,11 @@ codeunit 60025 "KINTO CEP Loader"
             Error(EmptyFileErr);
 
         Stream.ReadText(Line);
+        // O pacote oficial do OpenCEP e um ZIP com um JSON por CEP (326 MB),
+        // nao um CSV. Avisar em vez de importar lixo.
+        if CopyStr(Line, 1, 2) = 'PK' then
+            Error(ZipNotSupportedErr);
+
         if StrPos(Line, ';') > 0 then
             Separator := ';'
         else
@@ -123,31 +129,50 @@ codeunit 60025 "KINTO CEP Loader"
     // ============================================================
     procedure LoadFromUrl(Url: Text; UfFilter: Code[2]; ReplaceBR: Boolean): Integer
     var
+        InStr: InStream;
+        RangeFrom, Total: Integer;
+        ChunkSize: Integer;
+    begin
+        if Url = '' then
+            Error(UrlEmptyErr);
+        // O BC online aceita resposta de ate 150 MiB. A base completa em CSV
+        // tem ~88 MB, entao cabe numa requisicao so. O download vai em
+        // streaming para o InStream e o parse le linha a linha — nada de
+        // carregar o corpo inteiro em Text (isso estourava a memoria).
+        ChunkSize := DownloadChunk(Url, 0, InStr);
+        exit(LoadFromStream(InStr, UfFilter, ReplaceBR));
+    end;
+
+    // Baixa a URL e devolve um InStream para leitura linha a linha.
+    // RangeFrom permite baixar em partes (0 = arquivo inteiro) para fontes
+    // que exigem fatias menores que o limite de 150 MiB do BC online.
+    procedure DownloadChunk(Url: Text; RangeFrom: Integer; var OutStream: InStream): Integer
+    var
         Client: HttpClient;
         Response: HttpResponseMessage;
         Status: Integer;
         TempBlob: Codeunit "Temp Blob";
-        InStr: InStream;
         OutStr: OutStream;
-        Body: Text;
+        ChunkIn: InStream;
     begin
-        if Url = '' then
-            Error(UrlEmptyErr);
-
         Client.DefaultRequestHeaders.Clear();
         Client.DefaultRequestHeaders.Add('Accept', 'text/csv, text/plain, application/octet-stream');
+        if RangeFrom > 0 then
+            Client.DefaultRequestHeaders.Add('Range', 'bytes=' + Format(RangeFrom) + '-');
+
         if not Client.Get(Url, Response) then
             Error(DownloadErr, 'sem resposta');
         Status := Response.HttpStatusCode;
-        if Status <> 200 then
+        if (Status <> 200) and (Status <> 206) then
             Error(DownloadErr, Status);
 
-        if not Response.Content().ReadAs(Body) then
-            Error(DownloadErr, 'corpo vazio');
+        // ReadAs espera InStream (nao OutStream): cria os dois no Temp Blob
         TempBlob.CreateOutStream(OutStr);
-        OutStr.WriteText(Body);
-        TempBlob.CreateInStream(InStr);
-        exit(LoadFromStream(InStr, UfFilter, ReplaceBR));
+        TempBlob.CreateInStream(ChunkIn);
+        if not Response.Content().ReadAs(ChunkIn) then
+            Error(DownloadErr, 'corpo vazio');
+        TempBlob.CreateInStream(OutStream);
+        exit(TempBlob.Length());
     end;
 
     // ============================================================

@@ -14,6 +14,36 @@ table 50308 "KINTO CEP Import Buffer"
             Caption = 'Arquivo CSV';
             DataClassification = SystemMetadata;
         }
+        field(12; "Source URL"; Text[500])
+        {
+            Caption = 'URL da base completa';
+            DataClassification = SystemMetadata;
+        }
+        field(13; "Last Url Used"; Text[500])
+        {
+            Caption = 'Última URL carregada';
+            DataClassification = SystemMetadata;
+            Editable = false;
+        }
+        field(14; "Load Status"; Option)
+        {
+            Caption = 'Status da carga';
+            DataClassification = SystemMetadata;
+            OptionMembers = " ","Not started",Running,Completed,Failed;
+            OptionCaption = ' ,Não iniciada,Executando,Concluída,Falhou';
+        }
+        field(15; "Load Started"; DateTime)
+        {
+            Caption = 'Início da carga';
+            DataClassification = SystemMetadata;
+            Editable = false;
+        }
+        field(16; "Load Finished"; DateTime)
+        {
+            Caption = 'Fim da carga';
+            DataClassification = SystemMetadata;
+            Editable = false;
+        }
         field(11; "CSV Size (KB)"; Integer)
         {
             Caption = 'Tamanho (KB)';
