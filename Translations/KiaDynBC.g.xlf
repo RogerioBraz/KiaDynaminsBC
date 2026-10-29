@@ -473,6 +473,91 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table KINTO Cash Flow Header - Field Total Months - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3649222344 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KINTO CEP Import</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CEP Import Buffer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3649222344 - Field 2635618884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CEPs na base</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CEP Import Buffer - Field Base CEPs - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3649222344 - Field 4108160648 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Municípios na base</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CEP Import Buffer - Field Base Cities - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3649222344 - Field 885249719 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Arquivo CSV</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CEP Import Buffer - Field CSV Blob - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3649222344 - Field 8744629 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tamanho (KB)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CEP Import Buffer - Field CSV Size (KB) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3649222344 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CEP Import Buffer - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3649222344 - Field 804481195 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Arquivo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CEP Import Buffer - Field File Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3649222344 - Field 2348721893 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Último resultado</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CEP Import Buffer - Field Last Result - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3649222344 - Field 2205010282 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Última URL carregada</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CEP Import Buffer - Field Last Url Used - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3649222344 - Field 4289827856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fim da carga</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CEP Import Buffer - Field Load Finished - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3649222344 - Field 2137215721 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Início da carga</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CEP Import Buffer - Field Load Started - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3649222344 - Field 1357185678 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status da carga</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CEP Import Buffer - Field Load Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3649222344 - Field 1357185678 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Não iniciada,Executando,Concluída,Falhou</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CEP Import Buffer - Field Load Status - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3649222344 - Field 3766812024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CEP para consultar</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CEP Import Buffer - Field Lookup CEP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3649222344 - Field 3242449272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Substituir base BR existente</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CEP Import Buffer - Field Replace BR - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3649222344 - Field 3089274234 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>URL da base completa</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CEP Import Buffer - Field Source URL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3649222344 - Field 2701955885 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>UF (vazio = todas)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table KINTO CEP Import Buffer - Field UF Filter - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4166169087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Cash Flow Component</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8343,6 +8428,96 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Booking Value Mgt. - NamedType VehicleNotAvailableErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1232758226 - NamedType 244457132" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CEP %1 nao encontrado nas bases publicas.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Brasil API Integration - NamedType CepNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1232758226 - NamedType 1146261693" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CNPJ %1 invalido: os digitos verificadores nao conferem. Confira o numero digitado.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Brasil API Integration - NamedType CnpjInvalidErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1232758226 - NamedType 4230235363" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CNPJ %1 nao encontrado na base da Receita Federal.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Brasil API Integration - NamedType CnpjNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1232758226 - NamedType 507316189" size-unit="char" translate="yes" xml:space="preserve">
+          <source>A consulta a %1 voltou sem conteudo.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Brasil API Integration - NamedType EmptyResponseErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1232758226 - NamedType 2331960944" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nao foi possivel obter o preco FIPE para o codigo %1 / ano %2.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Brasil API Integration - NamedType FipeNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1232758226 - NamedType 2197075555" size-unit="char" translate="yes" xml:space="preserve">
+          <source>A consulta a %1 retornou HTTP %2.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO Brasil API Integration - NamedType HttpStatusErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2906858696 - NamedType 4011980025" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Informe a URL do CSV da base de CEP antes de agendar a carga.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO CEP Full Load - NamedType NoUrlErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3477332396 - NamedType 740954008" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CEP inválido: %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO CEP Loader - NamedType BadCepErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3477332396 - NamedType 7857999" size-unit="char" translate="yes" xml:space="preserve">
+          <source>O arquivo anexado não foi gravado no Blob (0 bytes). Anexe o CSV novamente pelo menu Importação &gt; Anexar arquivo CSV.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO CEP Loader - NamedType BlobVazioErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3477332396 - NamedType 3627494738" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CEP %1 criado: %2 — %3/%4</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO CEP Loader - NamedType CreatedLabel</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3477332396 - NamedType 3420171491" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Falha ao baixar o arquivo (HTTP %1).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO CEP Loader - NamedType DownloadErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3477332396 - NamedType 928958130" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Arquivo vazio ou sem linhas de dados.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO CEP Loader - NamedType EmptyFileErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3477332396 - NamedType 3175579130" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CEP %1 já existe: %2 — %3/%4</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO CEP Loader - NamedType ExistsLabel</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3477332396 - NamedType 4189098454" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 CEP(s) incluído(s), %2 atualizado(s), %3 ignorado(s).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO CEP Loader - NamedType ImportedLabel</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3477332396 - NamedType 3578138118" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nenhum arquivo informado. Envie o CSV ou preencha a URL.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO CEP Loader - NamedType NoFileErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3477332396 - NamedType 4088070045" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cabeçalho do CSV não contém a coluna "cep".</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO CEP Loader - NamedType NoHeaderErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3477332396 - NamedType 622933949" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Informe a URL do arquivo CSV.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO CEP Loader - NamedType UrlEmptyErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3477332396 - NamedType 1714319863" size-unit="char" translate="yes" xml:space="preserve">
+          <source>A URL aponta para um arquivo ZIP, não para o CSV. O ZIP do OpenCEP traz um JSON por CEP e não pode ser lido direto pelo BC. Use a URL de um CSV já convertido (colunas cep,logradouro,complemento,bairro,localidade,uf,ibge).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit KINTO CEP Loader - NamedType ZipNotSupportedErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2801889850 - NamedType 1612679345" size-unit="char" translate="yes" xml:space="preserve">
           <source>Claim %1 already Paid.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8913,6 +9088,86 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Cash Flow FactBox - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3861767464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importar Base de CEP</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO CEP Import - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3861767464 - NamedType 1730741684" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Informe o CEP no campo "CEP para consultar".</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO CEP Import - NamedType CepVazioErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3861767464 - NamedType 1741150814" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Não foi possível gravar o arquivo %1 no Blob do Business Central. Nada foi importado.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO CEP Import - NamedType GravacaoFalhouErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3861767464 - NamedType 3718035121" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Anexe um arquivo CSV antes de importar (menu Importação &gt; Anexar arquivo CSV).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO CEP Import - NamedType NenhumArquivoErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3861767464 - NamedType 418625489" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Informe a URL do CSV da base completa.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO CEP Import - NamedType UrlObrigatoriaErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3861767464 - Control 3998624058 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Base completa pela URL</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO CEP Import - Control FullBase - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3861767464 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Opções</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO CEP Import - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3861767464 - Control 2397723431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Arquivo da base</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO CEP Import - Control Source - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3861767464 - Control 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Situação da base</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO CEP Import - Control Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3861767464 - Action 4129953958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importação</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO CEP Import - Action ImportGroup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3861767464 - Action 2743005825 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remover arquivo anexado</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO CEP Import - Action ClearFile - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3861767464 - Action 426944244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importar arquivo anexado</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO CEP Import - Action ImportFromBlob - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3861767464 - Action 1031681391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importar arquivo CSV...</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO CEP Import - Action ImportFromFile - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3861767464 - Action 4033446895 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Carregar base completa da URL (job)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO CEP Import - Action LoadFullBaseFromUrl - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3861767464 - Action 1864727978 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Consultar um CEP</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO CEP Import - Action LookupOne - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3861767464 - Action 2226948198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Abrir Post Codes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO CEP Import - Action OpenPostCodes - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3702014089 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cash Flow Components</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9248,6 +9503,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Financial Product List - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1639652778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fine Fee Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Fine Fee Setup Card - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1639652778 - Control 1766782118 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Charge</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Fine Fee Setup Card - Control Charge - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1639652778 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Fine Fee Setup Card - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1004175372 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fine Fee Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Fine Fee Setup List - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1962153258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Fine Integration Errors</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9452,6 +9727,66 @@
           <source>Cotações de Seguro</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Insurer List - Action InsuranceQuotes - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1452787465 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Integration Test (Public APIs)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Integration Test - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1452787465 - Control 472338107 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Resultado</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Integration Test - Control Result - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1452787465 - Control 889292200 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Retorno</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Integration Test - Control ResultText - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1452787465 - Control 3732224266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Consultar</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Integration Test - Control Test - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1452787465 - Control 1624094540 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CEP</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Integration Test - Control TestCep - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1452787465 - Control 3454540379 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CNPJ</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Integration Test - Control TestCnpj - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1452787465 - Control 384496141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CPF (validação local)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Integration Test - Control TestCpf - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1452787465 - Control 700342288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Código FIPE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Integration Test - Control TestFipe - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1452787465 - Action 1861988656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Consultar CEP</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Integration Test - Action ActConsultCep - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1452787465 - Action 1572174335 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Consultar CNPJ</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Integration Test - Action ActConsultCnpj - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1452787465 - Action 3528362956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Consultar FIPE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Integration Test - Action ActConsultFipe - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1452787465 - Action 2682435247 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Validar CPF</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Integration Test - Action ActValidateCpf - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4697965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>KINTO Interaction Log</source>
@@ -10863,10 +11198,45 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Settlement List - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 856670008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SLA Violation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO SLA Violation Card - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 856670008 - Control 501661907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO SLA Violation Card - Control Calculation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 856670008 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO SLA Violation Card - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 856670008 - Control 1184938952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Notes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO SLA Violation Card - Control NotesGroup - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1517121950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>SLA Violations</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO SLA Violation List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1517121950 - Action 2399209102 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Varre os tickets em aberto e em andamento e grava as violacoes de prazo do SLA.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO SLA Violation List - Action CheckSLAViolations - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1517121950 - Action 2399209102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Check SLA Violations</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO SLA Violation List - Action CheckSLAViolations - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1517121950 - Action 2399209102 - Method 1377591017 - NamedType 3004040435" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Varredura concluida: %1 violacao(oes) de SLA registrada(s).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO SLA Violation List - Action CheckSLAViolations - Method OnAction - NamedType Msg</note>
         </trans-unit>
         <trans-unit id="Page 1135982553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Simulation Snapshot</source>
@@ -11113,6 +11483,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Vehicle Contract Card - Control Conditions - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 122658715 - Control 1861058287 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Excess Mileage Pricing</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page KINTO Vehicle Contract Card - Control ExcessKm - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 122658715 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11337,6 +11712,31 @@
           <source>País do KINTO usado por esta empresa. Define qual KINTO Country Setup os processos usam (séries, impostos, limites de cálculo).</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Company Information Ext - Control KINTO Country Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2033137810 - NamedType 2971053858" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2033137810">
+          <source>CEP %1 não está na base local. Consultar na API pública e incluir?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Customer Card Ext - NamedType CreateConfirm</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2033137810 - NamedType 1030827854" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2033137810">
+          <source>Preencha o campo CEP (Post Code) antes de consultar.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Customer Card Ext - NamedType NoCepErr</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2033137810 - Action 1934093646 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>KINTO — Localização</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Customer Card Ext - Action KINTOLocation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2033137810 - Action 1226531860 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>Consulta o CEP na base local (carregada) e preenche endereço, cidade, UF e bairro.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Customer Card Ext - Action KINTOFillFromCep - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2033137810 - Action 1226531860 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>Preencher endereço pelo CEP</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension KINTO Customer Card Ext - Action KINTOFillFromCep - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2033137810 - Control 447642841 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>KINTO</source>
@@ -11782,6 +12182,46 @@
           <source>Service Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Maint Ticket Line Ext - Field Service Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2245940901 - Field 2970767624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3660300303">
+          <source>Origem</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Post Code Ext - Field KINTO CEP Source - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2245940901 - Field 2970767624 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3660300303">
+          <source> ,Base,API</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Post Code Ext - Field KINTO CEP Source - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2245940901 - Field 2480447672 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3660300303">
+          <source>Atualizado em</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Post Code Ext - Field KINTO CEP Updated - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2245940901 - Field 1336870647 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3660300303">
+          <source>Complemento</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Post Code Ext - Field KINTO Complement - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2245940901 - Field 1022635859 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3660300303">
+          <source>Código IBGE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Post Code Ext - Field KINTO IBGE City - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2245940901 - Field 4155947003 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3660300303">
+          <source>Bairro</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Post Code Ext - Field KINTO Neighborhood - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2245940901 - Field 2280374516 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3660300303">
+          <source>UF</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Post Code Ext - Field KINTO State - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2245940901 - Field 1301450290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3660300303">
+          <source>Logradouro</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension KINTO Post Code Ext - Field KINTO Street - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1345529390 - Field 1905185614 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>KINTO Return No.</source>

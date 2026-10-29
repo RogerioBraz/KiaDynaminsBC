@@ -147,13 +147,11 @@ table 50308 "KINTO CEP Import Buffer"
         Size := InStr.Length();
         Buf."CSV Blob".CreateOutStream(OutStr);
         CopyStream(OutStr, InStr);
-        Clear(OutStr);                     // libera a escrita ANTES do Modify
+        Clear(OutStr);
         Buf."File Name" := FileName;
         Buf."CSV Size (KB)" := Size div 1024;
-        Buf."Last Result" := 'Arquivo ' + FileName + ' anexado. Use "Importar arquivo anexado".';
         Buf.Modify();
 
-        // confere no banco, em leitura nova
         Buf.Get("Entry No.");
         Buf."CSV Blob".CreateInStream(ChkIn);
         exit(ChkIn.Length());

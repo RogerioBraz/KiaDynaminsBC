@@ -88,39 +88,41 @@ page 50309 "KINTO CEP Import"
             {
                 Caption = 'Importação';
 
-                action(AttachFile)
+                action(ImportFromFile)
                 {
-                    Caption = 'Anexar arquivo CSV...';
+                    Caption = 'Importar arquivo CSV...';
                     ApplicationArea = All;
                     Image = Import;
                     trigger OnAction()
                     var
                         InStr: InStream;
                         FileName: Text;
-                        Size: Integer;
-                        Stored: Integer;
                         Ok: Boolean;
+                        Count: Integer;
+                        Loader: Codeunit "KINTO CEP Loader";
+                        Api2: Codeunit "KINTO Brasil API Integration";
                     begin
-                        // UploadIntoStream e a funcao nativa do cliente:
-                        // (titulo, pasta, filtro, var nome, var stream)
+                        // CAMINHO CONFIRMADO: o stream do upload vai DIRETO
+                        // para o parser, sem passar por Blob. O round-trip
+                        // upload -> Blob -> leitura falhou 3x nesta tabela
+                        // (Blob vazio), e Blob nao tem ImportStream em AL.
+                        // Gravar no Blob fica como cortesia, sem depender dele.
                         Ok := UploadIntoStream(
                             'Selecione a base de CEP em CSV',
                             '', 'Arquivo CSV (*.csv)|*.csv', FileName, InStr);
                         if (not Ok) or (FileName = '') then
                             exit;
 
-                        // AttachFile grava e faz Modify na MESMA instancia,
-                        // e devolve o tamanho conferido no banco.
-                        // AttachFile grava e faz Modify na MESMA instancia, e
-                        // grava o Last Result junto — a pagina so recarrega e
-                        // exibe. Nenhum Modify() na pagina depois disso: ele
-                        // gravaria o registro inteiro a partir do buffer da
-                        // pagina e poderia zerar o Blob recem-gravado.
-                        Stored := Rec.AttachFile(FileName, InStr);
-                        Rec.GetBuffer();
+                        if not Confirm(ImportarConfirm, false) then
+                            exit;
+
+                        Count := Loader.LoadFromStream(InStr, Rec."UF Filter", Rec."Replace BR");
+
+                        Rec."Last Result" := Format(Count) + ' CEP(s) importado(s) de ' +
+                            FileName + '.';
+                        Rec.RefreshCounters();
+                        Rec.Modify();
                         CurrPage.Update(false);
-                        if Stored = 0 then
-                            Error(GravacaoFalhouErr, FileName);
                     end;
                 }
 
@@ -234,6 +236,7 @@ page 50309 "KINTO CEP Import"
         CepVazioErr: Label 'Informe o CEP no campo "CEP para consultar".';
         UrlObrigatoriaErr: Label 'Informe a URL do CSV da base completa.';
         CarregarBaseConfirm: Label 'A carga completa tem cerca de 1,2 milhão de CEPs e roda em background. Confirma?', Locked = true;
+        ImportarConfirm: Label 'Importar os CEPs deste arquivo para a base (Post Code) do Business Central?', Locked = true;
         GravacaoFalhouErr: Label 'Não foi possível gravar o arquivo %1 no Blob do Business Central. Nada foi importado.';
         NenhumArquivoErr: Label 'Anexe um arquivo CSV antes de importar (menu Importação > Anexar arquivo CSV).';
 
