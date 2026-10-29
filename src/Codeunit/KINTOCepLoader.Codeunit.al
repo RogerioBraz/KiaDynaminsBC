@@ -27,6 +27,7 @@ codeunit 60025 "KINTO CEP Loader"
         NoHeaderErr: Label 'Cabeçalho do CSV não contém a coluna "cep".';
         ZipNotSupportedErr: Label 'A URL aponta para um arquivo ZIP, não para o CSV. O ZIP do OpenCEP traz um JSON por CEP e não pode ser lido direto pelo BC. Use a URL de um CSV já convertido (colunas cep,logradouro,complemento,bairro,localidade,uf,ibge).';
         EmptyFileErr: Label 'Arquivo vazio ou sem linhas de dados.';
+        BlobVazioErr: Label 'O arquivo anexado não foi gravado no Blob (0 bytes). Anexe o CSV novamente pelo menu Importação > Anexar arquivo CSV.';
 
     // ============================================================
     // 1. NUCLEO — importa de qualquer InStream
@@ -117,10 +118,18 @@ codeunit 60025 "KINTO CEP Loader"
     procedure LoadFromBlob(var ImportBuf: Record "KINTO CEP Import Buffer"): Integer
     var
         InStr: InStream;
+        Size: Integer;
     begin
         if ImportBuf."File Name" = '' then
             Error(NoFileErr);
         ImportBuf."CSV Blob".CreateInStream(InStr);
+        // O Blob pode estar vazio mesmo com nome de arquivo preenchido (foi o
+        // que aconteceu no teste de 29/10: gravacao em duas etapas perdia o
+        // conteudo). Aqui a checagem e no CONTEUDO, nao no nome.
+        Size := InStr.Length();
+        if Size = 0 then
+            Error(BlobVazioErr);
+        ImportBuf."CSV Size (KB)" := Size div 1024;
         exit(LoadFromStream(InStr, ImportBuf."UF Filter", ImportBuf."Replace BR"));
     end;
 

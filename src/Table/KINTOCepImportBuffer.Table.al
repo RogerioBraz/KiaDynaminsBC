@@ -122,37 +122,42 @@ table 50308 "KINTO CEP Import Buffer"
     procedure StoreFile(FileName: Text; var InStr: InStream): Integer
     var
         OutStr: OutStream;
-        TempBlob: Codeunit "Temp Blob";
-        TmpIn: InStream;
+        Size: Integer;
     begin
-        ClearFile();
-        // Copia o stream para o Blob passando por um Temp Blob, que fornece
-        // CreateInStream/CreateOutStream e Length() (nao existe FromStream).
-        TempBlob.CreateOutStream(OutStr);
-        CopyStream(OutStr, InStr);
-        TempBlob.CreateInStream(TmpIn);
+        // Padrao da plataforma (o mesmo de Report Layouts):
+        //   CopyStream(Blob.CreateOutStream(), InStream)
+        //
+        // ARMADILHA que quebrou o teste de 29/10: a versao anterior copiava
+        // para um Temp Blob e chamava CreateInStream() com o OutStream do
+        // Temp Blob ainda aberto. Isso devolve stream VAZIO — o segundo
+        // CopyStream gravava 0 bytes no campo e o Blob ficava sem conteudo,
+        // embora nome e tamanho aparecessem na tela. Dai o erro
+        // "Arquivo vazio ou sem linhas de dados".
+        //
+        // Aqui nao ha reabertura: mede o tamanho no proprio InStream de
+        // origem e copia direto para o campo. Nada e lido de volta enquanto
+        // o OutStream existir.
+        Size := InStr.Length();
         "CSV Blob".CreateOutStream(OutStr);
-        CopyStream(OutStr, TmpIn);
-        "CSV Size (KB)" := TempBlob.Length() div 1024;
+        CopyStream(OutStr, InStr);
         "File Name" := FileName;
-        exit(TempBlob.Length());
+        "CSV Size (KB)" := Size div 1024;
+        exit(Size);
     end;
 
-    // Le o arquivo previamente gravado no campo Blob.
     procedure FileIntoStream(var InStr: InStream): Boolean
-    var
-        OutStr: OutStream;
     begin
         if "File Name" = '' then
             exit(false);
         "CSV Blob".CreateInStream(InStr);
-        exit(true);
+        exit(InStr.Length() > 0);
     end;
 
     procedure ClearFile()
     var
         OutStr: OutStream;
     begin
+        // Escrever num OutStream vazio zera o Blob de forma confiavel
         "CSV Blob".CreateOutStream(OutStr);
         "File Name" := '';
         "CSV Size (KB)" := 0;

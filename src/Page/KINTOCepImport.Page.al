@@ -99,6 +99,7 @@ page 50309 "KINTO CEP Import"
                         FileName: Text;
                         Size: Integer;
                         Ok: Boolean;
+                        VerifIn: InStream;
                     begin
                         // UploadIntoStream e a funcao nativa do cliente:
                         // (titulo, pasta, filtro, var nome, var stream)
@@ -109,8 +110,16 @@ page 50309 "KINTO CEP Import"
                             exit;
                         Size := Rec.StoreFile(FileName, InStr);
                         Rec.Modify();
-                        Rec."Last Result" := 'Arquivo ' + FileName + ' anexado (' +
-                            Format(Size div 1024) + ' KB). Agora use "Importar arquivo anexado".';
+                        // Confere o que REALMENTE ficou no Blob: se a gravacao
+                        // falhar, o usuario ve na hora em vez de descobrir no
+                        // "Importar" com a mensagem generica de arquivo vazio.
+                        Rec."CSV Blob".CreateInStream(VerifIn);
+                        Rec."Last Result" := 'Arquivo ' + FileName + ' anexado: ' +
+                            Format(Size) + ' bytes enviados, ' + Format(VerifIn.Length()) +
+                            ' bytes gravados. Agora use "Importar arquivo anexado".';
+                        if VerifIn.Length() = 0 then
+                            Rec."Last Result" := 'ATENÇÃO: o Blob ficou vazio (0 bytes gravados). ' +
+                                'Arquivo enviado: ' + FileName + ' (' + Format(Size) + ' bytes). Anexe novamente.';
                         CurrPage.Update(false);
                     end;
                 }
