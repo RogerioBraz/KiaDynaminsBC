@@ -105,6 +105,20 @@ codeunit 60025 "KINTO CEP Loader"
     end;
 
     // ============================================================
+    // 1b. CARGA A PARTIR DO BLOB DA PAGINA (caminho principal)
+    // ============================================================
+    // O usuario anexa o CSV no campo Blob da pagina e o loader consome dali.
+    procedure LoadFromBlob(var ImportBuf: Record "KINTO CEP Import Buffer"): Integer
+    var
+        InStr: InStream;
+    begin
+        if ImportBuf."File Name" = '' then
+            Error(NoFileErr);
+        ImportBuf."CSV Blob".CreateInStream(InStr);
+        exit(LoadFromStream(InStr, ImportBuf."UF Filter", ImportBuf."Replace BR"));
+    end;
+
+    // ============================================================
     // 2. URL — baixa o CSV e delega ao nucleo
     // ============================================================
     procedure LoadFromUrl(Url: Text; UfFilter: Code[2]; ReplaceBR: Boolean): Integer

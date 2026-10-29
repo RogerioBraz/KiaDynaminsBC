@@ -26,15 +26,16 @@ page 50309 "KINTO CEP Import"
         {
             group(Source)
             {
-                Caption = 'Origem dos dados';
+                Caption = 'Arquivo da base';
                 field("File Name"; Rec."File Name")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Source URL"; Rec."Source URL")
+                field("CSV Size (KB)"; Rec."CSV Size (KB)")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
             }
             group(Options)
@@ -70,22 +71,70 @@ page 50309 "KINTO CEP Import"
     {
         area(Processing)
         {
-            action(ImportFromUrl)
+            group(ImportGroup)
             {
-                Caption = 'Importar da URL';
-                ApplicationArea = All;
-                Image = Internet;
-                trigger OnAction()
-                var
-                    Loader: Codeunit "KINTO CEP Loader";
-                    Count: Integer;
-                begin
-                    Count := Loader.LoadFromUrl(Rec."Source URL", Rec."UF Filter", Rec."Replace BR");
-                    Rec."Last Result" := Format(Count) + ' CEP(s) incluído(s).';
-                    Rec.RefreshCounters();
-                    Rec.Modify();
-                    CurrPage.Update(false);
-                end;
+                Caption = 'Importação';
+
+                action(AttachFile)
+                {
+                    Caption = 'Anexar arquivo CSV...';
+                    ApplicationArea = All;
+                    Image = Import;
+                    trigger OnAction()
+                    var
+                        InStr: InStream;
+                        FileName: Text;
+                        Size: Integer;
+                        Ok: Boolean;
+                    begin
+                        // UploadIntoStream e a funcao nativa do cliente:
+                        // (titulo, pasta, filtro, var nome, var stream)
+                        Ok := UploadIntoStream(
+                            'Selecione a base de CEP em CSV',
+                            '', 'Arquivo CSV (*.csv)|*.csv', FileName, InStr);
+                        if (not Ok) or (FileName = '') then
+                            exit;
+                        Size := Rec.StoreFile(FileName, InStr);
+                        Rec.Modify();
+                        Rec."Last Result" := 'Arquivo ' + FileName + ' anexado (' +
+                            Format(Size div 1024) + ' KB). Agora use "Importar arquivo anexado".';
+                        CurrPage.Update(false);
+                    end;
+                }
+
+                action(ImportFromBlob)
+                {
+                    Caption = 'Importar arquivo anexado';
+                    ApplicationArea = All;
+                    Image = Import;
+                    trigger OnAction()
+                    var
+                        Loader: Codeunit "KINTO CEP Loader";
+                        Count: Integer;
+                    begin
+                        if Rec."File Name" = '' then
+                            Error(NenhumArquivoErr);
+                        Count := Loader.LoadFromBlob(Rec);
+                        Rec."Last Result" := Format(Count) + ' CEP(s) incluído(s) de ' + Rec."File Name" + '.';
+                        Rec.RefreshCounters();
+                        Rec.Modify();
+                        CurrPage.Update(false);
+                    end;
+                }
+
+                action(ClearFile)
+                {
+                    Caption = 'Remover arquivo anexado';
+                    ApplicationArea = All;
+                    Image = Delete;
+                    trigger OnAction()
+                    begin
+                        Rec.ClearFile();
+                        Rec.Modify();
+                        Rec."Last Result" := 'Arquivo removido.';
+                        CurrPage.Update(false);
+                    end;
+                }
             }
             action(LookupOne)
             {
@@ -122,6 +171,7 @@ page 50309 "KINTO CEP Import"
 
     var
         CepVazioErr: Label 'Informe o CEP no campo "CEP para consultar".';
+        NenhumArquivoErr: Label 'Anexe um arquivo CSV antes de importar (menu Importação > Anexar arquivo CSV).';
 
     trigger OnOpenPage()
     begin
