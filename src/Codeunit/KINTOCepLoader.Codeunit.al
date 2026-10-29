@@ -1,0 +1,289 @@
+codeunit 60025 "KINTO CEP Loader"
+{
+    // ============================================================
+    // CARGA E MANUTENCAO DA BASE DE CEP NA "Post Code" DO BC
+    //
+    // O BC SaaS nao le disco, entao a entrada da base e por:
+    //   1. LoadFromStream -> nucleo (recebe qualquer InStream)
+    //   2. LoadFromUrl    -> CSV publicado numa URL (Azure Blob, CDN)
+    //   3. LoadFromMedia  -> arquivo arrastado na pagina (MediaSet)
+    //   4. LookupAndCreate-> consulta UM CEP na API publica e cria
+    //
+    // Formato CSV (cabecalho obrigatorio, ordem livre, virgula ou ';'):
+    //   cep,logradouro,complemento,unidade,bairro,localidade,uf,ibge,estado,regiao
+    //
+    // Base de referencia: OpenCEP/Correios — 1.209.314 CEPs, 27 UFs.
+    // ============================================================
+
+    var
+        Api: Codeunit "KINTO Brasil API Integration";
+        ImportedLabel: Label '%1 CEP(s) incluído(s), %2 atualizado(s), %3 ignorado(s).';
+        NoFileErr: Label 'Nenhum arquivo informado. Envie o CSV ou preencha a URL.';
+        BadCepErr: Label 'CEP inválido: %1';
+        CreatedLabel: Label 'CEP %1 criado: %2 — %3/%4';
+        ExistsLabel: Label 'CEP %1 já existe: %2 — %3/%4';
+        UrlEmptyErr: Label 'Informe a URL do arquivo CSV.';
+        DownloadErr: Label 'Falha ao baixar o arquivo (HTTP %1).';
+        NoHeaderErr: Label 'Cabeçalho do CSV não contém a coluna "cep".';
+        EmptyFileErr: Label 'Arquivo vazio ou sem linhas de dados.';
+
+    // ============================================================
+    // 1. NUCLEO — importa de qualquer InStream
+    // ============================================================
+    procedure LoadFromStream(Stream: InStream; UfFilter: Code[2]; ReplaceBR: Boolean): Integer
+    var
+        Line: Text;
+        Headers: Dictionary of [Text, Integer];
+        PostCode: Record "Post Code";
+        Separator: Text[1];
+        Inserted: Integer;
+        Updated: Integer;
+        Skipped: Integer;
+        Cep, Street, Complement, Neighborhood, City, Uf, Ibge: Text;
+        Cells: List of [Text];
+        Total: Integer;
+    begin
+        // InStream.ReadText le UMA LINHA por chamada — nao precisa de split manual
+        if Stream.EOS() then
+            Error(EmptyFileErr);
+
+        Stream.ReadText(Line);
+        if StrPos(Line, ';') > 0 then
+            Separator := ';'
+        else
+            Separator := ',';
+
+        Headers := BuildIndex(SplitLine(Line, Separator));
+        if not Headers.ContainsKey('cep') then
+            Error(NoHeaderErr);
+
+        if ReplaceBR then begin
+            PostCode.Reset();
+            PostCode.SetRange("Country/Region Code", 'BR');
+            PostCode.DeleteAll(true);
+        end;
+
+        while not Stream.EOS() do begin
+            Stream.ReadText(Line);
+            if Line.Trim() = '' then
+                continue;
+
+            Cells := SplitLine(Line, Separator);
+            Cep := OnlyDigits(FieldAt(Cells, Headers, 'cep'));
+            if StrLen(Cep) <> 8 then begin
+                Skipped += 1;
+                continue;
+            end;
+
+            Uf := FieldAt(Cells, Headers, 'uf');
+            if (UfFilter <> '') and (Uf <> UfFilter) then begin
+                Skipped += 1;
+                continue;
+            end;
+
+            Street := FieldAt(Cells, Headers, 'logradouro');
+            Complement := FieldAt(Cells, Headers, 'complemento');
+            Neighborhood := FieldAt(Cells, Headers, 'bairro');
+            City := FieldAt(Cells, Headers, 'localidade');
+            Ibge := FieldAt(Cells, Headers, 'ibge');
+            if City = '' then
+                City := '-';
+
+            if UpsertPostCode(Cep, City, Street, Complement, Neighborhood, Uf, Ibge) then
+                Inserted += 1
+            else
+                Updated += 1;
+
+            Total += 1;
+            if Total mod 25000 = 0 then
+                Commit();
+        end;
+
+        Commit();
+        Message(ImportedLabel, Inserted, Updated, Skipped);
+        exit(Inserted);
+    end;
+
+    // ============================================================
+    // 2. URL — baixa o CSV e delega ao nucleo
+    // ============================================================
+    procedure LoadFromUrl(Url: Text; UfFilter: Code[2]; ReplaceBR: Boolean): Integer
+    var
+        Client: HttpClient;
+        Response: HttpResponseMessage;
+        Status: Integer;
+        TempBlob: Codeunit "Temp Blob";
+        InStr: InStream;
+        OutStr: OutStream;
+        Body: Text;
+    begin
+        if Url = '' then
+            Error(UrlEmptyErr);
+
+        Client.DefaultRequestHeaders.Clear();
+        Client.DefaultRequestHeaders.Add('Accept', 'text/csv, text/plain, application/octet-stream');
+        if not Client.Get(Url, Response) then
+            Error(DownloadErr, 'sem resposta');
+        Status := Response.HttpStatusCode;
+        if Status <> 200 then
+            Error(DownloadErr, Status);
+
+        if not Response.Content().ReadAs(Body) then
+            Error(DownloadErr, 'corpo vazio');
+        TempBlob.CreateOutStream(OutStr);
+        OutStr.WriteText(Body);
+        TempBlob.CreateInStream(InStr);
+        exit(LoadFromStream(InStr, UfFilter, ReplaceBR));
+    end;
+
+    // ============================================================
+    // 4. CONSULTA PONTUAL — API publica + cria se nao existir
+    // ============================================================
+    procedure LookupAndCreate(Cep: Text): Boolean
+    var
+        J: JsonObject;
+        PostCode: Record "Post Code";
+        CepLimpo: Text;
+        City, Street, Neighborhood, Uf, Ibge: Text;
+    begin
+        CepLimpo := OnlyDigits(Cep);
+        if StrLen(CepLimpo) <> 8 then
+            Error(BadCepErr, Cep);
+
+        PostCode.SetRange(Code, CopyStr(CepLimpo, 1, 20));
+        if PostCode.FindFirst() then begin
+            Message(ExistsLabel, CepLimpo, PostCode.City, PostCode."KINTO State", PostCode."KINTO Neighborhood");
+            exit(false);
+        end;
+
+        J := Api.LookupCep(CepLimpo);
+        City := Api.GetText(J, 'city');
+        Street := Api.GetText(J, 'street');
+        Neighborhood := Api.GetText(J, 'neighborhood');
+        Uf := Api.GetText(J, 'state');
+        Ibge := Api.GetText(J, 'ibge');
+
+        PostCode.Init();
+        PostCode.Code := CopyStr(CepLimpo, 1, 20);
+        PostCode.City := CopyStr(City, 1, 30);
+        PostCode."Search City" := CopyStr(City, 1, 30);
+        PostCode."Country/Region Code" := 'BR';
+        PostCode.County := CopyStr(Neighborhood, 1, 30);
+        PostCode."KINTO Street" := CopyStr(Street, 1, 150);
+        PostCode."KINTO Neighborhood" := CopyStr(Neighborhood, 1, 80);
+        PostCode."KINTO State" := CopyStr(Uf, 1, 2);
+        PostCode."KINTO IBGE City" := CopyStr(Ibge, 1, 10);
+        PostCode."KINTO CEP Source" := PostCode."KINTO CEP Source"::API;
+        PostCode."KINTO CEP Updated" := CurrentDateTime;
+        PostCode.Insert(true);
+
+        Message(CreatedLabel, CepLimpo, Street, City, Uf);
+        exit(true);
+    end;
+
+    // ============================================================
+    // UPSERT — devolve TRUE se incluiu, FALSE se atualizou
+    // ============================================================
+    local procedure UpsertPostCode(Cep: Text; City: Text; Street: Text; Complement: Text;
+        Neighborhood: Text; Uf: Text; Ibge: Text): Boolean
+    var
+        PostCode: Record "Post Code";
+    begin
+        PostCode.SetRange(Code, CopyStr(Cep, 1, 20));
+        PostCode.SetRange(City, CopyStr(City, 1, 30));
+        if PostCode.FindFirst() then begin
+            // nao sobrescreve registro que veio da API ou foi ajustado a mao
+            if PostCode."KINTO CEP Source" = PostCode."KINTO CEP Source"::API then
+                exit(false);
+            PostCode."KINTO Street" := CopyStr(Street, 1, 150);
+            PostCode."KINTO Complement" := CopyStr(Complement, 1, 80);
+            PostCode."KINTO Neighborhood" := CopyStr(Neighborhood, 1, 80);
+            PostCode."KINTO State" := CopyStr(Uf, 1, 2);
+            PostCode."KINTO IBGE City" := CopyStr(Ibge, 1, 10);
+            PostCode."KINTO CEP Source" := PostCode."KINTO CEP Source"::Base;
+            PostCode."KINTO CEP Updated" := CurrentDateTime;
+            PostCode.Modify(false);
+            exit(false);
+        end;
+
+        PostCode.Init();
+        PostCode.Code := CopyStr(Cep, 1, 20);
+        PostCode.City := CopyStr(City, 1, 30);
+        PostCode."Search City" := CopyStr(City, 1, 30);
+        PostCode."Country/Region Code" := 'BR';
+        PostCode.County := CopyStr(Neighborhood, 1, 30);
+        PostCode."KINTO Street" := CopyStr(Street, 1, 150);
+        PostCode."KINTO Complement" := CopyStr(Complement, 1, 80);
+        PostCode."KINTO Neighborhood" := CopyStr(Neighborhood, 1, 80);
+        PostCode."KINTO State" := CopyStr(Uf, 1, 2);
+        PostCode."KINTO IBGE City" := CopyStr(Ibge, 1, 10);
+        PostCode."KINTO CEP Source" := PostCode."KINTO CEP Source"::Base;
+        PostCode."KINTO CEP Updated" := CurrentDateTime;
+        PostCode.Insert(true);
+        exit(true);
+    end;
+
+    // ============================================================
+    // HELPERS DE CSV
+    // ============================================================
+    local procedure SplitLine(Line: Text; Separator: Text[1]): List of [Text]
+    var
+        Res: List of [Text];
+        Cur: Text;
+        C: Text[1];
+        I: Integer;
+        InQuotes: Boolean;
+    begin
+        Cur := '';
+        InQuotes := false;
+        for I := 1 to StrLen(Line) do begin
+            C := CopyStr(Line, I, 1);
+            if C = '"' then
+                InQuotes := not InQuotes
+            else if (C = Separator) and (not InQuotes) then begin
+                Res.Add(Cur);
+                Cur := '';
+            end else
+                Cur += C;
+        end;
+        Res.Add(Cur);
+        exit(Res);
+    end;
+
+    local procedure BuildIndex(Headers: List of [Text]): Dictionary of [Text, Integer]
+    var
+        Idx: Dictionary of [Text, Integer];
+        I: Integer;
+    begin
+        for I := 1 to Headers.Count() do
+            if not Idx.ContainsKey(LowerCase(Headers.Get(I).Trim())) then
+                Idx.Add(LowerCase(Headers.Get(I).Trim()), I);
+        exit(Idx);
+    end;
+
+    local procedure FieldAt(Cells: List of [Text]; Idx: Dictionary of [Text, Integer]; Name: Text): Text
+    var
+        P: Integer;
+    begin
+        if not Idx.Get(Name, P) then
+            exit('');
+        if P > Cells.Count() then
+            exit('');
+        exit(Cells.Get(P).Trim());
+    end;
+
+    local procedure OnlyDigits(Value: Text): Text
+    var
+        I: Integer;
+        C: Text[1];
+        Out: Text;
+    begin
+        Out := '';
+        for I := 1 to StrLen(Value) do begin
+            C := CopyStr(Value, I, 1);
+            if (C >= '0') and (C <= '9') then
+                Out := Out + C;
+        end;
+        exit(Out);
+    end;
+}

@@ -82,8 +82,9 @@ page 60024 "KINTO Integration Test"
                 begin
                     J := Api.LookupCep(TestCep);
                     Street := Api.GetText(J, 'street'); City := Api.GetText(J, 'city');
-                    Uf := Api.GetText(J, 'state'); Ibge := Api.GetText(J, 'ibge');
-                    ResultText := 'CEP: ' + Street + ', ' + City + '/' + Uf + ' | IBGE ' + Ibge;
+                    Uf := Api.GetText(J, 'state'); Ibge := Api.GetIbgeCity(J);
+                    ResultText := 'CEP ' + TestCep + ': ' + Street + ', ' + City + '/' + Uf +
+                        ' | Bairro ' + Api.GetText(J, 'neighborhood') + ' | IBGE ' + Ibge;
                     CurrPage.Update(false);
                 end;
             }
@@ -102,7 +103,10 @@ page 60024 "KINTO Integration Test"
                     Razao := Api.GetText(J, 'razao_social');
                     Situacao := Api.GetText(J, 'descricao_situacao_cadastral');
                     Municipio := Api.GetText(J, 'municipio'); Uf := Api.GetText(J, 'uf');
-                    ResultText := 'CNPJ: ' + Razao + ' | ' + Situacao + ' | ' + Municipio + '/' + Uf;
+                    if Razao = '' then
+                        Razao := Api.GetText(J, 'nome_fantasia');
+                    ResultText := 'CNPJ ' + TestCnpj + ': ' + Razao + ' | ' + Situacao +
+                        ' | ' + Municipio + '/' + Uf;
                     CurrPage.Update(false);
                 end;
             }
@@ -133,6 +137,11 @@ page 60024 "KINTO Integration Test"
                     Valor: Decimal;
                     Mes, ValorTxt, Modelo: Text;
                 begin
+                    if TestFipe = '' then begin
+                        ResultText := 'Informe o código FIPE (ex.: 005329-5).';
+                        CurrPage.Update(false);
+                        exit;
+                    end;
                     Valor := Api.GetFipeValue(TestFipe, Mes, ValorTxt, Modelo);
                     ResultText := 'FIPE ' + TestFipe + ': ' + ValorTxt + ' (' + Mes + ') — ' + Modelo +
                         Format(Valor, 0, '<Precision,2><Standard Format,1>');

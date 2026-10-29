@@ -23,6 +23,7 @@ codeunit 60023 "KINTO Brasil API Integration"
         // ---- mensagens ----
         CepNotFoundErr: Label 'CEP %1 nao encontrado nas bases publicas.';
         CnpjNotFoundErr: Label 'CNPJ %1 nao encontrado na base da Receita Federal.';
+        CnpjInvalidErr: Label 'CNPJ %1 invalido: os digitos verificadores nao conferem. Confira o numero digitado.';
         FipeNotFoundErr: Label 'Nao foi possivel obter o preco FIPE para o codigo %1 / ano %2.';
         HttpStatusErr: Label 'A consulta a %1 retornou HTTP %2.';
         EmptyResponseErr: Label 'A consulta a %1 voltou sem conteudo.';
@@ -74,15 +75,26 @@ codeunit 60023 "KINTO Brasil API Integration"
         if StrLen(Cnpj) <> 14 then
             Error(CnpjNotFoundErr, Cnpj);
 
+        // As duas fontes devolvem HTTP 400 (nao 404) quando o CNPJ tem digito
+        // verificador invalido — foi o caso do 33.192.753/0001-05 testado pelo
+        // Rogerio. Tratar 400 como "nao encontrado" evita poluir a mensagem com
+        // erro tecnico e permite a validacao local orientar o usuario.
+        if not IsValidCnpj(Cnpj) then
+            Error(CnpjInvalidErr, Cnpj);
+
         // 1a tentativa: BrasilAPI
         GetJson(Client, Response, BrasilApiUrl + 'cnpj/v1/' + Cnpj, Status, Body);
         if (Status = 200) and JObj.ReadFrom(Body) then
             exit(JObj);
+        if Status = 400 then
+            Error(CnpjInvalidErr, Cnpj);
 
         // 2a tentativa: Minha Receita (sem limite de uso, mesma base)
         GetJson(Client, Response, MinhaReceitaUrl + Cnpj, Status, Body);
         if Status = 404 then
             Error(CnpjNotFoundErr, Cnpj);
+        if Status = 400 then
+            Error(CnpjInvalidErr, Cnpj);
         if Status <> 200 then
             Error(HttpStatusErr, 'Minha Receita', Status);
         if not JObj.ReadFrom(Body) then
@@ -225,12 +237,62 @@ codeunit 60023 "KINTO Brasil API Integration"
     // JsonObject.Get exige um JsonToken, nao um Text. Estes wrappers evitam
     // repetir o padrao em cada leitura de campo.
     // ============================================================
+    // Le uma propriedade como TEXTO sem quebrar.
+    // O bug de 29/10: o BrasilAPI CEP v2 devolve "ibge" como OBJETO
+    // ({"city":"3550308","state":"35"}), nao como string. Chamar AsValue()
+    // sobre um objeto lanca "Nao e possivel converter NavToken em NavJsonValue".
+    // Aqui a leitura so acontece quando o token e realmente um valor; se for
+    // objeto, tenta a propriedade interna e, no fim, devolve vazio.
     procedure GetText(JObj: JsonObject; Prop: Text): Text
     var
         Tok: JsonToken;
     begin
-        if JObj.Get(Prop, Tok) then
+        if not JObj.Get(Prop, Tok) then
+            exit('');
+        exit(TokenToText(Tok));
+    end;
+
+    // Converte um token em texto, aceitando valor, objeto (pega o 1o campo
+    // textual) e array vazio. Nunca lanca excecao.
+    procedure TokenToText(Tok: JsonToken): Text
+    var
+        Obj: JsonObject;
+        Child: JsonToken;
+    begin
+        if Tok.IsValue() then
             exit(Format(Tok.AsValue().AsText()));
+        if Tok.IsObject() then begin
+            Obj := Tok.AsObject();
+            // devolve o primeiro campo de texto do objeto interno
+            if Obj.Get('city', Child) then
+                if Child.IsValue() then
+                    exit(Format(Child.AsValue().AsText()));
+            if Obj.Get('name', Child) then
+                if Child.IsValue() then
+                    exit(Format(Child.AsValue().AsText()));
+            exit('');
+        end;
+        exit('');
+    end;
+
+    // Le "ibge" aceitando as DUAS formas do BrasilAPI:
+    //   v1 -> string "3550308"
+    //   v2 -> objeto {"city":"3550308","state":"35"}
+    procedure GetIbgeCity(JObj: JsonObject): Text
+    var
+        Tok: JsonToken;
+        Obj: JsonObject;
+        Sub: JsonToken;
+    begin
+        if not JObj.Get('ibge', Tok) then
+            exit('');
+        if Tok.IsValue() then
+            exit(Format(Tok.AsValue().AsText()));
+        if Tok.IsObject() then begin
+            Obj := Tok.AsObject();
+            if Obj.Get('city', Sub) and Sub.IsValue() then
+                exit(Format(Sub.AsValue().AsText()));
+        end;
         exit('');
     end;
 
@@ -293,8 +355,6 @@ codeunit 60023 "KINTO Brasil API Integration"
 
     // converte um caractere '0'..'9' no inteiro correspondente sem Evaluate
     local procedure CodeDigit(C: Text): Integer
-    var
-        Dig: array[10] of Text[1];
     begin
         if C = '0' then exit(0); if C = '1' then exit(1);
         if C = '2' then exit(2); if C = '3' then exit(3);
