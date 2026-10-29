@@ -32,8 +32,11 @@ codeunit 60025 "KINTO CEP Loader"
     // ============================================================
     // 1. NUCLEO — importa de qualquer InStream
     // ============================================================
-    procedure LoadFromStream(Stream: InStream; UfFilter: Code[2]; ReplaceBR: Boolean): Integer
+    procedure LoadFromStream(SourceStream: InStream; UfFilter: Code[2]; ReplaceBR: Boolean): Integer
     var
+        TempBlob: Codeunit "Temp Blob";
+        ReopenOut: OutStream;
+        Stream: InStream;
         Line: Text;
         Headers: Dictionary of [Text, Integer];
         PostCode: Record "Post Code";
@@ -45,11 +48,25 @@ codeunit 60025 "KINTO CEP Loader"
         Cells: List of [Text];
         Total: Integer;
     begin
+        // ENCODING — causa dos acentos quebrados (São -> São):
+        // o ReadText do AL assume MS-DOS quando o arquivo nao tem BOM. O CSV
+        // em UTF-8 sem BOM era lido byte a byte como ANSI. Aqui o stream de
+        // origem (upload, Blob ou URL) e copiado em BYTES para um Temp Blob e
+        // reaberto com TextEncoding::UTF8 — a copia nao interpreta encoding,
+        // so a reabertura, que agora decodifica certo.
+        TempBlob.CreateOutStream(ReopenOut);
+        CopyStream(ReopenOut, SourceStream);
+        Clear(ReopenOut);
+        TempBlob.CreateInStream(Stream, TextEncoding::UTF8);
+
         // InStream.ReadText le UMA LINHA por chamada — nao precisa de split manual
         if Stream.EOS() then
             Error(EmptyFileErr);
 
         Stream.ReadText(Line);
+        // BOM UTF-8: quando o arquivo tem BOM, o primeiro caractere da
+        // primeira linha vem como U+FEFF e a coluna vira "\ufeffcep" — o
+        // BuildIndex nao acha "cep" e a importacao morre no NoHeaderErr.
         // O pacote oficial do OpenCEP e um ZIP com um JSON por CEP (326 MB),
         // nao um CSV. Avisar em vez de importar lixo.
         if CopyStr(Line, 1, 2) = 'PK' then
@@ -61,6 +78,14 @@ codeunit 60025 "KINTO CEP Loader"
             Separator := ',';
 
         Headers := BuildIndex(SplitLine(Line, Separator));
+        // BOM UTF-8: se o arquivo vier com BOM, o primeiro caractere da
+        // primeira linha e U+FEFF e a coluna vira "<BOM>cep" — o BuildIndex
+        // nao acha "cep" e a carga morre com NoHeaderErr. Em vez de mexer em
+        // codeunits de caractere, refaz o indice sem o primeiro caractere.
+        if not Headers.ContainsKey('cep') then begin
+            Line := CopyStr(Line, 2, StrLen(Line));
+            Headers := BuildIndex(SplitLine(Line, Separator));
+        end;
         if not Headers.ContainsKey('cep') then
             Error(NoHeaderErr);
 
@@ -122,7 +147,7 @@ codeunit 60025 "KINTO CEP Loader"
     begin
         if ImportBuf."File Name" = '' then
             Error(NoFileErr);
-        ImportBuf."CSV Blob".CreateInStream(InStr);
+        ImportBuf."CSV Blob".CreateInStream(InStr, TextEncoding::UTF8);
         // O Blob pode estar vazio mesmo com nome de arquivo preenchido (foi o
         // que aconteceu no teste de 29/10: gravacao em duas etapas perdia o
         // conteudo). Aqui a checagem e no CONTEUDO, nao no nome.
@@ -180,7 +205,7 @@ codeunit 60025 "KINTO CEP Loader"
         TempBlob.CreateInStream(ChunkIn);
         if not Response.Content().ReadAs(ChunkIn) then
             Error(DownloadErr, 'corpo vazio');
-        TempBlob.CreateInStream(OutStream);
+        TempBlob.CreateInStream(OutStream, TextEncoding::UTF8);
         exit(TempBlob.Length());
     end;
 
